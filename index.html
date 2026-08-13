@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aulas · Elian Leite</title>
+<style>
+  :root{--font:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    --purple:#7A4FC0;--purple-dk:#5E3A9E;--purple-soft:#EDE6FA;--lilac:#B79AE0;--plum:#9B5DA8;--indigo:#6C5CE0;--rose:#B06AB3;}
+  html[data-theme="light"]{--bg1:#F3ECFB;--bg2:#FBF8FF;--page:#FFFFFF;--paper:#FFFFFF;--ink:#2E2450;--ink-soft:#5B4E7A;--line:#E7DEF6;--shadow:0 12px 34px rgba(94,58,158,.14);}
+  html[data-theme="dark"]{--bg1:#1A1330;--bg2:#120C22;--page:#241B3D;--paper:#2B2148;--ink:#F1EAFB;--ink-soft:#C6B8E4;--line:#3E3160;--shadow:0 14px 40px rgba(0,0,0,.45);--purple:#B79AE0;--purple-dk:#CDB6F0;--purple-soft:#372A57;--lilac:#9B7BE0;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font);color:var(--ink);min-height:100vh;
+    background:radial-gradient(1200px 820px at 82% -12%,var(--purple-soft),transparent 60%),
+               radial-gradient(1000px 720px at -10% 112%,var(--purple-soft),transparent 55%),
+               linear-gradient(160deg,var(--bg1),var(--bg2));
+    transition:background .4s,color .4s;padding:clamp(20px,4vw,60px) clamp(16px,4vw,40px) 80px;}
+  .wrap{max-width:1000px;margin:0 auto}
+  header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+  .brand{font-weight:800;color:var(--purple-dk);letter-spacing:.5px}
+  .tbtn{border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:10px 14px;font-size:14px;font-weight:800;color:var(--ink);cursor:pointer;transition:.15s;font-family:inherit}
+  .tbtn:hover{background:var(--purple-soft)}
+  h1{font-size:clamp(32px,6vw,56px);line-height:1.08;letter-spacing:-.5px;margin-top:18px}
+  .sub{font-size:clamp(17px,2.2vw,22px);color:var(--ink-soft);margin-top:10px;max-width:640px}
+  .kicker{display:inline-block;font-weight:800;letter-spacing:.6px;text-transform:uppercase;font-size:13px;color:var(--purple-dk);background:var(--purple-soft);padding:7px 16px;border-radius:999px}
+
+  .disc{margin-top:clamp(28px,5vw,48px)}
+  .disc-head{display:flex;align-items:center;gap:16px;margin-bottom:16px}
+  .disc-ico{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;color:#fff;flex:0 0 auto;box-shadow:var(--shadow)}
+  .disc-title{font-size:clamp(21px,3vw,28px);font-weight:800;color:var(--ink)}
+  .disc-meta{font-size:14px;color:var(--ink-soft);font-weight:600}
+
+  .lessons{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+  .lesson{display:flex;flex-direction:column;background:var(--page);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 4px 16px rgba(94,58,158,.07);text-decoration:none;color:inherit;transition:.18s;position:relative;overflow:hidden}
+  .lesson:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--lilac)}
+  .lesson .num{font-size:13px;font-weight:800;color:var(--purple);text-transform:uppercase;letter-spacing:.5px}
+  .lesson h3{font-size:clamp(18px,2.2vw,22px);margin:8px 0;color:var(--ink)}
+  .lesson p{font-size:15px;color:var(--ink-soft);line-height:1.5;flex:1}
+  .lesson .go{margin-top:14px;display:inline-flex;align-items:center;gap:6px;font-weight:800;color:var(--purple-dk)}
+  .lesson.soon{opacity:.6;cursor:default;pointer-events:none}
+  .badge{display:inline-block;font-size:12px;font-weight:800;padding:3px 10px;border-radius:999px;background:var(--purple-soft);color:var(--purple-dk);margin-top:6px;align-self:flex-start}
+
+  footer{max-width:1000px;margin:60px auto 0;text-align:center;color:var(--ink-soft);font-size:14px}
+  a.src{color:var(--purple-dk);font-weight:700;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="brand">📚 Aulas · Elian Leite</span>
+    <button class="tbtn" id="themeBtn">🌙 Escuro</button>
+  </header>
+
+  <span class="kicker" style="margin-top:26px;display:inline-block">Material didático</span>
+  <h1>Aulas e apresentações</h1>
+  <p class="sub">Selecione a disciplina e a aula para abrir a apresentação interativa.</p>
+
+  <div id="cursos"></div>
+
+  <footer>
+    Feito com 💜 · Publicado via GitHub Pages ·
+    <a class="src" href="https://github.com" target="_blank" rel="noopener">github.com</a>
+  </footer>
+</div>
+
+<script>
+/* ==========================================================
+   ÍNDICE DE AULAS  —  para adicionar uma nova aula, basta
+   incluir um item em "aulas" dentro da disciplina desejada,
+   ou criar uma nova disciplina no array abaixo.
+   'link' = caminho da pasta que contém o index.html da aula.
+   ========================================================== */
+const CURSOS=[
+  {
+    disciplina:"Saberes e Metodologia do Ensino de Língua Portuguesa",
+    icone:"✏️", cor:"var(--purple)", nivel:"Pedagogia / Licenciatura",
+    aulas:[
+      {
+        n:"Aula 01",
+        titulo:"A proposta de ensino de LP na BNCC",
+        desc:"Concepção de linguagem, proposta pedagógica e os quatro eixos. Apresentação interativa com quiz e atividades.",
+        badge:"2h · interativa",
+        link:"saberes-metodologia-lp/bncc-lingua-portuguesa/"
+      }
+      // { n:"Aula 02", titulo:"...", desc:"...", badge:"...", link:"saberes-metodologia-lp/pasta-da-aula/" },
+    ]
+  }
+  // Nova disciplina:
+  // { disciplina:"Nome da disciplina", icone:"🔤", cor:"var(--indigo)", nivel:"...", aulas:[ ... ] }
+];
+
+const cores=["var(--purple)","var(--indigo)","var(--plum)","var(--rose)"];
+const cont=document.getElementById('cursos');
+CURSOS.forEach((c,ci)=>{
+  const sec=document.createElement('section');sec.className='disc';
+  const cor=c.cor||cores[ci%cores.length];
+  const total=c.aulas.length;
+  sec.innerHTML=`
+    <div class="disc-head">
+      <div class="disc-ico" style="background:${cor}">${c.icone||'📘'}</div>
+      <div>
+        <div class="disc-title">${c.disciplina}</div>
+        <div class="disc-meta">${c.nivel||''} · ${total} aula${total!==1?'s':''}</div>
+      </div>
+    </div>`;
+  const grid=document.createElement('div');grid.className='lessons';
+  c.aulas.forEach(a=>{
+    const el=document.createElement(a.link?'a':'div');
+    el.className='lesson'+(a.link?'':' soon');
+    if(a.link)el.href=a.link;
+    el.innerHTML=`
+      <span class="num">${a.n||''}</span>
+      <h3>${a.titulo}</h3>
+      <p>${a.desc||''}</p>
+      ${a.badge?`<span class="badge">${a.badge}</span>`:''}
+      <span class="go">${a.link?'Abrir apresentação →':'Em breve'}</span>`;
+    grid.appendChild(el);
+  });
+  sec.appendChild(grid);
+  cont.appendChild(sec);
+});
+
+/* tema */
+const themeBtn=document.getElementById('themeBtn'),root=document.documentElement;
+themeBtn.onclick=()=>{const d=root.getAttribute('data-theme')==='dark';root.setAttribute('data-theme',d?'light':'dark');themeBtn.textContent=d?'🌙 Escuro':'☀️ Claro';};
+</script>
+</body>
+</html>

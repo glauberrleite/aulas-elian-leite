@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula — A proposta de ensino de Língua Portuguesa na BNCC</title>
+<style>
+  :root{
+    --font:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    --radius:22px;
+    /* purple family */
+    --purple:#7A4FC0; --purple-dk:#5E3A9E; --purple-soft:#EDE6FA; --lilac:#B79AE0;
+    --plum:#9B5DA8; --indigo:#6C5CE0; --rose:#B06AB3;
+  }
+  html[data-theme="light"]{
+    --bg1:#F3ECFB; --bg2:#FBF8FF; --page:#FFFFFF; --paper:#FFFFFF;
+    --ink:#2E2450; --ink-soft:#5B4E7A; --line:#E7DEF6;
+    --shadow:0 12px 34px rgba(94,58,158,.14);
+    --dot1:#7A4FC0; --dot2:#9B5DA8; --dot3:#6C5CE0; --dot4:#B06AB3;
+    --correct:#5EA06E; --correct-soft:#E1F0E4; --wrong:#C85A72; --wrong-soft:#FBE3E9;
+    --backcard:#3B2A63;
+  }
+  html[data-theme="dark"]{
+    --bg1:#1A1330; --bg2:#120C22; --page:#241B3D; --paper:#2B2148;
+    --ink:#F1EAFB; --ink-soft:#C6B8E4; --line:#3E3160;
+    --shadow:0 14px 40px rgba(0,0,0,.45);
+    --purple:#B79AE0; --purple-dk:#CDB6F0; --purple-soft:#372A57;
+    --dot1:#9B7BE0; --dot2:#C58AD0; --dot3:#8A7BF0; --dot4:#D28AD6;
+    --correct:#6FBF82; --correct-soft:#254230; --wrong:#E0778E; --wrong-soft:#4A2632;
+    --backcard:#0E0A1C;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:var(--font);color:var(--ink);overflow:hidden;
+    background:radial-gradient(1200px 820px at 82% -12%,var(--purple-soft),transparent 60%),
+               radial-gradient(1000px 720px at -10% 112%,var(--purple-soft),transparent 55%),
+               linear-gradient(160deg,var(--bg1),var(--bg2));
+    transition:background .4s,color .4s;
+  }
+
+  /* ---------- Deck ---------- */
+  #deck{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:clamp(12px,3vw,48px);}
+  .slide{
+    display:none;width:min(1160px,100%);max-height:100%;background:var(--paper);
+    border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
+    padding:clamp(24px,3.6vw,58px);overflow:auto;position:relative;
+    animation:pop .45s cubic-bezier(.2,.8,.2,1);
+  }
+  .slide.active{display:block}
+  @keyframes pop{from{opacity:0;transform:translateY(14px) scale(.99)}to{opacity:1;transform:none}}
+  .slide::-webkit-scrollbar{width:10px}
+  .slide::-webkit-scrollbar-thumb{background:var(--purple-soft);border-radius:20px}
+
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-weight:700;letter-spacing:.6px;
+    text-transform:uppercase;font-size:clamp(12px,1.4vw,15px);color:var(--purple-dk);
+    background:var(--purple-soft);padding:7px 16px;border-radius:999px;margin-bottom:18px}
+  h1{font-size:clamp(32px,5.4vw,60px);line-height:1.07;letter-spacing:-.5px;color:var(--ink)}
+  h2{font-size:clamp(27px,4vw,44px);line-height:1.12;margin-bottom:16px;letter-spacing:-.3px;color:var(--ink)}
+  h3{font-size:clamp(19px,2.2vw,26px);margin:14px 0 8px;color:var(--ink)}
+  p,li{font-size:clamp(17px,2vw,23px);line-height:1.55;color:var(--ink-soft)}
+  ul,ol{padding-left:1.25em;margin:8px 0}
+  li{margin:7px 0}
+  .lead{font-size:clamp(19px,2.4vw,27px);color:var(--ink)}
+  strong{color:var(--ink)}
+  .center{text-align:center}
+  .muted{color:var(--ink-soft)}
+  small.muted{font-size:clamp(13px,1.5vw,16px)}
+
+  .cover-badge{font-size:clamp(48px,8vw,86px);margin-bottom:10px}
+  .meta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px}
+  .chip{background:var(--purple-soft);border:1px solid var(--line);border-radius:999px;padding:10px 20px;font-size:clamp(15px,1.7vw,18px);color:var(--purple-dk);font-weight:700}
+
+  .grid{display:grid;gap:18px}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:820px){.g2,.g3{grid-template-columns:1fr}}
+
+  .card{background:var(--page);border:1px solid var(--line);border-radius:18px;padding:20px 22px;box-shadow:0 4px 16px rgba(94,58,158,.07)}
+  .card .tag{font-weight:800;font-size:clamp(13px,1.5vw,15px);text-transform:uppercase;letter-spacing:.5px}
+  .card p,.card li{font-size:clamp(16px,1.85vw,20px)}
+
+  /* flip cards */
+  .flip{perspective:1200px;cursor:pointer;min-height:230px}
+  .flip .inner{position:relative;width:100%;height:100%;min-height:230px;transition:transform .6s;transform-style:preserve-3d}
+  .flip.flipped .inner{transform:rotateY(180deg)}
+  .flip .face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;padding:22px;display:flex;flex-direction:column;justify-content:center;border:1px solid var(--line)}
+  .flip .back{transform:rotateY(180deg);background:var(--backcard)}
+  .flip .back p,.flip .back strong{color:#F1E9FC}
+  .flip .front{background:var(--page)}
+  .flip .hintflip{position:absolute;bottom:12px;right:16px;font-size:13px;color:var(--purple);font-weight:800}
+
+  /* eixo reveal (slide 7) */
+  .eixogrid{display:none}
+  .eixogrid.reveal{display:grid;animation:pop .4s}
+  /* eixo accordion */
+  .eixo{border-radius:18px;border:1px solid var(--line);overflow:hidden;background:var(--page);cursor:pointer;transition:.2s}
+  .eixo:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .eixo .head{display:flex;align-items:center;gap:16px;padding:18px 20px}
+  .eixo .dot{width:52px;height:52px;border-radius:14px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff}
+  .eixo .body{max-height:0;overflow:hidden;transition:max-height .35s ease;padding:0 20px}
+  .eixo.open .body{max-height:280px;padding-bottom:18px}
+  .eixo h3{margin:0}
+  .eixo .body p{margin-top:6px}
+
+  /* quiz */
+  .quiz-q{font-weight:800;color:var(--ink);font-size:clamp(18px,2.2vw,24px);margin-bottom:14px}
+  .opt{display:block;width:100%;text-align:left;background:var(--page);border:2px solid var(--line);border-radius:14px;
+    padding:15px 18px;margin:10px 0;font-size:clamp(16px,1.9vw,20px);cursor:pointer;transition:.15s;color:var(--ink);font-weight:700;font-family:inherit}
+  .opt:hover{border-color:var(--lilac)}
+  .opt.correct{border-color:var(--correct);background:var(--correct-soft)}
+  .opt.wrong{border-color:var(--wrong);background:var(--wrong-soft)}
+  .opt .fb{display:block;font-weight:500;font-size:clamp(14px,1.6vw,17px);color:var(--ink-soft);margin-top:5px}
+  .qwrap{display:none}.qwrap.show{display:block;animation:pop .35s}
+  .scorebar{display:flex;align-items:center;gap:16px;margin-top:16px;flex-wrap:wrap}
+  .btn{background:var(--purple);color:#fff;border:none;border-radius:12px;padding:12px 22px;font-size:clamp(15px,1.7vw,18px);font-weight:800;cursor:pointer;transition:.15s;font-family:inherit}
+  .btn:hover{background:var(--purple-dk)}
+  .btn.ghost{background:transparent;color:var(--purple-dk);border:2px solid var(--purple)}
+  .btn.ghost:hover{background:var(--purple-soft)}
+  .qcount{font-weight:800;color:var(--ink-soft);font-size:clamp(14px,1.6vw,17px)}
+  .progress-dots{display:flex;gap:7px}
+  .progress-dots i{width:11px;height:11px;border-radius:50%;background:var(--line)}
+  .progress-dots i.done{background:var(--purple)}
+
+  /* code decoder */
+  .code{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:20px 0}
+  .seg{font-family:"Courier New",monospace;font-size:clamp(30px,5.4vw,52px);font-weight:800;color:#fff;
+    padding:12px 22px;border-radius:16px;cursor:pointer;transition:.2s;box-shadow:0 6px 18px rgba(0,0,0,.16)}
+  .seg:hover{transform:translateY(-4px)}
+  .seg.sel{outline:4px solid rgba(255,255,255,.55);outline-offset:2px}
+  #segInfo{min-height:84px;background:var(--purple-soft);border:1px solid var(--line);border-radius:14px;
+    padding:18px 24px;display:flex;align-items:center;justify-content:center;text-align:center}
+  #segInfo p{margin:0;font-size:clamp(17px,2vw,22px);color:var(--ink);line-height:1.5}
+
+  /* tables */
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:clamp(15px,1.8vw,19px)}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);color:var(--ink-soft)}
+  th{background:var(--purple-soft);color:var(--ink)}
+  tr:last-child td{border-bottom:none}
+
+  /* activity 2 */
+  .field{margin:11px 0}
+  .field label{display:block;font-weight:800;color:var(--ink);margin-bottom:6px;font-size:clamp(15px,1.7vw,18px)}
+  .field textarea,.field input{width:100%;border:2px solid var(--line);border-radius:12px;padding:11px 14px;font-family:inherit;font-size:clamp(15px,1.7vw,18px);color:var(--ink);background:var(--page);resize:vertical}
+  .field textarea:focus,.field input:focus{outline:none;border-color:var(--purple)}
+  .drawcard{background:var(--backcard);color:#fff;border-radius:16px;padding:20px 22px;min-height:104px;display:flex;flex-direction:column;justify-content:center}
+  .drawcard .cd{font-family:monospace;font-weight:800;color:var(--lilac);font-size:clamp(20px,2.4vw,26px)}
+  .drawcard p{color:#EFE7FB;font-size:clamp(16px,1.85vw,20px)}
+
+  /* chrome */
+  #bar{position:fixed;left:0;right:0;bottom:0;height:5px;background:var(--line);z-index:40}
+  #barfill{height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--lilac));transition:width .3s}
+  #controls{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;
+    background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:7px 10px;box-shadow:var(--shadow);z-index:50}
+  .nav{border:none;background:var(--purple-soft);color:var(--purple-dk);width:44px;height:44px;border-radius:50%;font-size:20px;cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center}
+  .nav:hover{background:var(--lilac);color:#fff}
+  #counter{font-weight:800;font-size:clamp(14px,1.6vw,16px);color:var(--ink);min-width:56px;text-align:center}
+  #topbar{position:fixed;top:14px;right:16px;display:flex;gap:8px;z-index:50}
+  .tbtn{border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:10px 14px;font-size:clamp(13px,1.5vw,15px);font-weight:800;color:var(--ink);cursor:pointer;transition:.15s;display:flex;align-items:center;gap:6px}
+  .tbtn:hover{background:var(--purple-soft)}
+  #tbTitle{position:fixed;top:14px;left:16px;z-index:50;font-weight:800;color:var(--purple-dk);font-size:clamp(13px,1.5vw,15px);background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:9px 14px;max-width:45vw}
+
+  .hintline{margin-top:20px;font-size:clamp(14px,1.6vw,17px);color:var(--ink-soft);text-align:center}
+  kbd{background:var(--ink);color:var(--paper);border-radius:6px;padding:2px 8px;font-size:14px;font-family:monospace}
+
+  @media(max-width:820px){#tbTitle{display:none}}
+</style>
+</head>
+<body>
+
+<div id="tbTitle">📚 LP na BNCC</div>
+<div id="topbar">
+  <a class="tbtn" href="../../" style="text-decoration:none">← Índice</a>
+  <button class="tbtn" id="themeBtn">🌙 Escuro</button>
+  <button class="tbtn" id="fsBtn">⛶ Apresentar</button>
+</div>
+
+<div id="deck">
+
+  <!-- 1 COVER -->
+  <section class="slide active center">
+    <div class="kicker">Saberes e Metodologia do Ensino de Língua Portuguesa</div>
+    <h1>A proposta de ensino de<br>Língua Portuguesa na BNCC</h1>
+    <p class="lead" style="margin-top:20px;max-width:760px;margin-left:auto;margin-right:auto">
+      Concepção de linguagem · Proposta pedagógica · Os quatro eixos</p>
+    <div class="meta">
+      <span class="chip">🎓 Pedagogia / Licenciatura</span>
+    </div>
+    <p class="hintline">Use as setas <kbd>←</kbd> <kbd>→</kbd> do teclado ou os botões abaixo para navegar.</p>
+  </section>
+
+  <!-- 2 ROTEIRO -->
+  <section class="slide">
+    <div class="kicker">Roteiro da aula</div>
+    <h2>Para onde vamos hoje</h2>
+    <div class="grid g2">
+      <div class="card"><span class="tag" style="color:var(--purple-dk)">🎯 Objetivo</span>
+        <p style="margin-top:8px">Compreender a proposta da BNCC para o ensino de Língua Portuguesa: sua <strong>concepção de linguagem</strong>, seus <strong>fundamentos pedagógicos</strong> e a organização em <strong>eixos</strong>, campos e habilidades.</p>
+      </div>
+      <div class="card"><span class="tag" style="color:var(--plum)">🧭 Percurso</span>
+        <ol style="margin-top:8px">
+          <li>Concepções de linguagem</li>
+          <li>A proposta pedagógica da BNCC</li>
+          <li>Os quatro eixos</li>
+          <li>Ler uma habilidade (código)</li>
+          <li>Atividades práticas</li>
+        </ol>
+      </div>
+    </div>
+    <div class="card" style="margin-top:18px;background:var(--purple-soft);border-color:var(--lilac)">
+      <p><strong>💬 Pergunta para começar:</strong> o que significa, para você, <em>“saber Língua Portuguesa”</em>? Guarde sua resposta — voltaremos a ela no fim.</p>
+    </div>
+  </section>
+
+  <!-- 3 CONCEPÇÕES -->
+  <section class="slide">
+    <div class="kicker">1 · Concepção de linguagem</div>
+    <h2>Três formas de entender a linguagem</h2>
+    <div class="grid g3" style="margin-top:6px">
+      <div class="flip card" onclick="this.classList.toggle('flipped')">
+        <div class="inner">
+          <div class="face front">
+            <span class="tag" style="color:var(--indigo)">Concepção 1</span>
+            <h3>Expressão do pensamento</h3>
+            <p>A linguagem espelha o pensamento individual.</p>
+            <span class="hintflip">virar ↻</span>
+          </div>
+          <div class="face back"><p><strong>Foco:</strong> gramática normativa, “certo × errado”. Quem escreve “mal” pensaria “mal”.</p></div>
+        </div>
+      </div>
+      <div class="flip card" onclick="this.classList.toggle('flipped')">
+        <div class="inner">
+          <div class="face front">
+            <span class="tag" style="color:var(--plum)">Concepção 2</span>
+            <h3>Instrumento de comunicação</h3>
+            <p>A linguagem é um código para transmitir mensagens.</p>
+            <span class="hintflip">virar ↻</span>
+          </div>
+          <div class="face back"><p><strong>Foco:</strong> estrutura da língua — fonemas, classes de palavras, análise da frase isolada.</p></div>
+        </div>
+      </div>
+      <div class="flip card" onclick="this.classList.toggle('flipped')" style="border:2px solid var(--purple)">
+        <div class="inner">
+          <div class="face front" style="background:var(--purple-soft)">
+            <span class="tag" style="color:var(--purple-dk)">Concepção 3</span>
+            <h3>Interação / discursiva</h3>
+            <p>A linguagem é <strong>prática social</strong> — ação entre sujeitos.</p>
+            <span class="hintflip">virar ↻</span>
+          </div>
+          <div class="face back"><p><strong>Foco:</strong> o <strong>texto</strong> e os <strong>gêneros</strong> em situações reais de uso. Aprender língua é participar de práticas de linguagem.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="card center" style="margin-top:18px;background:var(--backcard);border:none">
+      <p style="color:#EFE7FB;font-size:clamp(18px,2.3vw,24px)">🤔 <strong style="color:#fff">Qual a concepção de linguagem para a Língua Portuguesa adotada pela BNCC?</strong></p>
+    </div>
+  </section>
+
+  <!-- 4 CONCEPÇÃO BNCC -->
+  <section class="slide">
+    <div class="kicker">1 · Concepção de linguagem</div>
+    <h2>A perspectiva enunciativo-discursiva</h2>
+    <p class="lead">A BNCC entende a linguagem como <strong>forma de interação social</strong>, situada histórica e culturalmente. A unidade de trabalho é o <strong>texto</strong> — sempre pertencente a um <strong>gênero</strong>.</p>
+    <div class="grid g2" style="margin-top:18px">
+      <div class="card" style="background:var(--purple-soft);border-color:var(--lilac)">
+        <span class="tag" style="color:var(--indigo)">📖 Letramentos</span>
+        <p style="margin-top:8px">Os <strong>usos sociais</strong> da leitura e da escrita em práticas situadas. Não basta decodificar — é preciso usar a língua com propósito social real.</p>
+      </div>
+      <div class="card" style="background:var(--purple-soft);border-color:var(--lilac)">
+        <span class="tag" style="color:var(--plum)">🎨 Multissemiose</span>
+        <p style="margin-top:8px">Os textos combinam linguagens (verbal, visual, sonora, digital). Por isso o eixo se chama Análise Linguística/<strong>Semiótica</strong>.</p>
+      </div>
+    </div>
+    <div class="card center" style="margin-top:18px;background:var(--backcard);border:none">
+      <p style="color:#EFE7FB;font-size:clamp(17px,2.2vw,23px)">💡 <strong style="color:#fff">Ideia-força:</strong> não se ensina “a língua” isolada — ensinam-se <strong style="color:var(--lilac)">práticas de linguagem</strong> com textos que circulam socialmente.</p>
+    </div>
+  </section>
+
+  <!-- 5 PROPOSTA PEDAGÓGICA -->
+  <section class="slide">
+    <div class="kicker">2 · Proposta pedagógica</div>
+    <h2>Como a BNCC organiza o ensino</h2>
+    <div class="grid g3">
+      <div class="card"><span class="tag" style="color:var(--purple-dk)">1 · Ponto de partida</span>
+        <p style="margin-top:6px"><strong>Práticas de linguagem</strong> reais — não a nomenclatura gramatical.</p></div>
+      <div class="card"><span class="tag" style="color:var(--plum)">2 · Contexto</span>
+        <p style="margin-top:6px"><strong>Campos de atuação</strong> dão sentido social ao uso da língua.</p></div>
+      <div class="card"><span class="tag" style="color:var(--indigo)">3 · Progressão</span>
+        <p style="margin-top:6px">Em <strong>espiral</strong>: os objetos são retomados com complexidade crescente.</p></div>
+    </div>
+    <h3 style="margin-top:20px">Campos de atuação nos Anos Iniciais</h3>
+    <div class="grid g2">
+      <div class="eixo" onclick="this.classList.toggle('open')">
+        <div class="head"><div class="dot" style="background:var(--dot1)">🏠</div><div><h3>Vida cotidiana</h3><small class="muted">clique para ver os gêneros</small></div></div>
+        <div class="body"><p>cantigas, receitas, regras de jogo, listas, bilhetes, convites, agendas, calendários.</p></div>
+      </div>
+      <div class="eixo" onclick="this.classList.toggle('open')">
+        <div class="head"><div class="dot" style="background:var(--dot2)">📚</div><div><h3>Artístico-literário</h3><small class="muted">clique para ver os gêneros</small></div></div>
+        <div class="body"><p>contos, fábulas, lendas, poemas, poemas visuais, cordéis, quadrinhos, tirinhas, canções.</p></div>
+      </div>
+      <div class="eixo" onclick="this.classList.toggle('open')">
+        <div class="head"><div class="dot" style="background:var(--dot3)">🏛️</div><div><h3>Vida pública</h3><small class="muted">clique para ver os gêneros</small></div></div>
+        <div class="body"><p>notícias, cartazes, cartas do leitor, avisos, regras e regulamentos.</p></div>
+      </div>
+      <div class="eixo" onclick="this.classList.toggle('open')">
+        <div class="head"><div class="dot" style="background:var(--dot4)">🔬</div><div><h3>Estudo e pesquisa</h3><small class="muted">clique para ver os gêneros</small></div></div>
+        <div class="body"><p>verbetes de enciclopédia infantil, relatos de experimentos, entrevistas, diagramas, curiosidades.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 ALFABETIZAÇÃO -->
+  <section class="slide">
+    <div class="kicker">2 · Proposta pedagógica</div>
+    <h2>Nos Anos Iniciais: alfabetizar letrando</h2>
+    <div class="grid g2">
+      <div class="card" style="background:var(--purple-soft);border-color:var(--lilac)">
+        <span class="tag" style="color:var(--purple-dk)">Alfabetização</span>
+        <p style="margin-top:8px">Foco pedagógico do <strong>1º e 2º anos</strong>. Apropriação do sistema de escrita alfabética e das relações <strong>fonema–grafema</strong> (consciência fonológica).</p>
+      </div>
+      <div class="card" style="background:var(--purple-soft);border-color:var(--lilac)">
+        <span class="tag" style="color:var(--plum)">Ortografização</span>
+        <p style="margin-top:8px">Processo <strong>mais longo</strong> que complementa a alfabetização — pode durar além dos anos iniciais. Envolve regularidades e irregularidades da ortografia.</p>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <p>👉 Não se separa alfabetização de letramento: alfabetiza-se <strong>letrando</strong>, com gêneros do <strong>campo da vida cotidiana</strong> (cantigas, receitas, listas, bilhetes) que preservam a inserção da escrita na vida — mais a valorização da <strong>diversidade linguística</strong> e o uso das <strong>tecnologias digitais</strong>.</p>
+    </div>
+    <div class="card" style="margin-top:16px;background:var(--purple-soft);border-color:var(--lilac)">
+      <span class="tag" style="color:var(--purple-dk)">📈 Do 3º ao 5º ano</span>
+      <p style="margin-top:8px">Concluída a fase inicial da alfabetização, o foco se desloca para a <strong>consolidação da ortografização</strong> e para o <strong>aprofundamento do letramento</strong>: textos mais longos e complexos, ampliação dos <strong>campos de atuação</strong> (vida pública, estudo e pesquisa, jornalístico-midiático), avanço na <strong>análise linguística</strong> (pontuação, acentuação e introdução das <strong>classes de palavras a partir do 3º ano</strong>) e maior <strong>autonomia</strong> de leitura e produção — da leitura compartilhada para a leitura e escrita autônomas.</p>
+    </div>
+  </section>
+
+  <!-- 7 EIXOS -->
+  <section class="slide">
+    <div class="kicker">3 · Os eixos</div>
+    <h2>Os quatro eixos da linguagem</h2>
+    <div class="card center" id="eixoAsk" style="background:var(--backcard);border:none;cursor:pointer" onclick="document.getElementById('eixoGrid').classList.add('reveal');this.style.display='none'">
+      <p style="color:#EFE7FB;font-size:clamp(18px,2.3vw,24px)">🤔 <strong style="color:#fff">Quais os eixos de ensino da Língua Portuguesa?</strong></p>
+      <button class="btn" style="margin-top:14px;background:var(--lilac)">👉 Revelar os eixos</button>
+    </div>
+    <div class="grid g2 eixogrid" id="eixoGrid" style="margin-top:6px">
+      <div class="eixo" onclick="this.classList.toggle('open')">
+        <div class="head"><div class="dot" style="background:var(--dot1)">📖</div><div><h3>Leitura / Escuta</h3><small class="muted">compreensão e interpretação</small></div></div>
+        <div class="body"><p>Textos escritos, orais e multissemióticos. Reconstrução do contexto de produção, estratégias de leitura, formação do leitor literário.</p></div>
+      </div>
+      <div class="eixo" onclick="this.classList.toggle('open')">
+        <div class="head"><div class="dot" style="background:var(--dot2)">✍️</div><div><h3>Produção de Textos</h3><small class="muted">escrita, oral e multissemiótica</small></div></div>
+        <div class="body"><p>Planejamento, textualização, revisão e edição. Uso de tecnologias digitais na produção.</p></div>
+      </div>
+      <div class="eixo" onclick="this.classList.toggle('open')">
+        <div class="head"><div class="dot" style="background:var(--dot3)">🗣️</div><div><h3>Oralidade</h3><small class="muted">usos da língua falada</small></div></div>
+        <div class="body"><p>Escuta atenta, intercâmbio conversacional, relato oral, registro formal/informal e aspectos paralinguísticos (gestos, entonação).</p></div>
+      </div>
+      <div class="eixo" onclick="this.classList.toggle('open')">
+        <div class="head"><div class="dot" style="background:var(--dot4)">🔍</div><div><h3>Análise Linguística / Semiótica</h3><small class="muted">reflexão sobre a língua</small></div></div>
+        <div class="body"><p>Alfabetização, ortografia, pontuação, morfologia e os recursos das demais linguagens (multissemióticos) e seus efeitos de sentido.</p></div>
+      </div>
+    </div>
+    <p class="hintline">Na sala de aula, os eixos se <strong>integram</strong> num mesmo projeto ou sequência didática.</p>
+  </section>
+
+  <!-- 8 ATIVIDADE 1 QUIZ -->
+  <section class="slide">
+    <div class="kicker">Atividade 1 · Interativa</div>
+    <h2>Que eixo é este?</h2>
+    <p class="muted">Leia a situação de sala e escolha o eixo predominante. A turma pode responder junto.</p>
+
+    <div id="quizArea" style="margin-top:12px">
+      <div class="qwrap show" data-correct="0">
+        <div class="quiz-q">1. A turma escuta a leitura de um conto e depois o reconta oralmente.</div>
+        <button class="opt">🗣️ Oralidade (+ Leitura/Escuta)<span class="fb">Contar e escutar histórias é oralidade articulada à leitura.</span></button>
+        <button class="opt">🔍 Análise Linguística/Semiótica<span class="fb">Aqui não há foco em analisar o funcionamento da língua.</span></button>
+        <button class="opt">✍️ Produção de Textos<span class="fb">Não há produção escrita/planejada em foco.</span></button>
+      </div>
+      <div class="qwrap" data-correct="1">
+        <div class="quiz-q">2. Os alunos comparam “casa” e “caza” e discutem por que uma grafia é a convencional.</div>
+        <button class="opt">📖 Leitura / Escuta<span class="fb">O foco não é compreender um texto.</span></button>
+        <button class="opt">🔍 Análise Linguística/Semiótica<span class="fb">Refletir sobre relações fonema–grafema e ortografia é análise linguística.</span></button>
+        <button class="opt">🗣️ Oralidade<span class="fb">A fala é meio, mas o objeto é a escrita/ortografia.</span></button>
+      </div>
+      <div class="qwrap" data-correct="2">
+        <div class="quiz-q">3. A turma planeja, escreve e revisa um convite para a festa junina.</div>
+        <button class="opt">🔍 Análise Linguística/Semiótica<span class="fb">Pode aparecer na revisão, mas não é o eixo central.</span></button>
+        <button class="opt">📖 Leitura / Escuta<span class="fb">O foco é produzir, não interpretar.</span></button>
+        <button class="opt">✍️ Produção de Textos<span class="fb">Planejar, escrever e revisar um gênero = produção de textos.</span></button>
+      </div>
+      <div class="qwrap" data-correct="1">
+        <div class="quiz-q">4. Os alunos analisam cores e enquadramento de uma tirinha para entender o humor.</div>
+        <button class="opt">✍️ Produção de Textos<span class="fb">Não há produção aqui.</span></button>
+        <button class="opt">🔍 Análise Semiótica (+ Leitura)<span class="fb">Analisar recursos visuais e seus efeitos é análise semiótica ligada à leitura.</span></button>
+        <button class="opt">🗣️ Oralidade<span class="fb">A linguagem em foco é visual, não oral.</span></button>
+      </div>
+      <div class="qwrap" data-correct="0">
+        <div class="quiz-q">5. As crianças leem uma receita e localizam os ingredientes e o modo de preparo.</div>
+        <button class="opt">📖 Leitura / Escuta<span class="fb">Localizar informações explícitas em um texto é leitura/escuta.</span></button>
+        <button class="opt">✍️ Produção de Textos<span class="fb">Elas leem, não produzem a receita.</span></button>
+        <button class="opt">🔍 Análise Linguística/Semiótica<span class="fb">Não há foco em analisar o funcionamento da língua.</span></button>
+      </div>
+      <div class="qwrap" data-correct="2">
+        <div class="quiz-q">6. Antes de um debate, a turma combina regras de escuta e cada um respeita a sua vez de falar.</div>
+        <button class="opt">📖 Leitura / Escuta<span class="fb">Não há um texto sendo interpretado.</span></button>
+        <button class="opt">🔍 Análise Linguística/Semiótica<span class="fb">O foco não é o funcionamento da língua.</span></button>
+        <button class="opt">🗣️ Oralidade<span class="fb">Escuta atenta e intercâmbio conversacional regrado são oralidade.</span></button>
+      </div>
+      <div class="qwrap" data-correct="1">
+        <div class="quiz-q">7. Os alunos reescrevem, com a mediação do professor, o final de um conto lido em sala.</div>
+        <button class="opt">🗣️ Oralidade<span class="fb">A produção aqui é escrita, não oral.</span></button>
+        <button class="opt">✍️ Produção de Textos<span class="fb">Reescrever/produzir um texto narrativo é produção de textos.</span></button>
+        <button class="opt">🔍 Análise Linguística/Semiótica<span class="fb">Ela apoia a revisão, mas o eixo central é a produção.</span></button>
+      </div>
+      <div class="qwrap" data-correct="0">
+        <div class="quiz-q">8. A turma observa rimas, sonoridades e jogos de palavras num poema para perceber seus efeitos.</div>
+        <button class="opt">🔍 Análise Linguística/Semiótica<span class="fb">Observar recursos sonoros e seus efeitos de sentido é análise linguística/semiótica.</span></button>
+        <button class="opt">✍️ Produção de Textos<span class="fb">Não há produção de um novo texto.</span></button>
+        <button class="opt">🗣️ Oralidade<span class="fb">O objeto é o funcionamento do texto, não a interação falada.</span></button>
+      </div>
+    </div>
+
+    <div class="scorebar">
+      <div class="progress-dots" id="qdots"></div>
+      <span class="qcount" id="qscore">Acertos: 0 / 8</span>
+      <button class="btn ghost" id="qreset">Recomeçar</button>
+    </div>
+  </section>
+
+  <!-- 9 CODE DECODER -->
+  <section class="slide">
+    <div class="kicker">4 · Ler uma habilidade</div>
+    <h2>Decodificando o código da habilidade</h2>
+    <p class="muted">Toque em cada parte do código para entender o que ela significa.</p>
+    <div class="code">
+      <span class="seg" style="background:var(--dot1)" data-k="ef">EF</span>
+      <span class="seg" style="background:var(--dot2)" data-k="ano">15</span>
+      <span class="seg" style="background:var(--dot3)" data-k="lp">LP</span>
+      <span class="seg" style="background:var(--dot4)" data-k="num">01</span>
+    </div>
+    <div id="segInfo"><p>👆 Toque em um bloco do código acima.</p></div>
+    <div class="card" style="margin-top:18px;background:var(--purple-soft);border-color:var(--lilac)">
+      <p><strong>EF15LP01 na prática:</strong> <em>“Identificar a função social de textos que circulam em campos da vida social… reconhecendo para que foram produzidos, onde circulam, quem os produziu e a quem se destinam.”</em></p>
+      <p style="margin-top:8px">👉 É a concepção <strong>enunciativo-discursiva</strong> virando habilidade: o texto é lido a partir do seu <strong>contexto de produção</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 10 ATIVIDADE 2 -->
+  <section class="slide">
+    <div class="kicker">Atividade 2 · Em grupos</div>
+    <h2>Da habilidade à sala de aula</h2>
+    <p class="muted">Sorteie uma habilidade e planejem, em grupo, uma situação didática. Preencham o quadro (os campos são editáveis).</p>
+    <div class="grid g2" style="margin-top:12px">
+      <div>
+        <div class="drawcard" id="drawCard">
+          <div class="cd" id="drawCode">EF12LP18</div>
+          <p id="drawText">Apreciar poemas e outros textos versificados, observando rimas, sonoridades e jogos de palavras.</p>
+        </div>
+        <button class="btn" id="drawBtn" style="margin-top:12px;width:100%">🎲 Sortear habilidade (1º/2º ano)</button>
+        <div class="field" style="margin-top:14px"><label>Nome(s) do grupo</label><input id="a2group" placeholder="Ex.: Ana, Bruno e Carla"></div>
+        <div class="field"><label>Eixo(s) envolvido(s)</label><input id="a2eixo" placeholder="Ex.: Leitura/Escuta"></div>
+        <div class="field"><label>Campo de atuação e gênero</label><input id="a2campo" placeholder="Ex.: Vida cotidiana — bilhete"></div>
+      </div>
+      <div>
+        <div class="field"><label>Descrição da situação didática</label><textarea id="a2desc" rows="6" placeholder="O que os alunos farão, com que texto/gênero e com que finalidade social?"></textarea></div>
+        <button class="btn" id="a2save" style="width:100%;background:var(--dot3)">💾 Gerar arquivo da resposta para enviar</button>
+        <p class="hintline" style="text-align:left">Baixa um arquivo <strong>.txt</strong> com a resposta do grupo, pronto para enviar à professora. Cada grupo socializa em 2 min.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 SÍNTESE -->
+  <section class="slide center">
+    <div class="cover-badge">🌱</div>
+    <div class="kicker">Síntese</div>
+    <h2>O que levamos desta aula</h2>
+    <div class="grid g2" style="text-align:left;margin-top:8px">
+      <div class="card"><strong>Concepção</strong><p>Linguagem = interação. O <strong>texto/gênero</strong> é a unidade de trabalho.</p></div>
+      <div class="card"><strong>Proposta</strong><p>Práticas situadas em <strong>campos de atuação</strong>, com progressão em espiral; alfabetizar letrando.</p></div>
+      <div class="card"><strong>Eixos</strong><p>Leitura/Escuta · Produção · Oralidade · Análise Linguística/Semiótica — <strong>integrados</strong>.</p></div>
+      <div class="card"><strong>Habilidades</strong><p>Códigos (EF + ano + LP + nº) que traduzem a concepção em objetivos de aprendizagem.</p></div>
+    </div>
+    <div class="card" style="margin-top:18px;background:var(--purple-soft);border-color:var(--lilac)">
+      <p>🔁 <strong>Retomando o início:</strong> “saber Língua Portuguesa”, na BNCC, é <strong>participar com autonomia de práticas de linguagem</strong> — ler, escrever, falar e escutar em contextos reais.</p>
+    </div>
+  </section>
+
+</div>
+
+<div id="controls">
+  <button class="nav" id="prev" aria-label="Anterior">‹</button>
+  <span id="counter">1 / 11</span>
+  <button class="nav" id="next" aria-label="Próximo">›</button>
+</div>
+<div id="bar"><div id="barfill"></div></div>
+
+<script>
+/* Navigation */
+const slides=[...document.querySelectorAll('.slide')];
+let i=0;
+const counter=document.getElementById('counter'),barfill=document.getElementById('barfill');
+function show(n){
+  i=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+  counter.textContent=(i+1)+' / '+slides.length;
+  barfill.style.width=((i+1)/slides.length*100)+'%';
+  slides[i].scrollTop=0;
+}
+document.getElementById('next').onclick=()=>show(i+1);
+document.getElementById('prev').onclick=()=>show(i-1);
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='PageDown'){show(i+1)}
+  else if(e.key==='ArrowLeft'||e.key==='PageUp'){show(i-1)}
+  else if(e.key==='Home'){show(0)}else if(e.key==='End'){show(slides.length-1)}
+});
+show(0);
+
+/* Fullscreen */
+document.getElementById('fsBtn').onclick=()=>{
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen?.();}
+  else{document.exitFullscreen?.();}
+};
+
+/* Theme toggle */
+const themeBtn=document.getElementById('themeBtn'),root=document.documentElement;
+themeBtn.onclick=()=>{
+  const dark=root.getAttribute('data-theme')==='dark';
+  root.setAttribute('data-theme',dark?'light':'dark');
+  themeBtn.textContent=dark?'🌙 Escuro':'☀️ Claro';
+};
+
+/* Quiz */
+const qwraps=[...document.querySelectorAll('.qwrap')];
+const total=qwraps.length;
+let qIdx=0,qScore=0,qAnswered=false;
+const dotsWrap=document.getElementById('qdots');
+dotsWrap.innerHTML=qwraps.map(()=>'<i></i>').join('');
+const dots=[...dotsWrap.querySelectorAll('i')];
+document.getElementById('qscore').textContent='Acertos: 0 / '+total;
+function showQ(n){qwraps.forEach((q,k)=>q.classList.toggle('show',k===n));qAnswered=false;}
+qwraps.forEach(w=>{
+  const correct=+w.dataset.correct;
+  [...w.querySelectorAll('.opt')].forEach((o,idx)=>{
+    o.onclick=()=>{
+      if(qAnswered)return;qAnswered=true;
+      if(idx===correct){o.classList.add('correct');qScore++;}
+      else{o.classList.add('wrong');w.querySelectorAll('.opt')[correct].classList.add('correct');}
+      dots[qIdx]?.classList.add('done');
+      document.getElementById('qscore').textContent='Acertos: '+qScore+' / '+total;
+      setTimeout(()=>{if(qIdx<total-1){qIdx++;showQ(qIdx);}},1200);
+    };
+  });
+});
+document.getElementById('qreset').onclick=()=>{
+  qIdx=0;qScore=0;
+  qwraps.forEach(w=>w.querySelectorAll('.opt').forEach(o=>o.classList.remove('correct','wrong')));
+  dots.forEach(d=>d.classList.remove('done'));
+  document.getElementById('qscore').textContent='Acertos: 0 / '+total;showQ(0);
+};
+
+/* Code decoder */
+const segInfo={
+  ef:'<strong>EF</strong> — etapa <strong>Ensino Fundamental</strong>.',
+  ano:'<strong>15</strong> — ano(s) a que se aplica: <strong>1º ao 5º</strong>. (12 = 1º e 2º · 01 = só 1º ano)',
+  lp:'<strong>LP</strong> — componente curricular <strong>Língua Portuguesa</strong>.',
+  num:'<strong>01</strong> — número <strong>sequencial</strong> da habilidade dentro do conjunto.'
+};
+const info=document.getElementById('segInfo');
+document.querySelectorAll('.seg').forEach(s=>s.onclick=()=>{
+  document.querySelectorAll('.seg').forEach(x=>x.classList.remove('sel'));
+  s.classList.add('sel');info.innerHTML='<p>'+segInfo[s.dataset.k]+'</p>';
+});
+
+/* Activity 2 draw — apenas habilidades do 1º e 2º ano (EF01, EF02, EF12) */
+const pool=[
+  ['EF12LP18','Apreciar poemas e outros textos versificados, observando rimas, sonoridades e jogos de palavras.'],
+  ['EF12LP01','Ler palavras novas com precisão na decodificação, no caso de palavras de uso frequente, ler globalmente.'],
+  ['EF01LP01','Reconhecer que textos são lidos e escritos da esquerda para a direita e de cima para baixo da página.'],
+  ['EF01LP02','Escrever, espontaneamente ou por ditado, palavras e frases de forma alfabética.'],
+  ['EF01LP25','Produzir, tendo o professor como escriba, recontagens de histórias lidas pelo professor.'],
+  ['EF01LP26','Identificar elementos de uma narrativa lida ou escutada, incluindo personagens, enredo, tempo e espaço.'],
+  ['EF02LP01','Utilizar, ao produzir um texto, conhecimentos linguísticos e gramaticais (grafia correta de palavras conhecidas).'],
+  ['EF02LP26','Ler e compreender, com certa autonomia, textos literários de gêneros variados, desenvolvendo o gosto pela leitura.'],
+  ['EF02LP28','Reconhecer o conflito gerador de uma narrativa ficcional e sua resolução.']
+];
+let dprev=0,drawn=pool[0];
+document.getElementById('drawBtn').onclick=()=>{
+  let r;do{r=Math.floor(Math.random()*pool.length)}while(r===dprev&&pool.length>1);dprev=r;drawn=pool[r];
+  document.getElementById('drawCode').textContent=pool[r][0];
+  document.getElementById('drawText').textContent=pool[r][1];
+  const dc=document.getElementById('drawCard');dc.style.animation='none';void dc.offsetWidth;dc.style.animation='pop .4s';
+};
+
+/* Activity 2 — gerar arquivo da resposta */
+document.getElementById('a2save').onclick=()=>{
+  const g=(id)=>document.getElementById(id).value.trim();
+  const grupo=g('a2group'),eixo=g('a2eixo'),campo=g('a2campo'),desc=g('a2desc');
+  const now=new Date().toLocaleString('pt-BR');
+  const txt=
+`ATIVIDADE 2 — DA HABILIDADE À SALA DE AULA
+Disciplina: Saberes e Metodologia do Ensino de Língua Portuguesa
+Gerado em: ${now}
+========================================================
+
+GRUPO: ${grupo||'(não preenchido)'}
+
+HABILIDADE SORTEADA
+  ${drawn[0]} — ${drawn[1]}
+
+EIXO(S) ENVOLVIDO(S)
+  ${eixo||'(não preenchido)'}
+
+CAMPO DE ATUAÇÃO E GÊNERO
+  ${campo||'(não preenchido)'}
+
+DESCRIÇÃO DA SITUAÇÃO DIDÁTICA
+  ${desc||'(não preenchido)'}
+`;
+  const blob=new Blob([txt],{type:'text/plain;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  const safe=(grupo||'grupo').replace(/[^\wÀ-ÿ]+/g,'_').slice(0,30);
+  a.href=url;a.download='Atividade2_'+drawn[0]+'_'+safe+'.txt';
+  document.body.appendChild(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1500);
+  const btn=document.getElementById('a2save');const t=btn.textContent;
+  btn.textContent='✅ Arquivo gerado!';setTimeout(()=>btn.textContent=t,2200);
+};
+</script>
+</body>
+</html>
