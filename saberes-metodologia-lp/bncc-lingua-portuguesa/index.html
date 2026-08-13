@@ -329,7 +329,13 @@
     </div>
     <div class="card" style="margin-top:16px;background:var(--purple-soft);border-color:var(--lilac)">
       <span class="tag" style="color:var(--purple-dk)">📈 Do 3º ao 5º ano</span>
-      <p style="margin-top:8px">Concluída a fase inicial da alfabetização, o foco se desloca para a <strong>consolidação da ortografização</strong> e para o <strong>aprofundamento do letramento</strong>: textos mais longos e complexos, ampliação dos <strong>campos de atuação</strong> (vida pública, estudo e pesquisa, jornalístico-midiático), avanço na <strong>análise linguística</strong> (pontuação, acentuação e introdução das <strong>classes de palavras a partir do 3º ano</strong>) e maior <strong>autonomia</strong> de leitura e produção — da leitura compartilhada para a leitura e escrita autônomas.</p>
+      <ul style="margin-top:8px">
+        <li><strong>Consolidação da ortografização</strong> e aprofundamento do letramento.</li>
+        <li>Textos mais <strong>longos e complexos</strong>.</li>
+        <li>Ampliação dos <strong>campos de atuação</strong> (vida pública, estudo e pesquisa, jornalístico-midiático).</li>
+        <li>Avanço na <strong>análise linguística</strong>: pontuação, acentuação e <strong>classes de palavras (a partir do 3º ano)</strong>.</li>
+        <li>Maior <strong>autonomia</strong> — da leitura/escrita compartilhada para a autônoma.</li>
+      </ul>
     </div>
   </section>
 
@@ -457,7 +463,26 @@
     <p class="muted" style="word-break:break-all;font-size:clamp(13px,1.6vw,16px)">https://glauberrleite.com/aulas-elian-leite/saberes-metodologia-lp/bncc-lingua-portuguesa/</p>
   </section>
 
-  <!-- 11 ATIVIDADE 2 -->
+  <!-- 11 EXEMPLO (3º-5º ano) -->
+  <section class="slide">
+    <div class="kicker">Atividade 2 · Exemplo</div>
+    <h2>Exemplo resolvido (3º ao 5º ano)</h2>
+    <p class="muted">Um modelo de como transpor uma habilidade para uma situação didática. Na atividade, vocês farão o mesmo com uma habilidade do <strong>1º ou 2º ano</strong>.</p>
+    <div class="drawcard" style="margin-top:14px">
+      <div class="cd">EF35LP31</div>
+      <p>Identificar, em textos versificados, efeitos de sentido decorrentes do uso de recursos rítmicos e sonoros e de metáforas.</p>
+    </div>
+    <div class="grid g2" style="margin-top:16px">
+      <div class="card"><span class="tag" style="color:var(--purple-dk)">Eixo(s)</span><p style="margin-top:6px">Leitura/Escuta + Análise Linguística/Semiótica</p></div>
+      <div class="card"><span class="tag" style="color:var(--plum)">Campo e gênero</span><p style="margin-top:6px">Artístico-literário — poema</p></div>
+    </div>
+    <div class="card" style="margin-top:16px;background:var(--purple-soft);border-color:var(--lilac)">
+      <span class="tag" style="color:var(--indigo)">Situação didática</span>
+      <p style="margin-top:6px">A professora apresenta dois poemas curtos sobre o mesmo tema. Em duplas, os estudantes leem em voz alta, marcam as rimas e batem o ritmo para perceber a musicalidade, e sublinham as metáforas. Depois, comparam os poemas: como cada recurso (rima, repetição, metáfora) muda o sentido e a emoção do texto? Cada dupla registra suas conclusões e apresenta à turma o poema que mais gostou, justificando com base nos recursos observados.</p>
+    </div>
+  </section>
+
+  <!-- 12 ATIVIDADE 2 -->
   <section class="slide">
     <div class="kicker">Atividade 2 · Em grupos</div>
     <h2>Da habilidade à sala de aula</h2>
@@ -469,7 +494,6 @@
           <p id="drawText">Apreciar poemas e outros textos versificados, observando rimas, sonoridades e jogos de palavras.</p>
         </div>
         <button class="btn" id="drawBtn" style="margin-top:12px;width:100%">🎲 Sortear habilidade (1º/2º ano)</button>
-        <button class="btn ghost" id="exBtn" style="margin-top:8px;width:100%">👀 Ver exemplo (anos finais)</button>
         <div class="field" style="margin-top:14px"><label>Nome(s) do grupo</label><input id="a2group" placeholder="Ex.: Ana, Bruno e Carla"></div>
         <div class="field"><label>Eixo(s) envolvido(s)</label><input id="a2eixo" placeholder="Ex.: Leitura/Escuta"></div>
         <div class="field"><label>Campo de atuação e gênero</label><input id="a2campo" placeholder="Ex.: Vida cotidiana — bilhete"></div>
@@ -482,7 +506,7 @@
     </div>
   </section>
 
-  <!-- 12 SÍNTESE -->
+  <!-- 13 SÍNTESE -->
   <section class="slide center">
     <div class="cover-badge">🌱</div>
     <div class="kicker">Síntese</div>
@@ -602,20 +626,6 @@ document.getElementById('drawBtn').onclick=()=>{
   document.getElementById('drawCode').textContent=pool[r][0];
   document.getElementById('drawText').textContent=pool[r][1];
   const dc=document.getElementById('drawCard');dc.style.animation='none';void dc.offsetWidth;dc.style.animation='pop .4s';
-};
-
-/* Activity 2 — exemplo fixo (ANOS FINAIS: serve só de modelo, não vale como resposta,
-   pois a habilidade a ser trabalhada deve ser sempre do 1º/2º ano) */
-document.getElementById('exBtn').onclick=()=>{
-  drawn=['EF67LP28','Ler, de forma autônoma, e compreender romances infanto-juvenis, contos populares, contos de terror, lendas, poemas de forma livre e fixa (como sonetos e cordéis), vídeo-poemas e poemas visuais, expressando avaliação sobre o texto lido. (6º/7º ano — anos finais)'];
-  document.getElementById('drawCode').textContent=drawn[0];
-  document.getElementById('drawText').textContent=drawn[1];
-  document.getElementById('a2group').value='EXEMPLO — anos finais (não vale como resposta)';
-  document.getElementById('a2eixo').value='Leitura/Escuta';
-  document.getElementById('a2campo').value='Artístico-literário — cordel e soneto';
-  document.getElementById('a2desc').value='A turma monta um "clube de leitura": cada estudante escolhe, com autonomia, um cordel ou um soneto de uma coletânea disponibilizada pela professora. Após a leitura individual, registram em uma ficha o tema, de que gostaram e por quê, comparando a forma fixa (soneto) com a forma popular (cordel). Em roda, socializam as avaliações e recomendam títulos aos colegas, justificando suas preferências por autores e temas — desenvolvendo a leitura autônoma e o posicionamento crítico próprios dos anos finais.';
-  const dc=document.getElementById('drawCard');dc.style.animation='none';void dc.offsetWidth;dc.style.animation='pop .4s';
-  const b=document.getElementById('exBtn');const t=b.textContent;b.textContent='✅ Exemplo (anos finais) carregado!';setTimeout(()=>b.textContent=t,2000);
 };
 
 /* Activity 2 — gerar arquivo da resposta */
