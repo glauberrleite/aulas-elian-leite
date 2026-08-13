@@ -52,7 +52,7 @@ Dois conceitos-chave sustentam essa concepção:
 - **Letramentos:** os usos sociais da leitura e da escrita em práticas situadas — não basta decodificar; é preciso usar a língua com propósito social.
 - **Multiletramentos / multissemiose:** os textos contemporâneos combinam linguagens (verbal, visual, sonora, gestual, digital). Por isso o eixo de análise recebe o nome de Análise Linguística/**Semiótica**.
 
-> **Ideia-força para a turma:** na BNCC não se ensina "a língua" isolada — ensinam-se **práticas de linguagem** com textos que circulam socialmente.
+> **Ideia central para a turma:** na BNCC não se ensina "a língua" isolada — ensinam-se **práticas de linguagem** com textos que circulam socialmente.
 
 ### 3.2 A proposta pedagógica
 
@@ -62,7 +62,15 @@ A proposta se organiza a partir de três decisões articuladas:
 2. **Campos de atuação.** Os gêneros são situados em campos que dão sentido social ao uso da língua. Nos Anos Iniciais: **vida cotidiana**, **artístico-literário**, **vida pública** e **práticas de estudo e pesquisa**.
 3. **Progressão em espiral.** Os mesmos objetos de conhecimento são retomados com complexidade crescente ao longo dos anos — dos gêneros mais simples e familiares aos mais complexos.
 
-Nos **Anos Iniciais**, a alfabetização é o foco da ação pedagógica (1º e 2º anos), entendida como apropriação do sistema de escrita alfabética e das relações **fonema–grafema** (consciência fonológica), complementada pela **ortografização** (processo mais longo). Isso não separa a alfabetização do letramento: alfabetiza-se **letrando**, com gêneros do campo da vida cotidiana (cantigas, receitas, listas, bilhetes) que preservam a inserção da escrita na vida.
+Nos **Anos Iniciais**, a alfabetização é o foco da ação pedagógica (1º e 2º ano), entendida como apropriação do sistema de escrita alfabética e das relações **fonema–grafema** (consciência fonológica), complementada pela **ortografização** (processo mais longo). Isso não separa a alfabetização do letramento: alfabetiza-se **letrando**, com gêneros do campo da vida cotidiana (cantigas, receitas, listas, bilhetes) que preservam a inserção da escrita na vida.
+
+Já do **3º ao 5º ano**, o foco se desloca da alfabetização inicial para o aprofundamento do trabalho:
+
+- **consolidação da ortografização** e aprofundamento do letramento;
+- textos mais **longos e complexos**;
+- ampliação dos **campos de atuação** (vida pública, estudo e pesquisa, jornalístico-midiático);
+- avanço na **análise linguística**: pontuação, acentuação e **classes de palavras (a partir do 3º ano)**;
+- maior **autonomia** — da leitura/escrita compartilhada para a autônoma.
 
 A proposta também incorpora as **TDIC** (tecnologias digitais) e a **cultura digital** como parte das práticas de linguagem, e a **valorização da diversidade** linguística e cultural (variação linguística sem hierarquização de "certo/errado").
 
@@ -104,7 +112,7 @@ EF  15  LP  01
 | **50–75 min** | **Exposição dialogada — os eixos** | Detalhar os quatro eixos e sua integração (§3.3); mostrar como convivem num mesmo projeto. |
 | **75–90 min** | **Leitura de habilidades** | Ensinar a decodificar os códigos (§3.4); analisar 2–3 habilidades reais da BNCC em conjunto. |
 | **90–115 min** | **Atividade 2 — planejar em grupos** | Grupos elaboram uma situação didática a partir de uma habilidade (ver Atividade 2). |
-| **115–120 min** | **Síntese e retomada** | Voltar às respostas iniciais; fechar com a ideia-força; indicar leitura. |
+| **115–120 min** | **Síntese e retomada** | Voltar às respostas iniciais; fechar com a ideia central; indicar leitura. |
 
 ---
 
@@ -115,35 +123,37 @@ EF  15  LP  01
 **Objetivo:** reconhecer a qual eixo pertence uma prática escolar.
 **Como fazer:** o/a professor/a lê situações; a turma responde (placa, gesto ou aplicativo de votação) indicando o eixo.
 
-Exemplos de situações:
+Exemplos de situações (na apresentação interativa há **8 questões** com correção automática):
 
 1. A turma escuta a leitura de um conto e reconta oralmente. → *Oralidade + Leitura/Escuta*
 2. Os alunos comparam a grafia de "casa" e "caza", discutindo por que uma é convencional. → *Análise Linguística/Semiótica*
 3. A turma planeja, escreve e revisa um convite para a festa junina. → *Produção de Textos*
 4. Os alunos analisam as cores e o enquadramento de uma tirinha para entender o humor. → *Análise Semiótica + Leitura*
+5. As crianças leem uma receita e localizam os ingredientes e o modo de preparo. → *Leitura/Escuta*
+6. Antes de um debate, a turma combina regras de escuta e cada um respeita a sua vez de falar. → *Oralidade*
+7. Os alunos reescrevem, com a mediação do professor, o final de um conto lido em sala. → *Produção de Textos*
+8. A turma observa rimas, sonoridades e jogos de palavras num poema para perceber seus efeitos. → *Análise Linguística/Semiótica*
 
 **Fechamento:** destacar que, na prática, os eixos quase nunca aparecem isolados.
 
 ### Atividade 2 — Da habilidade à sala de aula (em grupos, ~25 min)
 
 **Objetivo:** transpor uma habilidade da BNCC para uma proposta didática.
-**Organização:** grupos de 3–4; cada grupo recebe **uma habilidade** (cartão).
+**Organização:** grupos de 3–4. Na apresentação interativa, um botão **sorteia aleatoriamente uma habilidade do 1º ou 2º ano** para cada grupo.
 
-Cada grupo deve preencher:
+**Modelo antes de começar:** a apresentação traz um **slide de exemplo resolvido** com uma habilidade do **3º ao 5º ano** (EF35LP31 — recursos rítmicos, sonoros e metáforas em textos versificados). Como é de outra faixa, serve de referência sem poder ser copiado como resposta.
 
-- **Habilidade e código:** ____
+Cada grupo deve preencher (campos editáveis na apresentação):
+
+- **Nome(s) do grupo:** ____
+- **Habilidade e código** (sorteada — 1º/2º ano): ____
 - **Eixo(s) envolvido(s):** ____
 - **Campo de atuação e gênero escolhido:** ____
-- **Concepção de linguagem em ação:** como a proposta trata a linguagem como interação? ____
 - **Descrição da situação didática** (o que os alunos farão, com que texto/gênero, com que finalidade social): ____
 
-**Sugestões de habilidades para os cartões** (Anos Iniciais):
+Ao final, um botão **gera um arquivo `.txt`** com a resposta do grupo, pronto para enviar à professora.
 
-- **EF15LP01** — identificar a função social de textos que circulam em campos da vida social.
-- **EF15LP03** — localizar informações explícitas em textos.
-- **EF12LP18** — apreciar poemas e textos versificados (rimas, sonoridades, jogo de palavras).
-- **EF01LP25** — produzir, tendo o professor como escriba, recontagens de histórias.
-- **EF02LP01** — utilizar, ao produzir texto, grafia correta de palavras conhecidas.
+**Habilidades sorteáveis** (1º e 2º ano): EF12LP18, EF12LP01, EF01LP01, EF01LP02, EF01LP25, EF01LP26, EF02LP01, EF02LP26, EF02LP28.
 
 **Socialização:** cada grupo apresenta em 2 min; a turma identifica os eixos e o campo mobilizados.
 
@@ -154,7 +164,7 @@ Cada grupo deve preencher:
 Avaliação **formativa e processual**, observando:
 
 - participação nas discussões e na Atividade 1 (reconhecimento dos eixos);
-- qualidade da transposição didática na Atividade 2 (coerência entre habilidade, eixo, campo, gênero e concepção de linguagem);
+- qualidade da transposição didática na Atividade 2 (coerência entre habilidade, eixo, campo, gênero e situação proposta);
 - clareza ao explicar, na socialização, por que a proposta trata a linguagem como interação.
 
 **Instrumento:** rubrica simples com três níveis (em desenvolvimento / adequado / avançado) para cada critério acima.
@@ -163,7 +173,7 @@ Avaliação **formativa e processual**, observando:
 
 ## 7. Recursos
 
-Projetor/slides (arquivo HTML interativo desta aula), quadro, cartões impressos com habilidades da BNCC, dispositivo para votação (opcional), cópia da seção de Língua Portuguesa da BNCC.
+Projetor/slides (apresentação HTML interativa desta aula, publicada em GitHub Pages), quadro, **celular dos alunos** para acessar a atividade via **QR code** exibido nos slides, cópia da seção de Língua Portuguesa da BNCC.
 
 ---
 
@@ -175,4 +185,4 @@ Projetor/slides (arquivo HTML interativo desta aula), quadro, cartões impressos
 
 ---
 
-*Material de apoio à docência — Elian da Silva Santos Leite.*
+*Material de apoio à docência — Profª Drª Elian Leite.*
