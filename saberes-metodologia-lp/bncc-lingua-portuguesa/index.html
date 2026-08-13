@@ -469,6 +469,7 @@
           <p id="drawText">Apreciar poemas e outros textos versificados, observando rimas, sonoridades e jogos de palavras.</p>
         </div>
         <button class="btn" id="drawBtn" style="margin-top:12px;width:100%">🎲 Sortear habilidade (1º/2º ano)</button>
+        <button class="btn ghost" id="exBtn" style="margin-top:8px;width:100%">👀 Ver exemplo (anos finais)</button>
         <div class="field" style="margin-top:14px"><label>Nome(s) do grupo</label><input id="a2group" placeholder="Ex.: Ana, Bruno e Carla"></div>
         <div class="field"><label>Eixo(s) envolvido(s)</label><input id="a2eixo" placeholder="Ex.: Leitura/Escuta"></div>
         <div class="field"><label>Campo de atuação e gênero</label><input id="a2campo" placeholder="Ex.: Vida cotidiana — bilhete"></div>
@@ -601,6 +602,20 @@ document.getElementById('drawBtn').onclick=()=>{
   document.getElementById('drawCode').textContent=pool[r][0];
   document.getElementById('drawText').textContent=pool[r][1];
   const dc=document.getElementById('drawCard');dc.style.animation='none';void dc.offsetWidth;dc.style.animation='pop .4s';
+};
+
+/* Activity 2 — exemplo fixo (ANOS FINAIS: serve só de modelo, não vale como resposta,
+   pois a habilidade a ser trabalhada deve ser sempre do 1º/2º ano) */
+document.getElementById('exBtn').onclick=()=>{
+  drawn=['EF67LP28','Ler, de forma autônoma, e compreender romances infanto-juvenis, contos populares, contos de terror, lendas, poemas de forma livre e fixa (como sonetos e cordéis), vídeo-poemas e poemas visuais, expressando avaliação sobre o texto lido. (6º/7º ano — anos finais)'];
+  document.getElementById('drawCode').textContent=drawn[0];
+  document.getElementById('drawText').textContent=drawn[1];
+  document.getElementById('a2group').value='EXEMPLO — anos finais (não vale como resposta)';
+  document.getElementById('a2eixo').value='Leitura/Escuta';
+  document.getElementById('a2campo').value='Artístico-literário — cordel e soneto';
+  document.getElementById('a2desc').value='A turma monta um "clube de leitura": cada estudante escolhe, com autonomia, um cordel ou um soneto de uma coletânea disponibilizada pela professora. Após a leitura individual, registram em uma ficha o tema, de que gostaram e por quê, comparando a forma fixa (soneto) com a forma popular (cordel). Em roda, socializam as avaliações e recomendam títulos aos colegas, justificando suas preferências por autores e temas — desenvolvendo a leitura autônoma e o posicionamento crítico próprios dos anos finais.';
+  const dc=document.getElementById('drawCard');dc.style.animation='none';void dc.offsetWidth;dc.style.animation='pop .4s';
+  const b=document.getElementById('exBtn');const t=b.textContent;b.textContent='✅ Exemplo (anos finais) carregado!';setTimeout(()=>b.textContent=t,2000);
 };
 
 /* Activity 2 — gerar arquivo da resposta */
