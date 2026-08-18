@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analise Linguistica / Semiotica na BNCC - Prof.a Dr.a Elian Leite</title>
+<style>
+  :root{--font:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;--radius:24px;
+    --purple:#7A4FC0;--purple-dk:#5E3A9E;--purple-soft:#EDE6FA;--lilac:#B79AE0;
+    --orange:#E8590C;--orange-lt:#FF922B;
+    --c1:#7A4FC0;--c2:#E8590C;--c3:#1C7ED6;--c4:#2B8A6E;--c5:#B5179E;--c6:#D6336C;}
+  html[data-theme="light"]{--bg1:#F3ECFB;--bg2:#FBF8FF;--page:#FFFFFF;--paper:#FFFFFF;
+    --ink:#241C42;--ink-soft:#54486F;--line:#E3D9F5;--shadow:0 14px 38px rgba(74,42,130,.16);
+    --title:#E8590C;--deep:#33235C;}
+  html[data-theme="dark"]{--bg1:#1A1330;--bg2:#110B20;--page:#251C3F;--paper:#2C2249;
+    --ink:#F6F1FE;--ink-soft:#CFC2EA;--line:#3F3163;--shadow:0 16px 44px rgba(0,0,0,.5);
+    --title:#FF922B;--deep:#0E0A1C;--purple:#B79AE0;--purple-dk:#D3BEF5;--purple-soft:#3A2C5C;
+    --c1:#A98AE8;--c2:#FF922B;--c3:#4DABF7;--c4:#51CF9E;--c5:#E599F7;--c6:#FF8FA8;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:var(--font);color:var(--ink);overflow:hidden;
+    background:radial-gradient(1200px 820px at 85% -12%,var(--purple-soft),transparent 62%),
+               radial-gradient(1000px 720px at -10% 112%,var(--purple-soft),transparent 55%),
+               linear-gradient(160deg,var(--bg1),var(--bg2));transition:background .4s,color .4s;}
+  #deck{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:clamp(8px,1.8vw,26px);}
+  .slide{display:none;width:min(1340px,100%);height:calc(100vh - clamp(16px,3.6vw,52px));background:var(--paper);
+    border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
+    padding:clamp(20px,2.8vw,44px) clamp(22px,3.2vw,52px);overflow:auto;position:relative;
+    animation:pop .45s cubic-bezier(.2,.8,.2,1);}
+  .slide.active{display:flex;flex-direction:column;justify-content:center}
+  @keyframes pop{from{opacity:0;transform:translateY(14px) scale(.99)}to{opacity:1;transform:none}}
+  .slide::-webkit-scrollbar{width:10px}.slide::-webkit-scrollbar-thumb{background:var(--purple-soft);border-radius:20px}
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;
+    font-size:clamp(12px,1.35vw,16px);color:#fff;background:var(--purple);padding:8px 18px;border-radius:999px;margin-bottom:12px;align-self:flex-start}
+  .kicker.k2{background:var(--c2)}.kicker.k3{background:var(--c3)}.kicker.k4{background:var(--c4)}.kicker.k5{background:var(--c5)}
+  h1{font-size:clamp(32px,5.2vw,62px);line-height:1.05;letter-spacing:-.6px;color:var(--ink)}
+  h2{font-size:clamp(26px,3.9vw,48px);line-height:1.1;margin-bottom:16px;letter-spacing:-.5px;color:var(--title)}
+  h3{font-size:clamp(19px,2.2vw,28px);margin:0 0 6px;color:var(--ink)}
+  p,li{font-size:clamp(17px,2vw,24px);line-height:1.45;color:var(--ink-soft)}
+  ul,ol{padding-left:1.15em;margin:6px 0}li{margin:7px 0}
+  .lead{font-size:clamp(19px,2.5vw,31px);line-height:1.35;color:var(--ink)}
+  strong{color:var(--ink)}.center{text-align:center;align-items:center}.muted{color:var(--ink-soft)}
+  .cover-badge{font-size:clamp(48px,7.5vw,88px);margin-bottom:8px}
+  .meta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px}
+  .chip{background:var(--purple-soft);border:1px solid var(--line);border-radius:999px;padding:11px 22px;font-size:clamp(15px,1.8vw,20px);color:var(--purple-dk);font-weight:800}
+  .grid{display:grid;gap:clamp(12px,1.6vw,22px);width:100%}
+  .g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}
+  .g2b{grid-template-columns:1.05fr .95fr}
+  @media(max-width:900px){.g2,.g3,.g2b{grid-template-columns:1fr}}
+  .panel{border-radius:20px;padding:clamp(18px,2.2vw,30px);color:#fff;display:flex;flex-direction:column;justify-content:center;box-shadow:var(--shadow)}
+  .panel h3,.panel strong{color:#fff}
+  .panel p,.panel li{color:rgba(255,255,255,.95);font-weight:600}
+  .panel .lbl{display:block;font-size:clamp(13px,1.5vw,17px);font-weight:900;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:8px}
+  .panel .big{font-size:clamp(30px,4.2vw,56px);font-weight:900;line-height:1;color:#fff}
+  .p1{background:var(--c1)}.p2{background:var(--c2)}.p3{background:var(--c3)}.p4{background:var(--c4)}.p5{background:var(--c5)}.p6{background:var(--c6)}
+  .pdeep{background:var(--deep)}
+  .card{background:var(--page);border:2px solid var(--line);border-radius:20px;padding:clamp(16px,2vw,26px)}
+  .card p,.card li{font-size:clamp(16px,1.9vw,22px)}
+  .code{display:inline-block;font-family:"Courier New",monospace;font-weight:900;background:rgba(255,255,255,.22);
+    color:#fff;padding:6px 16px;border-radius:10px;font-size:clamp(17px,2vw,26px);margin-bottom:12px}
+  .tag{font-weight:900;font-size:clamp(13px,1.5vw,16px);text-transform:uppercase;letter-spacing:.6px}
+  /* flow */
+  .flow{display:flex;gap:clamp(12px,1.6vw,22px);width:100%;flex-wrap:wrap}
+  .flow .step{flex:1;min-width:280px;border-radius:20px;padding:clamp(18px,2.2vw,30px);color:#fff;box-shadow:var(--shadow)}
+  .flow .step .n{font-size:clamp(14px,1.6vw,18px);font-weight:900;letter-spacing:.8px;text-transform:uppercase;opacity:.9}
+  .flow .step h3{margin:8px 0 10px;color:#fff;font-size:clamp(21px,2.5vw,30px)}
+  .flow .step p{font-size:clamp(15px,1.75vw,21px);color:rgba(255,255,255,.95);font-weight:600}
+  .arrowrow{display:flex;align-items:center;justify-content:center;font-size:clamp(24px,3vw,40px);color:var(--title);font-weight:900}
+  /* accordion */
+  .acc{border-radius:16px;border:2px solid var(--line);overflow:hidden;background:var(--page);cursor:pointer;transition:.2s}
+  .acc:hover{border-color:var(--lilac)}
+  .acc .head{display:flex;align-items:center;gap:12px;padding:12px 16px}
+  .acc .cd{font-family:"Courier New",monospace;font-weight:900;color:#fff;background:var(--c1);padding:5px 12px;border-radius:9px;font-size:clamp(13px,1.5vw,17px);flex:0 0 auto}
+  .acc .ttl{font-weight:800;color:var(--ink);font-size:clamp(15px,1.75vw,20px)}
+  .acc .body{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 16px}
+  .acc.open .body{max-height:260px;padding-bottom:14px}
+  .acc .body p{font-size:clamp(14px,1.65vw,19px);margin-top:4px}
+  #bar{position:fixed;left:0;right:0;bottom:0;height:5px;background:var(--line);z-index:40}
+  #barfill{height:100%;width:0;background:linear-gradient(90deg,var(--orange),var(--purple));transition:width .3s}
+  #controls{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;
+    background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:6px 10px;box-shadow:var(--shadow);z-index:50}
+  .nav{border:none;background:var(--purple-soft);color:var(--purple-dk);width:42px;height:42px;border-radius:50%;font-size:20px;cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center}
+  .nav:hover{background:var(--purple);color:#fff}
+  #counter{font-weight:800;font-size:clamp(13px,1.5vw,16px);color:var(--ink);min-width:62px;text-align:center}
+  #topbar{position:fixed;top:12px;right:14px;display:flex;gap:8px;z-index:50}
+  .tbtn{border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:9px 13px;font-size:clamp(12px,1.4vw,15px);font-weight:800;color:var(--ink);cursor:pointer;transition:.15s;display:flex;align-items:center;gap:6px;text-decoration:none}
+  .tbtn:hover{background:var(--purple-soft)}
+  .hintline{margin-top:14px;font-size:clamp(14px,1.6vw,18px);color:var(--ink-soft);text-align:center}
+  kbd{background:var(--ink);color:var(--paper);border-radius:6px;padding:2px 8px;font-size:14px;font-family:monospace}
+  a.mail{color:var(--title);font-weight:900;text-decoration:none}
+</style>
+</head>
+<body>
+<div id="topbar">
+  <a class="tbtn" href="../../">&larr; Indice</a>
+  <button class="tbtn" id="themeBtn">Escuro</button>
+  <button class="tbtn" id="fsBtn">Apresentar</button>
+</div>
+<div id="deck">
+<section class="slide active center">
+  <div class="cover-badge">&#128269;</div>
+  <h1>Analise Lingu&iacute;stica /<br>Semi&oacute;tica</h1>
+  <p class="lead" style="margin-top:16px;max-width:920px">O ensino de L&iacute;ngua Portuguesa na BNCC</p>
+  <p style="margin-top:24px;font-size:clamp(20px,2.5vw,29px);font-weight:900;color:var(--title)">Prof.&ordf; Dr.&ordf; Elian Leite</p>
+  <div class="meta"><span class="chip">&#127891; Saberes e Metodologia do Ensino de LP</span><span class="chip">&#128218; Anos Iniciais</span></div>
+  <p class="hintline">Navegue com <kbd>&larr;</kbd> <kbd>&rarr;</kbd></p>
+</section>
+<section class="slide">
+  <span class="kicker">Objetivos da aula</span>
+  <h2>O que vamos alcan&ccedil;ar</h2>
+  <div class="grid g3">
+    <div class="panel p1"><span class="lbl">01</span><div class="big">Identificar</div><p style="margin-top:10px">as caracter&iacute;sticas e os objetivos do eixo de <strong>An&aacute;lise Lingu&iacute;stica/Semi&oacute;tica</strong> na BNCC.</p></div>
+    <div class="panel p2"><span class="lbl">02</span><div class="big">Reconhecer</div><p style="margin-top:10px">a <strong>progress&atilde;o</strong> das habilidades ao longo dos Anos Iniciais.</p></div>
+    <div class="panel p3"><span class="lbl">03</span><div class="big">Analisar</div><p style="margin-top:10px">exemplos de <strong>habilidades</strong>, identificando os conhecimentos mobilizados.</p></div>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker">O eixo</span>
+  <h2>Eixo de An&aacute;lise Lingu&iacute;stica/Semi&oacute;tica</h2>
+  <div class="panel pdeep">
+    <p style="font-size:clamp(19px,2.4vw,30px)">Neste eixo trabalha-se a <strong>sistematiza&ccedil;&atilde;o da alfabetiza&ccedil;&atilde;o</strong> e a <strong>an&aacute;lise do funcionamento da l&iacute;ngua e de outras linguagens</strong>, considerando seus <strong>efeitos nos discursos</strong>.</p>
+  </div>
+  <div class="card" style="margin-top:18px;border-color:var(--c2)">
+    <p>&#128200; As habilidades desse eixo s&atilde;o trabalhadas de forma <strong>progressiva</strong> ao longo dos <strong>5 anos escolares</strong>.</p>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker">Progress&atilde;o</span>
+  <h2>Anos Iniciais do Ensino Fundamental</h2>
+  <div class="flow">
+    <div class="step" style="background:var(--c1)">
+      <div class="n">Etapa 01</div><h3>1&ordm; e 2&ordm; ano</h3>
+      <p>A an&aacute;lise lingu&iacute;stica e semi&oacute;tica &eacute; <strong>parte fundamental da alfabetiza&ccedil;&atilde;o</strong>: compreender o funcionamento do <strong>sistema alfab&eacute;tico</strong>, as conven&ccedil;&otilde;es da escrita e as rela&ccedil;&otilde;es entre <strong>sons e letras</strong>, al&eacute;m de reconhecer formas de representa&ccedil;&atilde;o gr&aacute;fica e multissemi&oacute;tica.</p>
+    </div>
+    <div class="arrowrow">&rarr;</div>
+    <div class="step" style="background:var(--c2)">
+      <div class="n">Etapa 02</div><h3>3&ordm; ao 5&ordm; ano</h3>
+      <p><strong>Aprofundamento</strong> das pr&aacute;ticas de linguagem: o foco desloca-se da alfabetiza&ccedil;&atilde;o b&aacute;sica para a <strong>consolida&ccedil;&atilde;o da ortografia</strong>, a consci&ecirc;ncia sobre o funcionamento da l&iacute;ngua e a amplia&ccedil;&atilde;o da leitura e produ&ccedil;&atilde;o de textos <strong>mais complexos e multissemi&oacute;ticos</strong>.</p>
+    </div>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker">1&ordm; e 2&ordm; ano</span>
+  <h2>Abordagem e objetivos</h2>
+  <div class="panel p1">
+    <p style="font-size:clamp(18px,2.3vw,28px)">A BNCC prop&otilde;e que, nos 1&ordm; e 2&ordm; anos, a an&aacute;lise lingu&iacute;stica e semi&oacute;tica seja <strong>parte fundamental do processo de alfabetiza&ccedil;&atilde;o</strong>.</p>
+  </div>
+  <div class="grid g3" style="margin-top:18px">
+    <div class="card" style="border-color:var(--c3)"><p>&#128221; Compreender o funcionamento do <strong>sistema alfab&eacute;tico</strong> e as <strong>conven&ccedil;&otilde;es da escrita</strong>.</p></div>
+    <div class="card" style="border-color:var(--c4)"><p>&#128264; Compreender as rela&ccedil;&otilde;es entre <strong>sons e letras</strong>.</p></div>
+    <div class="card" style="border-color:var(--c5)"><p>&#127912; Reconhecer formas de representa&ccedil;&atilde;o <strong>gr&aacute;fica e multissemi&oacute;tica</strong> nos textos.</p></div>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker">1&ordm; e 2&ordm; ano</span>
+  <h2>Objetos de conhecimento</h2>
+  <div class="grid g3"><div class="panel c1"><div style="font-size:clamp(26px,3.2vw,42px)">&#128218;</div><h3 style="margin-top:8px">Conhecimento do alfabeto</h3><p style="font-size:clamp(14px,1.6vw,19px)">imprensa/cursiva, mai&uacute;sculas/min&uacute;sculas</p></div><div class="panel c2"><div style="font-size:clamp(26px,3.2vw,42px)">&#9999;&#65039;</div><h3 style="margin-top:8px">Sistema alfab&eacute;tico e ortografia</h3><p style="font-size:clamp(14px,1.6vw,19px)">constru&ccedil;&atilde;o progressiva</p></div><div class="panel c3"><div style="font-size:clamp(26px,3.2vw,42px)">&#128075;</div><h3 style="margin-top:8px">Segmenta&ccedil;&atilde;o de palavras</h3><p style="font-size:clamp(14px,1.6vw,19px)">classifica&ccedil;&atilde;o por n&ordm; de s&iacute;labas</p></div><div class="panel c4"><div style="font-size:clamp(26px,3.2vw,42px)">&#10071;</div><h3 style="margin-top:8px">Pontua&ccedil;&atilde;o</h3><p style="font-size:clamp(14px,1.6vw,19px)">sinais e efeitos de sentido</p></div><div class="panel c5"><div style="font-size:clamp(26px,3.2vw,42px)">&#128260;</div><h3 style="margin-top:8px">Sinon&iacute;mia, anton&iacute;mia e morfologia</h3><p style="font-size:clamp(14px,1.6vw,19px)">sentidos e forma&ccedil;&atilde;o de palavras</p></div><div class="panel c6"><div style="font-size:clamp(26px,3.2vw,42px)">&#127917;</div><h3 style="margin-top:8px">Formas de composi&ccedil;&atilde;o de textos</h3><p style="font-size:clamp(14px,1.6vw,19px)">narrativos, po&eacute;ticos, visuais</p></div></div>
+</section>
+<section class="slide center">
+  <span class="kicker k3" style="align-self:center">Habilidades</span>
+  <h2 style="font-size:clamp(30px,5vw,56px)">1&ordm; ano</h2>
+  <p class="lead" style="max-width:820px;margin:0 auto">12 habilidades do eixo de An&aacute;lise Lingu&iacute;stica/Semi&oacute;tica</p>
+</section>
+<section class="slide">
+  <span class="kicker k3">1&ordm; ano &middot; 1 de 12</span>
+  <h2>Letras e outros sinais gr&aacute;ficos</h2>
+  <div class="grid g2b">
+    <div class="panel p1">
+      <span class="code">EF01LP04</span>
+      <p style="font-size:clamp(16px,1.95vw,23px)">Distinguir as letras do alfabeto de outros sinais gr&aacute;ficos.</p>
+    </div>
+    <div class="card" style="border-color:var(--c2)">
+      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
+      <p style="margin-top:8px">Espalhar cart&otilde;es com <strong>letras</strong>, <strong>n&uacute;meros</strong> (3, 7) e <strong>s&iacute;mbolos</strong> (@, #, &amp;). As crian&ccedil;as separam apenas as letras e explicam por que os outros n&atilde;o s&atilde;o letras.</p>
+    </div>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k3">1&ordm; ano &middot; 2 de 12</span>
+  <h2>A escrita representa os sons da fala</h2>
+  <div class="grid g2b">
+    <div class="panel p3">
+      <span class="code">EF01LP05</span>
+      <p style="font-size:clamp(16px,1.95vw,23px)">Reconhecer o sistema de escrita alfab&eacute;tica como representa&ccedil;&atilde;o dos sons da fala.</p>
+    </div>
+    <div class="card" style="border-color:var(--c2)">
+      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
+      <p style="margin-top:8px">Falar <strong>B-O-L-A</strong> bem devagar, mostrando cada som, e escrever a palavra. Comparar com o <strong>desenho</strong> de uma bola: o desenho mostra o objeto; as letras registram os <strong>sons</strong>.</p>
+    </div>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k3">1&ordm; ano &middot; 3 de 12</span>
+  <h2>Segmentar palavras em s&iacute;labas</h2>
+  <div class="grid g2b">
+    <div class="panel p4">
+      <span class="code">EF01LP06</span>
+      <p style="font-size:clamp(16px,1.95vw,23px)">Segmentar oralmente palavras em s&iacute;labas.</p>
+    </div>
+    <div class="card" style="border-color:var(--c2)">
+      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
+      <p style="margin-top:8px">Bater palmas a cada s&iacute;laba: <strong>BA-NA-NA</strong> (3 palmas), <strong>P&Eacute;</strong> (1), <strong>CA-SA</strong> (2). Depois separar os alunos em grupos pelo n&uacute;mero de palmas do pr&oacute;prio nome.</p>
+    </div>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k3">1&ordm; ano &middot; 4 de 12</span>
+  <h2>Fonemas e letras</h2>
+  <div class="grid g2b">
+    <div class="panel p5">
+      <span class="code">EF01LP07</span>
+      <p style="font-size:clamp(16px,1.95vw,23px)">Identificar fonemas e sua representa&ccedil;&atilde;o por letras.</p>
+    </div>
+    <div class="card" style="border-color:var(--c2)">
+      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
+      <p style="margin-top:8px">Mostrar a figura de um <strong>SAPO</strong> e perguntar: qual o primeiro som? Qual letra registra esse som? Repetir com SOL e SUCO, percebendo que o mesmo som se escreve com <strong>S</strong>.</p>
+    </div>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k3">1&ordm; ano &middot; 5 de 12</span>
+  <h2>Do som &agrave; escrita</h2>
+  <div class="grid g2b">
+    <div class="panel p6">
+      <span class="code">EF01LP08</span>
+      <p style="font-size:clamp(16px,1.95vw,23px)">Relacionar elementos sonoros (s&iacute;labas, fonemas, partes de palavras) com sua representa&ccedil;&atilde;o escrita.</p>
+    </div>
+    <div class="card" style="border-color:var(--c2)">
+      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
+      <p style="margin-top:8px">Jogo de encaixe com fichas sil&aacute;bicas: a professora fala <strong>PA</strong>-<strong>TO</strong> e os alunos escolhem as fichas correspondentes para montar a palavra. Trocar uma ficha e ler a nova palavra formada.</p>
+    </div>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k3">1&ordm; ano &middot; 6 de 12</span>
+  <h2>S&iacute;labas iniciais</h2>
+  <div class="grid g2b">
+    <div class="panel p2">
+      <span class="code">EF01LP09</span>
+      <p style="font-size:clamp(16px,1.95vw,23px)">Comparar palavras, identificando semelhan&ccedil;as e diferen&ccedil;as entre sons de s&iacute;labas iniciais.</p>
+    </div>
+    <div class="card" style="border-color:var(--c2)">
+      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
+      <p style="margin-top:8px">Apresentar <strong>BOLA, BONECA, BOTA</strong> e <strong>GATO</strong>. Os alunos identificam quais come&ccedil;am com o mesmo som (<strong>BO</strong>) e qual n&atilde;o pertence ao grupo.</p>
+    </div>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k3">1&ordm; ano &middot; 7 de 12</span>
+  <h2>Nomear e recitar o alfabeto</h2>
+  <div class="grid g2b">
+    <div class="panel p1">
+      <span class="code">EF01LP10</span>
+      <p style="font-size:clamp(16px,1.95vw,23px)">Nomear as letras do alfabeto e recit&aacute;-lo na ordem das letras.</p>
+    </div>
+    <div class="card" style="border-color:var(--c2)">
+      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
+      <p style="margin-top:8px">Cantar a m&uacute;sica do alfabeto e, em seguida, embaralhar as letras do <strong>alfabeto m&oacute;vel</strong> para que a turma as recoloque na ordem correta.</p>
+    </div>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k3">1&ordm; ano &middot; 8 de 12</span>
+  <h2>Formatos das letras</h2>
+  <div class="grid g2b">
+    <div class="panel p3">
+      <span class="code">EF01LP11</span>
+      <p style="font-size:clamp(16px,1.95vw,23px)">Conhecer, diferenciar e relacionar letras em formato imprensa e cursiva, mai&uacute;sculas e min&uacute;sculas.</p>
+    </div>
+    <div class="card" style="border-color:var(--c2)">
+      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
+      <p style="margin-top:8px">Cartelas com <strong>A / a / <em>A</em> / <em>a</em></strong>. Os alunos parear os quatro formatos da mesma letra e depois localizam o pr&oacute;prio nome escrito nas diferentes formas.</p>
+    </div>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k3">1&ordm; ano &middot; 9 de 12</span>
+  <h2>Espa&ccedil;os entre palavras</h2>
+  <div class="grid g2b">
+    <div class="panel p4">
+      <span class="code">EF01LP12</span>
+      <p style="font-size:clamp(16px,1.95vw,23px)">Reconhecer a separa&ccedil;&atilde;o das palavras, na escrita, por espa&ccedil;os em branco.</p>
+    </div>
+    <div class="card" style="border-color:var(--c2)">
+      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
+      <p style="margin-top:8px">Escrever no quadro <strong>OGATOSUBIUNOTELHADO</strong> e pedir que a turma marque com giz onde come&ccedil;a e termina cada palavra, reescrevendo a frase com os espa&ccedil;os.</p>
+    </div>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k3">1&ordm; ano &middot; 10 de 12</span>
+  <h2>S&iacute;labas mediais e finais</h2>
+  <div class="grid g2b">
+    <div class="panel p5">
+      <span class="code">EF01LP13</span>
+      <p style="font-size:clamp(16px,1.95vw,23px)">Comparar palavras, identificando semelhan&ccedil;as e diferen&ccedil;as entre sons de s&iacute;labas mediais e finais.</p>
+    </div>
+    <div class="card" style="border-color:var(--c2)">
+      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
+      <p style="margin-top:8px">Trabalhar com <strong>rimas</strong>: PANELA / JANELA / AMARELA (final igual). Depois comparar CA<strong>S</strong>A e CA<strong>M</strong>A, observando a s&iacute;laba do meio.</p>
+    </div>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k3">1&ordm; ano &middot; 11 de 12</span>
+  <h2>Sinais de pontua&ccedil;&atilde;o e entona&ccedil;&atilde;o</h2>
+  <div class="grid g2b">
+    <div class="panel p6">
+      <span class="code">EF01LP14</span>
+      <p style="font-size:clamp(16px,1.95vw,23px)">Identificar outros sinais no texto al&eacute;m das letras, como pontos finais, de interroga&ccedil;&atilde;o e exclama&ccedil;&atilde;o e seus efeitos na entona&ccedil;&atilde;o.</p>
+    </div>
+    <div class="card" style="border-color:var(--c2)">
+      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
+      <p style="margin-top:8px">Ler a mesma frase de tr&ecirc;s formas: <strong>Voc&ecirc; vem.</strong> / <strong>Voc&ecirc; vem?</strong> / <strong>Voc&ecirc; vem!</strong> As crian&ccedil;as percebem como a voz muda e associam cada sinal a uma entona&ccedil;&atilde;o.</p>
+    </div>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k3">1&ordm; ano &middot; 12 de 12</span>
+  <h2>Sin&ocirc;nimos e ant&ocirc;nimos</h2>
+  <div class="grid g2b">
+    <div class="panel p2">
+      <span class="code">EF01LP15</span>
+      <p style="font-size:clamp(16px,1.95vw,23px)">Agrupar palavras pelo crit&eacute;rio de aproxima&ccedil;&atilde;o de significado (sinon&iacute;mia) e separar palavras pelo crit&eacute;rio de oposi&ccedil;&atilde;o de significado (anton&iacute;mia).</p>
+    </div>
+    <div class="card" style="border-color:var(--c2)">
+      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
+      <p style="margin-top:8px">Com cartelas de palavras, montar duas colunas: <strong>parecidos</strong> (bonito / belo; alegre / feliz) e <strong>opostos</strong> (alto / baixo; dia / noite).</p>
+    </div>
+  </div>
+</section>
+<section class="slide center">
+  <span class="kicker k4" style="align-self:center">Habilidades</span>
+  <h2 style="font-size:clamp(30px,5vw,56px)">2&ordm; ano</h2>
+  <p class="lead" style="max-width:820px;margin:0 auto">10 habilidades do eixo de An&aacute;lise Lingu&iacute;stica/Semi&oacute;tica</p>
+</section>
+<section class="slide">
+  <span class="kicker k4">2&ordm; ano &middot; 1 de 10</span>
+  <h2>Brincar com as s&iacute;labas</h2>
+  <div class="grid g2b">
+    <div class="panel p1">
+      <span class="code">EF02LP02</span>
+      <p style="font-size:clamp(16px,1.95vw,23px)">Segmentar palavras em s&iacute;labas e remover e substituir s&iacute;labas iniciais, mediais ou finais para criar novas palavras.</p>
+    </div>
+    <div class="card" style="border-color:var(--c2)">
+      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
+      <p style="margin-top:8px">Partir de <strong>MALA</strong>: trocar a primeira s&iacute;laba e formar <strong>BALA</strong>, <strong>SALA</strong>, <strong>FALA</strong>. Depois retirar uma s&iacute;laba de <strong>CAVALO</strong> e descobrir o que sobra.</p>
+    </div>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k4">2&ordm; ano &middot; 2 de 10</span>
+  <h2>Rela&ccedil;&otilde;es regulares letra-som</h2>
+  <div class="grid g2b">
+    <div class="panel p3">
+      <span class="code">EF02LP03</span>
+      <p style="font-size:clamp(16px,1.95vw,23px)">Ler e escrever palavras com correspond&ecirc;ncias regulares diretas entre letras e fonemas (f, v, t, d, p, b) e correspond&ecirc;ncias regulares contextuais (c e q; e e o, em posi&ccedil;&atilde;o &aacute;tona em final de palavra).</p>
+    </div>
+    <div class="card" style="border-color:var(--c2)">
+      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
+      <p style="margin-top:8px">Ditado com <strong>FACA, VACA, PATO, BOTA</strong> (diretas). Depois observar <strong>CASA</strong> e <strong>QUEIJO</strong>, e por que se escreve <strong>BOLO</strong> (e n&atilde;o &quot;bolu&quot;), mesmo falando /u/.</p>
+    </div>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k4">2&ordm; ano &middot; 3 de 10</span>
+  <h2>Tipos de s&iacute;laba</h2>
+  <div class="grid g2b">
+    <div class="panel p4">
+      <span class="code">EF02LP04</span>
+      <p style="font-size:clamp(16px,1.95vw,23px)">Ler e escrever corretamente palavras com s&iacute;labas CV, V, CVC, CCV, identificando que existem vogais em todas as s&iacute;labas.</p>
+    </div>
+    <div class="card" style="border-color:var(--c2)">
+      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
+      <p style="margin-top:8px">Separar e circular as vogais em <strong>PRA-TO</strong> (CCV), <strong>POR-TA</strong> (CVC), <strong>A-BE-LHA</strong> (V). Concluir juntos: <strong>toda s&iacute;laba tem vogal</strong>.</p>
+    </div>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k4">2&ordm; ano &middot; 4 de 10</span>
+  <h2>Marcas de nasalidade</h2>
+  <div class="grid g2b">
+    <div class="panel p5">
+      <span class="code">EF02LP05</span>
+      <p style="font-size:clamp(16px,1.95vw,23px)">Ler e escrever corretamente palavras com marcas de nasalidade (til, m, n).</p>
+    </div>
+    <div class="card" style="border-color:var(--c2)">
+      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
+      <p style="margin-top:8px">Ca&ccedil;a-palavras com <strong>MA&Ccedil;&Atilde;, P&Atilde;O, CAMPO, ONDE</strong>. Os alunos circulam o <strong>til</strong> e as letras <strong>m</strong> e <strong>n</strong> que deixam o som &quot;anasalado&quot;.</p>
+    </div>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k4">2&ordm; ano &middot; 5 de 10</span>
+  <h2>O nome das letras</h2>
+  <div class="grid g2b">
+    <div class="panel p6">
+      <span class="code">EF02LP06</span>
+      <p style="font-size:clamp(16px,1.95vw,23px)">Perceber o princ&iacute;pio acrof&ocirc;nico que opera nos nomes das letras do alfabeto.</p>
+    </div>
+    <div class="card" style="border-color:var(--c2)">
+      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
+      <p style="margin-top:8px">Observar que o nome da letra <strong>B (b&ecirc;)</strong> come&ccedil;a com o som que ela representa: /b/ de <strong>BOLA</strong>. Testar com F (efe), M (eme) e descobrir onde o som aparece no nome.</p>
+    </div>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k4">2&ordm; ano &middot; 6 de 10</span>
+  <h2>Imprensa e cursiva</h2>
+  <div class="grid g2b">
+    <div class="panel p2">
+      <span class="code">EF02LP07</span>
+      <p style="font-size:clamp(16px,1.95vw,23px)">Escrever palavras, frases, textos curtos nas formas imprensa e cursiva.</p>
+    </div>
+    <div class="card" style="border-color:var(--c2)">
+      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
+      <p style="margin-top:8px">Cada aluno escreve o pr&oacute;prio nome e uma frase sobre si em <strong>letra de imprensa</strong> e depois em <strong>cursiva</strong>, comparando os dois registros.</p>
+    </div>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k4">2&ordm; ano &middot; 7 de 10</span>
+  <h2>Separar as palavras ao escrever</h2>
+  <div class="grid g2b">
+    <div class="panel p1">
+      <span class="code">EF02LP08</span>
+      <p style="font-size:clamp(16px,1.95vw,23px)">Segmentar corretamente as palavras ao escrever frases e textos.</p>
+    </div>
+    <div class="card" style="border-color:var(--c2)">
+      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
+      <p style="margin-top:8px">Entregar a frase <strong>&quot;ameninabrincou noparque&quot;</strong> e pedir que reescrevam separando corretamente. Depois revisar um bilhete pr&oacute;prio procurando palavras &quot;grudadas&quot;.</p>
+    </div>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k4">2&ordm; ano &middot; 8 de 10</span>
+  <h2>Pontua&ccedil;&atilde;o</h2>
+  <div class="grid g2b">
+    <div class="panel p3">
+      <span class="code">EF02LP09</span>
+      <p style="font-size:clamp(16px,1.95vw,23px)">Usar adequadamente ponto final, ponto de interroga&ccedil;&atilde;o e ponto de exclama&ccedil;&atilde;o.</p>
+    </div>
+    <div class="card" style="border-color:var(--c2)">
+      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
+      <p style="margin-top:8px">Entregar uma <strong>tirinha</strong> com os bal&otilde;es sem pontua&ccedil;&atilde;o. Os alunos escolhem o sinal adequado para cada fala e leem em voz alta com a entona&ccedil;&atilde;o correspondente.</p>
+    </div>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k4">2&ordm; ano &middot; 9 de 10</span>
+  <h2>Sin&ocirc;nimos e prefixos de nega&ccedil;&atilde;o</h2>
+  <div class="grid g2b">
+    <div class="panel p4">
+      <span class="code">EF02LP10</span>
+      <p style="font-size:clamp(16px,1.95vw,23px)">Identificar sin&ocirc;nimos de palavras de texto lido, determinando a diferen&ccedil;a de sentido entre eles, e formar ant&ocirc;nimos de palavras encontradas em texto lido pelo acr&eacute;scimo do prefixo de nega&ccedil;&atilde;o in-/im-.</p>
+    </div>
+    <div class="card" style="border-color:var(--c2)">
+      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
+      <p style="margin-top:8px">Ap&oacute;s ler um conto, procurar sin&ocirc;nimos de <strong>&quot;bonito&quot;</strong>. Em seguida formar ant&ocirc;nimos: feliz &rarr; <strong>infeliz</strong>; poss&iacute;vel &rarr; <strong>imposs&iacute;vel</strong>.</p>
+    </div>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k4">2&ordm; ano &middot; 10 de 10</span>
+  <h2>Aumentativo e diminutivo</h2>
+  <div class="grid g2b">
+    <div class="panel p5">
+      <span class="code">EF02LP11</span>
+      <p style="font-size:clamp(16px,1.95vw,23px)">Formar o aumentativo e o diminutivo de palavras com os sufixos -&atilde;o e -inho/-zinho.</p>
+    </div>
+    <div class="card" style="border-color:var(--c2)">
+      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
+      <p style="margin-top:8px">Transformar os personagens de uma hist&oacute;ria: <strong>casa</strong> &rarr; casinha / casar&atilde;o; <strong>gato</strong> &rarr; gatinho / gat&atilde;o. Depois desenhar como ficaria cada vers&atilde;o.</p>
+    </div>
+  </div>
+</section>
+<section class="slide center">
+  <span class="kicker k2" style="align-self:center">M&atilde;o na massa</span>
+  <h2 style="font-size:clamp(30px,5vw,56px)">Atividades pr&aacute;ticas</h2>
+  <p class="lead" style="max-width:820px;margin:0 auto">Cinco propostas para o 1&ordm; e o 2&ordm; ano</p>
+</section>
+<section class="slide">
+  <span class="kicker k2">Atividade 1 &middot; 1&ordm; ano</span>
+  <h2>Distinguir letras de outros sinais gr&aacute;ficos e reconhecer o alfabeto</h2>
+  <div class="panel p1">
+    <span class="lbl">Como fazer</span>
+    <p style="font-size:clamp(18px,2.2vw,27px)">Apresentar cart&otilde;es com <strong>letras, n&uacute;meros e s&iacute;mbolos</strong>. Pedir que as crian&ccedil;as separem apenas as letras e as organizem na <strong>ordem do alfabeto</strong>.</p>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k2">Atividade 2 &middot; 1&ordm; ano</span>
+  <h2>Identificar s&iacute;labas e fonemas em palavras</h2>
+  <div class="panel p3">
+    <span class="lbl">Como fazer</span>
+    <p style="font-size:clamp(18px,2.2vw,27px)">Ditar palavras simples e pedir que os alunos <strong>batam palmas para cada s&iacute;laba</strong>; depois escrevam a palavra separando as s&iacute;labas.</p>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k2">Atividade 3 &middot; 2&ordm; ano</span>
+  <h2>Trabalhar sinon&iacute;mia e anton&iacute;mia</h2>
+  <div class="panel p4">
+    <span class="lbl">Como fazer</span>
+    <p style="font-size:clamp(18px,2.2vw,27px)">Ler um pequeno texto e pedir que os alunos encontrem palavras de <strong>mesmo sentido</strong> (sin&ocirc;nimos) e palavras <strong>opostas</strong> (ant&ocirc;nimos), formando pares.</p>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k2">Atividade 4 &middot; 2&ordm; ano</span>
+  <h2>Analisar a diagrama&ccedil;&atilde;o de g&ecirc;neros textuais</h2>
+  <div class="panel p5">
+    <span class="lbl">Como fazer</span>
+    <p style="font-size:clamp(18px,2.2vw,27px)">Apresentar diferentes <strong>bilhetes e convites</strong>; identificar t&iacute;tulo, sauda&ccedil;&atilde;o, corpo do texto e assinatura; depois produzir um bilhete seguindo o modelo.</p>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k2">Atividade 5 &middot; 1&ordm; e 2&ordm; ano</span>
+  <h2>Explorar poemas visuais</h2>
+  <div class="panel p6">
+    <span class="lbl">Como fazer</span>
+    <p style="font-size:clamp(18px,2.2vw,27px)">Ler e observar poemas em que a disposi&ccedil;&atilde;o das palavras <strong>forma imagens</strong> (ex.: poema em forma de &aacute;rvore). Criar um pequeno <strong>poema visual</strong>.</p>
+  </div>
+</section>
+<section class="slide center">
+  <span class="kicker k2" style="align-self:center">Considera&ccedil;&otilde;es</span>
+  <h2>Por que esse trabalho importa</h2>
+  <div class="panel pdeep" style="max-width:1080px;margin:0 auto">
+    <p style="font-size:clamp(18px,2.3vw,29px)">A an&aacute;lise lingu&iacute;stica e semi&oacute;tica nos anos iniciais &eacute; fundamental para que o aluno compreenda n&atilde;o s&oacute; a <strong>mec&acirc;nica da escrita</strong>, mas tamb&eacute;m os <strong>diferentes modos de representa&ccedil;&atilde;o e sentido</strong> nos textos.</p>
+  </div>
+  <div class="card" style="max-width:1080px;margin:18px auto 0;border-color:var(--c2)">
+    <p>&#128204; O trabalho deve ser <strong>sistem&aacute;tico</strong> &mdash; comparar, observar, produzir e refletir sobre as formas gr&aacute;ficas, sonoras e visuais da linguagem &mdash; sempre <strong>contextualizado em pr&aacute;ticas sociais reais e significativas</strong>.</p>
+  </div>
+</section>
+<section class="slide center">
+  <span class="kicker k5" style="align-self:center">Pr&oacute;xima etapa</span>
+  <h2 style="font-size:clamp(30px,5vw,56px)">3&ordm; ao 5&ordm; ano</h2>
+  <p class="lead" style="max-width:820px;margin:0 auto">Foco em An&aacute;lise Lingu&iacute;stica/Semi&oacute;tica</p>
+</section>
+<section class="slide">
+  <span class="kicker k5">3&ordm; ao 5&ordm; ano</span>
+  <h2>Abordagem e objetivos gerais</h2>
+  <div class="panel p5">
+    <p style="font-size:clamp(18px,2.3vw,28px)">A BNCC prop&otilde;e o <strong>aprofundamento das pr&aacute;ticas de linguagem</strong>. O foco se desloca da alfabetiza&ccedil;&atilde;o b&aacute;sica para a <strong>consolida&ccedil;&atilde;o da ortografia</strong>, a consci&ecirc;ncia sobre o funcionamento da l&iacute;ngua e a amplia&ccedil;&atilde;o da leitura e produ&ccedil;&atilde;o de textos cada vez mais <strong>complexos e multissemi&oacute;ticos</strong>.</p>
+  </div>
+</section>
+<section class="slide">
+  <span class="kicker k5">3&ordm; ao 5&ordm; ano</span>
+  <h2>An&aacute;lise Lingu&iacute;stica e Semi&oacute;tica: o que se espera?</h2>
+  <div class="grid g2"><div class="panel p1"><div style="font-size:clamp(24px,3vw,40px)">&#128269;</div><h3 style="margin-top:6px;font-size:clamp(17px,2vw,24px)">Observa&ccedil;&atilde;o das regularidades</h3><p style="font-size:clamp(14px,1.6vw,19px)">Identificar padr&otilde;es ortogr&aacute;ficos, regras contextuais e morfol&oacute;gicas, al&eacute;m das exce&ccedil;&otilde;es e irregularidades do portugu&ecirc;s do Brasil.</p></div><div class="panel p3"><div style="font-size:clamp(24px,3vw,40px)">&#128218;</div><h3 style="margin-top:6px;font-size:clamp(17px,2vw,24px)">Amplia&ccedil;&atilde;o do repert&oacute;rio de g&ecirc;neros</h3><p style="font-size:clamp(14px,1.6vw,19px)">Textos mais complexos: jornal&iacute;sticos, publicit&aacute;rios, cient&iacute;ficos e liter&aacute;rios.</p></div><div class="panel p4"><div style="font-size:clamp(24px,3vw,40px)">&#128202;</div><h3 style="margin-top:6px;font-size:clamp(17px,2vw,24px)">Textos multissemi&oacute;ticos</h3><p style="font-size:clamp(14px,1.6vw,19px)">Analisar e produzir textos que combinam linguagem verbal, imagens, gr&aacute;ficos, tabelas e infogr&aacute;ficos.</p></div><div class="panel p6"><div style="font-size:clamp(24px,3vw,40px)">&#127760;</div><h3 style="margin-top:6px;font-size:clamp(17px,2vw,24px)">Norma padr&atilde;o e varia&ccedil;&otilde;es</h3><p style="font-size:clamp(14px,1.6vw,19px)">Discutir variedades regionais e sociais da l&iacute;ngua, promovendo o <strong>respeito &agrave; diversidade lingu&iacute;stica</strong>.</p></div></div>
+</section>
+<section class="slide">
+  <span class="kicker k5">Habilidades &middot; 3&ordm; ano (1/2)</span>
+  <h2>Ortografia, s&iacute;labas e acentua&ccedil;&atilde;o</h2>
+  <p class="muted" style="margin-bottom:10px">Toque em cada c&oacute;digo para ler a habilidade.</p>
+  <div class="grid g2"><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c5)">EF03LP01</span><span class="ttl">Correspond&ecirc;ncias contextuais</span></div>
+      <div class="body"><p>Ler e escrever palavras com correspond&ecirc;ncias regulares contextuais entre grafemas e fonemas &ndash; c/qu; g/gu; r/rr; s/ss; o (e n&atilde;o u) e e (e n&atilde;o i) em s&iacute;laba &aacute;tona em final de palavra &ndash; e com marcas de nasalidade (til, m, n).</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c5)">EF03LP02</span><span class="ttl">Tipos de s&iacute;laba</span></div>
+      <div class="body"><p>Ler e escrever corretamente palavras com s&iacute;labas CV, V, CVC, CCV, VC, VV, CVV, identificando que existem vogais em todas as s&iacute;labas.</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c5)">EF03LP03</span><span class="ttl">D&iacute;grafos lh, nh, ch</span></div>
+      <div class="body"><p>Ler e escrever corretamente palavras com os d&iacute;grafos lh, nh, ch.</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c5)">EF35LP12</span><span class="ttl">Uso do dicion&aacute;rio</span></div>
+      <div class="body"><p>Recorrer ao dicion&aacute;rio para esclarecer d&uacute;vida sobre a escrita de palavras, especialmente no caso de palavras com rela&ccedil;&otilde;es irregulares fonema-grafema.</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c5)">EF35LP13</span><span class="ttl">Grafias irregulares</span></div>
+      <div class="body"><p>Memorizar a grafia de palavras de uso frequente nas quais as rela&ccedil;&otilde;es fonema-grafema s&atilde;o irregulares e com h inicial que n&atilde;o representa fonema.</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c5)">EF03LP04</span><span class="ttl">Acentua&ccedil;&atilde;o</span></div>
+      <div class="body"><p>Usar acento gr&aacute;fico (agudo ou circunflexo) em moness&iacute;labos t&ocirc;nicos terminados em a, e, o e em palavras ox&iacute;tonas terminadas em a, e, o, seguidas ou n&atilde;o de s.</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c5)">EF03LP05</span><span class="ttl">N&uacute;mero de s&iacute;labas</span></div>
+      <div class="body"><p>Identificar o n&uacute;mero de s&iacute;labas de palavras, classificando-as em moness&iacute;labas, diss&iacute;labas, triss&iacute;labas e poliss&iacute;labas.</p></div></div></div>
+</section>
+<section class="slide">
+  <span class="kicker k5">Habilidades &middot; 3&ordm; ano (2/2)</span>
+  <h2>Pontua&ccedil;&atilde;o e classes de palavras</h2>
+  <p class="muted" style="margin-bottom:10px">Toque em cada c&oacute;digo para ler a habilidade.</p>
+  <div class="grid g2"><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c5)">EF03LP06</span><span class="ttl">S&iacute;laba t&ocirc;nica</span></div>
+      <div class="body"><p>Identificar a s&iacute;laba t&ocirc;nica em palavras, classificando-as em ox&iacute;tonas, parox&iacute;tonas e proparox&iacute;tonas.</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c5)">EF03LP07</span><span class="ttl">Pontua&ccedil;&atilde;o e di&aacute;logos</span></div>
+      <div class="body"><p>Identificar a fun&ccedil;&atilde;o na leitura e usar na escrita ponto final, ponto de interroga&ccedil;&atilde;o, ponto de exclama&ccedil;&atilde;o e, em di&aacute;logos (discurso direto), dois-pontos e travess&atilde;o.</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c5)">EF03LP08</span><span class="ttl">Substantivos e verbos</span></div>
+      <div class="body"><p>Identificar e diferenciar, em textos, substantivos e verbos e suas fun&ccedil;&otilde;es na ora&ccedil;&atilde;o: agente, a&ccedil;&atilde;o, objeto da a&ccedil;&atilde;o.</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c5)">EF03LP09</span><span class="ttl">Adjetivos</span></div>
+      <div class="body"><p>Identificar, em textos, adjetivos e sua fun&ccedil;&atilde;o de atribui&ccedil;&atilde;o de propriedades aos substantivos.</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c5)">EF35LP14</span><span class="ttl">Pronomes como recurso coesivo</span></div>
+      <div class="body"><p>Identificar em textos e usar na produ&ccedil;&atilde;o textual pronomes pessoais, possessivos e demonstrativos, como recurso coesivo anaf&oacute;rico.</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c5)">EF03LP10</span><span class="ttl">Prefixos e sufixos</span></div>
+      <div class="body"><p>Reconhecer prefixos e sufixos produtivos na forma&ccedil;&atilde;o de palavras derivadas de substantivos, de adjetivos e de verbos, utilizando-os para compreender palavras e para formar novas palavras.</p></div></div></div>
+</section>
+<section class="slide">
+  <span class="kicker k4">Habilidades &middot; 4&ordm; ano</span>
+  <h2>Ortografia, pontua&ccedil;&atilde;o e concord&acirc;ncia</h2>
+  <p class="muted" style="margin-bottom:10px">Toque em cada c&oacute;digo para ler a habilidade.</p>
+  <div class="grid g2"><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c4)">EF04LP01</span><span class="ttl">Fonema-grafema</span></div>
+      <div class="body"><p>Grafar palavras utilizando regras de correspond&ecirc;ncia fonema-grafema regulares diretas e contextuais.</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c4)">EF04LP02</span><span class="ttl">Ditongos reduzidos</span></div>
+      <div class="body"><p>Ler e escrever, corretamente, palavras com s&iacute;labas VV e CVV em casos nos quais a combina&ccedil;&atilde;o VV (ditongo) &eacute; reduzida na l&iacute;ngua oral (ai, ei, ou).</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c4)">EF04LP03</span><span class="ttl">Dicion&aacute;rio e contexto</span></div>
+      <div class="body"><p>Localizar palavras no dicion&aacute;rio para esclarecer significados, reconhecendo o significado mais plaus&iacute;vel para o contexto que deu origem &agrave; consulta.</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c4)">EF04LP04</span><span class="ttl">Acentua&ccedil;&atilde;o de parox&iacute;tonas</span></div>
+      <div class="body"><p>Usar acento gr&aacute;fico (agudo ou circunflexo) em parox&iacute;tonas terminadas em -i(s), -l, -r, -&atilde;o(s).</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c4)">EF04LP05</span><span class="ttl">Pontua&ccedil;&atilde;o ampliada</span></div>
+      <div class="body"><p>Identificar a fun&ccedil;&atilde;o na leitura e usar, adequadamente, na escrita ponto final, de interroga&ccedil;&atilde;o, de exclama&ccedil;&atilde;o, dois-pontos e travess&atilde;o em di&aacute;logos (discurso direto), v&iacute;rgula em enumera&ccedil;&otilde;es e em separa&ccedil;&atilde;o de vocativo e de aposto.</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c4)">EF04LP06</span><span class="ttl">Concord&acirc;ncia verbal</span></div>
+      <div class="body"><p>Identificar em textos e usar na produ&ccedil;&atilde;o textual a concord&acirc;ncia entre substantivo ou pronome pessoal e verbo (concord&acirc;ncia verbal).</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c4)">EF04LP07</span><span class="ttl">Concord&acirc;ncia nominal</span></div>
+      <div class="body"><p>Identificar em textos e usar na produ&ccedil;&atilde;o textual a concord&acirc;ncia entre artigo, substantivo e adjetivo (concord&acirc;ncia no grupo nominal).</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c4)">EF04LP08</span><span class="ttl">Sufixos regulares</span></div>
+      <div class="body"><p>Reconhecer e grafar, corretamente, palavras derivadas com os sufixos -agem, -oso, -eza, -izar/-isar (regulares morfol&oacute;gicas).</p></div></div></div>
+</section>
+<section class="slide">
+  <span class="kicker k3">Habilidades &middot; 5&ordm; ano</span>
+  <h2>Sentido, tempos verbais e coes&atilde;o</h2>
+  <p class="muted" style="margin-bottom:10px">Toque em cada c&oacute;digo para ler a habilidade.</p>
+  <div class="grid g2"><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c3)">EF05LP01</span><span class="ttl">Ortografia consolidada</span></div>
+      <div class="body"><p>Grafar palavras utilizando regras de correspond&ecirc;ncia fonema-grafema regulares, contextuais e morfol&oacute;gicas e palavras de uso frequente com correspond&ecirc;ncias irregulares.</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c3)">EF05LP02</span><span class="ttl">Polissemia</span></div>
+      <div class="body"><p>Identificar o car&aacute;ter poliss&ecirc;mico das palavras (uma mesma palavra com diferentes significados, de acordo com o contexto de uso), comparando o significado de termos usados nas &aacute;reas cient&iacute;ficas com esses mesmos termos na linguagem usual.</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c3)">EF05LP03</span><span class="ttl">Acentua&ccedil;&atilde;o</span></div>
+      <div class="body"><p>Acentuar corretamente palavras ox&iacute;tonas, parox&iacute;tonas e proparox&iacute;tonas.</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c3)">EF05LP04</span><span class="ttl">Efeitos de sentido da pontua&ccedil;&atilde;o</span></div>
+      <div class="body"><p>Diferenciar, na leitura de textos, v&iacute;rgula, ponto e v&iacute;rgula, dois-pontos e reconhecer o efeito de sentido que decorre do uso de retic&ecirc;ncias, aspas, par&ecirc;nteses.</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c3)">EF05LP05</span><span class="ttl">Tempos verbais</span></div>
+      <div class="body"><p>Identificar a express&atilde;o de presente, passado e futuro em tempos verbais do modo indicativo.</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c3)">EF05LP06</span><span class="ttl">Flex&atilde;o verbal</span></div>
+      <div class="body"><p>Flexionar, adequadamente, na escrita e na oralidade, os verbos em concord&acirc;ncia com pronomes pessoais/nomes sujeitos da ora&ccedil;&atilde;o.</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c3)">EF05LP07</span><span class="ttl">Conjun&ccedil;&otilde;es</span></div>
+      <div class="body"><p>Identificar, em textos, o uso de conjun&ccedil;&otilde;es e a rela&ccedil;&atilde;o que estabelecem entre partes do texto: adi&ccedil;&atilde;o, oposi&ccedil;&atilde;o, tempo, causa, condi&ccedil;&atilde;o, finalidade.</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="head"><span class="cd" style="background:var(--c3)">EF05LP08</span><span class="ttl">Forma&ccedil;&atilde;o de palavras</span></div>
+      <div class="body"><p>Diferenciar palavras primitivas, derivadas e compostas, e derivadas por adi&ccedil;&atilde;o de prefixo e de sufixo.</p></div></div></div>
+</section>
+<section class="slide center">
+  <div class="cover-badge">&#127793;</div>
+  <span class="kicker" style="align-self:center">S&iacute;ntese</span>
+  <h2>O que levamos desta aula</h2>
+  <div class="grid g2" style="text-align:left;max-width:1100px;margin:0 auto">
+    <div class="card"><strong>O eixo</strong><p>Sistematiza a alfabetiza&ccedil;&atilde;o e analisa o funcionamento da l&iacute;ngua e de outras linguagens.</p></div>
+    <div class="card"><strong>1&ordm; e 2&ordm; ano</strong><p>Sistema alfab&eacute;tico, rela&ccedil;&otilde;es som-letra e conven&ccedil;&otilde;es da escrita.</p></div>
+    <div class="card"><strong>3&ordm; ao 5&ordm; ano</strong><p>Consolida&ccedil;&atilde;o da ortografia, classes de palavras e textos multissemi&oacute;ticos.</p></div>
+    <div class="card"><strong>Sempre</strong><p>Trabalho sistem&aacute;tico e <strong>contextualizado</strong> em pr&aacute;ticas sociais reais.</p></div>
+  </div>
+</section>
+<section class="slide center">
+  <div class="cover-badge">&#128156;</div>
+  <h1 style="color:var(--title)">Obrigada!</h1>
+  <p class="lead" style="margin-top:18px;font-weight:900">Prof.&ordf; Dr.&ordf; Elian Leite</p>
+  <p style="margin-top:12px;font-size:clamp(18px,2.2vw,27px)">&#9993;&#65039; <a class="mail" href="mailto:prof.elianleite@gmail.com">prof.elianleite@gmail.com</a></p>
+  <div class="meta"><span class="chip">&#128218; BNCC &middot; L&iacute;ngua Portuguesa &middot; Anos Iniciais</span></div>
+</section>
+</div>
+<div id="controls">
+  <button class="nav" id="prev">&lsaquo;</button>
+  <span id="counter">1 / 1</span>
+  <button class="nav" id="next">&rsaquo;</button>
+</div>
+<div id="bar"><div id="barfill"></div></div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];let i=0;
+const counter=document.getElementById('counter'),barfill=document.getElementById('barfill');
+function show(n){i=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+  counter.textContent=(i+1)+' / '+slides.length;
+  barfill.style.width=((i+1)/slides.length*100)+'%';slides[i].scrollTop=0;}
+document.getElementById('next').onclick=()=>show(i+1);
+document.getElementById('prev').onclick=()=>show(i-1);
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='PageDown')show(i+1);
+  else if(e.key==='ArrowLeft'||e.key==='PageUp')show(i-1);
+  else if(e.key==='Home')show(0);else if(e.key==='End')show(slides.length-1);});
+show(0);
+document.getElementById('fsBtn').onclick=()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.();};
+const themeBtn=document.getElementById('themeBtn'),root=document.documentElement;
+themeBtn.onclick=()=>{const d=root.getAttribute('data-theme')==='dark';root.setAttribute('data-theme',d?'light':'dark');themeBtn.textContent=d?'Escuro':'Claro';};
+</script>
+</body>
+</html>
