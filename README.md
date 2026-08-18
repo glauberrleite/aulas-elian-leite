@@ -11,11 +11,14 @@ aulas-elian-leite/
 ├── index.html                      ← home: índice de disciplinas e aulas
 ├── .nojekyll                       ← evita processamento Jekyll no GitHub Pages
 ├── README.md
-└── saberes-metodologia-lp/         ← uma pasta por disciplina
-    └── bncc-lingua-portuguesa/     ← uma pasta por aula
-        ├── index.html              ← a apresentação interativa
-        ├── Aula_BNCC_Lingua_Portuguesa.md
-        └── BNCC_LP_Anos_Iniciais.md
+├── saberes-metodologia-lp/         ← uma pasta por disciplina
+│   └── bncc-lingua-portuguesa/     ← uma pasta por aula
+│       ├── index.html              ← a apresentação interativa
+│       ├── Aula_BNCC_Lingua_Portuguesa.md
+│       └── BNCC_LP_Anos_Iniciais.md
+└── didatica/
+    └── metodologias-ativas/
+        └── index.html
 ```
 
 Cada aula vive em sua própria pasta com um `index.html`, então o endereço fica limpo, por exemplo:
