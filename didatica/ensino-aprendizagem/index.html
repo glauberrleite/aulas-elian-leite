@@ -14,13 +14,13 @@
   html[data-theme="light"]{
     --bg1:#F3ECFB;--bg2:#FBF8FF;--page:#FFFFFF;--paper:#FFFFFF;
     --ink:#241C42;--ink-soft:#54486F;--line:#E3D9F5;--shadow:0 14px 38px rgba(74,42,130,.16);
-    --title:#E8590C;--deep:#33235C;
+    --title:#F03E00;--deep:#2B1C52;
     --correct:#2F8F52;--correct-soft:#DFF3E4;--wrong:#C0392F;--wrong-soft:#FBE4E1;
   }
   html[data-theme="dark"]{
     --bg1:#1A1330;--bg2:#110B20;--page:#251C3F;--paper:#2C2249;
     --ink:#F6F1FE;--ink-soft:#CFC2EA;--line:#3F3163;--shadow:0 16px 44px rgba(0,0,0,.5);
-    --title:#FF922B;--deep:#0E0A1C;--purple:#B79AE0;--purple-dk:#D3BEF5;--purple-soft:#3A2C5C;
+    --title:#FF8A3D;--deep:#0E0A1C;--purple:#B79AE0;--purple-dk:#D3BEF5;--purple-soft:#3A2C5C;
     --c1:#A98AE8;--c2:#FF922B;--c3:#4DABF7;--c4:#51CF9E;--c5:#E599F7;--c6:#FF8FA8;
     --correct:#51CF7C;--correct-soft:#22402C;--wrong:#FF8787;--wrong-soft:#43222A;
   }
@@ -30,26 +30,26 @@
     background:radial-gradient(1200px 820px at 85% -12%,var(--purple-soft),transparent 62%),
                radial-gradient(1000px 720px at -10% 112%,var(--purple-soft),transparent 55%),
                linear-gradient(160deg,var(--bg1),var(--bg2));transition:background .4s,color .4s;}
-  #deck{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:clamp(8px,1.8vw,26px);}
-  .slide{display:none;width:calc(min(1340px,100%)/var(--fs,1));height:calc((100vh - clamp(16px,3.6vw,52px))/var(--fs,1));background:var(--paper);
+  #deck{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:clamp(6px,1vw,14px);}
+  .slide{display:none;width:calc(min(1560px,100%)/var(--fs,1));height:calc((100vh - clamp(12px,2vw,28px))/var(--fs,1));background:var(--paper);
     border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
-    padding:clamp(22px,3vw,46px) clamp(24px,3.4vw,54px);overflow:auto;position:relative;
+    padding:clamp(18px,2.2vw,34px) clamp(20px,2.6vw,42px);overflow:auto;position:relative;
     animation:pop .45s cubic-bezier(.2,.8,.2,1);display:none;}
   .slide.active{display:flex;flex-direction:column;justify-content:center}
   @keyframes pop{from{opacity:0;transform:translateY(14px) scale(.99)}to{opacity:1;transform:none}}
   .slide::-webkit-scrollbar{width:10px}.slide::-webkit-scrollbar-thumb{background:var(--purple-soft);border-radius:20px}
 
   .kicker{display:inline-flex;align-items:center;gap:8px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;
-    font-size:clamp(12px,1.35vw,16px);color:#fff;background:var(--purple);padding:8px 18px;border-radius:999px;margin-bottom:14px;align-self:flex-start}
+    font-size:clamp(13px,1.5vw,18px);color:#fff;background:var(--purple);padding:9px 20px;border-radius:999px;margin-bottom:12px;align-self:flex-start}
   h1{font-size:clamp(34px,5.6vw,68px);line-height:1.05;letter-spacing:-.6px;color:var(--ink)}
-  h2{font-size:clamp(30px,4.4vw,54px);line-height:1.08;margin-bottom:18px;letter-spacing:-.5px;color:var(--title)}
-  h3{font-size:clamp(20px,2.4vw,30px);margin:0 0 6px;color:var(--ink)}
-  p,li{font-size:clamp(18px,2.1vw,26px);line-height:1.45;color:var(--ink-soft)}
+  h2{font-size:clamp(32px,4.8vw,60px);line-height:1.05;margin-bottom:16px;letter-spacing:-.6px;color:var(--title);font-weight:900}
+  h3{font-size:clamp(22px,2.6vw,34px);margin:0 0 6px;color:var(--ink);font-weight:800}
+  p,li{font-size:clamp(19px,2.2vw,28px);line-height:1.4;color:var(--ink-soft)}
   ul,ol{padding-left:1.15em;margin:6px 0}li{margin:8px 0}
-  .lead{font-size:clamp(21px,2.7vw,34px);line-height:1.35;color:var(--ink)}
+  .lead{font-size:clamp(22px,2.9vw,38px);line-height:1.3;color:var(--ink);font-weight:600}
   strong{color:var(--ink)}.center{text-align:center;align-items:center}
   .muted{color:var(--ink-soft)}
-  .cover-badge{font-size:clamp(52px,8vw,92px);margin-bottom:8px}
+  .cover-badge{font-size:clamp(64px,9.5vw,120px);margin-bottom:6px}
   .meta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:26px}
   .chip{background:var(--purple-soft);border:1px solid var(--line);border-radius:999px;padding:11px 22px;font-size:clamp(15px,1.8vw,20px);color:var(--purple-dk);font-weight:800}
 
@@ -58,25 +58,25 @@
   @media(max-width:900px){.g2,.g3,.g4{grid-template-columns:1fr}}
 
   /* solid colour panels — white bold text */
-  .panel{border-radius:20px;padding:clamp(20px,2.4vw,32px);color:#fff;display:flex;flex-direction:column;justify-content:center;box-shadow:var(--shadow)}
+  .panel{border-radius:20px;padding:clamp(20px,2.6vw,36px);color:#fff;display:flex;flex-direction:column;justify-content:center;box-shadow:var(--shadow)}
   .panel h3,.panel strong{color:#fff}
-  .panel p,.panel li{color:rgba(255,255,255,.94);font-weight:600}
-  .panel .lbl{display:block;font-size:clamp(13px,1.5vw,17px);font-weight:900;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:8px}
+  .panel p,.panel li{color:#fff;font-weight:700}
+  .panel .lbl{display:block;font-size:clamp(14px,1.6vw,19px);font-weight:900;letter-spacing:.9px;text-transform:uppercase;color:#fff;opacity:.92;margin-bottom:8px}
   .panel .big{font-size:clamp(34px,4.6vw,62px);font-weight:900;line-height:1;color:#fff}
   .p1{background:var(--c1)}.p2{background:var(--c2)}.p3{background:var(--c3)}.p4{background:var(--c4)}.p5{background:var(--c5)}.p6{background:var(--c6)}
   .pdeep{background:var(--deep)}
 
-  .card{background:var(--page);border:2px solid var(--line);border-radius:20px;padding:clamp(18px,2.2vw,28px)}
-  .card p,.card li{font-size:clamp(17px,2vw,23px)}
+  .card{background:var(--purple-soft);border:3px solid var(--purple);border-radius:20px;padding:clamp(20px,2.5vw,32px)}
+  .card p,.card li{font-size:clamp(19px,2.2vw,27px);color:var(--ink);font-weight:600}
 
   .quote{border-left:8px solid var(--title);padding:clamp(14px,1.8vw,22px) clamp(18px,2.2vw,28px);background:var(--purple-soft);border-radius:0 18px 18px 0}
-  .quote p{font-style:italic;font-size:clamp(18px,2.2vw,27px);color:var(--ink)}
+  .quote p{font-style:italic;font-size:clamp(20px,2.4vw,30px);color:var(--ink);font-weight:600}
   .quote .src{font-style:normal;font-weight:800;font-size:clamp(14px,1.6vw,18px);color:var(--purple-dk);margin-top:8px}
 
   /* Fig 1 — three elements diagram */
   .fig1{display:flex;flex-direction:column;align-items:center;gap:0;width:100%}
-  .node{border-radius:18px;padding:clamp(14px,1.8vw,22px) clamp(16px,2vw,26px);color:#fff;font-weight:800;
-    font-size:clamp(17px,2vw,25px);text-align:center;box-shadow:var(--shadow);max-width:420px}
+  .node{border-radius:18px;padding:clamp(16px,2vw,26px) clamp(18px,2.2vw,30px);color:#fff;font-weight:800;
+    font-size:clamp(19px,2.3vw,29px);text-align:center;box-shadow:var(--shadow);max-width:480px}
   .hub{background:var(--c2);font-size:clamp(22px,2.8vw,36px);padding:clamp(14px,1.6vw,20px) clamp(30px,3.4vw,50px);border-radius:999px}
   .stem{width:4px;height:clamp(18px,2.4vw,34px);background:var(--line)}
   .branchrow{display:flex;justify-content:center;gap:clamp(20px,4vw,70px);width:100%;align-items:flex-start}
@@ -87,17 +87,17 @@
   .flow{display:flex;align-items:stretch;gap:clamp(10px,1.4vw,18px);width:100%;flex-wrap:wrap}
   .flow .step{flex:1;min-width:230px;border-radius:20px;padding:clamp(16px,2vw,26px);color:#fff;box-shadow:var(--shadow)}
   .flow .step .n{font-size:clamp(13px,1.5vw,16px);font-weight:900;letter-spacing:.8px;text-transform:uppercase;opacity:.85}
-  .flow .step h3{margin:6px 0 8px;font-size:clamp(19px,2.2vw,27px)}
-  .flow .step p{font-size:clamp(15px,1.75vw,20px)}
+  .flow .step h3{margin:6px 0 8px;font-size:clamp(21px,2.5vw,31px)}
+  .flow .step p{font-size:clamp(17px,2vw,24px);color:#fff;font-weight:700}
   .simul{margin-top:14px;text-align:center;font-weight:800;color:var(--title);font-size:clamp(16px,1.9vw,22px)}
 
   /* temple (4 pilares) */
   .temple{width:100%;max-width:1100px;margin:0 auto}
-  .roof{background:var(--deep);color:#fff;text-align:center;font-weight:900;font-size:clamp(20px,2.6vw,34px);
+  .roof{background:var(--deep);color:#fff;text-align:center;font-weight:900;font-size:clamp(24px,3vw,40px);
     padding:clamp(12px,1.6vw,20px);border-radius:16px 16px 0 0;letter-spacing:1px}
   .cols{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.2vw,16px);margin-top:8px}
   .pilar{border-radius:14px;color:#fff;font-weight:900;text-align:center;
-    padding:clamp(20px,3.2vw,46px) clamp(6px,1vw,12px);font-size:clamp(15px,1.9vw,24px);line-height:1.2;box-shadow:var(--shadow)}
+    padding:clamp(24px,3.6vw,54px) clamp(6px,1vw,12px);font-size:clamp(17px,2.2vw,28px);line-height:1.2;box-shadow:var(--shadow)}
   .base{height:clamp(14px,1.6vw,20px);background:var(--deep);border-radius:0 0 16px 16px;margin-top:8px}
   @media(max-width:900px){.cols{grid-template-columns:repeat(2,1fr)}}
 
@@ -178,12 +178,12 @@
     <h2>Ensinar é transmitir o que se sabe</h2>
     <div class="grid g2">
       <div class="panel pdeep">
-        <p style="font-size:clamp(19px,2.3vw,28px)">“O ensino e a aprendizagem são <strong>tão antigos quanto a própria humanidade</strong>.”</p>
+        <p style="font-size:clamp(22px,2.7vw,34px)">“O ensino e a aprendizagem são <strong>tão antigos quanto a própria humanidade</strong>.”</p>
         <p style="margin-top:14px;font-weight:900;color:var(--orange-lt)">PILETTI, 2010, p. 23</p>
       </div>
       <div class="card">
         <p><strong>Etimologia:</strong> ensinar (do latim <em>signare</em>) = <strong>“gravar no espírito”</strong>.</p>
-        <p style="margin-top:14px">👉 Primeira característica: o ensino é realizado por <strong>alguém que detém o conhecimento</strong> e o transmite a outro.</p>
+        <p style="margin-top:16px">👉 Ensina <strong>quem detém o conhecimento</strong> e o transmite a outro.</p>
       </div>
     </div>
     <div class="quote" style="margin-top:18px">
@@ -227,10 +227,10 @@
     <span class="kicker" style="align-self:center">Importante!</span>
     <h2>A motivação para aprender parte do aluno</h2>
     <div class="panel p2" style="max-width:1000px;margin:0 auto">
-      <p style="font-size:clamp(20px,2.5vw,31px)">Ela é <strong>inerente a ele</strong>. Ao professor cabe, com recursos, métodos e procedimentos, <strong>provocar</strong> essa motivação.</p>
+      <p style="font-size:clamp(24px,3vw,38px)">Ela é <strong>inerente a ele</strong>. Ao professor cabe <strong>provocar</strong> essa motivação.</p>
     </div>
     <div class="card" style="max-width:1000px;margin:18px auto 0">
-      <p>🔑 A forma mais eficaz: <strong>conhecer os interesses atuais dos alunos</strong> e, a partir deles, conduzir as aulas.</p>
+      <p>🔑 A forma mais eficaz: <strong>conhecer os interesses dos alunos</strong> e, a partir deles, conduzir as aulas.</p>
     </div>
   </section>
 
@@ -239,11 +239,11 @@
     <span class="kicker">2 · O conceito de aprendizagem</span>
     <h2>Aprender é apreender e transformar-se</h2>
     <div class="panel pdeep" style="margin-bottom:18px">
-      <p style="font-size:clamp(19px,2.4vw,29px)">Aprende-se quando o que foi ensinado é de fato <strong>apreendido e compreendido</strong> pelo aluno.</p>
+      <p style="font-size:clamp(23px,2.9vw,36px)">Aprende-se quando o que foi ensinado é de fato <strong>apreendido e compreendido</strong> pelo aluno.</p>
     </div>
     <div class="grid g2">
       <div class="panel p1"><span class="lbl">Antes</span><p style="font-size:clamp(18px,2.1vw,25px)">Ensinar → <strong>professor</strong><br>Aprender → <strong>aluno</strong> (alvo das técnicas)</p></div>
-      <div class="panel p4"><span class="lbl">Resultado</span><p style="font-size:clamp(18px,2.1vw,25px)">O conhecimento passa a <strong>fazer parte do indivíduo</strong>, mudando seus pensamentos ou sua conduta.</p></div>
+      <div class="panel p4"><span class="lbl">Resultado</span><p style="font-size:clamp(19px,2.2vw,27px)">O conhecimento passa a <strong>fazer parte do indivíduo</strong>, mudando pensamentos e conduta.</p></div>
     </div>
   </section>
 
@@ -264,12 +264,12 @@
     <span class="kicker">2 · Aprendizagem</span>
     <h2>Fatores que intervêm na aprendizagem</h2>
     <div class="grid g3">
-      <div class="panel p1"><div style="font-size:clamp(28px,3.4vw,44px)">🏘️</div><h3 style="margin-top:8px">Realidade social</h3><p>Estrutura de vida e classe social podem dificultar ou favorecer o aprender.</p></div>
-      <div class="panel p4"><div style="font-size:clamp(28px,3.4vw,44px)">🥗</div><h3 style="margin-top:8px">Nutrição</h3><p>Desde a gestação — influencia o desenvolvimento neuronal pleno.</p></div>
-      <div class="panel p6"><div style="font-size:clamp(28px,3.4vw,44px)">🏠</div><h3 style="margin-top:8px">Ambiente familiar</h3><p>Ambiente harmônico e dialógico cria melhores condições psicológicas.</p></div>
-      <div class="panel p2"><div style="font-size:clamp(28px,3.4vw,44px)">✨</div><h3 style="margin-top:8px">Estímulos recebidos</h3><p>Motivam e interferem diretamente no interesse por aprender.</p></div>
-      <div class="panel p3"><div style="font-size:clamp(28px,3.4vw,44px)">👩‍🏫</div><h3 style="margin-top:8px">Didática do professor</h3><p>O modo de planejar e desenvolver as aulas afeta a motivação.</p></div>
-      <div class="panel p5"><div style="font-size:clamp(28px,3.4vw,44px)">🎭</div><h3 style="margin-top:8px">Aspectos culturais</h3><p>Vivências nos grupos sociais formam a visão de mundo e o valor dado à escola.</p></div>
+      <div class="panel p1"><div style="font-size:clamp(36px,4.4vw,60px)">🏘️</div><h3 style="margin-top:8px">Realidade social</h3><p>Estrutura de vida e classe social.</p></div>
+      <div class="panel p4"><div style="font-size:clamp(36px,4.4vw,60px)">🥗</div><h3 style="margin-top:8px">Nutrição</h3><p>Desde a gestação — desenvolvimento neuronal.</p></div>
+      <div class="panel p6"><div style="font-size:clamp(36px,4.4vw,60px)">🏠</div><h3 style="margin-top:8px">Ambiente familiar</h3><p>Ambiente harmônico e dialógico.</p></div>
+      <div class="panel p2"><div style="font-size:clamp(36px,4.4vw,60px)">✨</div><h3 style="margin-top:8px">Estímulos recebidos</h3><p>Interferem no interesse por aprender.</p></div>
+      <div class="panel p3"><div style="font-size:clamp(36px,4.4vw,60px)">👩‍🏫</div><h3 style="margin-top:8px">Didática do professor</h3><p>O modo de planejar e dar as aulas.</p></div>
+      <div class="panel p5"><div style="font-size:clamp(36px,4.4vw,60px)">🎭</div><h3 style="margin-top:8px">Aspectos culturais</h3><p>Vivências que formam a visão de mundo.</p></div>
     </div>
   </section>
 
@@ -278,7 +278,7 @@
     <span class="kicker" style="align-self:center">Conclusão parcial</span>
     <h2>Aprender não é só adquirir informação</h2>
     <div class="panel pdeep" style="max-width:1050px;margin:0 auto">
-      <p style="font-size:clamp(20px,2.6vw,32px);font-style:italic">“A aprendizagem não é somente um processo de aquisição de conhecimentos, conteúdos ou informações. As informações são importantes, mas precisam passar por um <strong>processamento muito complexo</strong>, a fim de se tornarem <strong>significativas para a vida das pessoas</strong>.”</p>
+      <p style="font-size:clamp(23px,2.9vw,37px);font-style:italic">“As informações são importantes, mas precisam passar por um <strong>processamento muito complexo</strong> para se tornarem <strong>significativas para a vida das pessoas</strong>.”</p>
       <p style="margin-top:16px;font-weight:900;color:var(--orange-lt)">PILETTI, 2010</p>
     </div>
   </section>
@@ -324,12 +324,12 @@
     <h2>Aprender a conhecer</h2>
     <div class="grid g2">
       <div class="panel p1">
-        <div style="font-size:clamp(38px,4.6vw,64px)">📚</div>
-        <p style="margin-top:12px;font-size:clamp(19px,2.3vw,28px)">Acesso a uma <strong>cultura geral ampla</strong>, que dê capacidade intelectual para <strong>escolher</strong> o que aprofundar ao longo da vida.</p>
+        <div style="font-size:clamp(46px,5.6vw,80px)">📚</div>
+        <p style="margin-top:12px;font-size:clamp(22px,2.7vw,33px)">Uma <strong>cultura geral ampla</strong>, que dê base para <strong>escolher</strong> o que aprofundar ao longo da vida.</p>
       </div>
       <div class="card">
-        <p>🏫 A <strong>escolarização inicial</strong> é fundamental: ela fornece a base que dará suporte a todas as aprendizagens posteriores.</p>
-        <p style="margin-top:16px">🇧🇷 No Brasil, a <strong>BNCC</strong> propõe esse nivelamento de conteúdos para todos os estudantes.</p>
+        <p>🏫 A <strong>escolarização inicial</strong> dá a base para todas as aprendizagens posteriores.</p>
+        <p style="margin-top:16px">🇧🇷 No Brasil, a <strong>BNCC</strong> propõe esse nivelamento de conteúdos.</p>
       </div>
     </div>
   </section>
@@ -340,11 +340,11 @@
     <h2>Aprender a fazer</h2>
     <div class="grid g2">
       <div class="panel p2">
-        <div style="font-size:clamp(38px,4.6vw,64px)">🛠️</div>
-        <p style="margin-top:12px;font-size:clamp(19px,2.3vw,28px)">Aquisição de uma <strong>profissão</strong> e de competências para as <strong>imprevisibilidades</strong> do mercado de trabalho.</p>
+        <div style="font-size:clamp(46px,5.6vw,80px)">🛠️</div>
+        <p style="margin-top:12px;font-size:clamp(22px,2.7vw,33px)">Uma <strong>profissão</strong> e competências para as <strong>imprevisibilidades</strong> do trabalho.</p>
       </div>
       <div class="card">
-        <p>👥 Desenvolver na escola o <strong>trabalho em equipe</strong>, aproximando-a dos ambientes profissionais.</p>
+        <p>👥 <strong>Trabalho em equipe</strong> na escola, aproximando-a do mundo profissional.</p>
         <p style="margin-top:16px">⭐ Liderança, empreendedorismo, comunicação, inteligência emocional e relacionamento interpessoal.</p>
       </div>
     </div>
@@ -356,12 +356,12 @@
     <h2>Aprender a conviver</h2>
     <div class="grid g2">
       <div class="panel p4">
-        <div style="font-size:clamp(38px,4.6vw,64px)">🤝</div>
-        <p style="margin-top:12px;font-size:clamp(19px,2.3vw,28px)">O <strong>respeito pelo outro</strong> como constante: conhecer a história, as tradições e a espiritualidade dos diversos grupos culturais.</p>
+        <div style="font-size:clamp(46px,5.6vw,80px)">🤝</div>
+        <p style="margin-top:12px;font-size:clamp(22px,2.7vw,33px)">O <strong>respeito pelo outro</strong>: conhecer a história, as tradições e a espiritualidade dos diversos grupos culturais.</p>
       </div>
       <div class="card">
         <p>🌍 Visa uma <strong>convivência social menos conflituosa</strong>.</p>
-        <p style="margin-top:16px">🧩 Daí os temas do <strong>multiculturalismo</strong>, da <strong>diversidade</strong> e da <strong>inclusão escolar</strong> — por uma sociedade mais tolerante e pacífica.</p>
+        <p style="margin-top:16px">🧩 Daí os temas do <strong>multiculturalismo</strong>, da <strong>diversidade</strong> e da <strong>inclusão escolar</strong>.</p>
       </div>
     </div>
   </section>
@@ -372,12 +372,12 @@
     <h2>Aprender a ser</h2>
     <div class="grid g2">
       <div class="panel p5">
-        <div style="font-size:clamp(38px,4.6vw,64px)">🌱</div>
-        <p style="margin-top:12px;font-size:clamp(19px,2.3vw,28px)">O compromisso individual de <strong>tornar-se melhor</strong> e desenvolver plenamente as próprias capacidades, em benefício da <strong>coletividade</strong>.</p>
+        <div style="font-size:clamp(46px,5.6vw,80px)">🌱</div>
+        <p style="margin-top:12px;font-size:clamp(22px,2.7vw,33px)">O compromisso de <strong>tornar-se melhor</strong> e desenvolver as próprias capacidades, em benefício da <strong>coletividade</strong>.</p>
       </div>
       <div class="card">
-        <p>🧠 Memória, raciocínio, imaginação, capacidades físicas, sentido estético e facilidade de comunicar-se.</p>
-        <p style="margin-top:16px">🔎 Envolve também o <strong>autoconhecimento</strong>: expandir ao máximo habilidades e talentos.</p>
+        <p>🧠 Memória, raciocínio, imaginação, capacidades físicas e sentido estético.</p>
+        <p style="margin-top:16px">🔎 Envolve o <strong>autoconhecimento</strong>: expandir habilidades e talentos.</p>
       </div>
     </div>
   </section>
