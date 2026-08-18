@@ -23,7 +23,7 @@
                radial-gradient(1000px 720px at -10% 112%,var(--purple-soft),transparent 55%),
                linear-gradient(160deg,var(--bg1),var(--bg2));transition:background .4s,color .4s;}
   #deck{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:clamp(8px,1.8vw,26px);}
-  .slide{display:none;width:min(1340px,100%);height:calc(100vh - clamp(16px,3.6vw,52px));background:var(--paper);
+  .slide{display:none;width:calc(min(1340px,100%)/var(--fs,1));height:calc((100vh - clamp(16px,3.6vw,52px))/var(--fs,1));background:var(--paper);
     border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
     padding:clamp(20px,2.8vw,44px) clamp(22px,3.2vw,52px);overflow:auto;position:relative;
     animation:pop .45s cubic-bezier(.2,.8,.2,1);}
@@ -88,10 +88,23 @@
   .hintline{margin-top:14px;font-size:clamp(14px,1.6vw,18px);color:var(--ink-soft);text-align:center}
   kbd{background:var(--ink);color:var(--paper);border-radius:6px;padding:2px 8px;font-size:14px;font-family:monospace}
   a.mail{color:var(--title);font-weight:900;text-decoration:none}
+
+  /* --- controle de tamanho de fonte --- */
+  .slide{zoom:var(--fs,1)}
+  #fsctl{display:flex;align-items:center;gap:4px;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:4px 6px}
+  #fsctl button{border:none;background:var(--purple-soft);color:var(--purple-dk);width:30px;height:30px;border-radius:8px;
+    font-size:15px;font-weight:900;cursor:pointer;font-family:inherit;line-height:1;display:flex;align-items:center;justify-content:center}
+  #fsctl button:hover{background:var(--purple);color:#fff}
+  #fsval{font-size:12px;font-weight:800;color:var(--ink);min-width:38px;text-align:center;cursor:pointer}
 </style>
 </head>
 <body>
 <div id="topbar">
+  <div id="fsctl" title="Tamanho da fonte">
+    <button id="fsMinus" aria-label="Diminuir fonte">A&minus;</button>
+    <span id="fsval" title="Clique para restaurar">100%</span>
+    <button id="fsPlus" aria-label="Aumentar fonte">A+</button>
+  </div>
   <a class="tbtn" href="../../">&larr; Indice</a>
   <button class="tbtn" id="themeBtn">Escuro</button>
   <button class="tbtn" id="fsBtn">Apresentar</button>
@@ -154,7 +167,7 @@
 <section class="slide">
   <span class="kicker">1&ordm; e 2&ordm; ano</span>
   <h2>Objetos de conhecimento</h2>
-  <div class="grid g3"><div class="panel c1"><div style="font-size:clamp(26px,3.2vw,42px)">&#128218;</div><h3 style="margin-top:8px">Conhecimento do alfabeto</h3><p style="font-size:clamp(14px,1.6vw,19px)">imprensa/cursiva, mai&uacute;sculas/min&uacute;sculas</p></div><div class="panel c2"><div style="font-size:clamp(26px,3.2vw,42px)">&#9999;&#65039;</div><h3 style="margin-top:8px">Sistema alfab&eacute;tico e ortografia</h3><p style="font-size:clamp(14px,1.6vw,19px)">constru&ccedil;&atilde;o progressiva</p></div><div class="panel c3"><div style="font-size:clamp(26px,3.2vw,42px)">&#128075;</div><h3 style="margin-top:8px">Segmenta&ccedil;&atilde;o de palavras</h3><p style="font-size:clamp(14px,1.6vw,19px)">classifica&ccedil;&atilde;o por n&ordm; de s&iacute;labas</p></div><div class="panel c4"><div style="font-size:clamp(26px,3.2vw,42px)">&#10071;</div><h3 style="margin-top:8px">Pontua&ccedil;&atilde;o</h3><p style="font-size:clamp(14px,1.6vw,19px)">sinais e efeitos de sentido</p></div><div class="panel c5"><div style="font-size:clamp(26px,3.2vw,42px)">&#128260;</div><h3 style="margin-top:8px">Sinon&iacute;mia, anton&iacute;mia e morfologia</h3><p style="font-size:clamp(14px,1.6vw,19px)">sentidos e forma&ccedil;&atilde;o de palavras</p></div><div class="panel c6"><div style="font-size:clamp(26px,3.2vw,42px)">&#127917;</div><h3 style="margin-top:8px">Formas de composi&ccedil;&atilde;o de textos</h3><p style="font-size:clamp(14px,1.6vw,19px)">narrativos, po&eacute;ticos, visuais</p></div></div>
+  <div class="grid g3"><div class="panel p1"><div style="font-size:clamp(26px,3.2vw,42px)">&#128218;</div><h3 style="margin-top:8px">Conhecimento do alfabeto</h3><p style="font-size:clamp(14px,1.6vw,19px)">imprensa/cursiva, mai&uacute;sculas/min&uacute;sculas</p></div><div class="panel p2"><div style="font-size:clamp(26px,3.2vw,42px)">&#9999;&#65039;</div><h3 style="margin-top:8px">Sistema alfab&eacute;tico e ortografia</h3><p style="font-size:clamp(14px,1.6vw,19px)">constru&ccedil;&atilde;o progressiva</p></div><div class="panel p3"><div style="font-size:clamp(26px,3.2vw,42px)">&#128075;</div><h3 style="margin-top:8px">Segmenta&ccedil;&atilde;o de palavras</h3><p style="font-size:clamp(14px,1.6vw,19px)">classifica&ccedil;&atilde;o por n&ordm; de s&iacute;labas</p></div><div class="panel p4"><div style="font-size:clamp(26px,3.2vw,42px)">&#10071;</div><h3 style="margin-top:8px">Pontua&ccedil;&atilde;o</h3><p style="font-size:clamp(14px,1.6vw,19px)">sinais e efeitos de sentido</p></div><div class="panel p5"><div style="font-size:clamp(26px,3.2vw,42px)">&#128260;</div><h3 style="margin-top:8px">Sinon&iacute;mia, anton&iacute;mia e morfologia</h3><p style="font-size:clamp(14px,1.6vw,19px)">sentidos e forma&ccedil;&atilde;o de palavras</p></div><div class="panel p6"><div style="font-size:clamp(26px,3.2vw,42px)">&#127917;</div><h3 style="margin-top:8px">Formas de composi&ccedil;&atilde;o de textos</h3><p style="font-size:clamp(14px,1.6vw,19px)">narrativos, po&eacute;ticos, visuais</p></div></div>
 </section>
 <section class="slide center">
   <span class="kicker k3" style="align-self:center">Habilidades</span>
@@ -670,6 +683,28 @@ show(0);
 document.getElementById('fsBtn').onclick=()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.();};
 const themeBtn=document.getElementById('themeBtn'),root=document.documentElement;
 themeBtn.onclick=()=>{const d=root.getAttribute('data-theme')==='dark';root.setAttribute('data-theme',d?'light':'dark');themeBtn.textContent=d?'Escuro':'Claro';};
+
+/* Controle de tamanho da fonte */
+(function(){
+  var fs=1;
+  try{var s=localStorage.getItem('aulaFs');if(s)fs=parseFloat(s)||1;}catch(e){}
+  var val=document.getElementById('fsval');
+  function apply(){
+    fs=Math.min(1.6,Math.max(0.7,Math.round(fs*100)/100));
+    document.documentElement.style.setProperty('--fs',fs);
+    if(val)val.textContent=Math.round(fs*100)+'%';
+    try{localStorage.setItem('aulaFs',fs);}catch(e){}
+  }
+  document.getElementById('fsPlus').onclick=function(){fs+=0.1;apply();};
+  document.getElementById('fsMinus').onclick=function(){fs-=0.1;apply();};
+  if(val)val.onclick=function(){fs=1;apply();};
+  document.addEventListener('keydown',function(e){
+    if(e.key==='+'||e.key==='='){fs+=0.1;apply();}
+    else if(e.key==='-'||e.key==='_'){fs-=0.1;apply();}
+    else if(e.key==='0'){fs=1;apply();}
+  });
+  apply();
+})();
 </script>
 </body>
 </html>
