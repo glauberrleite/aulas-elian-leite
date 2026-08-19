@@ -67,7 +67,9 @@
   .opt:hover{border-color:var(--lilac)}
   .opt.correct{border-color:var(--correct);background:var(--correct-soft)}
   .opt.wrong{border-color:var(--wrong);background:var(--wrong-soft)}
-  .opt .fb{display:block;font-weight:500;font-size:clamp(13px,1.5vw,16px);color:var(--ink-soft);margin-top:4px}
+  .opt .fb{display:none;font-weight:500;font-size:clamp(15px,1.75vw,20px);color:var(--ink-soft);margin-top:8px;
+    padding-top:8px;border-top:2px solid var(--line)}
+  .opt.correct .fb,.opt.wrong .fb{display:block;animation:pop .3s}
   .qwrap{display:none}.qwrap.show{display:block;animation:pop .35s}
   .scorebar{display:flex;align-items:center;gap:16px;margin-top:16px;flex-wrap:wrap}
   .btn{background:var(--purple);color:#fff;border:none;border-radius:12px;padding:12px 22px;font-size:clamp(15px,1.7vw,18px);font-weight:800;cursor:pointer;transition:.15s;font-family:inherit}
@@ -416,7 +418,6 @@
 
   <!-- 13 OBRIGADA -->
   <section class="slide center">
-    <div class="cover-badge">💜</div>
     <h1 style="color:var(--title)">Obrigada!</h1>
     <p class="lead" style="margin-top:18px;font-weight:900">Profª Drª Elian Leite</p>
     <p style="margin-top:14px;font-size:clamp(19px,2.3vw,28px)">✉️ <a href="mailto:prof.elianleite@gmail.com" style="color:var(--title);font-weight:900;text-decoration:none">prof.elianleite@gmail.com</a></p>
