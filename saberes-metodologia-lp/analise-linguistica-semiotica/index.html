@@ -96,6 +96,19 @@
     font-size:15px;font-weight:900;cursor:pointer;font-family:inherit;line-height:1;display:flex;align-items:center;justify-content:center}
   #fsctl button:hover{background:var(--purple);color:#fff}
   #fsval{font-size:12px;font-weight:800;color:var(--ink);min-width:38px;text-align:center;cursor:pointer}
+
+  /* exemplo retratil */
+  .exbox{background:var(--purple-soft);border:3px solid var(--c2);border-radius:20px;
+    padding:clamp(16px,2vw,26px);cursor:pointer;transition:.2s;align-self:start}
+  .exbox:hover{box-shadow:var(--shadow)}
+  .exbox .exhead{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .exbox .tag{color:var(--title);font-weight:900;font-size:clamp(15px,1.8vw,20px);
+    text-transform:uppercase;letter-spacing:.6px}
+  .exbox .chev{color:var(--title);font-size:clamp(20px,2.4vw,28px);transition:transform .3s;line-height:1}
+  .exbox.open .chev{transform:rotate(90deg)}
+  .exbox .exbody{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .exbox.open .exbody{max-height:520px;margin-top:12px}
+  .exbox .exbody p{font-size:clamp(17px,2vw,23px);color:var(--ink);font-weight:600}
 </style>
 </head>
 <body>
@@ -182,9 +195,9 @@
       <span class="code">EF01LP04</span>
       <p style="font-size:clamp(16px,1.95vw,23px)">Distinguir as letras do alfabeto de outros sinais gr&aacute;ficos.</p>
     </div>
-    <div class="card" style="border-color:var(--c2)">
-      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
-      <p style="margin-top:8px">Espalhar cart&otilde;es com <strong>letras</strong>, <strong>n&uacute;meros</strong> (3, 7) e <strong>s&iacute;mbolos</strong> (@, #, &amp;). As crian&ccedil;as separam apenas as letras e explicam por que os outros n&atilde;o s&atilde;o letras.</p>
+    <div class="exbox" onclick="this.classList.toggle('open')">
+      <div class="exhead"><span class="tag">&#128161; Exemplo em sala</span><span class="chev">&#9656;</span></div>
+      <div class="exbody"><p>Espalhar cart&otilde;es com <strong>letras</strong>, <strong>n&uacute;meros</strong> (3, 7) e <strong>s&iacute;mbolos</strong> (@, #, &amp;). As crian&ccedil;as separam apenas as letras e explicam por que os outros n&atilde;o s&atilde;o letras.</p></div>
     </div>
   </div>
 </section>
@@ -196,9 +209,9 @@
       <span class="code">EF01LP05</span>
       <p style="font-size:clamp(16px,1.95vw,23px)">Reconhecer o sistema de escrita alfab&eacute;tica como representa&ccedil;&atilde;o dos sons da fala.</p>
     </div>
-    <div class="card" style="border-color:var(--c2)">
-      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
-      <p style="margin-top:8px">Falar <strong>B-O-L-A</strong> bem devagar, mostrando cada som, e escrever a palavra. Comparar com o <strong>desenho</strong> de uma bola: o desenho mostra o objeto; as letras registram os <strong>sons</strong>.</p>
+    <div class="exbox" onclick="this.classList.toggle('open')">
+      <div class="exhead"><span class="tag">&#128161; Exemplo em sala</span><span class="chev">&#9656;</span></div>
+      <div class="exbody"><p>Falar <strong>B-O-L-A</strong> bem devagar, mostrando cada som, e escrever a palavra. Comparar com o <strong>desenho</strong> de uma bola: o desenho mostra o objeto; as letras registram os <strong>sons</strong>.</p></div>
     </div>
   </div>
 </section>
@@ -210,9 +223,9 @@
       <span class="code">EF01LP06</span>
       <p style="font-size:clamp(16px,1.95vw,23px)">Segmentar oralmente palavras em s&iacute;labas.</p>
     </div>
-    <div class="card" style="border-color:var(--c2)">
-      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
-      <p style="margin-top:8px">Bater palmas a cada s&iacute;laba: <strong>BA-NA-NA</strong> (3 palmas), <strong>P&Eacute;</strong> (1), <strong>CA-SA</strong> (2). Depois separar os alunos em grupos pelo n&uacute;mero de palmas do pr&oacute;prio nome.</p>
+    <div class="exbox" onclick="this.classList.toggle('open')">
+      <div class="exhead"><span class="tag">&#128161; Exemplo em sala</span><span class="chev">&#9656;</span></div>
+      <div class="exbody"><p>Bater palmas a cada s&iacute;laba: <strong>BA-NA-NA</strong> (3 palmas), <strong>P&Eacute;</strong> (1), <strong>CA-SA</strong> (2). Depois separar os alunos em grupos pelo n&uacute;mero de palmas do pr&oacute;prio nome.</p></div>
     </div>
   </div>
 </section>
@@ -224,9 +237,9 @@
       <span class="code">EF01LP07</span>
       <p style="font-size:clamp(16px,1.95vw,23px)">Identificar fonemas e sua representa&ccedil;&atilde;o por letras.</p>
     </div>
-    <div class="card" style="border-color:var(--c2)">
-      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
-      <p style="margin-top:8px">Mostrar a figura de um <strong>SAPO</strong> e perguntar: qual o primeiro som? Qual letra registra esse som? Repetir com SOL e SUCO, percebendo que o mesmo som se escreve com <strong>S</strong>.</p>
+    <div class="exbox" onclick="this.classList.toggle('open')">
+      <div class="exhead"><span class="tag">&#128161; Exemplo em sala</span><span class="chev">&#9656;</span></div>
+      <div class="exbody"><p>Mostrar a figura de um <strong>SAPO</strong> e perguntar: qual o primeiro som? Qual letra registra esse som? Repetir com SOL e SUCO, percebendo que o mesmo som se escreve com <strong>S</strong>.</p></div>
     </div>
   </div>
 </section>
@@ -238,9 +251,9 @@
       <span class="code">EF01LP08</span>
       <p style="font-size:clamp(16px,1.95vw,23px)">Relacionar elementos sonoros (s&iacute;labas, fonemas, partes de palavras) com sua representa&ccedil;&atilde;o escrita.</p>
     </div>
-    <div class="card" style="border-color:var(--c2)">
-      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
-      <p style="margin-top:8px">Jogo de encaixe com fichas sil&aacute;bicas: a professora fala <strong>PA</strong>-<strong>TO</strong> e os alunos escolhem as fichas correspondentes para montar a palavra. Trocar uma ficha e ler a nova palavra formada.</p>
+    <div class="exbox" onclick="this.classList.toggle('open')">
+      <div class="exhead"><span class="tag">&#128161; Exemplo em sala</span><span class="chev">&#9656;</span></div>
+      <div class="exbody"><p>Jogo de encaixe com fichas sil&aacute;bicas: a professora fala <strong>PA</strong>-<strong>TO</strong> e os alunos escolhem as fichas correspondentes para montar a palavra. Trocar uma ficha e ler a nova palavra formada.</p></div>
     </div>
   </div>
 </section>
@@ -252,9 +265,9 @@
       <span class="code">EF01LP09</span>
       <p style="font-size:clamp(16px,1.95vw,23px)">Comparar palavras, identificando semelhan&ccedil;as e diferen&ccedil;as entre sons de s&iacute;labas iniciais.</p>
     </div>
-    <div class="card" style="border-color:var(--c2)">
-      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
-      <p style="margin-top:8px">Apresentar <strong>BOLA, BONECA, BOTA</strong> e <strong>GATO</strong>. Os alunos identificam quais come&ccedil;am com o mesmo som (<strong>BO</strong>) e qual n&atilde;o pertence ao grupo.</p>
+    <div class="exbox" onclick="this.classList.toggle('open')">
+      <div class="exhead"><span class="tag">&#128161; Exemplo em sala</span><span class="chev">&#9656;</span></div>
+      <div class="exbody"><p>Apresentar <strong>BOLA, BONECA, BOTA</strong> e <strong>GATO</strong>. Os alunos identificam quais come&ccedil;am com o mesmo som (<strong>BO</strong>) e qual n&atilde;o pertence ao grupo.</p></div>
     </div>
   </div>
 </section>
@@ -266,9 +279,9 @@
       <span class="code">EF01LP10</span>
       <p style="font-size:clamp(16px,1.95vw,23px)">Nomear as letras do alfabeto e recit&aacute;-lo na ordem das letras.</p>
     </div>
-    <div class="card" style="border-color:var(--c2)">
-      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
-      <p style="margin-top:8px">Cantar a m&uacute;sica do alfabeto e, em seguida, embaralhar as letras do <strong>alfabeto m&oacute;vel</strong> para que a turma as recoloque na ordem correta.</p>
+    <div class="exbox" onclick="this.classList.toggle('open')">
+      <div class="exhead"><span class="tag">&#128161; Exemplo em sala</span><span class="chev">&#9656;</span></div>
+      <div class="exbody"><p>Cantar a m&uacute;sica do alfabeto e, em seguida, embaralhar as letras do <strong>alfabeto m&oacute;vel</strong> para que a turma as recoloque na ordem correta.</p></div>
     </div>
   </div>
 </section>
@@ -280,9 +293,9 @@
       <span class="code">EF01LP11</span>
       <p style="font-size:clamp(16px,1.95vw,23px)">Conhecer, diferenciar e relacionar letras em formato imprensa e cursiva, mai&uacute;sculas e min&uacute;sculas.</p>
     </div>
-    <div class="card" style="border-color:var(--c2)">
-      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
-      <p style="margin-top:8px">Cartelas com <strong>A / a / <em>A</em> / <em>a</em></strong>. Os alunos parear os quatro formatos da mesma letra e depois localizam o pr&oacute;prio nome escrito nas diferentes formas.</p>
+    <div class="exbox" onclick="this.classList.toggle('open')">
+      <div class="exhead"><span class="tag">&#128161; Exemplo em sala</span><span class="chev">&#9656;</span></div>
+      <div class="exbody"><p>Cartelas com <strong>A / a / <em>A</em> / <em>a</em></strong>. Os alunos parear os quatro formatos da mesma letra e depois localizam o pr&oacute;prio nome escrito nas diferentes formas.</p></div>
     </div>
   </div>
 </section>
@@ -294,9 +307,9 @@
       <span class="code">EF01LP12</span>
       <p style="font-size:clamp(16px,1.95vw,23px)">Reconhecer a separa&ccedil;&atilde;o das palavras, na escrita, por espa&ccedil;os em branco.</p>
     </div>
-    <div class="card" style="border-color:var(--c2)">
-      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
-      <p style="margin-top:8px">Escrever no quadro <strong>OGATOSUBIUNOTELHADO</strong> e pedir que a turma marque com giz onde come&ccedil;a e termina cada palavra, reescrevendo a frase com os espa&ccedil;os.</p>
+    <div class="exbox" onclick="this.classList.toggle('open')">
+      <div class="exhead"><span class="tag">&#128161; Exemplo em sala</span><span class="chev">&#9656;</span></div>
+      <div class="exbody"><p>Escrever no quadro <strong>OGATOSUBIUNOTELHADO</strong> e pedir que a turma marque com giz onde come&ccedil;a e termina cada palavra, reescrevendo a frase com os espa&ccedil;os.</p></div>
     </div>
   </div>
 </section>
@@ -308,9 +321,9 @@
       <span class="code">EF01LP13</span>
       <p style="font-size:clamp(16px,1.95vw,23px)">Comparar palavras, identificando semelhan&ccedil;as e diferen&ccedil;as entre sons de s&iacute;labas mediais e finais.</p>
     </div>
-    <div class="card" style="border-color:var(--c2)">
-      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
-      <p style="margin-top:8px">Trabalhar com <strong>rimas</strong>: PANELA / JANELA / AMARELA (final igual). Depois comparar CA<strong>S</strong>A e CA<strong>M</strong>A, observando a s&iacute;laba do meio.</p>
+    <div class="exbox" onclick="this.classList.toggle('open')">
+      <div class="exhead"><span class="tag">&#128161; Exemplo em sala</span><span class="chev">&#9656;</span></div>
+      <div class="exbody"><p>Trabalhar com <strong>rimas</strong>: PANELA / JANELA / AMARELA (final igual). Depois comparar CA<strong>S</strong>A e CA<strong>M</strong>A, observando a s&iacute;laba do meio.</p></div>
     </div>
   </div>
 </section>
@@ -322,9 +335,9 @@
       <span class="code">EF01LP14</span>
       <p style="font-size:clamp(16px,1.95vw,23px)">Identificar outros sinais no texto al&eacute;m das letras, como pontos finais, de interroga&ccedil;&atilde;o e exclama&ccedil;&atilde;o e seus efeitos na entona&ccedil;&atilde;o.</p>
     </div>
-    <div class="card" style="border-color:var(--c2)">
-      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
-      <p style="margin-top:8px">Ler a mesma frase de tr&ecirc;s formas: <strong>Voc&ecirc; vem.</strong> / <strong>Voc&ecirc; vem?</strong> / <strong>Voc&ecirc; vem!</strong> As crian&ccedil;as percebem como a voz muda e associam cada sinal a uma entona&ccedil;&atilde;o.</p>
+    <div class="exbox" onclick="this.classList.toggle('open')">
+      <div class="exhead"><span class="tag">&#128161; Exemplo em sala</span><span class="chev">&#9656;</span></div>
+      <div class="exbody"><p>Ler a mesma frase de tr&ecirc;s formas: <strong>Voc&ecirc; vem.</strong> / <strong>Voc&ecirc; vem?</strong> / <strong>Voc&ecirc; vem!</strong> As crian&ccedil;as percebem como a voz muda e associam cada sinal a uma entona&ccedil;&atilde;o.</p></div>
     </div>
   </div>
 </section>
@@ -336,9 +349,9 @@
       <span class="code">EF01LP15</span>
       <p style="font-size:clamp(16px,1.95vw,23px)">Agrupar palavras pelo crit&eacute;rio de aproxima&ccedil;&atilde;o de significado (sinon&iacute;mia) e separar palavras pelo crit&eacute;rio de oposi&ccedil;&atilde;o de significado (anton&iacute;mia).</p>
     </div>
-    <div class="card" style="border-color:var(--c2)">
-      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
-      <p style="margin-top:8px">Com cartelas de palavras, montar duas colunas: <strong>parecidos</strong> (bonito / belo; alegre / feliz) e <strong>opostos</strong> (alto / baixo; dia / noite).</p>
+    <div class="exbox" onclick="this.classList.toggle('open')">
+      <div class="exhead"><span class="tag">&#128161; Exemplo em sala</span><span class="chev">&#9656;</span></div>
+      <div class="exbody"><p>Com cartelas de palavras, montar duas colunas: <strong>parecidos</strong> (bonito / belo; alegre / feliz) e <strong>opostos</strong> (alto / baixo; dia / noite).</p></div>
     </div>
   </div>
 </section>
@@ -355,9 +368,9 @@
       <span class="code">EF02LP02</span>
       <p style="font-size:clamp(16px,1.95vw,23px)">Segmentar palavras em s&iacute;labas e remover e substituir s&iacute;labas iniciais, mediais ou finais para criar novas palavras.</p>
     </div>
-    <div class="card" style="border-color:var(--c2)">
-      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
-      <p style="margin-top:8px">Partir de <strong>MALA</strong>: trocar a primeira s&iacute;laba e formar <strong>BALA</strong>, <strong>SALA</strong>, <strong>FALA</strong>. Depois retirar uma s&iacute;laba de <strong>CAVALO</strong> e descobrir o que sobra.</p>
+    <div class="exbox" onclick="this.classList.toggle('open')">
+      <div class="exhead"><span class="tag">&#128161; Exemplo em sala</span><span class="chev">&#9656;</span></div>
+      <div class="exbody"><p>Partir de <strong>MALA</strong>: trocar a primeira s&iacute;laba e formar <strong>BALA</strong>, <strong>SALA</strong>, <strong>FALA</strong>. Depois retirar uma s&iacute;laba de <strong>CAVALO</strong> e descobrir o que sobra.</p></div>
     </div>
   </div>
 </section>
@@ -369,9 +382,9 @@
       <span class="code">EF02LP03</span>
       <p style="font-size:clamp(16px,1.95vw,23px)">Ler e escrever palavras com correspond&ecirc;ncias regulares diretas entre letras e fonemas (f, v, t, d, p, b) e correspond&ecirc;ncias regulares contextuais (c e q; e e o, em posi&ccedil;&atilde;o &aacute;tona em final de palavra).</p>
     </div>
-    <div class="card" style="border-color:var(--c2)">
-      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
-      <p style="margin-top:8px">Ditado com <strong>FACA, VACA, PATO, BOTA</strong> (diretas). Depois observar <strong>CASA</strong> e <strong>QUEIJO</strong>, e por que se escreve <strong>BOLO</strong> (e n&atilde;o &quot;bolu&quot;), mesmo falando /u/.</p>
+    <div class="exbox" onclick="this.classList.toggle('open')">
+      <div class="exhead"><span class="tag">&#128161; Exemplo em sala</span><span class="chev">&#9656;</span></div>
+      <div class="exbody"><p>Ditado com <strong>FACA, VACA, PATO, BOTA</strong> (diretas). Depois observar <strong>CASA</strong> e <strong>QUEIJO</strong>, e por que se escreve <strong>BOLO</strong> (e n&atilde;o &quot;bolu&quot;), mesmo falando /u/.</p></div>
     </div>
   </div>
 </section>
@@ -383,9 +396,9 @@
       <span class="code">EF02LP04</span>
       <p style="font-size:clamp(16px,1.95vw,23px)">Ler e escrever corretamente palavras com s&iacute;labas CV, V, CVC, CCV, identificando que existem vogais em todas as s&iacute;labas.</p>
     </div>
-    <div class="card" style="border-color:var(--c2)">
-      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
-      <p style="margin-top:8px">Separar e circular as vogais em <strong>PRA-TO</strong> (CCV), <strong>POR-TA</strong> (CVC), <strong>A-BE-LHA</strong> (V). Concluir juntos: <strong>toda s&iacute;laba tem vogal</strong>.</p>
+    <div class="exbox" onclick="this.classList.toggle('open')">
+      <div class="exhead"><span class="tag">&#128161; Exemplo em sala</span><span class="chev">&#9656;</span></div>
+      <div class="exbody"><p>Separar e circular as vogais em <strong>PRA-TO</strong> (CCV), <strong>POR-TA</strong> (CVC), <strong>A-BE-LHA</strong> (V). Concluir juntos: <strong>toda s&iacute;laba tem vogal</strong>.</p></div>
     </div>
   </div>
 </section>
@@ -397,9 +410,9 @@
       <span class="code">EF02LP05</span>
       <p style="font-size:clamp(16px,1.95vw,23px)">Ler e escrever corretamente palavras com marcas de nasalidade (til, m, n).</p>
     </div>
-    <div class="card" style="border-color:var(--c2)">
-      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
-      <p style="margin-top:8px">Ca&ccedil;a-palavras com <strong>MA&Ccedil;&Atilde;, P&Atilde;O, CAMPO, ONDE</strong>. Os alunos circulam o <strong>til</strong> e as letras <strong>m</strong> e <strong>n</strong> que deixam o som &quot;anasalado&quot;.</p>
+    <div class="exbox" onclick="this.classList.toggle('open')">
+      <div class="exhead"><span class="tag">&#128161; Exemplo em sala</span><span class="chev">&#9656;</span></div>
+      <div class="exbody"><p>Ca&ccedil;a-palavras com <strong>MA&Ccedil;&Atilde;, P&Atilde;O, CAMPO, ONDE</strong>. Os alunos circulam o <strong>til</strong> e as letras <strong>m</strong> e <strong>n</strong> que deixam o som &quot;anasalado&quot;.</p></div>
     </div>
   </div>
 </section>
@@ -411,9 +424,9 @@
       <span class="code">EF02LP06</span>
       <p style="font-size:clamp(16px,1.95vw,23px)">Perceber o princ&iacute;pio acrof&ocirc;nico que opera nos nomes das letras do alfabeto.</p>
     </div>
-    <div class="card" style="border-color:var(--c2)">
-      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
-      <p style="margin-top:8px">Observar que o nome da letra <strong>B (b&ecirc;)</strong> come&ccedil;a com o som que ela representa: /b/ de <strong>BOLA</strong>. Testar com F (efe), M (eme) e descobrir onde o som aparece no nome.</p>
+    <div class="exbox" onclick="this.classList.toggle('open')">
+      <div class="exhead"><span class="tag">&#128161; Exemplo em sala</span><span class="chev">&#9656;</span></div>
+      <div class="exbody"><p>Observar que o nome da letra <strong>B (b&ecirc;)</strong> come&ccedil;a com o som que ela representa: /b/ de <strong>BOLA</strong>. Testar com F (efe), M (eme) e descobrir onde o som aparece no nome.</p></div>
     </div>
   </div>
 </section>
@@ -425,9 +438,9 @@
       <span class="code">EF02LP07</span>
       <p style="font-size:clamp(16px,1.95vw,23px)">Escrever palavras, frases, textos curtos nas formas imprensa e cursiva.</p>
     </div>
-    <div class="card" style="border-color:var(--c2)">
-      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
-      <p style="margin-top:8px">Cada aluno escreve o pr&oacute;prio nome e uma frase sobre si em <strong>letra de imprensa</strong> e depois em <strong>cursiva</strong>, comparando os dois registros.</p>
+    <div class="exbox" onclick="this.classList.toggle('open')">
+      <div class="exhead"><span class="tag">&#128161; Exemplo em sala</span><span class="chev">&#9656;</span></div>
+      <div class="exbody"><p>Cada aluno escreve o pr&oacute;prio nome e uma frase sobre si em <strong>letra de imprensa</strong> e depois em <strong>cursiva</strong>, comparando os dois registros.</p></div>
     </div>
   </div>
 </section>
@@ -439,9 +452,9 @@
       <span class="code">EF02LP08</span>
       <p style="font-size:clamp(16px,1.95vw,23px)">Segmentar corretamente as palavras ao escrever frases e textos.</p>
     </div>
-    <div class="card" style="border-color:var(--c2)">
-      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
-      <p style="margin-top:8px">Entregar a frase <strong>&quot;ameninabrincou noparque&quot;</strong> e pedir que reescrevam separando corretamente. Depois revisar um bilhete pr&oacute;prio procurando palavras &quot;grudadas&quot;.</p>
+    <div class="exbox" onclick="this.classList.toggle('open')">
+      <div class="exhead"><span class="tag">&#128161; Exemplo em sala</span><span class="chev">&#9656;</span></div>
+      <div class="exbody"><p>Entregar a frase <strong>&quot;ameninabrincou noparque&quot;</strong> e pedir que reescrevam separando corretamente. Depois revisar um bilhete pr&oacute;prio procurando palavras &quot;grudadas&quot;.</p></div>
     </div>
   </div>
 </section>
@@ -453,9 +466,9 @@
       <span class="code">EF02LP09</span>
       <p style="font-size:clamp(16px,1.95vw,23px)">Usar adequadamente ponto final, ponto de interroga&ccedil;&atilde;o e ponto de exclama&ccedil;&atilde;o.</p>
     </div>
-    <div class="card" style="border-color:var(--c2)">
-      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
-      <p style="margin-top:8px">Entregar uma <strong>tirinha</strong> com os bal&otilde;es sem pontua&ccedil;&atilde;o. Os alunos escolhem o sinal adequado para cada fala e leem em voz alta com a entona&ccedil;&atilde;o correspondente.</p>
+    <div class="exbox" onclick="this.classList.toggle('open')">
+      <div class="exhead"><span class="tag">&#128161; Exemplo em sala</span><span class="chev">&#9656;</span></div>
+      <div class="exbody"><p>Entregar uma <strong>tirinha</strong> com os bal&otilde;es sem pontua&ccedil;&atilde;o. Os alunos escolhem o sinal adequado para cada fala e leem em voz alta com a entona&ccedil;&atilde;o correspondente.</p></div>
     </div>
   </div>
 </section>
@@ -467,9 +480,9 @@
       <span class="code">EF02LP10</span>
       <p style="font-size:clamp(16px,1.95vw,23px)">Identificar sin&ocirc;nimos de palavras de texto lido, determinando a diferen&ccedil;a de sentido entre eles, e formar ant&ocirc;nimos de palavras encontradas em texto lido pelo acr&eacute;scimo do prefixo de nega&ccedil;&atilde;o in-/im-.</p>
     </div>
-    <div class="card" style="border-color:var(--c2)">
-      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
-      <p style="margin-top:8px">Ap&oacute;s ler um conto, procurar sin&ocirc;nimos de <strong>&quot;bonito&quot;</strong>. Em seguida formar ant&ocirc;nimos: feliz &rarr; <strong>infeliz</strong>; poss&iacute;vel &rarr; <strong>imposs&iacute;vel</strong>.</p>
+    <div class="exbox" onclick="this.classList.toggle('open')">
+      <div class="exhead"><span class="tag">&#128161; Exemplo em sala</span><span class="chev">&#9656;</span></div>
+      <div class="exbody"><p>Ap&oacute;s ler um conto, procurar sin&ocirc;nimos de <strong>&quot;bonito&quot;</strong>. Em seguida formar ant&ocirc;nimos: feliz &rarr; <strong>infeliz</strong>; poss&iacute;vel &rarr; <strong>imposs&iacute;vel</strong>.</p></div>
     </div>
   </div>
 </section>
@@ -481,55 +494,10 @@
       <span class="code">EF02LP11</span>
       <p style="font-size:clamp(16px,1.95vw,23px)">Formar o aumentativo e o diminutivo de palavras com os sufixos -&atilde;o e -inho/-zinho.</p>
     </div>
-    <div class="card" style="border-color:var(--c2)">
-      <span class="tag" style="color:var(--title)">&#128161; Exemplo em sala</span>
-      <p style="margin-top:8px">Transformar os personagens de uma hist&oacute;ria: <strong>casa</strong> &rarr; casinha / casar&atilde;o; <strong>gato</strong> &rarr; gatinho / gat&atilde;o. Depois desenhar como ficaria cada vers&atilde;o.</p>
+    <div class="exbox" onclick="this.classList.toggle('open')">
+      <div class="exhead"><span class="tag">&#128161; Exemplo em sala</span><span class="chev">&#9656;</span></div>
+      <div class="exbody"><p>Transformar os personagens de uma hist&oacute;ria: <strong>casa</strong> &rarr; casinha / casar&atilde;o; <strong>gato</strong> &rarr; gatinho / gat&atilde;o. Depois desenhar como ficaria cada vers&atilde;o.</p></div>
     </div>
-  </div>
-</section>
-<section class="slide center">
-  <span class="kicker k2" style="align-self:center">M&atilde;o na massa</span>
-  <h2 style="font-size:clamp(30px,5vw,56px)">Atividades pr&aacute;ticas</h2>
-  <p class="lead" style="max-width:820px;margin:0 auto">Cinco propostas para o 1&ordm; e o 2&ordm; ano</p>
-</section>
-<section class="slide">
-  <span class="kicker k2">Atividade 1 &middot; 1&ordm; ano</span>
-  <h2>Distinguir letras de outros sinais gr&aacute;ficos e reconhecer o alfabeto</h2>
-  <div class="panel p1">
-    <span class="lbl">Como fazer</span>
-    <p style="font-size:clamp(18px,2.2vw,27px)">Apresentar cart&otilde;es com <strong>letras, n&uacute;meros e s&iacute;mbolos</strong>. Pedir que as crian&ccedil;as separem apenas as letras e as organizem na <strong>ordem do alfabeto</strong>.</p>
-  </div>
-</section>
-<section class="slide">
-  <span class="kicker k2">Atividade 2 &middot; 1&ordm; ano</span>
-  <h2>Identificar s&iacute;labas e fonemas em palavras</h2>
-  <div class="panel p3">
-    <span class="lbl">Como fazer</span>
-    <p style="font-size:clamp(18px,2.2vw,27px)">Ditar palavras simples e pedir que os alunos <strong>batam palmas para cada s&iacute;laba</strong>; depois escrevam a palavra separando as s&iacute;labas.</p>
-  </div>
-</section>
-<section class="slide">
-  <span class="kicker k2">Atividade 3 &middot; 2&ordm; ano</span>
-  <h2>Trabalhar sinon&iacute;mia e anton&iacute;mia</h2>
-  <div class="panel p4">
-    <span class="lbl">Como fazer</span>
-    <p style="font-size:clamp(18px,2.2vw,27px)">Ler um pequeno texto e pedir que os alunos encontrem palavras de <strong>mesmo sentido</strong> (sin&ocirc;nimos) e palavras <strong>opostas</strong> (ant&ocirc;nimos), formando pares.</p>
-  </div>
-</section>
-<section class="slide">
-  <span class="kicker k2">Atividade 4 &middot; 2&ordm; ano</span>
-  <h2>Analisar a diagrama&ccedil;&atilde;o de g&ecirc;neros textuais</h2>
-  <div class="panel p5">
-    <span class="lbl">Como fazer</span>
-    <p style="font-size:clamp(18px,2.2vw,27px)">Apresentar diferentes <strong>bilhetes e convites</strong>; identificar t&iacute;tulo, sauda&ccedil;&atilde;o, corpo do texto e assinatura; depois produzir um bilhete seguindo o modelo.</p>
-  </div>
-</section>
-<section class="slide">
-  <span class="kicker k2">Atividade 5 &middot; 1&ordm; e 2&ordm; ano</span>
-  <h2>Explorar poemas visuais</h2>
-  <div class="panel p6">
-    <span class="lbl">Como fazer</span>
-    <p style="font-size:clamp(18px,2.2vw,27px)">Ler e observar poemas em que a disposi&ccedil;&atilde;o das palavras <strong>forma imagens</strong> (ex.: poema em forma de &aacute;rvore). Criar um pequeno <strong>poema visual</strong>.</p>
   </div>
 </section>
 <section class="slide center">
@@ -575,9 +543,9 @@
       <div class="head"><span class="cd" style="background:var(--c5)">EF35LP13</span><span class="ttl">Grafias irregulares</span></div>
       <div class="body"><p>Memorizar a grafia de palavras de uso frequente nas quais as rela&ccedil;&otilde;es fonema-grafema s&atilde;o irregulares e com h inicial que n&atilde;o representa fonema.</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
       <div class="head"><span class="cd" style="background:var(--c5)">EF03LP04</span><span class="ttl">Acentua&ccedil;&atilde;o</span></div>
-      <div class="body"><p>Usar acento gr&aacute;fico (agudo ou circunflexo) em moness&iacute;labos t&ocirc;nicos terminados em a, e, o e em palavras ox&iacute;tonas terminadas em a, e, o, seguidas ou n&atilde;o de s.</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
+      <div class="body"><p>Usar acento gr&aacute;fico (agudo ou circunflexo) em monoss&iacute;labos t&ocirc;nicos terminados em a, e, o e em palavras ox&iacute;tonas terminadas em a, e, o, seguidas ou n&atilde;o de s.</p></div></div><div class="acc" onclick="this.classList.toggle('open')">
       <div class="head"><span class="cd" style="background:var(--c5)">EF03LP05</span><span class="ttl">N&uacute;mero de s&iacute;labas</span></div>
-      <div class="body"><p>Identificar o n&uacute;mero de s&iacute;labas de palavras, classificando-as em moness&iacute;labas, diss&iacute;labas, triss&iacute;labas e poliss&iacute;labas.</p></div></div></div>
+      <div class="body"><p>Identificar o n&uacute;mero de s&iacute;labas de palavras, classificando-as em monoss&iacute;labas, diss&iacute;labas, triss&iacute;labas e poliss&iacute;labas.</p></div></div></div>
 </section>
 <section class="slide">
   <span class="kicker k5">Habilidades &middot; 3&ordm; ano (2/2)</span>
