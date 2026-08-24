@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tendências pedagógicas · Didática — Profª Drª Elian Leite</title>
+<style>
+  :root{
+    --font:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;--radius:24px;
+    --purple:#7A4FC0;--purple-dk:#5E3A9E;--purple-soft:#EDE6FA;--lilac:#B79AE0;
+    --orange:#E8590C;--orange-lt:#FF922B;
+    --c1:#7A4FC0;--c2:#E8590C;--c3:#1C7ED6;--c4:#2B8A6E;--c5:#B5179E;--c6:#D6336C;
+  }
+  html[data-theme="light"]{
+    --bg1:#F3ECFB;--bg2:#FBF8FF;--page:#FFFFFF;--paper:#FFFFFF;
+    --ink:#241C42;--ink-soft:#54486F;--line:#E3D9F5;--shadow:0 14px 38px rgba(74,42,130,.16);
+    --title:#F03E00;--deep:#2B1C52;
+    --correct:#2F8F52;--correct-soft:#DFF3E4;--wrong:#C0392F;--wrong-soft:#FBE4E1;
+  }
+  html[data-theme="dark"]{
+    --bg1:#1A1330;--bg2:#110B20;--page:#251C3F;--paper:#2C2249;
+    --ink:#F6F1FE;--ink-soft:#CFC2EA;--line:#3F3163;--shadow:0 16px 44px rgba(0,0,0,.5);
+    --title:#FF8A3D;--deep:#0E0A1C;--purple:#B79AE0;--purple-dk:#D3BEF5;--purple-soft:#3A2C5C;
+    --c1:#A98AE8;--c2:#FF922B;--c3:#4DABF7;--c4:#51CF9E;--c5:#E599F7;--c6:#FF8FA8;
+    --correct:#51CF7C;--correct-soft:#22402C;--wrong:#FF8787;--wrong-soft:#43222A;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:var(--font);color:var(--ink);overflow:hidden;
+    background:radial-gradient(1200px 820px at 85% -12%,var(--purple-soft),transparent 62%),
+               radial-gradient(1000px 720px at -10% 112%,var(--purple-soft),transparent 55%),
+               linear-gradient(160deg,var(--bg1),var(--bg2));transition:background .4s,color .4s;}
+  #deck{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:clamp(6px,1vw,14px);}
+  .slide{display:none;width:calc(min(1560px,100%)/var(--fs,1));height:calc((100vh - clamp(12px,2vw,28px))/var(--fs,1));background:var(--paper);
+    border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
+    padding:clamp(18px,2.2vw,34px) clamp(20px,2.6vw,42px);overflow:auto;position:relative;
+    animation:pop .45s cubic-bezier(.2,.8,.2,1);display:none;}
+  .slide.active{display:flex;flex-direction:column;justify-content:center}
+  @keyframes pop{from{opacity:0;transform:translateY(14px) scale(.99)}to{opacity:1;transform:none}}
+  .slide::-webkit-scrollbar{width:10px}.slide::-webkit-scrollbar-thumb{background:var(--purple-soft);border-radius:20px}
+
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;
+    font-size:clamp(13px,1.5vw,18px);color:#fff;background:var(--purple);padding:9px 20px;border-radius:999px;margin-bottom:12px;align-self:flex-start}
+  .kicker.lib{background:var(--c3)}.kicker.prog{background:var(--c4)}
+  h1{font-size:clamp(34px,5.6vw,68px);line-height:1.05;letter-spacing:-.6px;color:var(--ink)}
+  h2{font-size:clamp(30px,4.4vw,56px);line-height:1.06;margin-bottom:16px;letter-spacing:-.6px;color:var(--title);font-weight:900}
+  h3{font-size:clamp(21px,2.5vw,32px);margin:0 0 6px;color:var(--ink);font-weight:800}
+  p,li{font-size:clamp(18px,2.1vw,26px);line-height:1.4;color:var(--ink-soft)}
+  ul,ol{padding-left:1.15em;margin:6px 0}li{margin:7px 0}
+  .lead{font-size:clamp(22px,2.9vw,38px);line-height:1.3;color:var(--ink);font-weight:600}
+  strong{color:var(--ink)}.center{text-align:center;align-items:center}
+  .muted{color:var(--ink-soft)}
+  .cover-badge{font-size:clamp(58px,8.5vw,112px);margin-bottom:6px}
+  .meta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:26px}
+  .chip{background:var(--purple-soft);border:1px solid var(--line);border-radius:999px;padding:11px 22px;font-size:clamp(15px,1.8vw,20px);color:var(--purple-dk);font-weight:800}
+
+  .grid{display:grid;gap:clamp(12px,1.6vw,22px);width:100%}
+  .g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+  .g23{grid-template-columns:2fr 3fr}.g32{grid-template-columns:3fr 2fr}
+  @media(max-width:900px){.g2,.g3,.g4,.g23,.g32{grid-template-columns:1fr}}
+
+  .panel{border-radius:20px;padding:clamp(16px,2.2vw,30px);color:#fff;display:flex;flex-direction:column;justify-content:center;box-shadow:var(--shadow)}
+  .panel h3,.panel strong{color:#fff}
+  .panel p,.panel li{color:#fff;font-weight:700}
+  .panel .lbl{display:block;font-size:clamp(13px,1.5vw,18px);font-weight:900;letter-spacing:.9px;text-transform:uppercase;color:#fff;opacity:.92;margin-bottom:8px}
+  .panel .big{font-size:clamp(30px,4.2vw,56px);font-weight:900;line-height:1;color:#fff}
+  .p1{background:var(--c1)}.p2{background:var(--c2)}.p3{background:var(--c3)}.p4{background:var(--c4)}.p5{background:var(--c5)}.p6{background:var(--c6)}
+  .pdeep{background:var(--deep)}
+
+  .card{background:var(--purple-soft);border:3px solid var(--purple);border-radius:20px;padding:clamp(16px,2.2vw,28px)}
+  .card p,.card li{font-size:clamp(18px,2.1vw,26px);color:var(--ink);font-weight:600}
+  .card.warn{border-color:var(--orange);background:transparent}
+
+  .quote{border-left:8px solid var(--title);padding:clamp(14px,1.8vw,22px) clamp(18px,2.2vw,28px);background:var(--purple-soft);border-radius:0 18px 18px 0}
+  .quote p{font-style:italic;font-size:clamp(19px,2.3vw,29px);color:var(--ink);font-weight:600}
+  .quote .src{font-style:normal;font-weight:800;font-size:clamp(14px,1.6vw,18px);color:var(--purple-dk);margin-top:8px}
+
+  /* ficha de tendência: linhas rótulo → conteúdo */
+  .ficha{display:grid;grid-template-columns:auto 1fr;gap:clamp(8px,1vw,14px) clamp(12px,1.6vw,22px);width:100%;align-items:start}
+  .ficha .k{font-weight:900;text-transform:uppercase;letter-spacing:.6px;font-size:clamp(13px,1.5vw,18px);
+    color:#fff;background:var(--purple);border-radius:999px;padding:7px 16px;white-space:nowrap}
+  .ficha .k.b3{background:var(--c3)}.ficha .k.b4{background:var(--c4)}.ficha .k.b2{background:var(--c2)}
+  .ficha .v{font-size:clamp(17px,2vw,25px);color:var(--ink-soft);line-height:1.35;padding-top:4px}
+  .ficha .v strong{color:var(--ink)}
+
+  /* tabelas comparativas */
+  .tblwrap{width:100%;overflow-x:auto}
+  table.cmp{border-collapse:separate;border-spacing:0;width:100%;font-size:clamp(15px,1.75vw,22px)}
+  table.cmp th,table.cmp td{padding:clamp(8px,1.1vw,15px) clamp(9px,1.2vw,17px);text-align:left;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.28}
+  table.cmp thead th{color:#fff;font-weight:900;background:var(--purple);border-bottom:none}
+  table.cmp thead th:first-child{border-radius:14px 0 0 0}
+  table.cmp thead th:last-child{border-radius:0 14px 0 0}
+  table.cmp thead.prog th{background:var(--c4)}
+  table.cmp tbody th{font-weight:900;color:var(--ink);background:var(--purple-soft);white-space:nowrap}
+  table.cmp tbody tr:nth-child(even) td{background:rgba(122,79,192,.05)}
+  table.cmp td{color:var(--ink-soft);font-weight:600}
+  table.cmp td strong{color:var(--ink)}
+
+  /* mapa dos dois grupos */
+  .mapa{display:flex;flex-direction:column;align-items:center;width:100%;gap:0}
+  .node{border-radius:18px;padding:clamp(12px,1.6vw,20px) clamp(16px,2vw,26px);color:#fff;font-weight:800;
+    font-size:clamp(17px,2vw,25px);text-align:center;box-shadow:var(--shadow)}
+  .hub{background:var(--deep);font-size:clamp(21px,2.6vw,34px);padding:clamp(12px,1.5vw,18px) clamp(28px,3.2vw,48px);border-radius:999px}
+  .stem{width:4px;height:clamp(14px,1.8vw,26px);background:var(--line)}
+  .branchrow{display:flex;justify-content:center;gap:clamp(16px,3vw,54px);width:100%;align-items:flex-start}
+  .branchrow .col{display:flex;flex-direction:column;align-items:center;flex:1;max-width:560px;gap:0}
+  .vline{width:4px;height:clamp(12px,1.6vw,22px);background:var(--line)}
+  .leafs{display:flex;flex-direction:column;gap:8px;width:100%;margin-top:10px}
+  .leaf{border-radius:14px;padding:clamp(9px,1.2vw,15px) clamp(12px,1.6vw,20px);font-weight:800;
+    font-size:clamp(15px,1.8vw,23px);text-align:center;color:#fff}
+
+  /* situações + reveal */
+  .revealbox{cursor:pointer}
+  .hiddenb{display:none}.hiddenb.reveal{display:block;animation:pop .4s}
+  .resp{border:3px solid var(--correct);background:var(--correct-soft);border-radius:20px;padding:clamp(16px,2.2vw,28px);margin-top:14px}
+  .resp p,.resp li{color:var(--ink);font-weight:600;font-size:clamp(17px,1.95vw,24px)}
+  .resp .tag{display:inline-block;background:var(--correct);color:#fff;font-weight:900;border-radius:999px;
+    padding:6px 18px;font-size:clamp(15px,1.8vw,22px);margin-bottom:10px}
+
+  /* quiz */
+  .qopts{display:grid;gap:10px;width:100%;margin-top:6px}
+  .opt{display:flex;align-items:flex-start;gap:12px;text-align:left;background:var(--paper);border:3px solid var(--line);
+    border-radius:16px;padding:clamp(11px,1.4vw,18px) clamp(13px,1.6vw,22px);cursor:pointer;transition:.15s;
+    font-family:inherit;font-size:clamp(16px,1.9vw,24px);color:var(--ink);font-weight:600;width:100%;line-height:1.3}
+  .opt:hover{border-color:var(--lilac);background:var(--purple-soft)}
+  .opt .ltr{font-weight:900;color:var(--purple-dk);flex:0 0 auto}
+  .opt.ok{border-color:var(--correct);background:var(--correct-soft)}
+  .opt.ok .ltr{color:var(--correct)}
+  .opt.no{border-color:var(--wrong);background:var(--wrong-soft)}
+  .opt.no .ltr{color:var(--wrong)}
+  .fb{margin-top:12px;border-radius:16px;padding:clamp(12px,1.5vw,20px);display:none}
+  .fb.show{display:block;animation:pop .35s}
+  .fb.ok{background:var(--correct-soft);border:3px solid var(--correct)}
+  .fb.no{background:var(--wrong-soft);border:3px solid var(--wrong)}
+  .fb p{color:var(--ink);font-weight:600;font-size:clamp(16px,1.85vw,23px)}
+
+  .btn{background:var(--purple);color:#fff;border:none;border-radius:14px;padding:13px 24px;font-size:clamp(16px,1.8vw,21px);font-weight:800;cursor:pointer;transition:.15s;font-family:inherit}
+  .btn:hover{background:var(--purple-dk)}
+  .btn.orange{background:var(--orange)}.btn.orange:hover{background:#C74A05}
+
+  #bar{position:fixed;left:0;right:0;bottom:0;height:5px;background:var(--line);z-index:40}
+  #barfill{height:100%;width:0;background:linear-gradient(90deg,var(--orange),var(--purple));transition:width .3s}
+  #controls{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;
+    background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:6px 10px;box-shadow:var(--shadow);z-index:50}
+  .nav{border:none;background:var(--purple-soft);color:var(--purple-dk);width:42px;height:42px;border-radius:50%;font-size:20px;cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center}
+  .nav:hover{background:var(--purple);color:#fff}
+  #counter{font-weight:800;font-size:clamp(13px,1.5vw,16px);color:var(--ink);min-width:56px;text-align:center}
+  #topbar{position:fixed;top:12px;right:14px;display:flex;gap:8px;z-index:50}
+  .tbtn{border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:9px 13px;font-size:clamp(12px,1.4vw,15px);font-weight:800;color:var(--ink);cursor:pointer;transition:.15s;display:flex;align-items:center;gap:6px;text-decoration:none}
+  .tbtn:hover{background:var(--purple-soft)}
+  .hintline{margin-top:16px;font-size:clamp(14px,1.6vw,18px);color:var(--ink-soft);text-align:center}
+  kbd{background:var(--ink);color:var(--paper);border-radius:6px;padding:2px 8px;font-size:14px;font-family:monospace}
+  a.mail{color:var(--title);font-weight:900;text-decoration:none}
+
+  /* --- controle de tamanho de fonte --- */
+  .slide{zoom:var(--fs,1)}
+  #fsctl{display:flex;align-items:center;gap:4px;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:4px 6px}
+  #fsctl button{border:none;background:var(--purple-soft);color:var(--purple-dk);width:30px;height:30px;border-radius:8px;
+    font-size:15px;font-weight:900;cursor:pointer;font-family:inherit;line-height:1;display:flex;align-items:center;justify-content:center}
+  #fsctl button:hover{background:var(--purple);color:#fff}
+  #fsval{font-size:12px;font-weight:800;color:var(--ink);min-width:38px;text-align:center;cursor:pointer}
+</style>
+</head>
+<body>
+<div id="topbar">
+  <div id="fsctl" title="Tamanho da fonte">
+    <button id="fsMinus" aria-label="Diminuir fonte">A&minus;</button>
+    <span id="fsval" title="Clique para restaurar">100%</span>
+    <button id="fsPlus" aria-label="Aumentar fonte">A+</button>
+  </div>
+  <a class="tbtn" href="../../">← Índice</a>
+  <button class="tbtn" id="themeBtn">🌙 Escuro</button>
+  <button class="tbtn" id="fsBtn">⛶ Apresentar</button>
+</div>
+
+<div id="deck">
+
+  <!-- 1 CAPA -->
+  <section class="slide active center">
+    <div class="cover-badge">🧭</div>
+    <h1>Tendências pedagógicas</h1>
+    <p class="lead" style="margin-top:16px;max-width:960px">Por trás de cada aula, uma ideia de escola, de aluno e de sociedade</p>
+    <p style="margin-top:26px;font-size:clamp(21px,2.6vw,30px);font-weight:900;color:var(--title)">Profª Drª Elian Leite</p>
+    <div class="meta">
+      <span class="chip">🧩 Didática · Aula 03</span>
+      <span class="chip">✍️ Libâneo · Luckesi · Saviani</span>
+    </div>
+    <p class="hintline">Navegue com <kbd>←</kbd> <kbd>→</kbd></p>
+  </section>
+
+  <!-- 2 OBJETIVOS -->
+  <section class="slide">
+    <span class="kicker">Objetivos da aula</span>
+    <h2>O que vamos alcançar</h2>
+    <div class="grid g2">
+      <div class="panel p1"><span class="lbl">01</span><div class="big">Compreender</div><p style="margin-top:8px">o que são <strong>tendências pedagógicas</strong> e de onde elas vêm.</p></div>
+      <div class="panel p3"><span class="lbl">02</span><div class="big">Distinguir</div><p style="margin-top:8px">as tendências <strong>liberais</strong> das <strong>progressistas</strong>.</p></div>
+      <div class="panel p4"><span class="lbl">03</span><div class="big">Caracterizar</div><p style="margin-top:8px">escola, professor, aluno, conhecimento, método e avaliação em cada uma.</p></div>
+      <div class="panel p2"><span class="lbl">04</span><div class="big">Identificar</div><p style="margin-top:8px">a tendência que predomina em <strong>situações reais</strong> de sala de aula.</p></div>
+    </div>
+  </section>
+
+  <!-- 3 PERGUNTA DISPARADORA -->
+  <section class="slide center">
+    <div class="cover-badge">&#128173;</div>
+    <span class="kicker" style="align-self:center">Pergunta disparadora</span>
+    <h2 style="font-size:clamp(32px,5vw,64px)">Por que dois professores da mesma escola,<br>com a mesma turma e o mesmo conteúdo,<br>dão aulas tão diferentes?</h2>
+    <div class="panel p1" style="max-width:940px;margin:10px auto 0">
+      <p style="font-size:clamp(21px,2.7vw,32px)">Converse com o colega ao lado e registre a sua resposta.</p>
+    </div>
+  </section>
+
+  <!-- 4 O QUE SÃO -->
+  <section class="slide">
+    <span class="kicker">1 · Conceito</span>
+    <h2>O que é uma tendência pedagógica</h2>
+    <div class="panel pdeep" style="margin-bottom:16px">
+      <p style="font-size:clamp(21px,2.7vw,33px)">Um conjunto articulado de ideias sobre <strong>o que é educar</strong>, <strong>para que serve a escola</strong>, <strong>quem é o aluno</strong>, <strong>o que conta como conhecimento</strong> e <strong>como se ensina e se avalia</strong>.</p>
+    </div>
+    <div class="card">
+      <p>Ela <strong>não nasce dentro da sala de aula</strong>. Nasce de uma leitura da sociedade e do papel que se atribui à escola dentro dela.</p>
+      <p style="margin-top:14px">👉 Por isso, atrás de escolhas que parecem apenas técnicas — a disposição das carteiras, o tipo de prova, quem fala mais durante a aula — há sempre uma <strong>concepção de mundo</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 5 TRÊS ESCLARECIMENTOS -->
+  <section class="slide">
+    <span class="kicker">1 · Conceito</span>
+    <h2>Três avisos antes de começar</h2>
+    <div class="grid g3">
+      <div class="panel p1"><span class="lbl">Aviso 01</span><h3>Não são modas</h3><p style="margin-top:8px">Surgem em contextos históricos específicos, mas <strong>permanecem</strong> muito depois que o contexto mudou. A pedagogia tradicional é do século XIX — e está viva hoje.</p></div>
+      <div class="panel p3"><span class="lbl">Aviso 02</span><h3>Elas coexistem</h3><p style="margin-top:8px">Quase ninguém é "puro". O comum é o <strong>hibridismo</strong>: projetos numa aula, metas por habilidade no bimestre, prova classificatória na sexta.</p></div>
+      <div class="panel p2"><span class="lbl">Aviso 03</span><h3>Nenhuma é só boa ou só má</h3><p style="margin-top:8px">Cada uma respondeu a um <strong>problema real</strong> e cada uma tem limites. Ler pelo problema que tentou resolver forma mais do que rotular.</p></div>
+    </div>
+  </section>
+
+  <!-- 6 POR QUE ESTUDAR -->
+  <section class="slide">
+    <span class="kicker">1 · Formação docente</span>
+    <h2>Por que estudar isso na formação de professores?</h2>
+    <div class="panel pdeep" style="margin-bottom:16px">
+      <p style="font-size:clamp(22px,2.8vw,34px)">O professor que <strong>desconhece</strong> as tendências não deixa de ter uma — apenas a <strong>reproduz sem saber</strong>.</p>
+    </div>
+    <div class="grid g3">
+      <div class="panel p4"><div style="font-size:clamp(32px,4vw,52px)">🏷️</div><h3 style="margin-top:6px">Nome</h3><p>para aquilo que ele já faz.</p></div>
+      <div class="panel p5"><div style="font-size:clamp(32px,4vw,52px)">⚖️</div><h3 style="margin-top:6px">Critério</h3><p>para escolher o que <em>quer</em> fazer.</p></div>
+      <div class="panel p6"><div style="font-size:clamp(32px,4vw,52px)">🗣️</div><h3 style="margin-top:6px">Argumento</h3><p>para defender suas escolhas diante da equipe, da família e do aluno.</p></div>
+    </div>
+  </section>
+
+  <!-- 7 MAPA -->
+  <section class="slide">
+    <span class="kicker">2 · O mapa</span>
+    <h2>Dois grandes grupos, seis tendências</h2>
+    <div class="mapa">
+      <div class="node hub">Tendências pedagógicas</div>
+      <div class="stem"></div>
+      <div class="branchrow">
+        <div class="col">
+          <div class="vline"></div>
+          <div class="node" style="background:var(--c3);width:100%">PEDAGOGIA LIBERAL</div>
+          <div class="leafs">
+            <div class="leaf" style="background:var(--c1)">Tradicional</div>
+            <div class="leaf" style="background:var(--c5)">Renovada <span style="opacity:.85;font-weight:600">(progressivista · não-diretiva)</span></div>
+            <div class="leaf" style="background:var(--c2)">Tecnicista</div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="vline"></div>
+          <div class="node" style="background:var(--c4);width:100%">PEDAGOGIA PROGRESSISTA</div>
+          <div class="leafs">
+            <div class="leaf" style="background:var(--c6)">Libertadora</div>
+            <div class="leaf" style="background:var(--c5)">Libertária</div>
+            <div class="leaf" style="background:var(--deep)">Crítico-social dos conteúdos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:14px;text-align:center;font-weight:800;color:var(--title);font-size:clamp(16px,1.9vw,23px)">Classificação de José Carlos Libâneo (1985)</p>
+  </section>
+
+  <!-- 8 CRITÉRIO DA DIVISÃO -->
+  <section class="slide">
+    <span class="kicker">2 · O mapa</span>
+    <h2>O que separa os dois grupos</h2>
+    <div class="tblwrap">
+      <table class="cmp">
+        <thead><tr><th></th><th>Pedagogia LIBERAL</th><th>Pedagogia PROGRESSISTA</th></tr></thead>
+        <tbody>
+          <tr><th>Sociedade</th><td>É harmônica; as diferenças vêm do <strong>esforço e da aptidão</strong> de cada um</td><td>É atravessada por <strong>desigualdades e conflitos</strong> de classe</td></tr>
+          <tr><th>Educação serve para</th><td><strong>Preparar</strong> o indivíduo para seu papel social</td><td><strong>Instrumentalizar</strong> a compreensão crítica da realidade</td></tr>
+          <tr><th>Diante da desigualdade</th><td>Não a problematiza; explica pelo <strong>mérito individual</strong></td><td>Toma-a como <strong>ponto de partida</strong> da reflexão</td></tr>
+          <tr><th>Ênfase</th><td>O <strong>indivíduo</strong></td><td>As <strong>relações sociais e históricas</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 9 CUIDADO COM O TERMO -->
+  <section class="slide center">
+    <div class="cover-badge">⚠️</div>
+    <span class="kicker" style="align-self:center">Atenção</span>
+    <h2>"Liberal" aqui <u>não</u> quer dizer aberto, flexível ou liberado</h2>
+    <div class="panel p2" style="max-width:1050px;margin:0 auto">
+      <p style="font-size:clamp(21px,2.7vw,33px)">Refere-se ao <strong>liberalismo</strong> — a doutrina que justifica o sistema capitalista e defende a liberdade e o mérito individuais.</p>
+    </div>
+    <div class="card" style="max-width:1050px;margin:16px auto 0">
+      <p>Por isso a pedagogia <strong>tradicional</strong> (rígida) e a <strong>renovada</strong> (flexível) estão no <strong>mesmo grupo</strong>: as duas partem do indivíduo e nenhuma questiona a organização social.</p>
+    </div>
+  </section>
+
+  <!-- 10 ABERTURA LIBERAIS -->
+  <section class="slide center">
+    <span class="kicker lib" style="align-self:center">Parte A</span>
+    <h1 style="color:var(--c3)">Tendências liberais</h1>
+    <div class="panel p3" style="max-width:1050px;margin:22px auto 0">
+      <p style="font-size:clamp(21px,2.7vw,33px)">A educação prepara o indivíduo para ocupar seu lugar na sociedade conforme suas aptidões. A escola <strong>adapta</strong> e <strong>classifica</strong>.</p>
+    </div>
+    <div class="meta">
+      <span class="chip">Tradicional</span><span class="chip">Renovada</span><span class="chip">Tecnicista</span>
+    </div>
+  </section>
+
+  <!-- 11 TRADICIONAL - contexto -->
+  <section class="slide">
+    <span class="kicker lib">A.1 · Liberal Tradicional</span>
+    <h2>Ensinar é transmitir o patrimônio da humanidade</h2>
+    <div class="grid g2">
+      <div class="panel pdeep">
+        <span class="lbl">Contexto</span>
+        <p style="font-size:clamp(19px,2.3vw,28px)">Século XIX: formação dos <strong>sistemas nacionais de ensino</strong> e da escola pública estatal. A escola se organiza em torno da autoridade do professor, do currículo fixo e da disciplina.</p>
+      </div>
+      <div class="card">
+        <p><strong>Concepção de educação:</strong> formação <strong>intelectual e moral</strong>; preparo para a vida em sociedade pela apropriação da cultura acumulada.</p>
+        <p style="margin-top:14px">📚 <strong>Referências:</strong> Comenius (<em>Didáctica Magna</em>), Herbart (passos formais), Durkheim.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 TRADICIONAL - ficha -->
+  <section class="slide">
+    <span class="kicker lib">A.1 · Liberal Tradicional</span>
+    <h2>Os seis elementos</h2>
+    <div class="ficha">
+      <span class="k b3">Escola</span><span class="v">Prepara intelectual e moralmente; transmite o saber sistematizado e os valores socialmente aceitos.</span>
+      <span class="k b3">Professor</span><span class="v">É a <strong>autoridade</strong> e o centro do processo. Detém o conhecimento, expõe, corrige e mantém a disciplina.</span>
+      <span class="k b3">Aluno</span><span class="v"><strong>Receptor.</strong> Cabe-lhe atenção, esforço, memorização e obediência.</span>
+      <span class="k b3">Conhecimento</span><span class="v"><strong>Verdades acabadas</strong>, externas ao aluno, transmitidas de fora para dentro.</span>
+      <span class="k b3">Metodologia</span><span class="v">Exposição verbal, demonstração, exercícios de fixação e repetição — do simples ao complexo.</span>
+      <span class="k b3">Avaliação</span><span class="v">Provas e notas; <strong>somativa e classificatória</strong>. A reprovação regula o sistema.</span>
+    </div>
+  </section>
+
+  <!-- 13 TRADICIONAL - prática -->
+  <section class="slide">
+    <span class="kicker lib">A.1 · Na prática escolar</span>
+    <h2>Como isso aparece na escola</h2>
+    <div class="panel p1" style="margin-bottom:16px">
+      <p style="font-size:clamp(19px,2.4vw,29px);font-style:italic">A professora do 5º ano escreve o conceito de substantivo no quadro, dita a definição, resolve dois exemplos e passa vinte exercícios de identificação. Na sexta-feira, prova com dez questões sobre a mesma definição. As carteiras estão em fileiras voltadas para o quadro.</p>
+    </div>
+    <div class="card warn">
+      <p>🪑 <strong>A disposição das carteiras não é detalhe.</strong> É a materialização, no espaço, de uma concepção: todos voltados para a única fonte legítima do conhecimento.</p>
+    </div>
+  </section>
+
+  <!-- 14 RENOVADA - contexto -->
+  <section class="slide">
+    <span class="kicker lib">A.2 · Liberal Renovada</span>
+    <h2>Se o aluno é passivo, o problema é o método</h2>
+    <div class="grid g2">
+      <div class="panel pdeep">
+        <span class="lbl">Contexto</span>
+        <p style="font-size:clamp(19px,2.3vw,28px)">Brasil, anos 1930: o <strong>Manifesto dos Pioneiros da Educação Nova</strong> (1932). Reação direta ao tradicionalismo.</p>
+      </div>
+      <div class="grid" style="gap:12px">
+        <div class="panel p5"><span class="lbl">Vertente 1</span><h3>Progressivista</h3><p>A Escola Nova: aprender fazendo, pela experiência.</p></div>
+        <div class="panel p6"><span class="lbl">Vertente 2</span><h3>Não-diretiva</h3><p>O foco é a formação de atitudes e a autorrealização.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15 RENOVADA progressivista - ficha -->
+  <section class="slide">
+    <span class="kicker lib">A.2a · Renovada progressivista (Escola Nova)</span>
+    <h2>Os seis elementos</h2>
+    <div class="ficha">
+      <span class="k b3">Escola</span><span class="v">Ambiente rico em estímulos, que reproduz situações da vida real para o aluno agir sobre elas.</span>
+      <span class="k b3">Professor</span><span class="v"><strong>Facilitador e mediador.</strong> Organiza o ambiente, propõe problemas, acompanha. Já não é o centro.</span>
+      <span class="k b3">Aluno</span><span class="v">É o <strong>centro</strong> do processo — ativo, curioso, autor da própria aprendizagem.</span>
+      <span class="k b3">Conhecimento</span><span class="v">Construído pela <strong>experiência</strong> e pela resolução de problemas; parte dos interesses do aluno.</span>
+      <span class="k b3">Metodologia</span><span class="v">Métodos ativos: pesquisa, <strong>método de projetos</strong>, experimentação, trabalho em grupo, estudo do meio.</span>
+      <span class="k b3">Avaliação</span><span class="v">Processual e qualitativa: observação, registro do percurso, <strong>autoavaliação</strong>.</span>
+    </div>
+    <p style="margin-top:14px;font-weight:800;color:var(--title);font-size:clamp(16px,1.9vw,23px)">📚 John Dewey · Montessori · Decroly · Anísio Teixeira · Lourenço Filho</p>
+  </section>
+
+  <!-- 16 RENOVADA não-diretiva -->
+  <section class="slide">
+    <span class="kicker lib">A.2b · Renovada não-diretiva</span>
+    <h2>O que importa é a pessoa que aprende</h2>
+    <div class="ficha">
+      <span class="k b3">Escola</span><span class="v">Oferece um <strong>clima afetivo favorável</strong> — aceitação, empatia, ausência de ameaça.</span>
+      <span class="k b3">Professor</span><span class="v"><strong>Facilitador</strong> em sentido estrito: não dirige, acolhe. Garante a relação de confiança.</span>
+      <span class="k b3">Aluno</span><span class="v">Protagonista integral; aprende aquilo que é <strong>significativo para si</strong>.</span>
+      <span class="k b3">Conhecimento</span><span class="v">O que tem sentido pessoal; a autodescoberta vale mais que o conteúdo transmitido.</span>
+      <span class="k b3">Metodologia</span><span class="v">Relações interpessoais, trabalho em grupo, expressão livre, <strong>não-diretividade</strong>.</span>
+      <span class="k b3">Avaliação</span><span class="v">Essencialmente <strong>autoavaliação</strong>.</span>
+    </div>
+    <p style="margin-top:14px;font-weight:800;color:var(--title);font-size:clamp(16px,1.9vw,23px)">📚 Carl Rogers — psicologia humanista</p>
+  </section>
+
+  <!-- 17 RENOVADA - o comum e o limite -->
+  <section class="slide">
+    <span class="kicker lib">A.2 · Balanço</span>
+    <h2>O que as duas vertentes têm em comum — e o limite</h2>
+    <div class="grid g2">
+      <div class="panel p4">
+        <span class="lbl">O avanço</span>
+        <p style="font-size:clamp(19px,2.3vw,28px)">Deslocam o eixo <strong>do professor para o aluno</strong> e valorizam o processo, não só o resultado.</p>
+      </div>
+      <div class="panel p2">
+        <span class="lbl">Por que continuam liberais</span>
+        <p style="font-size:clamp(19px,2.3vw,28px)">A explicação do sucesso e do fracasso continua <strong>no indivíduo</strong> — seus interesses, seu ritmo, sua motivação — e não nas condições sociais.</p>
+      </div>
+    </div>
+    <div class="quote" style="margin-top:18px">
+      <p>O entusiasmo com o método pode levar ao <strong>esvaziamento do conteúdo</strong> — prejudicando justamente os alunos que só têm a escola como via de acesso ao saber sistematizado.</p>
+      <p class="src">Crítica formulada, entre outros, por Dermeval Saviani</p>
+    </div>
+  </section>
+
+  <!-- 18 RENOVADA - prática -->
+  <section class="slide">
+    <span class="kicker lib">A.2 · Na prática escolar</span>
+    <h2>Como isso aparece na escola</h2>
+    <div class="panel p5">
+      <p style="font-size:clamp(19px,2.4vw,29px);font-style:italic">A turma do 4º ano quer saber por que o riacho do bairro está sujo. A professora organiza a investigação: saída de campo, entrevistas com moradores, coleta de dados, cartaz coletivo. Não há prova; a professora registra em ficha a participação e o percurso de cada grupo.</p>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <p>🔎 <strong>Guarde esta cena.</strong> Ela vai reaparecer mais adiante, quase igual — mas com um elemento a mais que muda tudo.</p>
+    </div>
+  </section>
+
+  <!-- 19 TECNICISTA - contexto -->
+  <section class="slide">
+    <span class="kicker lib">A.3 · Liberal Tecnicista</span>
+    <h2>A escola como sistema de produção</h2>
+    <div class="grid g2">
+      <div class="panel pdeep">
+        <span class="lbl">Contexto</span>
+        <p style="font-size:clamp(19px,2.3vw,28px)">Brasil, anos 1960–70: <strong>ditadura militar</strong>, reforma do ensino (<strong>Lei nº 5.692/71</strong>) e a ideia de educação como investimento para o desenvolvimento econômico.</p>
+      </div>
+      <div class="card">
+        <p><strong>Matriz psicológica:</strong> o <strong>behaviorismo</strong> — aprender é mudar comportamento observável.</p>
+        <p style="margin-top:14px">📚 <strong>Referências:</strong> Skinner (instrução programada), Bloom (taxonomia de objetivos), Mager (objetivos operacionais).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 20 TECNICISTA - ficha -->
+  <section class="slide">
+    <span class="kicker lib">A.3 · Liberal Tecnicista</span>
+    <h2>Os seis elementos</h2>
+    <div class="ficha">
+      <span class="k b3">Escola</span><span class="v">Sistema <strong>modelador do comportamento</strong>: eficiente, racional e operacional.</span>
+      <span class="k b3">Professor</span><span class="v"><strong>Executor e administrador</strong> do planejamento. Aplica um sistema concebido por especialistas.</span>
+      <span class="k b3">Aluno</span><span class="v"><strong>Receptor que responde a estímulos</strong>: executa tarefas e é reforçado pelos acertos.</span>
+      <span class="k b3">Conhecimento</span><span class="v">Informação objetiva, <strong>fragmentada em unidades</strong> e ordenada em sequência. Conhecimento é o que se pode medir.</span>
+      <span class="k b3">Metodologia</span><span class="v"><strong>Instrução programada</strong>, módulos, objetivos comportamentais, tecnologia educacional, reforço imediato.</span>
+      <span class="k b3">Avaliação</span><span class="v"><strong>Medida</strong> do alcance de objetivos operacionais: testes objetivos, pré e pós-teste.</span>
+    </div>
+  </section>
+
+  <!-- 21 TECNICISTA - prática + provocação -->
+  <section class="slide">
+    <span class="kicker lib">A.3 · Na prática escolar</span>
+    <h2>Como isso aparece na escola</h2>
+    <div class="panel p2" style="margin-bottom:16px">
+      <p style="font-size:clamp(19px,2.4vw,29px);font-style:italic">Um sistema apostilado prevê, para cada aula, o objetivo em forma de comportamento observável: "ao final, o aluno será capaz de identificar 8 em 10 sujeitos simples". O professor segue a apostila página a página, aplica a lista de exercícios e o teste padronizado. O resultado alimenta um painel de metas da rede.</p>
+    </div>
+    <div class="card warn">
+      <p>❓ <strong>Provocação:</strong> quanto do tecnicismo sobrevive hoje em <strong>plataformas adaptativas</strong>, <strong>apostilas de sistemas de ensino</strong> e <strong>painéis de metas por habilidade</strong>? A tendência não desapareceu com os anos 1970 — mudou de suporte.</p>
+    </div>
+  </section>
+
+  <!-- 22 ABERTURA PROGRESSISTAS -->
+  <section class="slide center">
+    <span class="kicker prog" style="align-self:center">Parte B</span>
+    <h1 style="color:var(--c4)">Tendências progressistas</h1>
+    <div class="panel p4" style="max-width:1050px;margin:22px auto 0">
+      <p style="font-size:clamp(21px,2.7vw,33px)">Partem da <strong>análise crítica das realidades sociais</strong> e atribuem à educação finalidades <strong>sociopolíticas</strong>: não adaptar o indivíduo à sociedade, mas instrumentalizá-lo para compreendê-la e transformá-la.</p>
+    </div>
+    <div class="card" style="max-width:1050px;margin:16px auto 0">
+      <p>🇧🇷 No Brasil, desenvolveram-se em boa parte <strong>fora ou à margem do sistema oficial</strong>, sobretudo durante o regime militar.</p>
+    </div>
+  </section>
+
+  <!-- 23 LIBERTADORA - contexto -->
+  <section class="slide">
+    <span class="kicker prog">B.1 · Progressista Libertadora</span>
+    <h2>Educar é um ato político</h2>
+    <div class="grid g2">
+      <div class="panel pdeep">
+        <span class="lbl">Contexto</span>
+        <p style="font-size:clamp(19px,2.3vw,28px)">Obra de <strong>Paulo Freire</strong> e educação popular dos anos 1960 em diante: alfabetização de adultos, movimentos sociais, comunidades de base.</p>
+      </div>
+      <div class="card">
+        <p><strong>Conscientização:</strong> a passagem da consciência <em>ingênua</em> à consciência <strong>crítica</strong> da própria situação.</p>
+        <p style="margin-top:14px">👉 Educar é um <strong>ato de conhecimento partilhado</strong>, não de depósito.</p>
+      </div>
+    </div>
+    <div class="quote" style="margin-top:16px">
+      <p>Na <strong>"educação bancária"</strong>, o professor deposita conteúdos no aluno, que os recebe, arquiva e guarda. Quanto mais docilmente arquiva, menos consciência crítica desenvolve.</p>
+      <p class="src">Paulo Freire — <em>Pedagogia do Oprimido</em> (1970)</p>
+    </div>
+  </section>
+
+  <!-- 24 LIBERTADORA - ficha -->
+  <section class="slide">
+    <span class="kicker prog">B.1 · Progressista Libertadora</span>
+    <h2>Os seis elementos</h2>
+    <div class="ficha">
+      <span class="k b4">Escola</span><span class="v">A tendência <strong>não centra sua reflexão na escola formal</strong>: nasce na educação não-formal e nos movimentos populares. Seus princípios, porém, são apropriáveis pela escola.</span>
+      <span class="k b4">Professor</span><span class="v"><strong>Coordenador e animador</strong> dos debates; educa e é educado no diálogo. Não é neutro — mas não impõe.</span>
+      <span class="k b4">Aluno</span><span class="v"><strong>Sujeito</strong> do próprio processo; traz para a relação seu saber de experiência.</span>
+      <span class="k b4">Conhecimento</span><span class="v">Produzido no <strong>diálogo</strong>, a partir de <strong>temas geradores</strong> extraídos da problematização da realidade vivida.</span>
+      <span class="k b4">Metodologia</span><span class="v"><strong>Círculos de cultura</strong>, grupos de discussão, problematização, codificação e descodificação de situações concretas.</span>
+      <span class="k b4">Avaliação</span><span class="v">Autoavaliação e avaliação coletiva da prática vivenciada. Recusa a avaliação classificatória.</span>
+    </div>
+  </section>
+
+  <!-- 25 LIBERTADORA - prática -->
+  <section class="slide">
+    <span class="kicker prog">B.1 · Na prática escolar</span>
+    <h2>Como isso aparece na escola</h2>
+    <div class="panel p6">
+      <p style="font-size:clamp(19px,2.4vw,29px);font-style:italic">No 5º ano de uma escola de periferia, a professora parte da falta de água no bairro. A turma levanta o que sabe, ouve os moradores, lê textos e reportagens sobre a distribuição de água na cidade, discute responsabilidades e redige uma carta ao poder público.</p>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <p>🔑 O conteúdo escolar entra <strong>a serviço da compreensão da situação vivida</strong> — e não o contrário.</p>
+    </div>
+  </section>
+
+  <!-- 26 LIBERTÁRIA - contexto -->
+  <section class="slide">
+    <span class="kicker prog">B.2 · Progressista Libertária</span>
+    <h2>A forma de organizar a escola já é conteúdo</h2>
+    <div class="panel pdeep" style="margin-bottom:16px">
+      <p style="font-size:clamp(21px,2.7vw,33px)">Uma escola <strong>autoritária ensina autoritarismo</strong> — ainda que fale de democracia em todas as aulas.</p>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <p><strong>Contexto:</strong> inspiração <strong>anarquista e autogestionária</strong>; chega às escolas pela pedagogia institucional francesa e por grupos ligados à autogestão.</p>
+      </div>
+      <div class="card">
+        <p>📚 <strong>Referências:</strong> Célestin Freinet; pedagogia institucional (Lobrot, Oury, Vasquez); Ferrer y Guardia; no Brasil, Maurício Tragtenberg e Miguel Arroyo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 27 LIBERTÁRIA - ficha -->
+  <section class="slide">
+    <span class="kicker prog">B.2 · Progressista Libertária</span>
+    <h2>Os seis elementos</h2>
+    <div class="ficha">
+      <span class="k b4">Escola</span><span class="v">Espaço de <strong>autogestão</strong>, gerido coletivamente por quem dele participa.</span>
+      <span class="k b4">Professor</span><span class="v"><strong>Orientador e conselheiro</strong> que se mistura ao grupo. Está à disposição quando solicitado; recusa o lugar de autoridade.</span>
+      <span class="k b4">Aluno</span><span class="v">Membro de um <strong>coletivo que decide</strong>. A participação grupal é o eixo da formação.</span>
+      <span class="k b4">Conhecimento</span><span class="v">Resulta das <strong>experiências vividas pelo grupo</strong>. O saber sistematizado só vale se for utilizável na prática do coletivo.</span>
+      <span class="k b4">Metodologia</span><span class="v">Vivência grupal, <strong>assembleias</strong>, decisões coletivas sobre regras e trabalho, cooperação, livre expressão.</span>
+      <span class="k b4">Avaliação</span><span class="v"><strong>Não há avaliação formal</strong> — nem notas nem classificação. Existe a apreciação do grupo sobre o trabalho realizado.</span>
+    </div>
+  </section>
+
+  <!-- 28 LIBERTÁRIA - prática + limite -->
+  <section class="slide">
+    <span class="kicker prog">B.2 · Na prática escolar</span>
+    <h2>Como isso aparece na escola</h2>
+    <div class="panel p5" style="margin-bottom:16px">
+      <p style="font-size:clamp(19px,2.4vw,29px);font-style:italic">Na segunda-feira, a turma se reúne em assembleia: revisa as combinações de convivência, avalia como funcionaram os grupos na semana anterior e decide o que será feito nesta. A professora participa como mais uma voz; as decisões são registradas em ata pelos próprios alunos.</p>
+    </div>
+    <div class="card warn">
+      <p>⚖️ <strong>Limite apontado:</strong> a ênfase quase exclusiva na vivência do grupo pode deixar em segundo plano o <strong>acesso sistemático ao conhecimento acumulado</strong> — crítica que a próxima tendência formula explicitamente.</p>
+    </div>
+  </section>
+
+  <!-- 29 CSC - contexto -->
+  <section class="slide">
+    <span class="kicker prog">B.3 · Crítico-Social dos Conteúdos / Histórico-Crítica</span>
+    <h2>O acesso ao saber elaborado é uma questão política</h2>
+    <div class="panel pdeep" style="margin-bottom:16px">
+      <p style="font-size:clamp(20px,2.6vw,32px)">Para os filhos da classe trabalhadora, <strong>negar o acesso ao saber sistematizado</strong> — em nome da espontaneidade ou da vivência — <strong>aprofunda a desigualdade</strong>.</p>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <p><strong>Contexto:</strong> Brasil, início dos anos 1980, na redemocratização. Resposta simultânea ao <strong>tecnicismo</strong> e ao que seus autores viam como <strong>esvaziamento de conteúdo</strong> em outras propostas.</p>
+      </div>
+      <div class="card">
+        <p>📚 <strong>Referências:</strong> Dermeval Saviani, José Carlos Libâneo, Guiomar Namo de Mello.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 30 CSC - ficha -->
+  <section class="slide">
+    <span class="kicker prog">B.3 · Crítico-Social dos Conteúdos</span>
+    <h2>Os seis elementos</h2>
+    <div class="ficha">
+      <span class="k b4">Escola</span><span class="v"><strong>Democratiza o saber elaborado</strong> — garante que o conhecimento sistematizado chegue a quem não tem outra via de acesso a ele.</span>
+      <span class="k b4">Professor</span><span class="v"><strong>Mediador</strong> entre o conteúdo e o aluno. Papel <strong>diretivo, mas não autoritário</strong>: dirige porque domina o conteúdo, sem anular o aluno.</span>
+      <span class="k b4">Aluno</span><span class="v">Sujeito ativo que chega à escola com uma <strong>prática social</strong> própria — ponto de partida e de chegada do trabalho.</span>
+      <span class="k b4">Conhecimento</span><span class="v">O conteúdo cultural universal, historicamente construído, <strong>confrontado</strong> com a experiência concreta do aluno.</span>
+      <span class="k b4">Metodologia</span><span class="v">O conteúdo é trabalhado <strong>a partir da prática social</strong>. <span class="muted">(Saviani/Gasparin: prática social inicial → problematização → instrumentalização → catarse → prática social final)</span></span>
+      <span class="k b4">Avaliação</span><span class="v"><strong>Processual e diagnóstica</strong>: verifica se o aluno se apropriou do conteúdo e consegue mobilizá-lo para ler e agir sobre a realidade.</span>
+    </div>
+  </section>
+
+  <!-- 31 CSC - prática -->
+  <section class="slide">
+    <span class="kicker prog">B.3 · Na prática escolar</span>
+    <h2>Porcentagem no 5º ano, em cinco momentos</h2>
+    <div class="grid g3" style="gap:12px">
+      <div class="panel p1"><span class="lbl">1 · Prática social inicial</span><p>Os preços do mercado do bairro e o que as famílias percebem sobre o aumento dos alimentos.</p></div>
+      <div class="panel p3"><span class="lbl">2 · Problematização</span><p>O que já sabemos e o que não conseguimos explicar sobre esses aumentos?</p></div>
+      <div class="panel p2"><span class="lbl">3 · Instrumentalização</span><p>A professora ensina <strong>sistematicamente</strong> o cálculo de porcentagem.</p></div>
+      <div class="panel p5"><span class="lbl">4 · Catarse</span><p>Os alunos passam a <strong>explicar</strong> com autonomia a variação que antes só sentiam.</p></div>
+      <div class="panel p4"><span class="lbl">5 · Prática social final</span><p>A turma produz um <strong>boletim de preços</strong> para a comunidade.</p></div>
+      <div class="card"><p>🔁 O movimento característico: <strong>da prática social ao conteúdo — e do conteúdo de volta à prática social transformada.</strong></p></div>
+    </div>
+  </section>
+
+  <!-- 32 COMPARAÇÃO LIBERAIS -->
+  <section class="slide">
+    <span class="kicker">3 · Comparação</span>
+    <h2>As três tendências liberais lado a lado</h2>
+    <div class="tblwrap">
+      <table class="cmp">
+        <thead><tr><th></th><th>Tradicional</th><th>Renovada</th><th>Tecnicista</th></tr></thead>
+        <tbody>
+          <tr><th>Professor</th><td>Autoridade que transmite</td><td>Facilitador que orienta</td><td>Executor de um sistema técnico</td></tr>
+          <tr><th>Aluno</th><td>Receptor passivo e disciplinado</td><td>Centro ativo do processo</td><td>Respondente a estímulos</td></tr>
+          <tr><th>Conhecimento</th><td>Verdades acabadas, externas</td><td>Construído pela experiência</td><td>Informação objetiva e mensurável</td></tr>
+          <tr><th>Metodologia</th><td>Exposição, exercício, repetição</td><td>Métodos ativos, projetos</td><td>Instrução programada, módulos</td></tr>
+          <tr><th>Avaliação</th><td>Prova classificatória</td><td>Processual, autoavaliação</td><td>Medida de objetivos operacionais</td></tr>
+          <tr><th>Finalidade</th><td>Formar intelectual e moralmente</td><td>Adaptar o indivíduo ao meio social</td><td>Formar mão de obra produtiva</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 33 COMPARAÇÃO PROGRESSISTAS -->
+  <section class="slide">
+    <span class="kicker prog">3 · Comparação</span>
+    <h2>As três tendências progressistas lado a lado</h2>
+    <div class="tblwrap">
+      <table class="cmp">
+        <thead class="prog"><tr><th></th><th>Libertadora</th><th>Libertária</th><th>Crítico-social dos conteúdos</th></tr></thead>
+        <tbody>
+          <tr><th>Professor</th><td>Coordenador do diálogo</td><td>Conselheiro que se mistura ao grupo</td><td>Mediador diretivo, não autoritário</td></tr>
+          <tr><th>Aluno</th><td>Sujeito da própria educação</td><td>Membro do coletivo autogestionário</td><td>Sujeito com prática social própria</td></tr>
+          <tr><th>Conhecimento</th><td>Produzido no diálogo, temas geradores</td><td>Nasce da experiência do grupo</td><td>Saber elaborado confrontado com a prática</td></tr>
+          <tr><th>Metodologia</th><td>Círculos de cultura, problematização</td><td>Vivência grupal, assembleias</td><td>Do conteúdo à prática social e de volta</td></tr>
+          <tr><th>Avaliação</th><td>Autoavaliação e avaliação coletiva</td><td>Apreciação do grupo; sem notas</td><td>Processual e diagnóstica</td></tr>
+          <tr><th>Finalidade</th><td>Conscientizar para libertar</td><td>Formar para a autogestão</td><td>Democratizar o saber para transformar</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 34 SÍNTESE EM UMA LINHA -->
+  <section class="slide">
+    <span class="kicker">3 · Comparação</span>
+    <h2>Onde está o conhecimento, para cada tendência?</h2>
+    <div class="grid g3">
+      <div class="panel p1"><h3>Tradicional</h3><p style="margin-top:6px">no <strong>professor</strong>.</p></div>
+      <div class="panel p5"><h3>Renovada</h3><p style="margin-top:6px">na <strong>experiência do aluno</strong>.</p></div>
+      <div class="panel p2"><h3>Tecnicista</h3><p style="margin-top:6px">no <strong>sistema de instrução</strong>.</p></div>
+      <div class="panel p6"><h3>Libertadora</h3><p style="margin-top:6px">no <strong>diálogo sobre a realidade</strong>.</p></div>
+      <div class="panel p3"><h3>Libertária</h3><p style="margin-top:6px">na <strong>vida do grupo</strong>.</p></div>
+      <div class="panel p4"><h3>Crítico-social</h3><p style="margin-top:6px">é <strong>patrimônio da humanidade</strong> — e por isso precisa chegar a todos.</p></div>
+    </div>
+  </section>
+
+  <!-- 35 SITUAÇÃO 1 -->
+  <section class="slide revealbox" data-reveal="r1">
+    <span class="kicker">4 · Situação prática 1</span>
+    <h2>Que tendência predomina aqui?</h2>
+    <div class="panel pdeep">
+      <p style="font-size:clamp(18px,2.2vw,27px);font-style:italic">Professor Antônio, do 3º ano, inicia toda aula de Ciências escrevendo o assunto e o conceito no quadro. Os alunos copiam, ele explica oralmente por vinte minutos, resolve exemplos e passa exercícios de fixação do livro. As carteiras ficam em fileiras. Quem conversa perde ponto de comportamento. Ao fim do bimestre, uma prova com dez questões define a nota.</p>
+    </div>
+    <p style="margin-top:12px;text-align:center;font-weight:800;color:var(--title)">💬 Discuta em duplas · clique para ver a resposta comentada</p>
+    <div class="hiddenb" id="r1">
+      <div class="resp">
+        <span class="tag">Liberal Tradicional</span>
+        <p><strong>Cinco elementos denunciam a tendência:</strong></p>
+        <ul style="margin-top:6px">
+          <li>o professor é a <strong>única fonte</strong> do conhecimento e o centro da aula;</li>
+          <li>o aluno <strong>copia e recebe</strong> — não seleciona nem investiga;</li>
+          <li>o conteúdo é apresentado como <strong>verdade pronta</strong>, desligada da realidade do aluno;</li>
+          <li>a <strong>disciplina</strong> é valor em si, sustentada pela ameaça de perda de pontos;</li>
+          <li>a avaliação é <strong>somativa e classificatória</strong>, verificando reprodução.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 36 SITUAÇÃO 2 -->
+  <section class="slide revealbox" data-reveal="r2">
+    <span class="kicker">4 · Situação prática 2</span>
+    <h2>Que tendência predomina aqui?</h2>
+    <div class="panel pdeep">
+      <p style="font-size:clamp(18px,2.2vw,27px);font-style:italic">A escola adotou um sistema apostilado. Cada aula traz o objetivo em forma de comportamento observável — "ao final, o aluno será capaz de resolver 8 de 10 operações com frações". A professora Márcia segue a sequência da apostila, aplica a lista prevista e, ao fim da unidade, o teste padronizado. Os resultados alimentam um painel de metas da rede, e as turmas são comparadas por percentual de acerto.</p>
+    </div>
+    <p style="margin-top:12px;text-align:center;font-weight:800;color:var(--title)">💬 Discuta em duplas · clique para ver a resposta comentada</p>
+    <div class="hiddenb" id="r2">
+      <div class="resp">
+        <span class="tag">Liberal Tecnicista</span>
+        <ul>
+          <li><strong>Objetivos operacionais</strong> escritos como comportamento observável e quantificado;</li>
+          <li>conteúdo <strong>fragmentado em unidades sequenciadas</strong> por especialistas externos;</li>
+          <li>a professora atua como <strong>executora</strong> de um planejamento que não elaborou;</li>
+          <li>a avaliação é <strong>medida de desempenho</strong> por teste padronizado;</li>
+          <li>a lógica de <strong>eficiência e comparação</strong> de resultados.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 37 SITUAÇÃO 3 -->
+  <section class="slide revealbox" data-reveal="r3">
+    <span class="kicker">4 · Situação prática 3</span>
+    <h2>Que tendência predomina aqui?</h2>
+    <div class="panel pdeep">
+      <p style="font-size:clamp(17px,2.1vw,26px);font-style:italic">A professora Joana, do 5º ano, percebe que muitos alunos faltam quando chove porque a rua alaga. Transforma o problema em objeto de estudo: a turma mapeia os pontos de alagamento, lê reportagens sobre saneamento no município, estuda em Geografia o relevo do bairro, calcula em Matemática o volume de chuva e a área afetada, e produz um relatório entregue à subprefeitura. Ao longo do percurso, Joana <strong>ensina sistematicamente</strong> os conceitos de bacia hidrográfica, escala e porcentagem, <strong>cobrando domínio deles</strong>.</p>
+    </div>
+    <p style="margin-top:12px;text-align:center;font-weight:800;color:var(--title)">💬 Cuidado — esta é a mais difícil · clique para ver a resposta</p>
+    <div class="hiddenb" id="r3">
+      <div class="resp">
+        <span class="tag">Progressista Crítico-Social dos Conteúdos</span>
+        <p>Poderia parecer <strong>libertadora</strong>, e há parentesco: parte-se de um problema real da comunidade e a finalidade é transformá-la.</p>
+        <p style="margin-top:10px">O que <strong>decide</strong> é a presença do <strong>ensino sistemático do conteúdo elaborado</strong> — bacia hidrográfica, escala, porcentagem — cobrado com rigor e posto a serviço da compreensão do problema. Na libertadora, o eixo seria o <strong>diálogo em torno do tema gerador</strong>, com o conteúdo escolar em posição menos central e sem a exigência de domínio.</p>
+        <p style="margin-top:10px">🔁 Aqui aparece o movimento: <strong>prática social → conteúdo sistematizado → prática social transformada</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 38 REFLEXÃO -->
+  <section class="slide">
+    <span class="kicker">5 · Reflexão sobre a prática docente</span>
+    <h2>Cinco perguntas para levar daqui</h2>
+    <div class="grid g2">
+      <div class="panel p1"><p style="font-size:clamp(17px,2vw,25px)">Que <strong>concepção de aluno</strong> está presente em cada tendência — e o que muda concretamente na aula quando ela muda?</p></div>
+      <div class="panel p3"><p style="font-size:clamp(17px,2vw,25px)">Qual o <strong>papel do professor</strong>? Por que "mediador diretivo, mas não autoritário" tenta escapar tanto da autoridade quanto do facilitador que se retira?</p></div>
+      <div class="panel p5"><p style="font-size:clamp(17px,2vw,25px)">Como a <strong>forma de ensinar</strong> interfere na aprendizagem? O que se aprende, além do conteúdo, numa aula em fileiras — e numa aula em assembleia?</p></div>
+      <div class="panel p4"><p style="font-size:clamp(17px,2vw,25px)">É possível achar traços de <strong>diferentes tendências</strong> numa mesma escola? E numa mesma prática — na sua?</p></div>
+      <div class="panel p2" style="grid-column:1/-1"><p style="font-size:clamp(18px,2.1vw,26px);text-align:center">Por que o professor precisa conhecer as tendências pedagógicas? <strong>Se ele não as conhece, deixa de reproduzir alguma?</strong></p></div>
+    </div>
+  </section>
+
+  <!-- 39 ATIVIDADE - abertura -->
+  <section class="slide center">
+    <div class="cover-badge">✅</div>
+    <span class="kicker" style="align-self:center">6 · Atividade de fixação</span>
+    <h2>Cinco questões</h2>
+    <p class="lead" style="margin-top:14px;max-width:900px">Clique na alternativa que considera correta. O comentário aparece em seguida.</p>
+  </section>
+
+  <!-- 40 Q1 -->
+  <section class="slide">
+    <span class="kicker">Questão 1 de 5</span>
+    <h2 style="font-size:clamp(24px,3.2vw,40px)">A concepção de que a escola deve transmitir o patrimônio cultural acumulado, cabendo ao professor a autoridade de expor o conteúdo e ao aluno a memorização e a disciplina, corresponde à tendência:</h2>
+    <div class="qopts" data-q="1" data-ok="b">
+      <button class="opt" data-o="a"><span class="ltr">A</span><span>Liberal Renovada Progressivista</span></button>
+      <button class="opt" data-o="b"><span class="ltr">B</span><span>Liberal Tradicional</span></button>
+      <button class="opt" data-o="c"><span class="ltr">C</span><span>Progressista Libertária</span></button>
+      <button class="opt" data-o="d"><span class="ltr">D</span><span>Progressista Crítico-Social dos Conteúdos</span></button>
+    </div>
+    <div class="fb"><p><strong>Resposta: B — Liberal Tradicional.</strong> Autoridade docente, transmissão do patrimônio cultural, memorização e disciplina são o núcleo da tendência tradicional. A renovada deslocaria o centro para o aluno; a libertária dispensaria a autoridade; a crítico-social manteria o conteúdo, mas o articularia à prática social.</p></div>
+  </section>
+
+  <!-- 41 Q2 -->
+  <section class="slide">
+    <span class="kicker">Questão 2 de 5</span>
+    <h2 style="font-size:clamp(24px,3.2vw,40px)">Numa escola, os conteúdos são fragmentados em módulos sequenciados por especialistas, os objetivos são redigidos como comportamentos observáveis e a avaliação mede o percentual de acerto em testes padronizados. Trata-se da tendência:</h2>
+    <div class="qopts" data-q="2" data-ok="a">
+      <button class="opt" data-o="a"><span class="ltr">A</span><span>Liberal Tecnicista</span></button>
+      <button class="opt" data-o="b"><span class="ltr">B</span><span>Liberal Renovada Não-Diretiva</span></button>
+      <button class="opt" data-o="c"><span class="ltr">C</span><span>Progressista Libertadora</span></button>
+      <button class="opt" data-o="d"><span class="ltr">D</span><span>Liberal Tradicional</span></button>
+    </div>
+    <div class="fb"><p><strong>Resposta: A — Liberal Tecnicista.</strong> Objetivos comportamentais, fragmentação modular, professor como executor e avaliação por medida padronizada são as marcas do tecnicismo, de base behaviorista. Nenhuma outra tendência define o aprendizado como comportamento observável e quantificado.</p></div>
+  </section>
+
+  <!-- 42 Q3 -->
+  <section class="slide">
+    <span class="kicker">Questão 3 de 5</span>
+    <h2 style="font-size:clamp(24px,3.2vw,40px)">A crítica à "educação bancária", a organização do trabalho em círculos de cultura e a construção do conhecimento a partir de temas geradores caracterizam a tendência:</h2>
+    <div class="qopts" data-q="3" data-ok="c">
+      <button class="opt" data-o="a"><span class="ltr">A</span><span>Progressista Libertária</span></button>
+      <button class="opt" data-o="b"><span class="ltr">B</span><span>Liberal Renovada Progressivista</span></button>
+      <button class="opt" data-o="c"><span class="ltr">C</span><span>Progressista Libertadora</span></button>
+      <button class="opt" data-o="d"><span class="ltr">D</span><span>Progressista Crítico-Social dos Conteúdos</span></button>
+    </div>
+    <div class="fb"><p><strong>Resposta: C — Progressista Libertadora.</strong> Educação bancária, círculos de cultura e temas geradores são categorias próprias de Paulo Freire. A libertária também é dialógica, mas seu eixo é a <strong>autogestão do grupo</strong>, não a conscientização a partir de temas geradores.</p></div>
+  </section>
+
+  <!-- 43 Q4 -->
+  <section class="slide">
+    <span class="kicker">Questão 4 de 5</span>
+    <h2 style="font-size:clamp(24px,3.2vw,40px)">Sobre a tendência Progressista Crítico-Social dos Conteúdos, é correto afirmar que:</h2>
+    <div class="qopts" data-q="4" data-ok="c">
+      <button class="opt" data-o="a"><span class="ltr">A</span><span>Recusa o saber sistematizado por considerá-lo instrumento de dominação</span></button>
+      <button class="opt" data-o="b"><span class="ltr">B</span><span>Atribui ao professor um papel não-diretivo, de mero facilitador</span></button>
+      <button class="opt" data-o="c"><span class="ltr">C</span><span>Defende que a socialização do saber elaborado é condição para a transformação social, cabendo ao professor um papel diretivo, mas não autoritário</span></button>
+      <button class="opt" data-o="d"><span class="ltr">D</span><span>Dispensa a avaliação, substituindo-a pela apreciação do grupo</span></button>
+    </div>
+    <div class="fb"><p><strong>Resposta: C.</strong> A tendência sustenta exatamente o contrário de (A) e (B): o saber elaborado é direito da classe trabalhadora, e o professor <strong>dirige</strong> o processo sem anular o aluno. A alternativa (D) descreve a tendência libertária.</p></div>
+  </section>
+
+  <!-- 44 Q5 -->
+  <section class="slide">
+    <span class="kicker">Questão 5 de 5</span>
+    <h2 style="font-size:clamp(24px,3.2vw,40px)">As tendências Liberal Tradicional e Liberal Renovada pertencem ao mesmo grupo porque:</h2>
+    <div class="qopts" data-q="5" data-ok="b">
+      <button class="opt" data-o="a"><span class="ltr">A</span><span>Ambas colocam o aluno no centro do processo de ensino</span></button>
+      <button class="opt" data-o="b"><span class="ltr">B</span><span>Ambas partem do indivíduo e não questionam a organização social, atribuindo à educação a função de adaptá-lo à sociedade</span></button>
+      <button class="opt" data-o="c"><span class="ltr">C</span><span>Ambas adotam a exposição verbal como método privilegiado</span></button>
+      <button class="opt" data-o="d"><span class="ltr">D</span><span>Ambas surgiram no mesmo período histórico</span></button>
+    </div>
+    <div class="fb"><p><strong>Resposta: B.</strong> O critério de agrupamento não é o <strong>método</strong> — que difere radicalmente entre as duas —, mas a <strong>posição diante da estrutura social</strong>: ambas são individualistas e adaptativas. Por isso (A) e (C) descrevem apenas uma delas, e (D) é factualmente falso.</p></div>
+  </section>
+
+  <!-- 45 PLACAR -->
+  <section class="slide center">
+    <div class="cover-badge">🏁</div>
+    <span class="kicker" style="align-self:center">Resultado</span>
+    <h2>Seu desempenho na atividade</h2>
+    <div class="panel pdeep" style="max-width:760px;margin:0 auto">
+      <div class="big" id="placar">0 / 5</div>
+      <p style="margin-top:12px" id="placarTxt">Responda às cinco questões para ver o resultado.</p>
+    </div>
+    <button class="btn orange" style="margin-top:22px" id="resetQuiz">↺ Refazer a atividade</button>
+  </section>
+
+  <!-- 46 QUADRO SÍNTESE -->
+  <section class="slide">
+    <span class="kicker">7 · Quadro-síntese</span>
+    <h2>As seis tendências em uma página</h2>
+    <div class="tblwrap">
+      <table class="cmp" style="font-size:clamp(12px,1.35vw,17px)">
+        <thead><tr><th>Tendência</th><th>Escola</th><th>Professor</th><th>Aluno</th><th>Conhecimento</th><th>Metodologia</th><th>Avaliação</th></tr></thead>
+        <tbody>
+          <tr><th>Liberal<br>Tradicional</th><td>Transmite o patrimônio cultural</td><td>Autoridade que expõe</td><td>Receptor disciplinado</td><td>Verdades acabadas</td><td>Exposição e exercício</td><td>Prova classificatória</td></tr>
+          <tr><th>Liberal<br>Renovada</th><td>Ambiente de experiências</td><td>Facilitador</td><td>Centro ativo</td><td>Construído pela experiência</td><td>Métodos ativos, projetos</td><td>Processual, autoavaliação</td></tr>
+          <tr><th>Liberal<br>Tecnicista</th><td>Modeladora de comportamento</td><td>Executor técnico</td><td>Respondente a estímulos</td><td>Informação mensurável</td><td>Instrução programada</td><td>Medida de objetivos</td></tr>
+          <tr><th>Progressista<br>Libertadora</th><td>Educação popular e não-formal</td><td>Coordenador do diálogo</td><td>Sujeito da própria educação</td><td>Temas geradores</td><td>Círculos de cultura</td><td>Autoavaliação coletiva</td></tr>
+          <tr><th>Progressista<br>Libertária</th><td>Espaço de autogestão</td><td>Conselheiro no grupo</td><td>Membro do coletivo</td><td>Experiência do grupo</td><td>Vivência, assembleias</td><td>Apreciação do grupo</td></tr>
+          <tr><th>Progressista<br>Crítico-social</th><td>Democratiza o saber elaborado</td><td>Mediador diretivo</td><td>Sujeito com prática social</td><td>Saber elaborado + prática</td><td>Prática → conteúdo → prática</td><td>Processual e diagnóstica</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 47 SÍNTESE FINAL -->
+  <section class="slide">
+    <span class="kicker">8 · Síntese final</span>
+    <h2>Três ideias para levar</h2>
+    <div class="panel pdeep" style="margin-bottom:14px">
+      <p style="font-size:clamp(19px,2.4vw,29px)">Estudar tendências pedagógicas não é decorar seis nomes. É perceber que <strong>toda prática docente carrega uma teoria</strong> — explícita ou não — sobre o que é conhecer, quem é o aluno e para que serve a escola.</p>
+    </div>
+    <div class="grid g3">
+      <div class="panel p1"><span class="lbl">01</span><p>Cada tendência é <strong>resposta a um contexto</strong>. Nenhuma é integralmente boa ou má: todas têm alcances e limites.</p></div>
+      <div class="panel p3"><span class="lbl">02</span><p>As tendências <strong>coexistem</strong> na escola real. Quem reconhece isso em si mesmo analisa as próprias contradições em vez de negá-las.</p></div>
+      <div class="panel p4"><span class="lbl">03</span><p>A escolha pedagógica é também <strong>política</strong>. Decidir o que ensinar, como ensinar e como avaliar é decidir <strong>a quem a escola serve</strong>.</p></div>
+    </div>
+    <p style="margin-top:12px;text-align:center;font-weight:900;color:var(--title);font-size:clamp(16px,1.9vw,24px)">O ganho final é a autonomia: escolher por convicção, e não repetir por hábito.</p>
+  </section>
+
+  <!-- 48 ENCERRAMENTO -->
+  <section class="slide center">
+    <h1 style="color:var(--title)">Obrigada!</h1>
+    <p class="lead" style="margin-top:20px;font-weight:900">Profª Drª Elian Leite</p>
+    <p style="margin-top:14px;font-size:clamp(19px,2.3vw,28px)">
+      ✉️ <a class="mail" href="mailto:prof.elianleite@gmail.com">prof.elianleite@gmail.com</a>
+    </p>
+    <div class="meta">
+      <span class="chip">📘 LIBÂNEO · <em>Democratização da Escola Pública</em>, 1985</span>
+      <span class="chip">📗 LUCKESI · <em>Filosofia da Educação</em>, 1994</span>
+      <span class="chip">📕 SAVIANI · <em>Escola e Democracia</em>, 1983</span>
+    </div>
+  </section>
+
+</div>
+
+<div id="controls">
+  <button class="nav" id="prev" aria-label="Anterior">‹</button>
+  <span id="counter">1 / 48</span>
+  <button class="nav" id="next" aria-label="Próximo">›</button>
+</div>
+<div id="bar"><div id="barfill"></div></div>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];let i=0;
+const counter=document.getElementById('counter'),barfill=document.getElementById('barfill');
+function show(n){i=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+  counter.textContent=(i+1)+' / '+slides.length;
+  barfill.style.width=((i+1)/slides.length*100)+'%';slides[i].scrollTop=0;}
+document.getElementById('next').onclick=()=>show(i+1);
+document.getElementById('prev').onclick=()=>show(i-1);
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='PageDown')show(i+1);
+  else if(e.key==='ArrowLeft'||e.key==='PageUp')show(i-1);
+  else if(e.key==='Home')show(0);else if(e.key==='End')show(slides.length-1);});
+show(0);
+document.getElementById('fsBtn').onclick=()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.();};
+const themeBtn=document.getElementById('themeBtn'),root=document.documentElement;
+themeBtn.onclick=()=>{const d=root.getAttribute('data-theme')==='dark';root.setAttribute('data-theme',d?'light':'dark');themeBtn.textContent=d?'🌙 Escuro':'☀️ Claro';};
+
+/* revelar respostas comentadas das situações */
+document.querySelectorAll('.revealbox').forEach(function(box){
+  box.addEventListener('click',function(){
+    var t=document.getElementById(box.dataset.reveal);
+    if(t)t.classList.add('reveal');
+  });
+});
+
+/* quiz */
+(function(){
+  var respostas={};
+  var placar=document.getElementById('placar'),placarTxt=document.getElementById('placarTxt');
+  function atualizaPlacar(){
+    var n=0,total=0;
+    for(var k in respostas){total++;if(respostas[k])n++;}
+    if(placar)placar.textContent=n+' / 5';
+    if(placarTxt){
+      if(total<5)placarTxt.textContent='Você respondeu '+total+' de 5 questões.';
+      else if(n===5)placarTxt.textContent='Excelente — as seis tendências estão bem distinguidas. 🎉';
+      else if(n>=3)placarTxt.textContent='Bom desempenho. Revise o quadro-síntese das questões que errou.';
+      else placarTxt.textContent='Vale retomar o quadro comparativo e as fichas de cada tendência.';
+    }
+  }
+  document.querySelectorAll('.qopts').forEach(function(grupo){
+    var certa=grupo.dataset.ok,q=grupo.dataset.q;
+    var fb=grupo.parentElement.querySelector('.fb');
+    grupo.querySelectorAll('.opt').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        if(grupo.dataset.done==='1')return;
+        grupo.dataset.done='1';
+        var acertou=btn.dataset.o===certa;
+        grupo.querySelectorAll('.opt').forEach(function(b){
+          if(b.dataset.o===certa)b.classList.add('ok');
+          else if(b===btn)b.classList.add('no');
+        });
+        if(fb){fb.classList.add('show');fb.classList.add(acertou?'ok':'no');}
+        respostas[q]=acertou;
+        atualizaPlacar();
+      });
+    });
+  });
+  var rq=document.getElementById('resetQuiz');
+  if(rq)rq.onclick=function(){
+    respostas={};
+    document.querySelectorAll('.qopts').forEach(function(g){
+      g.dataset.done='';
+      g.querySelectorAll('.opt').forEach(function(b){b.classList.remove('ok','no');});
+      var fb=g.parentElement.querySelector('.fb');
+      if(fb)fb.classList.remove('show','ok','no');
+    });
+    atualizaPlacar();
+    if(placarTxt)placarTxt.textContent='Responda às cinco questões para ver o resultado.';
+  };
+  atualizaPlacar();
+  if(placarTxt)placarTxt.textContent='Responda às cinco questões para ver o resultado.';
+})();
+
+/* Controle de tamanho da fonte */
+(function(){
+  var fs=1;
+  try{var s=localStorage.getItem('aulaFs');if(s)fs=parseFloat(s)||1;}catch(e){}
+  var val=document.getElementById('fsval');
+  function apply(){
+    fs=Math.min(1.6,Math.max(0.7,Math.round(fs*100)/100));
+    document.documentElement.style.setProperty('--fs',fs);
+    if(val)val.textContent=Math.round(fs*100)+'%';
+    try{localStorage.setItem('aulaFs',fs);}catch(e){}
+  }
+  document.getElementById('fsPlus').onclick=function(){fs+=0.1;apply();};
+  document.getElementById('fsMinus').onclick=function(){fs-=0.1;apply();};
+  if(val)val.onclick=function(){fs=1;apply();};
+  document.addEventListener('keydown',function(e){
+    if(e.key==='+'||e.key==='='){fs+=0.1;apply();}
+    else if(e.key==='-'||e.key==='_'){fs-=0.1;apply();}
+    else if(e.key==='0'){fs=1;apply();}
+  });
+  apply();
+})();
+</script>
+</body>
+</html>
