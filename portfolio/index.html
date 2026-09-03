@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elian Leite · Portfólio</title>
+<meta name="description" content="Portfólio profissional de Elian Leite — Doutora em Educação (UFAL), professora, pesquisadora e designer instrucional.">
+<meta name="author" content="Elian Leite">
+<meta property="og:title" content="Elian Leite · Portfólio">
+<meta property="og:description" content="Professora, pesquisadora e designer instrucional. Educação, Linguagem e Design Instrucional.">
+<meta property="og:type" content="profile">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   PALETA — mesma identidade do índice de aulas
+   ============================================================ */
+:root{
+  --ui:"Inter","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --purple:#7A4FC0; --purple-dk:#5E3A9E; --purple-soft:#EDE6FA;
+  --lilac:#B79AE0; --plum:#9B5DA8; --indigo:#6C5CE0; --rose:#B06AB3;
+  --r:20px;
+}
+html[data-theme="light"]{
+  --bg1:#F3ECFB; --bg2:#FBF8FF; --page:#FFFFFF; --paper:#FFFFFF;
+  --ink:#2E2450; --ink-soft:#5B4E7A; --line:#E7DEF6;
+  --shadow:0 12px 34px rgba(94,58,158,.14); --shadow-sm:0 4px 16px rgba(94,58,158,.07);
+  --glass:rgba(255,255,255,.78);
+}
+html[data-theme="dark"]{
+  --bg1:#1A1330; --bg2:#120C22; --page:#241B3D; --paper:#2B2148;
+  --ink:#F1EAFB; --ink-soft:#C6B8E4; --line:#3E3160;
+  --shadow:0 14px 40px rgba(0,0,0,.45); --shadow-sm:0 4px 16px rgba(0,0,0,.28);
+  --glass:rgba(36,27,61,.82);
+  --purple:#B79AE0; --purple-dk:#CDB6F0; --purple-soft:#372A57; --lilac:#9B7BE0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{
+  font-family:var(--ui); color:var(--ink); min-height:100vh; line-height:1.6;
+  background:
+    radial-gradient(1200px 820px at 82% -12%,var(--purple-soft),transparent 60%),
+    radial-gradient(1000px 720px at -10% 112%,var(--purple-soft),transparent 55%),
+    linear-gradient(160deg,var(--bg1),var(--bg2));
+  background-attachment:fixed;
+  transition:background .4s,color .4s;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+/* ============================================================
+   TOPO — nome + redes sociais + tema
+   ============================================================ */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:var(--glass); backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .wrap{display:flex;align-items:center;gap:14px;min-height:66px;flex-wrap:wrap}
+.brand{font-family:var(--serif);font-weight:700;font-size:19px;letter-spacing:-.2px;color:var(--ink);text-decoration:none;white-space:nowrap;margin-right:auto}
+.brand span{color:var(--purple-dk)}
+.socials{display:flex;align-items:center;gap:8px}
+.sbtn{
+  width:38px;height:38px;border-radius:12px;display:grid;place-items:center;
+  border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);
+  text-decoration:none;transition:.18s;flex:0 0 auto;
+}
+.sbtn:hover{background:var(--purple-soft);color:var(--purple-dk);border-color:var(--lilac);transform:translateY(-2px)}
+.sbtn svg{width:19px;height:19px;fill:currentColor}
+.sbtn.lattes{font-weight:800;font-size:12.5px;letter-spacing:.3px}
+.tbtn{
+  border:1px solid var(--line);background:var(--paper);border-radius:12px;height:38px;padding:0 13px;
+  font-size:13.5px;font-weight:700;color:var(--ink);cursor:pointer;transition:.18s;font-family:inherit;white-space:nowrap
+}
+.tbtn:hover{background:var(--purple-soft);border-color:var(--lilac)}
+
+/* navegação de seções */
+.secnav{border-bottom:1px solid var(--line);background:var(--glass);backdrop-filter:blur(14px);position:sticky;top:66px;z-index:49}
+.secnav .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.secnav .wrap::-webkit-scrollbar{display:none}
+.secnav a{
+  padding:12px 14px;font-size:14px;font-weight:600;color:var(--ink-soft);text-decoration:none;
+  white-space:nowrap;border-bottom:2px solid transparent;transition:.18s
+}
+.secnav a:hover{color:var(--purple-dk)}
+.secnav a.on{color:var(--purple-dk);border-bottom-color:var(--purple)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{padding:clamp(40px,7vw,80px) 0 clamp(30px,5vw,50px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(28px,5vw,56px);align-items:center}
+.kicker{
+  display:inline-block;font-weight:800;letter-spacing:.6px;text-transform:uppercase;font-size:12px;
+  color:var(--purple-dk);background:var(--purple-soft);padding:7px 16px;border-radius:999px
+}
+h1{font-family:var(--serif);font-size:clamp(36px,6.4vw,60px);line-height:1.05;letter-spacing:-1px;margin:18px 0 0;font-weight:700}
+.role{font-size:clamp(17px,2.4vw,21px);color:var(--purple-dk);font-weight:700;margin-top:12px}
+.lead{font-size:clamp(15.5px,1.9vw,17.5px);color:var(--ink-soft);margin-top:16px;max-width:56ch}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:14px;
+  font-weight:700;font-size:15px;text-decoration:none;transition:.2s;border:1px solid transparent;cursor:pointer;font-family:inherit
+}
+.btn-p{background:var(--purple);color:#fff;box-shadow:var(--shadow-sm)}
+.btn-p:hover{background:var(--purple-dk);transform:translateY(-2px);box-shadow:var(--shadow)}
+html[data-theme="dark"] .btn-p{color:#1A1330}
+.btn-s{background:var(--paper);color:var(--ink);border-color:var(--line)}
+.btn-s:hover{background:var(--purple-soft);border-color:var(--lilac);transform:translateY(-2px)}
+
+/* foto de perfil */
+.portrait{position:relative;justify-self:center}
+.portrait .ph{width:clamp(200px,44vw,280px);aspect-ratio:1;border-radius:50%;box-shadow:var(--shadow)}
+.portrait::after{
+  content:"";position:absolute;inset:-14px;border-radius:50%;
+  border:1.5px dashed var(--lilac);opacity:.55;z-index:-1
+}
+
+/* números */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:clamp(28px,4vw,44px)}
+.stat{background:var(--page);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow-sm)}
+.stat b{display:block;font-family:var(--serif);font-size:17px;color:var(--ink);line-height:1.25}
+.stat small{display:block;font-size:12.5px;color:var(--ink-soft);margin-top:5px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+
+/* ============================================================
+   SEÇÕES
+   ============================================================ */
+section.blk{padding:clamp(44px,7vw,80px) 0 0}
+.sec-head{margin-bottom:clamp(22px,3.5vw,34px)}
+.sec-head .kicker{margin-bottom:12px}
+h2{font-family:var(--serif);font-size:clamp(26px,4.2vw,38px);line-height:1.15;letter-spacing:-.5px;font-weight:700}
+.sec-head p{color:var(--ink-soft);margin-top:10px;max-width:60ch;font-size:16px}
+
+.card{background:var(--page);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);transition:.2s}
+
+/* sobre */
+.about{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(20px,3.5vw,34px);align-items:start}
+.about p{color:var(--ink-soft);font-size:16.5px}
+.about p + p{margin-top:14px}
+.quote{
+  padding:26px;border-radius:var(--r);background:var(--purple-soft);
+  border-left:4px solid var(--purple);font-family:var(--serif);font-size:18px;line-height:1.5;color:var(--ink)
+}
+.quote small{display:block;margin-top:12px;font-family:var(--ui);font-size:13.5px;font-weight:700;color:var(--purple-dk);letter-spacing:.3px}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+.chip{
+  font-size:13.5px;font-weight:600;padding:8px 15px;border-radius:999px;
+  background:var(--paper);border:1px solid var(--line);color:var(--ink-soft);transition:.18s
+}
+.chip:hover{border-color:var(--lilac);color:var(--purple-dk);background:var(--purple-soft)}
+
+/* formação — linha do tempo */
+.tl{position:relative;padding-left:34px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--lilac),transparent)}
+.tl-item{position:relative;padding:0 0 26px}
+.tl-item::before{
+  content:"";position:absolute;left:-31px;top:6px;width:16px;height:16px;border-radius:50%;
+  background:var(--page);border:3px solid var(--purple)
+}
+.tl-year{font-size:12.5px;font-weight:800;color:var(--purple-dk);letter-spacing:.6px;text-transform:uppercase}
+.tl-item h3{font-family:var(--serif);font-size:19.5px;font-weight:700;margin:3px 0 4px;line-height:1.3}
+.tl-item .inst{font-size:14.5px;color:var(--ink-soft);font-weight:600}
+.tl-item .line{font-size:14px;color:var(--ink-soft);margin-top:4px}
+
+/* experiência */
+.xp{display:grid;gap:18px}
+.xp-card{padding:clamp(22px,3vw,30px)}
+.xp-card:hover{border-color:var(--lilac);box-shadow:var(--shadow)}
+.xp-top{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+.xp-ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:23px;color:#fff;flex:0 0 auto;box-shadow:var(--shadow-sm)}
+.xp-card h3{font-family:var(--serif);font-size:clamp(19px,2.6vw,23px);font-weight:700;line-height:1.25}
+.xp-org{font-size:14.5px;color:var(--ink-soft);font-weight:600;margin-top:2px}
+.xp-per{margin-left:auto;font-size:12.5px;font-weight:800;color:var(--purple-dk);background:var(--purple-soft);padding:6px 13px;border-radius:999px;white-space:nowrap}
+.xp-card p{color:var(--ink-soft);font-size:15.5px;margin-top:14px}
+.xp-card ul{margin-top:14px;padding-left:0;list-style:none;display:grid;gap:8px}
+.xp-card li{position:relative;padding-left:22px;font-size:15px;color:var(--ink-soft)}
+.xp-card li::before{content:"";position:absolute;left:4px;top:9px;width:7px;height:7px;border-radius:50%;background:var(--lilac)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.tag{font-size:12.5px;font-weight:700;padding:5px 12px;border-radius:8px;background:var(--purple-soft);color:var(--purple-dk)}
+
+/* galeria */
+/* mosaico: cada foto mantém a própria proporção */
+.gal{columns:2;column-gap:18px}
+.gal figure{break-inside:avoid;margin:0 0 18px;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:var(--page);box-shadow:var(--shadow-sm);transition:.2s}
+.gal figure.ok{cursor:zoom-in}
+.gal figure:hover{box-shadow:var(--shadow);border-color:var(--lilac)}
+.gal figure.ok:hover img{transform:scale(1.03)}
+.gal .fig-img{overflow:hidden;background:var(--purple-soft)}
+.gal img{width:100%;height:auto;display:block;transition:transform .4s ease}
+.gal .miss{aspect-ratio:4/3;display:grid;place-items:center;text-align:center;padding:14px;color:var(--purple-dk);background:var(--purple-soft);border-bottom:1.5px dashed var(--lilac)}
+.gal .miss b{display:block;font-size:26px;line-height:1;margin-bottom:8px}
+.gal .miss em{display:block;font-size:12px;font-style:normal;font-weight:700;margin-bottom:4px}
+.gal .miss code{font-size:11.5px;font-weight:700;opacity:.8;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.gal figcaption{padding:14px 17px;font-size:14.5px;color:var(--ink-soft);font-weight:600;line-height:1.4}
+@media (max-width:760px){.gal{columns:1}}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(18,10,36,.94);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;flex-direction:column;padding:26px}
+.lb.on{display:flex}
+.lb img{max-width:min(1000px,92vw);max-height:76vh;border-radius:14px;box-shadow:0 24px 70px rgba(0,0,0,.55)}
+.lb .cap{color:#fff;text-align:center;margin-top:18px;font-size:15px;font-weight:600;max-width:60ch;line-height:1.45}
+.lb .cnt{color:rgba(255,255,255,.55);font-size:12.5px;font-weight:700;letter-spacing:.6px;margin-top:8px}
+.lb button{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.12);color:#fff;cursor:pointer;font-family:inherit;transition:.18s}
+.lb button:hover{background:rgba(255,255,255,.24)}
+.lb .x{position:absolute;top:18px;right:18px;width:44px;height:44px;border-radius:12px;font-size:19px;line-height:1}
+.lb .nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;font-size:22px;line-height:1}
+.lb .prev{left:18px}.lb .next{right:18px}
+@media (max-width:640px){.lb .nav{width:40px;height:40px;font-size:18px}.lb .prev{left:8px}.lb .next{right:8px}}
+
+/* PLACEHOLDER de imagem — mostra o nome do arquivo esperado */
+.ph{position:relative;overflow:hidden;display:grid;place-items:center;background:var(--purple-soft)}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}
+.ph .ph-in{position:relative;z-index:1;text-align:center;padding:14px;color:var(--purple-dk)}
+.ph .ph-in b{display:block;font-size:26px;line-height:1;margin-bottom:8px}
+.ph .ph-in code{font-size:11.5px;font-weight:700;opacity:.8;word-break:break-all;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.ph .ph-in em{display:block;font-size:12px;font-style:normal;font-weight:700;margin-bottom:4px}
+.ph.empty{border:1.5px dashed var(--lilac)}
+
+/* contato */
+.contact{padding:clamp(28px,4.5vw,46px);text-align:center;background:var(--page)}
+.contact h2{margin-bottom:10px}
+.contact p{color:var(--ink-soft);max-width:52ch;margin:0 auto;font-size:16.5px}
+.contact .cta{justify-content:center;margin-top:26px}
+.mails{display:grid;grid-template-columns:auto auto auto;gap:10px 12px;align-items:center;justify-content:center;margin-top:24px}
+.mailrow{display:contents}
+.mailrow .rot{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--ink-soft);text-align:right}
+.mailrow .mail{justify-self:start}
+.mailrow .copy{justify-self:start}
+.mail{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14.5px;font-weight:600;color:var(--purple-dk);background:var(--purple-soft);padding:10px 16px;border-radius:12px;text-decoration:none;transition:.18s}
+.mail:hover{background:var(--lilac);color:#fff}
+@media (max-width:760px){
+  .mails{grid-template-columns:1fr;gap:18px}
+  .mailrow{display:flex;flex-direction:column;align-items:center;gap:7px}
+  .mailrow .rot{text-align:center}
+  .mail{font-size:13.5px;padding:9px 13px;max-width:100%;overflow-wrap:anywhere}
+}
+.copy{border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:10px 14px;font-size:13.5px;font-weight:700;color:var(--ink);cursor:pointer;font-family:inherit;transition:.18s}
+.copy:hover{background:var(--purple-soft);border-color:var(--lilac)}
+.contact .socials{justify-content:center;margin-top:24px}
+.contact .sbtn{width:44px;height:44px}
+.contact .sbtn svg{width:21px;height:21px}
+
+footer{padding:clamp(40px,6vw,70px) 0 50px;text-align:center;color:var(--ink-soft);font-size:14px}
+footer a{color:var(--purple-dk);font-weight:700;text-decoration:none}
+
+/* animação de entrada */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  *{transition-duration:.01ms !important}
+}
+
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;text-align:center}
+  .hero-grid .lead{margin-left:auto;margin-right:auto}
+  .hero .cta{justify-content:center}
+  .portrait{grid-row:1;margin-bottom:8px}
+  .about{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .topbar .wrap{min-height:60px;gap:10px}
+  .secnav{top:60px}
+  .brand{font-size:17px}
+  .sbtn{width:35px;height:35px}
+  .tbtn{padding:0 11px;height:35px}
+  .tbtn .lbl{display:none}
+  .xp-per{margin-left:0}
+  .tl{padding-left:28px}
+  .tl-item::before{left:-27px}
+}
+@media print{
+  .topbar,.secnav,.cta,.copy{display:none}
+  body{background:#fff}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     TOPO
+     ══════════════════════════════════════════════════════════ -->
+<div class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#topo">Elian <span>Leite</span></a>
+
+    <nav class="socials" aria-label="Redes e perfis">
+      <a class="sbtn" data-link="linkedin" href="#" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21h-4V9z"/></svg>
+      </a>
+      <a class="sbtn lattes" data-link="lattes" href="#" target="_blank" rel="noopener" title="Currículo Lattes" aria-label="Currículo Lattes">Lt</a>
+      <a class="sbtn" data-link="instagram" href="#" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2zm0 1.8c-3.14 0-3.51.01-4.75.07-.9.04-1.39.19-1.71.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.32-.28.81-.32 1.71C3.41 8.49 3.4 8.86 3.4 12s.01 3.51.07 4.75c.4.9.19 1.39.32 1.71.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.13.81.28 1.71.32 1.24.06 1.61.07 4.75.07s3.51-.01 4.75-.07c.9-.04 1.39-.19 1.71-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.32.28-.81.32-1.71.06-1.24.07-1.61.07-4.75s-.01-3.51-.07-4.75c-.04-.9-.19-1.39-.32-1.71a2.85 2.85 0 0 0-.69-1.06 2.85 2.85 0 0 0-1.06-.69c-.32-.13-.81-.28-1.71-.32-1.24-.06-1.61-.07-4.75-.07zm0 3.06a4.94 4.94 0 1 1 0 9.88 4.94 4.94 0 0 1 0-9.88zm0 1.8a3.14 3.14 0 1 0 0 6.28 3.14 3.14 0 0 0 0-6.28zm5.15-3.24a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg>
+      </a>
+      <a class="sbtn" data-link="email" href="#" title="E-mail" aria-label="E-mail">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.1L4.4 7H19.6L12 12.1zM4 8.9V17h16V8.9l-7.45 5a1 1 0 0 1-1.1 0L4 8.9z"/></svg>
+      </a>
+    </nav>
+
+    <button class="tbtn" id="themeBtn" aria-label="Alternar tema">🌙 <span class="lbl">Escuro</span></button>
+  </div>
+</div>
+
+<div class="secnav">
+  <div class="wrap" id="secnav">
+    <a href="#sobre">Sobre</a>
+    <a href="#formacao">Formação</a>
+    <a href="#experiencia">Experiência</a>
+    <a href="#galeria">Galeria</a>
+    <a href="#contato">Contato</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     HERO
+     ══════════════════════════════════════════════════════════ -->
+<div class="wrap" id="topo">
+  <header class="hero">
+    <div class="hero-grid">
+      <div class="rv">
+        <span class="kicker">Educação · Linguagem · Design Instrucional</span>
+        <h1>Elian Leite</h1>
+        <p class="role">Doutora em Educação · Professora, pesquisadora e designer instrucional</p>
+        <p class="lead">
+          Atuo na interseção entre <strong>linguagem</strong> e <strong>design instrucional</strong>:
+          compreender o conteúdo em profundidade e transformá-lo em experiências de formação
+          significativas — da sala de aula da Educação Básica a projetos educacionais de
+          abrangência nacional.
+        </p>
+        <div class="cta">
+          <a class="btn btn-p" href="#experiencia">Ver trajetória</a>
+        </div>
+      </div>
+
+      <div class="portrait rv">
+        <!-- FOTO DE PERFIL: salve como  img/perfil.jpg  (quadrada, ~800×800px) -->
+        <div class="ph">
+          <img src="img/perfil.jpg" alt="Retrato de Elian Leite">
+          <div class="ph-in"><b>🖼️</b><em>Foto de perfil</em><code>img/perfil.jpg</code></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats rv">
+      <div class="stat"><b>Doutorado em Educação</b><small>UFAL · Educação e Linguagem</small></div>
+      <div class="stat"><b>6 formações acadêmicas</b><small>Graduação · Pós · Especializações</small></div>
+      <div class="stat"><b>PNLD</b><small>Projeto de alcance nacional</small></div>
+      <div class="stat"><b>Ensino Superior e Básico</b><small>Docência em 4 instituições</small></div>
+    </div>
+  </header>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SOBRE
+     ══════════════════════════════════════════════════════════ -->
+<div class="wrap">
+  <section class="blk" id="sobre">
+    <div class="sec-head rv">
+      <span class="kicker">Sobre</span>
+      <h2>Da leitura como prática social ao desenho da formação</h2>
+    </div>
+
+    <div class="about">
+      <div class="rv">
+        <p>
+          Sou doutora em Educação pela Universidade Federal de Alagoas, na linha de pesquisa
+          <strong>Educação e Linguagem</strong>, com formação também em Pedagogia e em Ciência de Dados.
+          Essa combinação sustenta minha forma de trabalhar: partir da compreensão densa do conteúdo
+          e das práticas de leitura e escrita, e chegar a soluções formativas estruturadas, baseadas em evidências.
+        </p>
+        <p>
+          Atuo há anos com <strong>docência</strong> no Ensino Superior e na Educação Básica e com a
+          <strong>coordenação pedagógica</strong> de projetos educacionais — planejando, acompanhando e
+          documentando a produção de cursos de formação, incluindo iniciativas de abrangência nacional
+          no âmbito do PNLD.
+        </p>
+
+        <div class="chips">
+          <span class="chip">Desenvolvimento de projetos educacionais</span>
+          <span class="chip">Elaboração de conteúdos</span>
+          <span class="chip">Planejamento pedagógico</span>
+          <span class="chip">Educação a Distância</span>
+          <span class="chip">Design Instrucional</span>
+          <span class="chip">Capacitação e formação</span>
+          <span class="chip">Trilhas formativas</span>
+          <span class="chip">Projetos de abrangência nacional</span>
+        </div>
+      </div>
+
+      <div class="quote rv">
+        “Linguagem e Práticas Sociais é compreender a leitura e a escrita como práticas sociais.
+        Design Instrucional é saber planejar experiências de aprendizagem e formação.
+        As duas juntas: compreender o conteúdo e saber como transformá-lo em uma formação significativa.”
+        <small>— princípio que orienta meu trabalho</small>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     FORMAÇÃO
+     ══════════════════════════════════════════════════════════ -->
+<div class="wrap">
+  <section class="blk" id="formacao">
+    <div class="sec-head rv">
+      <span class="kicker">Formação acadêmica</span>
+      <h2>Trajetória de formação</h2>
+      <p>Da licenciatura em Pedagogia ao doutorado, somando especializações em linguagem, design instrucional e ciência de dados.</p>
+    </div>
+
+    <div class="tl" id="tl"></div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     EXPERIÊNCIA
+     ══════════════════════════════════════════════════════════ -->
+<div class="wrap">
+  <section class="blk" id="experiencia">
+    <div class="sec-head rv">
+      <span class="kicker">Experiência profissional</span>
+      <h2>Onde e como atuo</h2>
+      <p>Docência, coordenação pedagógica, pesquisa aplicada e consultoria em capacitação.</p>
+    </div>
+
+    <div class="xp" id="xp"></div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     GALERIA
+     ══════════════════════════════════════════════════════════ -->
+<div class="wrap">
+  <section class="blk" id="galeria">
+    <div class="sec-head rv">
+      <span class="kicker">Galeria</span>
+      <h2>Aulas, formações e eventos</h2>
+      <p>Registros de workshops, formações, consultorias e apresentações acadêmicas. Clique em uma foto para ampliar.</p>
+    </div>
+
+    <div class="gal" id="gal"></div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     CONTATO
+     ══════════════════════════════════════════════════════════ -->
+<div class="wrap">
+  <section class="blk" id="contato">
+    <div class="card contact rv">
+      <span class="kicker">Contato</span>
+      <h2 style="margin-top:12px">Vamos conversar</h2>
+      <p>Disponível para docência, consultoria em design instrucional, coordenação pedagógica de projetos formativos e parcerias de pesquisa.</p>
+
+      <div class="mails" id="mails"></div>
+
+      <nav class="socials" aria-label="Perfis profissionais">
+        <a class="sbtn" data-link="linkedin" href="#" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21h-4V9z"/></svg>
+        </a>
+        <a class="sbtn lattes" data-link="lattes" href="#" target="_blank" rel="noopener" title="Currículo Lattes" aria-label="Currículo Lattes">Lt</a>
+        <a class="sbtn" data-link="instagram" href="#" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2zm0 1.8c-3.14 0-3.51.01-4.75.07-.9.04-1.39.19-1.71.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.32-.28.81-.32 1.71C3.41 8.49 3.4 8.86 3.4 12s.01 3.51.07 4.75c.4.9.19 1.39.32 1.71.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.13.81.28 1.71.32 1.24.06 1.61.07 4.75.07s3.51-.01 4.75-.07c.9-.04 1.39-.19 1.71-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.32.28-.81.32-1.71.06-1.24.07-1.61.07-4.75s-.01-3.51-.07-4.75c-.04-.9-.19-1.39-.32-1.71a2.85 2.85 0 0 0-.69-1.06 2.85 2.85 0 0 0-1.06-.69c-.32-.13-.81-.28-1.71-.32-1.24-.06-1.61-.07-4.75-.07zm0 3.06a4.94 4.94 0 1 1 0 9.88 4.94 4.94 0 0 1 0-9.88zm0 1.8a3.14 3.14 0 1 0 0 6.28 3.14 3.14 0 0 0 0-6.28zm5.15-3.24a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></svg>
+        </a>
+      </nav>
+    </div>
+  </section>
+
+  <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Foto ampliada">
+    <button class="x" id="lbX" aria-label="Fechar">✕</button>
+    <button class="nav prev" id="lbP" aria-label="Anterior">‹</button>
+    <button class="nav next" id="lbN" aria-label="Próxima">›</button>
+    <img id="lbImg" src="" alt="">
+    <div class="cap" id="lbCap"></div>
+    <div class="cnt" id="lbCnt"></div>
+  </div>
+
+  <footer>
+    © <span id="ano"></span> Elian Leite
+  </footer>
+</div>
+
+<script>
+/* ==============================================================
+   ▼▼▼  1) LINKS — EDITE APENAS ESTE BLOCO  ▼▼▼
+   Cole as URLs completas entre as aspas. Deixe "" para esconder
+   o ícone correspondente.
+   ============================================================== */
+const LINKS = {
+  linkedin : "https://www.linkedin.com/in/elian-santos-leite-41a936124/",
+  lattes   : "http://lattes.cnpq.br/4053214001115674",
+  instagram: "https://www.instagram.com/prof_elianleite",
+  email    : "prof.eliansantos@gmail.com"     // e-mail principal (ícone do topo)
+};
+
+/* E-mails exibidos na seção Contato — o primeiro é o principal.
+   Para adicionar outro, é só incluir mais um item na lista.        */
+const EMAILS = [
+  { rotulo:"Profissional", end:"prof.eliansantos@gmail.com" },
+  { rotulo:"Institucional · NEES/UFAL", end:"elian.santos@nees.ufal.br" }
+];
+
+/* ==============================================================
+   2) FORMAÇÃO ACADÊMICA — adicione/edite itens aqui
+   ============================================================== */
+const FORMACAO = [
+  { ano:"2024", titulo:"Doutorado em Educação", inst:"Universidade Federal de Alagoas (UFAL)", linha:"Linha de pesquisa: Educação e Linguagem" },
+  { ano:"2024", titulo:"Graduação em Ciência de Dados", inst:"Universidade Estácio de Sá", linha:"" },
+  { ano:"2024", titulo:"Especialização em Design Instrucional", inst:"SENAC / São Paulo", linha:"" },
+  { ano:"2021", titulo:"Especialização em Linguagem e Práticas Sociais", inst:"Instituto Federal de Alagoas (IFAL)", linha:"" },
+  { ano:"2020", titulo:"Mestrado em Educação", inst:"Universidade Federal de Alagoas (UFAL)", linha:"Linha de pesquisa: Educação e Linguagem" },
+  { ano:"2018", titulo:"Licenciatura em Pedagogia", inst:"Universidade Federal de Alagoas (UFAL)", linha:"" }
+];
+
+/* ==============================================================
+   3) EXPERIÊNCIA PROFISSIONAL
+   ============================================================== */
+const EXPERIENCIA = [
+  {
+    ico:"🎓", cor:"var(--purple)",
+    cargo:"Docência no Ensino Superior e na Educação Básica",
+    org:"UNEAL · UFAL · FRM · Rede Municipal de Rio Largo",
+    periodo:"",
+    texto:"Atuação docente em cursos de licenciatura e na Educação Básica, com foco em didática, metodologias de ensino e linguagem.",
+    itens:[],
+    tags:["Ensino Superior","Educação Básica","Licenciaturas"]
+  },
+  {
+    ico:"🧭", cor:"var(--indigo)",
+    cargo:"Analista de Qualidade Pedagógica",
+    org:"NEES · Gestão do Conhecimento e Aprendizagem Organizacional — PNLD",
+    periodo:"2022 – 2026",
+    texto:"Coordenação da equipe pedagógica responsável pela produção dos cursos de formação no âmbito do Programa Nacional do Livro e do Material Didático.",
+    itens:[
+      "Coordenação da equipe pedagógica responsável pela produção dos cursos",
+      "Planejamento e acompanhamento das atividades pedagógicas",
+      "Organização e sistematização da documentação dos processos",
+      "Coordenação das etapas de desenvolvimento dos cursos",
+      "Acompanhamento da produção pedagógica e dos materiais formativos"
+    ],
+    tags:["Coordenação pedagógica","PNLD","Produção de cursos","Gestão do conhecimento"]
+  },
+  {
+    ico:"📊", cor:"var(--plum)",
+    cargo:"Pesquisadora",
+    org:"NEES — Programa Nacional do Livro e do Material Didático (PNLD)",
+    periodo:"2024",
+    texto:"Pesquisa na área da Educação com extração e análise de dados para o desenvolvimento de processos de predição da quantidade de livros e materiais didáticos a serem distribuídos pelo PNLD.",
+    itens:[],
+    tags:["Análise de dados","Predição","Pesquisa aplicada"]
+  },
+  {
+    ico:"🏛️", cor:"var(--rose)",
+    cargo:"Consultora em Capacitação",
+    org:"Escola de Governo (SEG) · SEPLAG — Secretaria de Estado do Planejamento, Gestão e Patrimônio",
+    periodo:"",
+    texto:"Desenvolvimento de estratégias de capacitação para os servidores da SEPLAG, a partir de diagnóstico realizado nos 22 setores da instituição.",
+    itens:[
+      "Diagnóstico das necessidades de capacitação",
+      "Mapeamento de competências digitais",
+      "Estruturação de Trilhas Formativas Comuns e Setoriais",
+      "Elaboração do plano de ação para implementação das capacitações"
+    ],
+    tags:["Trilhas formativas","Competências digitais","Consultoria","Setor público"]
+  }
+];
+
+/* ==============================================================
+   4) GALERIA — salve as fotos em img/ com estes nomes
+   ============================================================== */
+const GALERIA = [
+  { arq:"galeria-1.jpg", legenda:"Workshop de integração do PNLD Formação e Avaliação" },
+  { arq:"galeria-2.jpg", legenda:"Apresentação da frente de cursos PNLD Formação" },
+  { arq:"galeria-3.jpg", legenda:"Reunião técnica de consultoria educacional — SEPLAG/AL" },
+  { arq:"galeria-4.jpg", legenda:"Apresentação de minicurso na Semana Internacional de Pedagogia — Pesquisa" }
+];
+
+/* ==============================================================
+   ▲▲▲  FIM DA ÁREA DE EDIÇÃO  ▲▲▲
+   ============================================================== */
+
+/* ---------- links ---------- */
+document.querySelectorAll('[data-link]').forEach(el=>{
+  const k = el.dataset.link, v = (LINKS[k]||'').trim();
+  if(!v){ if(el.classList.contains('sbtn')) el.style.display='none'; else el.removeAttribute('href'); return; }
+  el.href = (k==='email') ? 'mailto:'+v : v;
+});
+
+/* e-mails da seção Contato */
+document.getElementById('mails').innerHTML = EMAILS.map(m=>`
+  <div class="mailrow">
+    <span class="rot">${m.rotulo}</span>
+    <a class="mail" href="mailto:${m.end}">${m.end}</a>
+    <button class="copy" data-copy="${m.end}">Copiar</button>
+  </div>`).join('');
+
+/* ---------- placeholder de imagem ---------- */
+function phBox(arq, rotulo){
+  return `<div class="ph">
+      <img src="img/${arq}" alt="${rotulo.replace(/"/g,'&quot;')}" loading="lazy">
+      <div class="ph-in"><b>🖼️</b><em>Adicione a imagem</em><code>img/${arq}</code></div>
+    </div>`;
+}
+function armarPh(scope){
+  (scope||document).querySelectorAll('.ph img').forEach(img=>{
+    const done=()=>{ if(!img.naturalWidth){ img.closest('.ph').classList.add('empty'); img.remove(); } };
+    if(img.complete) done(); else { img.addEventListener('error',()=>{img.closest('.ph').classList.add('empty');img.remove();}); }
+  });
+}
+
+/* ---------- formação ---------- */
+document.getElementById('tl').innerHTML = FORMACAO.map(f=>`
+  <div class="tl-item rv">
+    <div class="tl-year">${f.ano}</div>
+    <h3>${f.titulo}</h3>
+    <div class="inst">${f.inst}</div>
+    ${f.linha?`<div class="line">${f.linha}</div>`:''}
+  </div>`).join('');
+
+/* ---------- experiência ---------- */
+document.getElementById('xp').innerHTML = EXPERIENCIA.map(e=>`
+  <article class="card xp-card rv">
+    <div class="xp-top">
+      <div class="xp-ico" style="background:${e.cor}">${e.ico}</div>
+      <div style="flex:1;min-width:200px">
+        <h3>${e.cargo}</h3>
+        <div class="xp-org">${e.org}</div>
+      </div>
+      ${e.periodo?`<span class="xp-per">${e.periodo}</span>`:''}
+    </div>
+    ${e.texto?`<p>${e.texto}</p>`:''}
+    ${e.itens && e.itens.length?`<ul>${e.itens.map(i=>`<li>${i}</li>`).join('')}</ul>`:''}
+    ${e.tags && e.tags.length?`<div class="tags">${e.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>`:''}
+  </article>`).join('');
+
+/* ---------- galeria ---------- */
+const gal = document.getElementById('gal');
+gal.innerHTML = GALERIA.map((g,i)=>`
+  <figure class="rv" data-i="${i}">
+    <div class="fig-img">
+      <img src="img/${g.arq}" alt="${g.legenda.replace(/"/g,'&quot;')}" loading="lazy">
+    </div>
+    <figcaption>${g.legenda}</figcaption>
+  </figure>`).join('');
+
+gal.querySelectorAll('figure').forEach(fig=>{
+  const img=fig.querySelector('img');
+  const falhou=()=>{
+    fig.querySelector('.fig-img').outerHTML =
+      `<div class="miss"><b>🖼️</b><em>Adicione a imagem</em><code>img/${GALERIA[+fig.dataset.i].arq}</code></div>`;
+  };
+  img.addEventListener('error', falhou);
+  img.addEventListener('load', ()=>fig.classList.add('ok'));
+  if(img.complete && !img.naturalWidth) falhou();
+});
+
+armarPh();
+
+/* ---------- lightbox ---------- */
+const lb=document.getElementById('lb'), lbImg=document.getElementById('lbImg'),
+      lbCap=document.getElementById('lbCap'), lbCnt=document.getElementById('lbCnt');
+let atual=0;
+function abrir(i){
+  atual=(i+GALERIA.length)%GALERIA.length;
+  const g=GALERIA[atual];
+  lbImg.src='img/'+g.arq; lbImg.alt=g.legenda;
+  lbCap.textContent=g.legenda;
+  lbCnt.textContent=(atual+1)+' / '+GALERIA.length;
+  lb.classList.add('on'); document.body.style.overflow='hidden';
+}
+function fechar(){ lb.classList.remove('on'); document.body.style.overflow=''; }
+gal.addEventListener('click',e=>{ const f=e.target.closest('figure.ok'); if(f) abrir(+f.dataset.i); });
+document.getElementById('lbX').onclick=fechar;
+document.getElementById('lbP').onclick=e=>{e.stopPropagation();abrir(atual-1)};
+document.getElementById('lbN').onclick=e=>{e.stopPropagation();abrir(atual+1)};
+lb.addEventListener('click',e=>{ if(e.target===lb||e.target===lbCap||e.target===lbCnt) fechar(); });
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('on'))return;
+  if(e.key==='Escape')fechar();
+  if(e.key==='ArrowLeft')abrir(atual-1);
+  if(e.key==='ArrowRight')abrir(atual+1);
+});
+
+/* ---------- tema ---------- */
+const root=document.documentElement, tb=document.getElementById('themeBtn');
+function setTema(t){
+  root.setAttribute('data-theme',t);
+  tb.innerHTML = t==='dark' ? '☀️ <span class="lbl">Claro</span>' : '🌙 <span class="lbl">Escuro</span>';
+}
+if(window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) setTema('dark');
+tb.onclick=()=>setTema(root.getAttribute('data-theme')==='dark'?'light':'dark');
+
+/* ---------- copiar e-mail ---------- */
+document.querySelectorAll('[data-copy]').forEach(cb=>{
+  cb.onclick=async()=>{
+    try{ await navigator.clipboard.writeText(cb.dataset.copy);
+         cb.textContent='Copiado ✓'; }
+    catch(e){ cb.textContent='Selecione e copie'; }
+    setTimeout(()=>cb.textContent='Copiar',1900);
+  };
+});
+
+/* ---------- revelar ao rolar ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} }),{threshold:.12,rootMargin:'0px 0px -40px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* ---------- navegação ativa ---------- */
+const navLinks=[...document.querySelectorAll('#secnav a')];
+const alvos=navLinks.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+const spy=new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ navLinks.forEach(a=>a.classList.toggle('on', a.getAttribute('href')==='#'+e.target.id)); }});
+},{rootMargin:'-45% 0px -50% 0px'});
+alvos.forEach(t=>spy.observe(t));
+
+document.getElementById('ano').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
