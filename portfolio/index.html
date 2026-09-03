@@ -183,9 +183,11 @@ h2{font-family:var(--serif);font-size:clamp(26px,4.2vw,38px);line-height:1.15;le
 .tag{font-size:12.5px;font-weight:700;padding:5px 12px;border-radius:8px;background:var(--purple-soft);color:var(--purple-dk)}
 
 /* galeria */
-/* mosaico: cada foto mantém a própria proporção */
-.gal{columns:2;column-gap:18px}
-.gal figure{break-inside:avoid;margin:0 0 18px;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:var(--page);box-shadow:var(--shadow-sm);transition:.2s}
+/* mosaico: cada foto mantém a própria proporção; as colunas são
+   equilibradas por JS para não sobrar buraco no pé de nenhuma delas */
+.gal{display:flex;align-items:flex-start;gap:18px}
+.gal-col{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:18px}
+.gal figure{margin:0;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:var(--page);box-shadow:var(--shadow-sm);transition:.2s}
 .gal figure.ok{cursor:zoom-in}
 .gal figure:hover{box-shadow:var(--shadow);border-color:var(--lilac)}
 .gal figure.ok:hover img{transform:scale(1.03)}
@@ -196,7 +198,6 @@ h2{font-family:var(--serif);font-size:clamp(26px,4.2vw,38px);line-height:1.15;le
 .gal .miss em{display:block;font-size:12px;font-style:normal;font-weight:700;margin-bottom:4px}
 .gal .miss code{font-size:11.5px;font-weight:700;opacity:.8;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
 .gal figcaption{padding:14px 17px;font-size:14.5px;color:var(--ink-soft);font-weight:600;line-height:1.4}
-@media (max-width:760px){.gal{columns:1}}
 
 /* lightbox */
 .lb{position:fixed;inset:0;z-index:100;background:rgba(18,10,36,.94);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;flex-direction:column;padding:26px}
@@ -578,7 +579,8 @@ const GALERIA = [
   { arq:"galeria-1.jpg", legenda:"Workshop de integração do PNLD Formação e Avaliação" },
   { arq:"galeria-2.jpg", legenda:"Apresentação da frente de cursos PNLD Formação" },
   { arq:"galeria-3.jpg", legenda:"Reunião técnica de consultoria educacional — SEPLAG/AL" },
-  { arq:"galeria-4.jpg", legenda:"Apresentação de minicurso na Semana Internacional de Pedagogia — Pesquisa" }
+  { arq:"galeria-4.jpg", legenda:"Apresentação de minicurso na Semana Internacional de Pedagogia — Pesquisa" },
+  { arq:"galeria-5.jpg", legenda:"Visita técnica ao Fundo Nacional de Desenvolvimento da Educação (FNDE)" }
 ];
 
 /* ==============================================================
@@ -641,23 +643,66 @@ document.getElementById('xp').innerHTML = EXPERIENCIA.map(e=>`
 
 /* ---------- galeria ---------- */
 const gal = document.getElementById('gal');
-gal.innerHTML = GALERIA.map((g,i)=>`
-  <figure class="rv" data-i="${i}">
-    <div class="fig-img">
-      <img src="img/${g.arq}" alt="${g.legenda.replace(/"/g,'&quot;')}" loading="lazy">
-    </div>
-    <figcaption>${g.legenda}</figcaption>
-  </figure>`).join('');
+const GAP = 18;
 
-gal.querySelectorAll('figure').forEach(fig=>{
+const figuras = GALERIA.map((g,i)=>{
+  const fig=document.createElement('figure');
+  fig.className='rv'; fig.dataset.i=i;
+  fig.innerHTML=`
+    <div class="fig-img">
+      <img src="img/${g.arq}" alt="${g.legenda.replace(/"/g,'&quot;')}">
+    </div>
+    <figcaption>${g.legenda}</figcaption>`;
   const img=fig.querySelector('img');
   const falhou=()=>{
-    fig.querySelector('.fig-img').outerHTML =
-      `<div class="miss"><b>🖼️</b><em>Adicione a imagem</em><code>img/${GALERIA[+fig.dataset.i].arq}</code></div>`;
+    const box=fig.querySelector('.fig-img');
+    if(box) box.outerHTML=`<div class="miss"><b>🖼️</b><em>Adicione a imagem</em><code>img/${g.arq}</code></div>`;
   };
-  img.addEventListener('error', falhou);
-  img.addEventListener('load', ()=>fig.classList.add('ok'));
-  if(img.complete && !img.naturalWidth) falhou();
+  img.addEventListener('error', falhou, {once:true});
+  img.addEventListener('load', ()=>fig.classList.add('ok'), {once:true});
+  return fig;
+});
+
+const nCols = () => window.innerWidth > 760 ? 2 : 1;
+let colsAtuais = 0, colunas = [];
+
+function montar(){
+  const k=nCols(); colsAtuais=k; colunas=[];
+  gal.innerHTML='';
+  for(let i=0;i<k;i++){ const c=document.createElement('div'); c.className='gal-col'; gal.appendChild(c); colunas.push(c); }
+  figuras.forEach((f,i)=>colunas[i%k].appendChild(f));
+}
+
+/* reparte as fotos entre as colunas minimizando a altura da coluna mais
+   alta (busca exaustiva; a ordem dentro de cada coluna é preservada) */
+function equilibrar(){
+  const k=colunas.length, n=figuras.length;
+  if(k!==2 || n<3 || n>16) return;
+  const h=figuras.map(f=>f.offsetHeight+GAP);
+  let melhor=0, menorMax=Infinity;
+  for(let m=0; m<(1<<n); m++){
+    let a=0,b=0;
+    for(let i=0;i<n;i++){ if(m>>i & 1) b+=h[i]; else a+=h[i]; }
+    const mx=Math.max(a,b);
+    if(mx<menorMax){ menorMax=mx; melhor=m; }
+  }
+  figuras.forEach((f,i)=>colunas[(melhor>>i & 1)?1:0].appendChild(f));
+}
+
+montar();
+
+/* só dá para medir depois que as imagens carregam */
+Promise.all(figuras.map(f=>new Promise(ok=>{
+  const img=f.querySelector('img');
+  if(!img || img.complete) return ok();
+  img.addEventListener('load', ok, {once:true});
+  img.addEventListener('error', ok, {once:true});
+}))).then(()=>requestAnimationFrame(equilibrar));
+
+let tRedim;
+addEventListener('resize',()=>{
+  clearTimeout(tRedim);
+  tRedim=setTimeout(()=>{ if(nCols()!==colsAtuais){ montar(); requestAnimationFrame(equilibrar); } },160);
 });
 
 armarPh();

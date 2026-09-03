@@ -36,7 +36,7 @@ Salve os arquivos dentro da pasta `img/` com **exatamente** estes nomes:
 | Arquivo | Onde aparece | Observação |
 |---|---|---|
 | `img/perfil.jpg` | foto de perfil no topo | quadrada (o corte circular é feito pelo CSS) |
-| `img/galeria-1.jpg` … `galeria-4.jpg` | mosaico da galeria | qualquer proporção — a página respeita a original |
+| `img/galeria-1.jpg` … `galeria-5.jpg` | mosaico da galeria | qualquer proporção — a página respeita a original |
 
 **Como as imagens atuais foram preparadas.** Os arquivos originais estão guardados em
 `img/originais/`. As versões usadas na página são recortes/reduções otimizadas
@@ -45,7 +45,7 @@ Salve os arquivos dentro da pasta `img/` com **exatamente** estes nomes:
 - `perfil.jpg` — quadrado 900×900, rosto e ombros. Também existe
   `perfil-vertical.jpg` (retrato 900×1200, corpo até os joelhos) como alternativa,
   caso queira trocar o círculo do topo por um retângulo.
-- `galeria-1..4.jpg` — reduzidas a partir dos originais, ~100–240 KB cada.
+- `galeria-1..5.jpg` — reduzidas a partir dos originais, ~100–250 KB cada.
 
 Para **acrescentar** uma foto: salve o arquivo em `img/` e adicione uma linha no
 array `GALERIA` (ver item 3). Não é preciso recortar — o mosaico aceita retrato,
