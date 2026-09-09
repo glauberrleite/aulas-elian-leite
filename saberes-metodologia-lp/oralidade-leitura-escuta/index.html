@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eixo Oralidade e Eixo Leitura/Escuta - Prof.a Dr.a Elian Leite</title>
+<style>
+  :root{--font:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;--radius:24px;
+    --purple:#7A4FC0;--purple-dk:#5E3A9E;--purple-soft:#EDE6FA;--lilac:#B79AE0;
+    --orange:#E8590C;--orange-lt:#FF922B;
+    --c1:#7A4FC0;--c2:#E8590C;--c3:#1C7ED6;--c4:#2B8A6E;--c5:#B5179E;--c6:#D6336C;}
+  html[data-theme="light"]{--bg1:#F3ECFB;--bg2:#FBF8FF;--page:#FFFFFF;--paper:#FFFFFF;
+    --ink:#241C42;--ink-soft:#54486F;--line:#E3D9F5;--shadow:0 14px 38px rgba(74,42,130,.16);
+    --title:#E8590C;--deep:#33235C;}
+  html[data-theme="dark"]{--bg1:#1A1330;--bg2:#110B20;--page:#251C3F;--paper:#2C2249;
+    --ink:#F6F1FE;--ink-soft:#CFC2EA;--line:#3F3163;--shadow:0 16px 44px rgba(0,0,0,.5);
+    --title:#FF922B;--deep:#0E0A1C;--purple:#B79AE0;--purple-dk:#D3BEF5;--purple-soft:#3A2C5C;
+    --c1:#A98AE8;--c2:#FF922B;--c3:#4DABF7;--c4:#51CF9E;--c5:#E599F7;--c6:#FF8FA8;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:var(--font);color:var(--ink);overflow:hidden;
+    background:radial-gradient(1200px 820px at 85% -12%,var(--purple-soft),transparent 62%),
+               radial-gradient(1000px 720px at -10% 112%,var(--purple-soft),transparent 55%),
+               linear-gradient(160deg,var(--bg1),var(--bg2));transition:background .4s,color .4s;}
+  #deck{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:clamp(8px,1.8vw,26px);}
+  .slide{display:none;width:calc(min(1340px,100%)/var(--fs,1));height:calc((100vh - clamp(16px,3.6vw,52px))/var(--fs,1));background:var(--paper);
+    border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
+    padding:clamp(20px,2.8vw,44px) clamp(22px,3.2vw,52px);overflow:auto;position:relative;
+    animation:pop .45s cubic-bezier(.2,.8,.2,1);}
+  .slide.active{display:flex;flex-direction:column;justify-content:center}
+  @keyframes pop{from{opacity:0;transform:translateY(14px) scale(.99)}to{opacity:1;transform:none}}
+  .slide::-webkit-scrollbar{width:10px}.slide::-webkit-scrollbar-thumb{background:var(--purple-soft);border-radius:20px}
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;
+    font-size:clamp(12px,1.35vw,16px);color:#fff;background:var(--purple);padding:8px 18px;border-radius:999px;margin-bottom:12px;align-self:flex-start}
+  .kicker.k2{background:var(--c2)}.kicker.k3{background:var(--c3)}.kicker.k4{background:var(--c4)}.kicker.k5{background:var(--c5)}
+  h1{font-size:clamp(32px,5.2vw,62px);line-height:1.05;letter-spacing:-.6px;color:var(--ink)}
+  h2{font-size:clamp(26px,3.9vw,48px);line-height:1.1;margin-bottom:16px;letter-spacing:-.5px;color:var(--title)}
+  h3{font-size:clamp(19px,2.2vw,28px);margin:0 0 6px;color:var(--ink)}
+  p,li{font-size:clamp(17px,2vw,24px);line-height:1.45;color:var(--ink-soft)}
+  ul,ol{padding-left:1.15em;margin:6px 0}li{margin:7px 0}
+  .lead{font-size:clamp(19px,2.5vw,31px);line-height:1.35;color:var(--ink)}
+  strong{color:var(--ink)}.center{text-align:center;align-items:center}.muted{color:var(--ink-soft)}
+  .cover-badge{font-size:clamp(48px,7.5vw,88px);margin-bottom:8px}
+  .meta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px}
+  .chip{background:var(--purple-soft);border:1px solid var(--line);border-radius:999px;padding:11px 22px;font-size:clamp(15px,1.8vw,20px);color:var(--purple-dk);font-weight:800}
+  .grid{display:grid;gap:clamp(12px,1.6vw,22px);width:100%}
+  .g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}
+  .g2b{grid-template-columns:1.05fr .95fr}
+  @media(max-width:900px){.g2,.g3,.g2b{grid-template-columns:1fr}}
+  .panel{border-radius:20px;padding:clamp(18px,2.2vw,30px);color:#fff;display:flex;flex-direction:column;justify-content:center;box-shadow:var(--shadow)}
+  .panel h3,.panel strong{color:#fff}
+  .panel p,.panel li{color:rgba(255,255,255,.95);font-weight:600}
+  .panel .lbl{display:block;font-size:clamp(13px,1.5vw,17px);font-weight:900;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:8px}
+  .panel .big{font-size:clamp(30px,4.2vw,56px);font-weight:900;line-height:1;color:#fff}
+  .p1{background:var(--c1)}.p2{background:var(--c2)}.p3{background:var(--c3)}.p4{background:var(--c4)}.p5{background:var(--c5)}.p6{background:var(--c6)}
+  .pdeep{background:var(--deep)}
+  .card{background:var(--page);border:2px solid var(--line);border-radius:20px;padding:clamp(16px,2vw,26px)}
+  .card p,.card li{font-size:clamp(16px,1.9vw,22px)}
+  .code{display:inline-block;font-family:"Courier New",monospace;font-weight:900;background:rgba(255,255,255,.22);
+    color:#fff;padding:6px 16px;border-radius:10px;font-size:clamp(17px,2vw,26px);margin-bottom:12px}
+  .tag{font-weight:900;font-size:clamp(13px,1.5vw,16px);text-transform:uppercase;letter-spacing:.6px}
+  /* flow */
+  .flow{display:flex;gap:clamp(12px,1.6vw,22px);width:100%;flex-wrap:wrap}
+  .flow .step{flex:1;min-width:280px;border-radius:20px;padding:clamp(18px,2.2vw,30px);color:#fff;box-shadow:var(--shadow)}
+  .flow .step .n{font-size:clamp(14px,1.6vw,18px);font-weight:900;letter-spacing:.8px;text-transform:uppercase;opacity:.9}
+  .flow .step h3{margin:8px 0 10px;color:#fff;font-size:clamp(21px,2.5vw,30px)}
+  .flow .step p{font-size:clamp(15px,1.75vw,21px);color:rgba(255,255,255,.95);font-weight:600}
+  .arrowrow{display:flex;align-items:center;justify-content:center;font-size:clamp(24px,3vw,40px);color:var(--title);font-weight:900}
+  /* accordion */
+  .acc{border-radius:16px;border:2px solid var(--line);overflow:hidden;background:var(--page);cursor:pointer;transition:.2s}
+  .acc:hover{border-color:var(--lilac)}
+  .acc .head{display:flex;align-items:center;gap:12px;padding:12px 16px}
+  .acc .cd{font-family:"Courier New",monospace;font-weight:900;color:#fff;background:var(--c1);padding:5px 12px;border-radius:9px;font-size:clamp(13px,1.5vw,17px);flex:0 0 auto}
+  .acc .ttl{font-weight:800;color:var(--ink);font-size:clamp(15px,1.75vw,20px)}
+  .acc .body{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 16px}
+  .acc.open .body{max-height:260px;padding-bottom:14px}
+  .acc .body p{font-size:clamp(14px,1.65vw,19px);margin-top:4px}
+  #bar{position:fixed;left:0;right:0;bottom:0;height:5px;background:var(--line);z-index:40}
+  #barfill{height:100%;width:0;background:linear-gradient(90deg,var(--orange),var(--purple));transition:width .3s}
+  #controls{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;
+    background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:6px 10px;box-shadow:var(--shadow);z-index:50}
+  .nav{border:none;background:var(--purple-soft);color:var(--purple-dk);width:42px;height:42px;border-radius:50%;font-size:20px;cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center}
+  .nav:hover{background:var(--purple);color:#fff}
+  #counter{font-weight:800;font-size:clamp(13px,1.5vw,16px);color:var(--ink);min-width:62px;text-align:center}
+  #topbar{position:fixed;top:12px;right:14px;display:flex;gap:8px;z-index:50}
+  .tbtn{border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:9px 13px;font-size:clamp(12px,1.4vw,15px);font-weight:800;color:var(--ink);cursor:pointer;transition:.15s;display:flex;align-items:center;gap:6px;text-decoration:none}
+  .tbtn:hover{background:var(--purple-soft)}
+  .hintline{margin-top:14px;font-size:clamp(14px,1.6vw,18px);color:var(--ink-soft);text-align:center}
+  kbd{background:var(--ink);color:var(--paper);border-radius:6px;padding:2px 8px;font-size:14px;font-family:monospace}
+  a.mail{color:var(--title);font-weight:900;text-decoration:none}
+
+  /* --- controle de tamanho de fonte --- */
+  .slide{zoom:var(--fs,1)}
+  #fsctl{display:flex;align-items:center;gap:4px;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:4px 6px}
+  #fsctl button{border:none;background:var(--purple-soft);color:var(--purple-dk);width:30px;height:30px;border-radius:8px;
+    font-size:15px;font-weight:900;cursor:pointer;font-family:inherit;line-height:1;display:flex;align-items:center;justify-content:center}
+  #fsctl button:hover{background:var(--purple);color:#fff}
+  #fsval{font-size:12px;font-weight:800;color:var(--ink);min-width:38px;text-align:center;cursor:pointer}
+
+  /* exemplo retratil */
+  .exbox{background:var(--purple-soft);border:3px solid var(--c2);border-radius:20px;
+    padding:clamp(16px,2vw,26px);cursor:pointer;transition:.2s;align-self:start}
+  .exbox:hover{box-shadow:var(--shadow)}
+  .exbox .exhead{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .exbox .tag{color:var(--title);font-weight:900;font-size:clamp(15px,1.8vw,20px);
+    text-transform:uppercase;letter-spacing:.6px}
+  .exbox .chev{color:var(--title);font-size:clamp(20px,2.4vw,28px);transition:transform .3s;line-height:1}
+  .exbox.open .chev{transform:rotate(90deg)}
+  .exbox .exbody{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .exbox.open .exbody{max-height:520px;margin-top:12px}
+  .exbox .exbody p{font-size:clamp(17px,2vw,23px);color:var(--ink);font-weight:600}
+
+  /* ====================== IMPRESSAO / PDF ====================== */
+  @media print{
+    @page{size:A4 landscape;margin:8mm}
+
+    /* paleta clara forcada, mesmo se estiver no modo escuro */
+    html,html[data-theme="dark"],html[data-theme="light"]{
+      --bg1:#fff;--bg2:#fff;--page:#fff;--paper:#fff;
+      --ink:#1F1838;--ink-soft:#3A3057;--line:#CFC0EC;
+      --title:#D93A00;--deep:#2B1C52;--backcard:#2B1C52;
+      --purple:#6E43B8;--purple-dk:#54318F;--purple-soft:#F1EAFC;--lilac:#A98AE0;
+      --orange:#D93A00;--orange-lt:#E8590C;
+      --c1:#6E43B8;--c2:#D24600;--c3:#175FAF;--c4:#1F7358;--c5:#9B1490;--c6:#BE2A59;
+      --dot1:#6E43B8;--dot2:#8A4F98;--dot3:#5A4CC8;--dot4:#9C5A9E;
+      --dot5:#3F68A8;--dot6:#3F8F78;--dot7:#B0689E;--dot8:#7A5FC0;
+      --correct:#1F7A46;--correct-soft:#E4F3E8;--wrong:#B03024;--wrong-soft:#FBE7E4;
+      --shadow:none;--fs:1;
+    }
+    *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
+
+    html,body{height:auto !important;overflow:visible !important;background:#fff !important}
+    body{background:#fff !important}
+
+    /* esconder toda a interface */
+    #topbar,#controls,#bar,#tbTitle,.hintline,#fsctl{display:none !important}
+
+    /* deck vira fluxo de paginas */
+    #deck{position:static !important;display:block !important;inset:auto !important;padding:0 !important}
+
+    /* cada slide = uma pagina */
+    .slide{
+      display:block !important;position:relative !important;
+      width:100% !important;height:auto !important;max-height:none !important;min-height:0 !important;
+      zoom:1 !important;overflow:visible !important;
+      border:none !important;border-radius:0 !important;box-shadow:none !important;
+      background:#fff !important;animation:none !important;
+      padding:0 0 6mm 0 !important;margin:0 0 4mm 0 !important;
+      page-break-after:always;break-after:page;
+    }
+    .slide:last-child{page-break-after:auto;break-after:auto}
+    .slide.active{display:block !important}
+
+    /* numeracao da pagina */
+    .slide::after{
+      content:counter(pg);counter-increment:pg;
+      position:absolute;bottom:0;right:0;font-size:10pt;font-weight:800;color:#6E43B8;
+    }
+    #deck{counter-reset:pg}
+
+    /* tipografia impressa (nao usa vw) */
+    h1{font-size:26pt !important;line-height:1.15 !important}
+    h2{font-size:20pt !important;line-height:1.15 !important;margin-bottom:5mm !important}
+    h3{font-size:13pt !important}
+    p,li,td,th{font-size:11pt !important;line-height:1.35 !important}
+    .lead{font-size:13.5pt !important}
+    .kicker{font-size:9pt !important;padding:3px 10px !important;margin-bottom:3mm !important}
+    .chip{font-size:9.5pt !important;padding:4px 10px !important}
+    .cover-badge{font-size:34pt !important;margin-bottom:2mm !important}
+    .panel .big{font-size:20pt !important}
+    .panel .lbl{font-size:8.5pt !important}
+    .code,.acc .cd,.drawcard .cd,.hab .cd{font-size:12pt !important}
+    .asp{font-size:10.5pt !important}.bigword{font-size:18pt !important}.chain{font-size:10.5pt !important}
+    .linkcard b{font-size:12pt !important}.linkcard .play{font-size:20pt !important}
+    .seg{font-size:18pt !important;padding:5px 12px !important}
+    .quiz-q,.caseline{font-size:11.5pt !important}
+    .opt{font-size:10.5pt !important;padding:4px 8px !important;margin:3px 0 !important}
+    .opt .fb{font-size:9.5pt !important}
+
+    /* caixas mais compactas no papel */
+    .panel,.card,.reflect,.exbox,.acc,.hab,.asp,.linkcard,.flow .step,.node,.pilar,.tri-node,.tri-out,.drawcard{
+      padding:4mm !important;box-shadow:none !important;break-inside:avoid;page-break-inside:avoid}
+    .grid{gap:3mm !important}
+    table{font-size:10.5pt !important;break-inside:avoid}
+    th,td{padding:2.5mm !important}
+
+    /* TUDO que e retratil aparece aberto */
+    .acc .body,.exbox .exbody,.hab .body{max-height:none !important;overflow:visible !important;padding-bottom:3mm !important}
+    .acc.open .body,.exbox.open .exbody,.hab.open .body{max-height:none !important}
+    .exbox .exbody{margin-top:2mm !important}
+    .chev{display:none !important}
+    .eixogrid,.hidden{display:grid !important}
+    .hiddenb{display:block !important}
+    #eixoAsk,#revealBtn,#drawBtn,#qreset,.btn{display:none !important}
+
+    /* quiz: todas as questoes e todos os feedbacks visiveis */
+    .qwrap{display:block !important;break-inside:avoid;page-break-inside:avoid;margin-bottom:4mm}
+    .opt .fb{display:block !important;border-top:1px solid var(--line) !important}
+    .progress-dots,.qcount{display:none !important}
+
+    /* cartas que viram ficam abertas: mostrar frente e verso empilhados */
+    .flip,.flip .inner{min-height:0 !important;height:auto !important;perspective:none !important;transform:none !important}
+    .flip .face{position:static !important;transform:none !important;backface-visibility:visible !important;
+      margin-bottom:2mm;padding:4mm !important}
+    .flip .hintflip{display:none !important}
+  }
+
+  /* habilidades retrateis: clicar no codigo revela o texto */
+  .habgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(10px,1.3vw,18px);width:100%}
+  .hab{border:3px solid var(--line);border-radius:16px;background:var(--page);cursor:pointer;transition:.2s;overflow:hidden;align-self:start}
+  .hab:hover{border-color:var(--c2)}
+  .hab.open{border-color:var(--c2)}
+  .hab .head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px}
+  .hab .cd{font-family:"Courier New",monospace;font-weight:900;color:#fff;background:var(--c1);
+    padding:7px 14px;border-radius:10px;font-size:clamp(15px,1.8vw,21px);transition:.2s}
+  .hab.open .cd{background:var(--c2)}
+  .hab .chev{color:var(--c2);font-size:clamp(18px,2.2vw,26px);transition:transform .3s;line-height:1;font-weight:900}
+  .hab.open .chev{transform:rotate(90deg)}
+  .hab .body{max-height:0;overflow:hidden;transition:max-height .35s ease;padding:0 16px}
+  .hab.open .body{max-height:360px;padding-bottom:14px}
+  .hab .body p{font-size:clamp(15px,1.75vw,20px);color:var(--ink);font-weight:600}
+
+  /* lista de aspectos */
+  .aspects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(10px,1.3vw,18px);width:100%}
+  .asp{border-radius:16px;padding:clamp(14px,1.7vw,22px);color:#fff;box-shadow:var(--shadow);
+    font-weight:700;font-size:clamp(16px,1.85vw,22px);display:flex;gap:12px;align-items:flex-start;line-height:1.3}
+  .asp .ic{font-size:clamp(22px,2.6vw,32px);flex:0 0 auto;line-height:1}
+
+  /* link de video */
+  .linkcard{display:flex;align-items:center;gap:clamp(14px,2vw,26px);background:var(--c6);color:#fff;
+    border-radius:20px;padding:clamp(18px,2.2vw,30px);text-decoration:none;box-shadow:var(--shadow);transition:.2s}
+  .linkcard:hover{transform:translateY(-3px)}
+  .linkcard .play{font-size:clamp(38px,5vw,68px);line-height:1;flex:0 0 auto}
+  .linkcard b{display:block;font-size:clamp(20px,2.4vw,30px);font-weight:900;color:#fff}
+  .linkcard span{font-size:clamp(13px,1.5vw,17px);opacity:.92;word-break:break-all;color:#fff}
+
+  /* duas vias da leitura */
+  .bigword{font-family:"Courier New",monospace;font-weight:900;letter-spacing:2px;text-align:center;
+    background:rgba(255,255,255,.22);border-radius:14px;padding:clamp(10px,1.4vw,18px);
+    font-size:clamp(24px,3.4vw,46px);color:#fff;margin-bottom:10px}
+  .chain{text-align:center;font-weight:900;font-size:clamp(15px,1.8vw,22px);color:#fff;
+    background:rgba(0,0,0,.18);border-radius:999px;padding:8px 14px;margin-bottom:12px}
+  .panel ul{padding-left:1.1em}
+  .panel ul li{font-size:clamp(15px,1.75vw,21px);color:#fff;font-weight:600;margin:6px 0}
+
+  /* tabela resumo com grade */
+  table{border:3px solid var(--purple) !important;border-radius:14px;overflow:hidden}
+  th,td{border:2px solid var(--purple) !important;text-align:left;vertical-align:middle;font-weight:600;color:var(--ink) !important;
+    padding:clamp(12px,1.5vw,20px) !important}
+  th{background:var(--purple) !important;color:#fff !important;font-weight:900;text-align:center;font-size:clamp(18px,2.1vw,26px)}
+  tbody tr:nth-child(odd) td{background:var(--purple-soft)}
+</style>
+</head>
+<body>
+<div id="topbar">
+  <div id="fsctl" title="Tamanho da fonte">
+    <button id="fsMinus" aria-label="Diminuir fonte">A&minus;</button>
+    <span id="fsval" title="Clique para restaurar">100%</span>
+    <button id="fsPlus" aria-label="Aumentar fonte">A+</button>
+  </div>
+  <a class="tbtn" href="../../">&larr; Indice</a>
+  <button class="tbtn" id="printBtn" title="Imprimir ou salvar em PDF">&#128424; Imprimir</button>
+  <button class="tbtn" id="themeBtn">Escuro</button>
+  <button class="tbtn" id="fsBtn">Apresentar</button>
+</div>
+<div id="deck">
+
+  <section class="slide center">
+    <div class="cover-badge">&#128483;&#65039;</div>
+    <h1>Eixo Oralidade e<br>Eixo Leitura/Escuta</h1>
+    <p class="lead" style="margin-top:16px;max-width:920px">O ensino de L&iacute;ngua Portuguesa na BNCC</p>
+    <p style="margin-top:22px;font-size:clamp(20px,2.5vw,29px);font-weight:900;color:var(--title)">Prof.&ordf; Dr.&ordf; Elian Leite</p>
+    <div class="meta"><span class="chip">&#127891; Saberes e Metodologia do Ensino de LP</span><span class="chip">&#128218; Anos Iniciais</span></div>
+    <p class="hintline">Navegue com <kbd>&larr;</kbd> <kbd>&rarr;</kbd></p>
+  </section>
+
+  <section class="slide">
+    <span class="kicker">1 &middot; Eixo Oralidade</span>
+    <h2>O que &eacute; a oralidade para voc&ecirc;?</h2>
+    <div class="panel pdeep">
+      <span class="lbl">Para reflex&atilde;o</span>
+      <p style="font-size:clamp(21px,2.6vw,32px)">Converse com o colega ao lado antes de vermos o que diz a BNCC.</p>
+    </div>
+    <div class="exbox" onclick="this.classList.toggle('open')" style="margin-top:16px">
+      <div class="exhead"><span class="tag">&#128161; Ver a defini&ccedil;&atilde;o</span><span class="chev">&#9656;</span></div>
+      <div class="exbody"><p>O eixo <strong>Oralidade</strong> trabalha o desenvolvimento da capacidade de <strong>falar e escutar em diferentes situa&ccedil;&otilde;es comunicativas</strong>. A BNCC destaca o uso da l&iacute;ngua oral, as intera&ccedil;&otilde;es discursivas e as estrat&eacute;gias de fala e escuta.</p></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="kicker">1 &middot; Eixo Oralidade</span>
+    <h2>Principais habilidades</h2>
+    <p class="muted" style="margin-bottom:10px">Toque no c&oacute;digo para revelar a habilidade.</p>
+    <div class="habgrid">
+      <div class="hab" onclick="this.classList.toggle('open')">
+        <div class="head"><span class="cd">EF15LP09</span><span class="chev">&#9656;</span></div>
+        <div class="body"><p>Expressar-se oralmente com clareza, utilizando tom de voz, articula&ccedil;&atilde;o e ritmo adequados.</p></div>
+      </div>
+      <div class="hab" onclick="this.classList.toggle('open')">
+        <div class="head"><span class="cd">EF15LP10</span><span class="chev">&#9656;</span></div>
+        <div class="body"><p>Escutar atentamente professores e colegas, fazendo perguntas e solicitando esclarecimentos.</p></div>
+      </div>
+      <div class="hab" onclick="this.classList.toggle('open')">
+        <div class="head"><span class="cd">EF15LP11</span><span class="chev">&#9656;</span></div>
+        <div class="body"><p>Participar de conversa&ccedil;&otilde;es, respeitando os turnos de fala e utilizando formas de tratamento adequadas.</p></div>
+      </div>
+      <div class="hab" onclick="this.classList.toggle('open')">
+        <div class="head"><span class="cd">EF15LP12</span><span class="chev">&#9656;</span></div>
+        <div class="body"><p>Compreender elementos n&atilde;o lingu&iacute;sticos da fala, como olhar, gestos, express&otilde;es corporais e tom de voz.</p></div>
+      </div>
+      <div class="hab" onclick="this.classList.toggle('open')">
+        <div class="head"><span class="cd">EF15LP13</span><span class="chev">&#9656;</span></div>
+        <div class="body"><p>Identificar diferentes finalidades da intera&ccedil;&atilde;o oral, como informar, solicitar informa&ccedil;&otilde;es, apresentar opini&otilde;es e relatar experi&ecirc;ncias.</p></div>
+      </div>
+      <div class="hab" onclick="this.classList.toggle('open')">
+        <div class="head"><span class="cd">EF15LP19</span><span class="chev">&#9656;</span></div>
+        <div class="body"><p>Recontar oralmente textos liter&aacute;rios, com ou sem apoio de imagens.</p></div>
+      </div>
+      <div class="hab" onclick="this.classList.toggle('open')">
+        <div class="head"><span class="cd">EF12LP06</span><span class="chev">&#9656;</span></div>
+        <div class="body"><p>Planejar e produzir textos orais, como recados, avisos, convites, receitas e instru&ccedil;&otilde;es.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="kicker">1 &middot; Eixo Oralidade</span>
+    <h2>Principais aspectos</h2>
+    <div class="aspects">
+      <div class="asp" style="background:var(--c1)"><span class="ic">&#128172;</span><span>Expressar ideias, opini&otilde;es e experi&ecirc;ncias com clareza</span></div>
+      <div class="asp" style="background:var(--c2)"><span class="ic">&#128066;</span><span>Escutar atentamente professores e colegas</span></div>
+      <div class="asp" style="background:var(--c3)"><span class="ic">&#128257;</span><span>Respeitar os turnos de fala</span></div>
+      <div class="asp" style="background:var(--c4)"><span class="ic">&#10067;</span><span>Formular perguntas e solicitar esclarecimentos</span></div>
+      <div class="asp" style="background:var(--c5)"><span class="ic">&#127919;</span><span>Adequar a linguagem &agrave; situa&ccedil;&atilde;o e ao interlocutor</span></div>
+      <div class="asp" style="background:var(--c6)"><span class="ic">&#128064;</span><span>Observar tom de voz, gestos, olhar e express&atilde;o corporal</span></div>
+      <div class="asp" style="background:var(--c1)"><span class="ic">&#128218;</span><span>Participar de relatos, conversas, apresenta&ccedil;&otilde;es e conta&ccedil;&atilde;o de hist&oacute;rias</span></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="kicker k2">Atividade em sala</span>
+    <h2>Telejornal da turma</h2>
+    <p class="lead" style="margin-bottom:14px">Os alunos assumem os pap&eacute;is de <strong>apresentador</strong>, rep&oacute;rter e entrevistado, planejam a fala e apresentam as not&iacute;cias da escola.</p>
+    <a class="linkcard" href="https://www.youtube.com/watch?v=5-9oqkOYkrk" target="_blank" rel="noopener">
+      <span class="play">&#9654;</span>
+      <span><b>Assistir ao v&iacute;deo de exemplo</b><span>youtube.com/watch?v=5-9oqkOYkrk</span></span>
+    </a>
+    <div class="grid g3" style="margin-top:16px">
+      <div class="card"><p>&#128221; <strong>Planejar</strong> o roteiro e o texto oral</p></div>
+      <div class="card"><p>&#127908; <strong>Ensaiar</strong> tom de voz, ritmo e postura</p></div>
+      <div class="card"><p>&#128250; <strong>Apresentar</strong> e assistir&nbsp;&mdash; avaliar juntos</p></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="kicker k2">Atividades pedag&oacute;gicas</span>
+    <h2>Mais duas propostas de oralidade</h2>
+    <div class="grid g2">
+      <div class="panel p1">
+        <span class="lbl">Proposta 01</span>
+        <h3 style="font-size:clamp(21px,2.5vw,30px)">&#128214; Roda de reconto</h3>
+        <p style="margin-top:8px">Ap&oacute;s a leitura de um conto pela professora, cada crian&ccedil;a reconta uma parte da hist&oacute;ria com apoio de imagens, respeitando a sequ&ecirc;ncia e a vez de falar.</p>
+        <p style="margin-top:10px;font-size:clamp(14px,1.6vw,18px);opacity:.9">EF15LP19 &middot; EF15LP10 &middot; EF15LP11</p>
+      </div>
+      <div class="panel p4">
+        <span class="lbl">Proposta 02</span>
+        <h3 style="font-size:clamp(21px,2.5vw,30px)">&#127897;&#65039; Entrevista na escola</h3>
+        <p style="margin-top:8px">Em grupos, os alunos planejam perguntas, entrevistam algu&eacute;m da comunidade escolar (merendeira, porteiro, diretora) e relatam oralmente &agrave; turma o que descobriram.</p>
+        <p style="margin-top:10px;font-size:clamp(14px,1.6vw,18px);opacity:.9">EF12LP06 &middot; EF15LP13 &middot; EF15LP09</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide center">
+    <div class="cover-badge">&#128064;</div>
+    <span class="kicker k3" style="align-self:center">2 &middot; Leitura e escuta</span>
+    <h2 style="font-size:clamp(38px,6vw,76px)">O que &eacute; a leitura?</h2>
+    <p class="lead" style="max-width:800px;margin:0 auto">Antes de responder, vamos comparar a leitura com algo que parece muito pr&oacute;ximo: a fala.</p>
+  </section>
+
+  <section class="slide">
+    <span class="kicker k3">2 &middot; Leitura e escuta</span>
+    <h2>Falar &eacute; natural. Ler, n&atilde;o.</h2>
+    <div class="grid g2">
+      <div class="panel p4">
+        <span class="lbl">Fala</span>
+        <div class="big" style="font-size:clamp(26px,3.4vw,46px)">~200 mil anos</div>
+        <ul style="margin-top:12px">
+          <li>Preparada pela <strong>evolu&ccedil;&atilde;o</strong>.</li>
+          <li>A crian&ccedil;a adquire por <strong>imers&atilde;o</strong>, sem ensino formal.</li>
+          <li>Nenhuma sociedade precisa de escola para isso.</li>
+        </ul>
+      </div>
+      <div class="panel p2">
+        <span class="lbl">Escrita</span>
+        <div class="big" style="font-size:clamp(26px,3.4vw,46px)">~5.400 anos</div>
+        <ul style="margin-top:12px">
+          <li><strong>Inven&ccedil;&atilde;o cultural</strong>: nenhum gene foi selecionado para ela.</li>
+          <li>N&atilde;o h&aacute; circuito cerebral pr&eacute;-programado para as letras.</li>
+          <li><strong>Sem escola e sem ensino expl&iacute;cito, n&atilde;o h&aacute; leitura.</strong></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide center">
+    <div class="cover-badge">&#9888;&#65039;</div>
+    <span class="kicker k2" style="align-self:center">Consequ&ecirc;ncia pedag&oacute;gica direta</span>
+    <h2>Esperar que a crian&ccedil;a &ldquo;descubra sozinha&rdquo;<br>o princ&iacute;pio alfab&eacute;tico &eacute; apostar contra a biologia</h2>
+    <div class="panel p2" style="max-width:1000px;margin:10px auto 0">
+      <p style="font-size:clamp(23px,2.9vw,36px)">O que &eacute; <strong>inven&ccedil;&atilde;o cultural</strong> precisa ser <strong>ensinado</strong>.</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="kicker k3">Aprendizagem da leitura</span>
+    <h2>As tr&ecirc;s etapas</h2>
+    <div class="flow">
+      <div class="step" style="background:var(--c5)">
+        <div class="n">Etapa 01</div><h3>&#127912; Pict&oacute;rica</h3>
+        <p>A crian&ccedil;a trata a palavra como um <strong>desenho</strong>: reconhece a forma global e o logotipo. &ldquo;L&ecirc;&rdquo; Coca-Cola no r&oacute;tulo, mas n&atilde;o a palavra escrita &agrave; m&atilde;o. &Eacute; <strong>pseudoleitura</strong>.</p>
+      </div>
+      <div class="arrowrow">&rarr;</div>
+      <div class="step" style="background:var(--c3)">
+        <div class="n">Etapa 02</div><h3>&#128264; Fonol&oacute;gica</h3>
+        <p>Descobre que a palavra &eacute; feita de letras que correspondem a <strong>sons</strong> e passa a decodificar. Lenta, mas &eacute; a etapa que abre a <strong>autonomia</strong>.</p>
+      </div>
+      <div class="arrowrow">&rarr;</div>
+      <div class="step" style="background:var(--c4)">
+        <div class="n">Etapa 03</div><h3>&#9889; Ortogr&aacute;fica</h3>
+        <p>O reconhecimento torna-se <strong>r&aacute;pido e paralelo</strong>. &Eacute; a <strong>flu&ecirc;ncia</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="kicker k2">Aten&ccedil;&atilde;o</span>
+    <h2>Cuidado com a etapa pict&oacute;rica</h2>
+    <div class="panel p6">
+      <p style="font-size:clamp(20px,2.5vw,31px)">A crian&ccedil;a que &ldquo;l&ecirc;&rdquo; dez palavras memorizadas <strong>parece progredir</strong>. Mas &eacute; um progresso com <strong>TETO</strong>: ela l&ecirc; apenas o que j&aacute; viu antes e trava diante de qualquer palavra nova.</p>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <p>&#128197; As idades s&atilde;o indicativas: o que define a etapa &eacute; o <strong>ensino recebido</strong>, n&atilde;o o calend&aacute;rio.</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="kicker k3">O que o(a) professor(a) deve saber</span>
+    <h2>A leitura acontece em duas vias</h2>
+    <div class="grid g2">
+      <div class="panel p3">
+        <span class="lbl">Via 01</span>
+        <div class="big" style="font-size:clamp(24px,3vw,42px)">Fonol&oacute;gica</div>
+        <p style="margin-top:10px">indireta &mdash; passa pelos sons</p>
+      </div>
+      <div class="panel p5">
+        <span class="lbl">Via 02</span>
+        <div class="big" style="font-size:clamp(24px,3vw,42px)">Lexical</div>
+        <p style="margin-top:10px">direta &mdash; reconhece a palavra inteira</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="kicker k3">As duas vias</span>
+    <h2>Como cada via funciona</h2>
+    <div class="grid g2">
+      <div class="panel p3">
+        <span class="lbl">Via fonol&oacute;gica (indireta)</span>
+        <div class="bigword">PLIVANTE &middot; TREVOLA</div>
+        <div class="chain">Letra &rarr; som &rarr; palavra &rarr; sentido</div>
+        <ul>
+          <li>&Eacute; a <strong>&uacute;nica via poss&iacute;vel</strong> para palavras novas ou raras.</li>
+          <li>&Eacute; a via que a <strong>instru&ccedil;&atilde;o f&ocirc;nica</strong> constr&oacute;i.</li>
+          <li>D&aacute; <strong>autonomia</strong>: a crian&ccedil;a l&ecirc; qualquer palavra que nunca viu.</li>
+        </ul>
+      </div>
+      <div class="panel p5">
+        <span class="lbl">Via lexical (direta)</span>
+        <div class="bigword">CASA</div>
+        <div class="chain">Palavra &rarr; sentido</div>
+        <ul>
+          <li>Recupera direto a <strong>identidade e o significado</strong> da palavra.</li>
+          <li>&Eacute; o que d&aacute; <strong>velocidade</strong> ao leitor experiente.</li>
+          <li>N&atilde;o &eacute; ponto de partida: &eacute; o <strong>resultado</strong> de muitas passagens pela via fonol&oacute;gica.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide center">
+    <div class="cover-badge">&#128721;</div>
+    <span class="kicker k2" style="align-self:center">Aten&ccedil;&atilde;o</span>
+    <h2>O erro do m&eacute;todo global</h2>
+    <div class="panel pdeep" style="max-width:1050px;margin:0 auto">
+      <p style="font-size:clamp(20px,2.5vw,31px)">Tentar instalar a <strong>via lexical</strong> diretamente, pulando a fonol&oacute;gica. Mas a via lexical &eacute; constru&iacute;da <strong>PELA</strong> via fonol&oacute;gica &mdash; &eacute; decodificando muitas vezes a mesma palavra que a crian&ccedil;a acaba por reconhec&ecirc;-la de imediato.</p>
+    </div>
+    <p style="margin-top:16px;font-weight:900;color:var(--title);font-size:clamp(20px,2.4vw,29px)">N&atilde;o se chega ao atalho sem ter feito o caminho.</p>
+  </section>
+
+  <section class="slide">
+    <span class="kicker k3">3 &middot; Eixo Leitura/Escuta</span>
+    <h2>O eixo Leitura/Escuta</h2>
+    <div class="panel pdeep">
+      <p style="font-size:clamp(21px,2.6vw,32px)">Busca ampliar o <strong>letramento</strong>, desenvolvendo progressivamente estrat&eacute;gias para compreender textos de <strong>diferentes g&ecirc;neros e n&iacute;veis de complexidade</strong>.</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="kicker k3">3 &middot; Eixo Leitura/Escuta</span>
+    <h2>Principais habilidades</h2>
+    <p class="muted" style="margin-bottom:10px">Toque no c&oacute;digo para revelar a habilidade.</p>
+    <div class="habgrid">
+      <div class="hab" onclick="this.classList.toggle('open')">
+        <div class="head"><span class="cd">EF15LP01</span><span class="chev">&#9656;</span></div>
+        <div class="body"><p>Identificar a fun&ccedil;&atilde;o social dos textos, compreendendo <strong>para que foram produzidos, onde circulam, quem os produziu e para quem se destinam</strong>.</p></div>
+      </div>
+      <div class="hab" onclick="this.classList.toggle('open')">
+        <div class="head"><span class="cd">EF15LP02</span><span class="chev">&#9656;</span></div>
+        <div class="body"><p>Criar expectativas sobre o texto antes e durante a leitura, utilizando conhecimentos pr&eacute;vios, g&ecirc;nero, suporte, imagens e outros elementos.</p></div>
+      </div>
+      <div class="hab" onclick="this.classList.toggle('open')">
+        <div class="head"><span class="cd">EF15LP03</span><span class="chev">&#9656;</span></div>
+        <div class="body"><p>Localizar informa&ccedil;&otilde;es expl&iacute;citas no texto.</p></div>
+      </div>
+      <div class="hab" onclick="this.classList.toggle('open')">
+        <div class="head"><span class="cd">EF15LP14</span><span class="chev">&#9656;</span></div>
+        <div class="body"><p>Construir sentidos em hist&oacute;rias em quadrinhos e tirinhas, relacionando imagens, palavras e recursos gr&aacute;ficos.</p></div>
+      </div>
+      <div class="hab" onclick="this.classList.toggle('open')">
+        <div class="head"><span class="cd">EF15LP15</span><span class="chev">&#9656;</span></div>
+        <div class="body"><p>Reconhecer textos liter&aacute;rios como parte do imagin&aacute;rio e do patrim&ocirc;nio art&iacute;stico e cultural.</p></div>
+      </div>
+      <div class="hab" onclick="this.classList.toggle('open')">
+        <div class="head"><span class="cd">EF15LP16</span><span class="chev">&#9656;</span></div>
+        <div class="body"><p>Ler e compreender textos narrativos, inicialmente com apoio e posteriormente com autonomia.</p></div>
+      </div>
+      <div class="hab" onclick="this.classList.toggle('open')">
+        <div class="head"><span class="cd">EF15LP17</span><span class="chev">&#9656;</span></div>
+        <div class="body"><p>Apreciar poemas visuais e concretos, observando seus recursos gr&aacute;ficos.</p></div>
+      </div>
+      <div class="hab" onclick="this.classList.toggle('open')">
+        <div class="head"><span class="cd">EF15LP18</span><span class="chev">&#9656;</span></div>
+        <div class="body"><p>Relacionar texto, ilustra&ccedil;&otilde;es e outros recursos gr&aacute;ficos.</p></div>
+      </div>
+      <div class="hab" onclick="this.classList.toggle('open')">
+        <div class="head"><span class="cd">EF12LP04</span><span class="chev">&#9656;</span></div>
+        <div class="body"><p>Ler e compreender textos do cotidiano, como listas, avisos, convites, receitas e instru&ccedil;&otilde;es, relacionando sua organiza&ccedil;&atilde;o &agrave; finalidade.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="kicker k3">3 &middot; Eixo Leitura/Escuta</span>
+    <h2>Principais aspectos</h2>
+    <div class="aspects">
+      <div class="asp" style="background:var(--c1)"><span class="ic">&#127991;&#65039;</span><span>Compreender a fun&ccedil;&atilde;o social dos textos</span></div>
+      <div class="asp" style="background:var(--c2)"><span class="ic">&#128269;</span><span>Identificar para que, onde, por quem e para quem um texto foi produzido</span></div>
+      <div class="asp" style="background:var(--c3)"><span class="ic">&#128173;</span><span>Fazer previs&otilde;es e levantar hip&oacute;teses antes e durante a leitura</span></div>
+      <div class="asp" style="background:var(--c4)"><span class="ic">&#128204;</span><span>Localizar informa&ccedil;&otilde;es expl&iacute;citas</span></div>
+      <div class="asp" style="background:var(--c5)"><span class="ic">&#128444;&#65039;</span><span>Relacionar texto, imagens e outros recursos visuais</span></div>
+      <div class="asp" style="background:var(--c6)"><span class="ic">&#128220;</span><span>Ler e compreender diferentes g&ecirc;neros textuais</span></div>
+      <div class="asp" style="background:var(--c1)"><span class="ic">&#128640;</span><span>Desenvolver autonomia e flu&ecirc;ncia leitora</span></div>
+      <div class="asp" style="background:var(--c2)"><span class="ic">&#10084;&#65039;</span><span>Valorizar a literatura e apreciar textos liter&aacute;rios</span></div>
+    </div>
+  </section>
+
+  <section class="slide center">
+    <div class="cover-badge">&#11088;</div>
+    <span class="kicker k2" style="align-self:center">Importante</span>
+    <h2>Ler &eacute; muito mais que decodificar</h2>
+    <div class="panel p1" style="max-width:1050px;margin:0 auto">
+      <p style="font-size:clamp(23px,2.9vw,36px)">Aprender a <strong>ler</strong>, <strong>compreender</strong>, <strong>interpretar</strong> e <strong>atribuir sentidos</strong> a diferentes textos.</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="kicker">S&iacute;ntese</span>
+    <h2>Em resumo</h2>
+    <table>
+      <thead><tr><th>Eixo</th><th>Foco principal</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Oralidade</strong></td><td>Falar e escutar</td></tr>
+        <tr><td><strong>Leitura/Escuta</strong></td><td>Ler, compreender e interpretar</td></tr>
+      </tbody>
+    </table>
+    <div class="panel pdeep" style="margin-top:14px">
+      <span class="lbl">Ideia central da BNCC</span>
+      <p style="font-size:clamp(18px,2.2vw,27px)">Os dois eixos <strong>n&atilde;o devem ser trabalhados de forma isolada</strong>. As pr&aacute;ticas de linguagem devem estar relacionadas &agrave;s <strong>situa&ccedil;&otilde;es reais de comunica&ccedil;&atilde;o</strong> e aos diferentes <strong>g&ecirc;neros textuais</strong>.</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="kicker k2">Propostas pedag&oacute;gicas</span>
+    <h2>Exemplos de projetos de leitura</h2>
+    <div class="grid g3">
+      <div class="panel p1">
+        <div style="font-size:clamp(34px,4.4vw,58px)">&#128218;</div>
+        <h3 style="margin-top:8px;font-size:clamp(20px,2.4vw,29px)">Projeto de leitura</h3>
+        <p style="margin-top:8px">Sacola liter&aacute;ria que circula entre as fam&iacute;lias: a crian&ccedil;a leva um livro, l&ecirc; em casa e registra a impress&atilde;o no di&aacute;rio da turma.</p>
+      </div>
+      <div class="panel p2">
+        <div style="font-size:clamp(34px,4.4vw,58px)">&#128226;</div>
+        <h3 style="margin-top:8px;font-size:clamp(20px,2.4vw,29px)">Leitura de propaganda</h3>
+        <p style="margin-top:8px">Analisar an&uacute;ncios: quem produziu, para quem, o que promete e quais recursos de imagem e palavra usa para convencer.</p>
+      </div>
+      <div class="panel p3">
+        <div style="font-size:clamp(34px,4.4vw,58px)">&#128240;</div>
+        <h3 style="margin-top:8px;font-size:clamp(20px,2.4vw,29px)">Leitura de jornal</h3>
+        <p style="margin-top:8px">Explorar manchetes, fotos e legendas; localizar informa&ccedil;&otilde;es e comparar como um mesmo fato aparece em ve&iacute;culos diferentes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide center">
+    <h1 style="color:var(--title)">Obrigada!</h1>
+    <p class="lead" style="margin-top:18px;font-weight:900">Prof.&ordf; Dr.&ordf; Elian Leite</p>
+    <p style="margin-top:12px;font-size:clamp(18px,2.2vw,27px)">&#9993;&#65039; <a class="mail" href="mailto:prof.elianleite@gmail.com">prof.elianleite@gmail.com</a></p>
+    <div class="meta"><span class="chip">&#128218; BNCC &middot; L&iacute;ngua Portuguesa &middot; Anos Iniciais</span></div>
+  </section>
+
+  </div>
+<div id="controls">
+  <button class="nav" id="prev">&lsaquo;</button>
+  <span id="counter">1 / 1</span>
+  <button class="nav" id="next">&rsaquo;</button>
+</div>
+<div id="bar"><div id="barfill"></div></div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];let i=0;
+const counter=document.getElementById('counter'),barfill=document.getElementById('barfill');
+function show(n){i=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+  counter.textContent=(i+1)+' / '+slides.length;
+  barfill.style.width=((i+1)/slides.length*100)+'%';slides[i].scrollTop=0;}
+document.getElementById('next').onclick=()=>show(i+1);
+document.getElementById('prev').onclick=()=>show(i-1);
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='PageDown')show(i+1);
+  else if(e.key==='ArrowLeft'||e.key==='PageUp')show(i-1);
+  else if(e.key==='Home')show(0);else if(e.key==='End')show(slides.length-1);});
+show(0);
+document.getElementById('fsBtn').onclick=()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.();};
+const themeBtn=document.getElementById('themeBtn'),root=document.documentElement;
+themeBtn.onclick=()=>{const d=root.getAttribute('data-theme')==='dark';root.setAttribute('data-theme',d?'light':'dark');themeBtn.textContent=d?'Escuro':'Claro';};
+
+/* Controle de tamanho da fonte */
+(function(){
+  var fs=1;
+  try{var s=localStorage.getItem('aulaFs');if(s)fs=parseFloat(s)||1;}catch(e){}
+  var val=document.getElementById('fsval');
+  function apply(){
+    fs=Math.min(1.6,Math.max(0.7,Math.round(fs*100)/100));
+    document.documentElement.style.setProperty('--fs',fs);
+    if(val)val.textContent=Math.round(fs*100)+'%';
+    try{localStorage.setItem('aulaFs',fs);}catch(e){}
+  }
+  document.getElementById('fsPlus').onclick=function(){fs+=0.1;apply();};
+  document.getElementById('fsMinus').onclick=function(){fs-=0.1;apply();};
+  if(val)val.onclick=function(){fs=1;apply();};
+  document.addEventListener('keydown',function(e){
+    if(e.key==='+'||e.key==='='){fs+=0.1;apply();}
+    else if(e.key==='-'||e.key==='_'){fs-=0.1;apply();}
+    else if(e.key==='0'){fs=1;apply();}
+  });
+  apply();
+})();
+
+/* Impressao / PDF */
+(function(){
+  var b=document.getElementById('printBtn');
+  if(!b)return;
+  b.onclick=function(){
+    document.querySelectorAll('.acc,.exbox,.hab').forEach(function(e){e.classList.add('open');});
+    var g=document.getElementById('eixoGrid'); if(g)g.classList.add('reveal');
+    var p=document.getElementById('pilaresHint'); if(p)p.classList.add('reveal');
+    window.print();
+  };
+  document.addEventListener('keydown',function(e){
+    if((e.ctrlKey||e.metaKey)&&e.key==='p'){
+      document.querySelectorAll('.acc,.exbox,.hab').forEach(function(el){el.classList.add('open');});
+    }
+  });
+})();
+</script>
+</body>
+</html>
