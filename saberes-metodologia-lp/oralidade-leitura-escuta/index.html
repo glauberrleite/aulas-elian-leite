@@ -170,7 +170,7 @@
     .panel .big{font-size:20pt !important}
     .panel .lbl{font-size:8.5pt !important}
     .code,.acc .cd,.drawcard .cd,.hab .cd{font-size:12pt !important}
-    .asp{font-size:10.5pt !important}.bigword{font-size:18pt !important}.chain{font-size:10.5pt !important}
+    .asp{font-size:10.5pt !important}.wchip{font-size:9.5pt !important;padding:2px 6px !important}.bigword{font-size:18pt !important}.chain{font-size:10.5pt !important}
     .linkcard b{font-size:12pt !important}.linkcard .play{font-size:20pt !important}
     .seg{font-size:18pt !important;padding:5px 12px !important}
     .quiz-q,.caseline{font-size:11.5pt !important}
@@ -246,9 +246,17 @@
   /* tabela resumo com grade */
   table{border:3px solid var(--purple) !important;border-radius:14px;overflow:hidden}
   th,td{border:2px solid var(--purple) !important;text-align:left;vertical-align:middle;font-weight:600;color:var(--ink) !important;
-    padding:clamp(12px,1.5vw,20px) !important}
-  th{background:var(--purple) !important;color:#fff !important;font-weight:900;text-align:center;font-size:clamp(18px,2.1vw,26px)}
+    padding:clamp(12px,1.5vw,20px)}
+  th{background:var(--purple) !important;color:#fff !important;font-weight:900;text-align:center;font-size:clamp(21px,2.5vw,32px)}
+  td{font-size:clamp(21px,2.7vw,34px);font-weight:700}
+  td strong{font-weight:900}
   tbody tr:nth-child(odd) td{background:var(--purple-soft)}
+
+  /* fichas de palavras (exemplos das duas vias) */
+  .wgrid{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .wchip{font-family:"Courier New",monospace;font-weight:900;letter-spacing:1px;color:#fff;
+    background:rgba(255,255,255,.22);border-radius:10px;padding:8px 14px;
+    font-size:clamp(15px,1.75vw,22px);line-height:1.1}
 </style>
 </head>
 <body>
@@ -405,8 +413,8 @@
 
   <section class="slide center">
     <div class="cover-badge">&#9888;&#65039;</div>
-    <span class="kicker k2" style="align-self:center">Consequ&ecirc;ncia pedag&oacute;gica direta</span>
-    <h2>Esperar que a crian&ccedil;a &ldquo;descubra sozinha&rdquo;<br>o princ&iacute;pio alfab&eacute;tico &eacute; apostar contra a biologia</h2>
+    <span class="kicker k2" style="align-self:center;font-size:clamp(19px,2.3vw,28px);padding:12px 28px;letter-spacing:.5px">Consequ&ecirc;ncia pedag&oacute;gica direta</span>
+    <h2 style="text-align:center;margin-left:auto;margin-right:auto;max-width:20ch;text-wrap:balance">Esperar que a crian&ccedil;a &ldquo;descubra sozinha&rdquo; o princ&iacute;pio alfab&eacute;tico &eacute; apostar contra a biologia</h2>
     <div class="panel p2" style="max-width:1000px;margin:10px auto 0">
       <p style="font-size:clamp(23px,2.9vw,36px)">O que &eacute; <strong>inven&ccedil;&atilde;o cultural</strong> precisa ser <strong>ensinado</strong>.</p>
     </div>
@@ -458,6 +466,42 @@
         <div class="big" style="font-size:clamp(24px,3vw,42px)">Lexical</div>
         <p style="margin-top:10px">direta &mdash; reconhece a palavra inteira</p>
       </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="kicker k3">As duas vias na pr&aacute;tica</span>
+    <h2>Que palavras exigem decodificar?</h2>
+    <div class="grid g2">
+      <div class="panel p3">
+        <span class="lbl">Via fonol&oacute;gica &mdash; preciso decodificar</span>
+        <div class="wgrid">
+          <span class="wchip">PARALELEP&Iacute;PEDO</span>
+          <span class="wchip">XILOGRAVURA</span>
+          <span class="wchip">PTEROD&Aacute;CTILO</span>
+          <span class="wchip">PERSPECTIVA</span>
+          <span class="wchip">ABSTRATO</span>
+          <span class="wchip">OTORRINOLARINGOLOGISTA</span>
+        </div>
+        <p style="margin-top:12px;font-size:clamp(16px,1.85vw,22px)">Longas, raras ou com s&iacute;labas complexas (CCV, CVC). O leitor <strong>nunca as viu escritas</strong> &mdash; precisa ir letra por letra.</p>
+      </div>
+      <div class="panel p5">
+        <span class="lbl">Via lexical &mdash; reconhe&ccedil;o de imediato</span>
+        <div class="wgrid">
+          <span class="wchip">CASA</span>
+          <span class="wchip">BOLA</span>
+          <span class="wchip">PATO</span>
+          <span class="wchip">SOL</span>
+          <span class="wchip">MAM&Atilde;E</span>
+          <span class="wchip">MENINO</span>
+          <span class="wchip">ESCOLA</span>
+          <span class="wchip">DIA</span>
+        </div>
+        <p style="margin-top:12px;font-size:clamp(16px,1.85vw,22px)">Curtas e <strong>muito frequentes</strong>. J&aacute; foram decodificadas tantas vezes que agora s&atilde;o reconhecidas num golpe de vista.</p>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <p>&#128161; O que define a via <strong>n&atilde;o &eacute; a palavra em si, mas a familiaridade do leitor com ela</strong>. &ldquo;Paralelep&iacute;pedo&rdquo; &eacute; lexical para um adulto e fonol&oacute;gica para uma crian&ccedil;a do 2&ordm; ano.</p>
     </div>
   </section>
 
