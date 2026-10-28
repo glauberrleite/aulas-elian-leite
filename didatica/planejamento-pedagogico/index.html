@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planejamento pedagógico · Didática — Profª Drª Elian Leite</title>
+<style>
+  :root{
+    --font:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;--radius:24px;
+    --purple:#7A4FC0;--purple-dk:#5E3A9E;--purple-soft:#EDE6FA;--lilac:#B79AE0;
+    --orange:#E8590C;--orange-lt:#FF922B;
+    --c1:#7A4FC0;--c2:#E8590C;--c3:#1C7ED6;--c4:#2B8A6E;--c5:#B5179E;--c6:#D6336C;
+  }
+  html[data-theme="light"]{
+    --bg1:#F3ECFB;--bg2:#FBF8FF;--page:#FFFFFF;--paper:#FFFFFF;
+    --ink:#241C42;--ink-soft:#54486F;--line:#E3D9F5;--shadow:0 14px 38px rgba(74,42,130,.16);
+    --title:#F03E00;--deep:#2B1C52;
+    --correct:#2F8F52;--correct-soft:#DFF3E4;--wrong:#C0392F;--wrong-soft:#FBE4E1;
+  }
+  html[data-theme="dark"]{
+    --bg1:#1A1330;--bg2:#110B20;--page:#251C3F;--paper:#2C2249;
+    --ink:#F6F1FE;--ink-soft:#CFC2EA;--line:#3F3163;--shadow:0 16px 44px rgba(0,0,0,.5);
+    --title:#FF8A3D;--deep:#0E0A1C;--purple:#B79AE0;--purple-dk:#D3BEF5;--purple-soft:#3A2C5C;
+    --c1:#A98AE8;--c2:#FF922B;--c3:#4DABF7;--c4:#51CF9E;--c5:#E599F7;--c6:#FF8FA8;
+    --correct:#51CF7C;--correct-soft:#22402C;--wrong:#FF8787;--wrong-soft:#43222A;
+  }
+  html[data-theme="dark"] .p1,html[data-theme="dark"] .flow .p1{background:#6B4BB0}
+  html[data-theme="dark"] .p2,html[data-theme="dark"] .flow .p2{background:#B9500F}
+  html[data-theme="dark"] .p3,html[data-theme="dark"] .flow .p3{background:#1C6AB8}
+  html[data-theme="dark"] .p4,html[data-theme="dark"] .flow .p4{background:#21745B}
+  html[data-theme="dark"] .p5,html[data-theme="dark"] .flow .p5{background:#951C8B}
+  html[data-theme="dark"] .p6,html[data-theme="dark"] .flow .p6{background:#AE2D58}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:var(--font);color:var(--ink);overflow:hidden;
+    background:radial-gradient(1200px 820px at 85% -12%,var(--purple-soft),transparent 62%),
+               radial-gradient(1000px 720px at -10% 112%,var(--purple-soft),transparent 55%),
+               linear-gradient(160deg,var(--bg1),var(--bg2));transition:background .4s,color .4s;}
+  #deck{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:clamp(6px,1vw,14px);}
+  .slide{display:none;width:calc(min(1560px,100%)/var(--fs,1));height:calc((100vh - clamp(12px,2vw,28px))/var(--fs,1));background:var(--paper);
+    border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
+    padding:clamp(16px,2vw,32px) clamp(18px,2.4vw,40px) clamp(30px,3.4vw,50px);overflow:auto;position:relative;
+    animation:pop .45s cubic-bezier(.2,.8,.2,1);}
+  .slide.active{display:flex;flex-direction:column;justify-content:center}
+  @keyframes pop{from{opacity:0;transform:translateY(14px) scale(.99)}to{opacity:1;transform:none}}
+  .slide::-webkit-scrollbar{width:10px}.slide::-webkit-scrollbar-thumb{background:var(--purple-soft);border-radius:20px}
+
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;
+    font-size:clamp(12px,1.4vw,17px);color:#fff;background:var(--purple);padding:8px 18px;border-radius:999px;margin-bottom:10px;align-self:flex-start}
+  .kicker .tm{background:rgba(255,255,255,.25);border-radius:999px;padding:1px 9px;font-weight:900}
+  h1{font-size:clamp(34px,5.4vw,66px);line-height:1.05;letter-spacing:-.6px;color:var(--ink)}
+  h2{font-size:clamp(28px,4vw,52px);line-height:1.07;margin-bottom:14px;letter-spacing:-.6px;color:var(--title);font-weight:900}
+  h3{font-size:clamp(20px,2.4vw,30px);margin:0 0 6px;color:var(--ink);font-weight:800}
+  p,li{font-size:clamp(17px,2vw,25px);line-height:1.4;color:var(--ink-soft)}
+  ul,ol{padding-left:1.15em;margin:6px 0}li{margin:6px 0}
+  .lead{font-size:clamp(21px,2.8vw,36px);line-height:1.3;color:var(--ink);font-weight:600}
+  strong{color:var(--ink)}.center{text-align:center;align-items:center}
+  .cover-badge{font-size:clamp(54px,8vw,104px);margin-bottom:6px}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:22px}
+  .chip{background:var(--purple-soft);border:1px solid var(--line);border-radius:999px;padding:10px 20px;font-size:clamp(14px,1.7vw,19px);color:var(--purple-dk);font-weight:800}
+
+  .grid{display:grid;gap:clamp(11px,1.5vw,20px);width:100%}
+  .g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}
+  .g23{grid-template-columns:2fr 3fr}.g32{grid-template-columns:3fr 2fr}
+  @media(max-width:900px){.g2,.g3,.g23,.g32{grid-template-columns:1fr}}
+
+  .panel{border-radius:20px;padding:clamp(14px,2vw,28px);color:#fff;display:flex;flex-direction:column;justify-content:center;box-shadow:var(--shadow)}
+  .panel h3,.panel strong{color:#fff}
+  .panel p,.panel li{color:#fff;font-weight:700}
+  .panel .lbl{display:block;font-size:clamp(12px,1.4vw,17px);font-weight:900;letter-spacing:.9px;text-transform:uppercase;color:#fff;opacity:.92;margin-bottom:7px}
+  .panel .ex{margin-top:8px;padding-top:8px;border-top:2px solid rgba(255,255,255,.35);font-weight:600;font-size:clamp(14px,1.6vw,20px)}
+  .p1{background:var(--c1)}.p2{background:var(--c2)}.p3{background:var(--c3)}.p4{background:var(--c4)}.p5{background:var(--c5)}.p6{background:var(--c6)}
+  .pdeep{background:var(--deep)}
+
+  .card{background:var(--purple-soft);border:3px solid var(--purple);border-radius:20px;padding:clamp(14px,2vw,26px)}
+  .card p,.card li{font-size:clamp(17px,2vw,25px);color:var(--ink);font-weight:600}
+  .card.warn{border-color:var(--orange);background:transparent}
+  .card.ask{border-color:var(--title);background:transparent}
+
+  .quote{border-left:8px solid var(--title);padding:clamp(12px,1.6vw,20px) clamp(16px,2vw,26px);background:var(--purple-soft);border-radius:0 18px 18px 0}
+  .quote p{font-style:italic;font-size:clamp(18px,2.2vw,28px);color:var(--ink);font-weight:600}
+
+  /* tabelas */
+  .tblwrap{width:100%;overflow-x:auto;flex-shrink:0}
+  .grid,.quote,.panel,.card,.flow{flex-shrink:0}
+  table.cmp{border-collapse:separate;border-spacing:0;width:100%;font-size:clamp(14px,1.7vw,22px)}
+  table.cmp th,table.cmp td{padding:clamp(7px,1vw,13px) clamp(8px,1.1vw,15px);text-align:left;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.26}
+  table.cmp thead th{color:#fff;font-weight:900;background:var(--purple);border-bottom:none}
+  table.cmp thead th:first-child{border-radius:14px 0 0 0}
+  table.cmp thead th:last-child{border-radius:0 14px 0 0}
+  table.cmp tbody th{font-weight:900;color:var(--ink);background:var(--purple-soft);white-space:nowrap}
+  table.cmp tbody tr:nth-child(even) td{background:rgba(122,79,192,.05)}
+  table.cmp td{color:var(--ink-soft);font-weight:600}
+  table.cmp td em{color:var(--ink);font-style:italic}
+
+  /* ciclo do planejamento */
+  .flow{display:flex;align-items:stretch;justify-content:center;gap:clamp(4px,.6vw,10px);width:100%;flex-wrap:wrap}
+  .flow .step{flex:1 1 0;min-width:120px;border-radius:18px;padding:clamp(10px,1.3vw,18px) clamp(8px,1vw,14px);color:#fff;
+    font-weight:900;text-align:center;font-size:clamp(14px,1.7vw,22px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;box-shadow:var(--shadow)}
+  .flow .step .ico{font-size:clamp(22px,2.6vw,34px)}
+  .flow .arw{display:flex;align-items:center;font-size:clamp(20px,2.4vw,32px);color:var(--purple);font-weight:900}
+  .loopback{text-align:center;font-weight:800;color:var(--purple-dk);font-size:clamp(14px,1.6vw,20px);margin-top:8px}
+
+  /* lista de perguntas numeradas */
+  .qlist{list-style:none;padding:0;display:grid;gap:clamp(7px,.9vw,12px);width:100%}
+  .qlist li{display:flex;gap:12px;align-items:flex-start;background:var(--purple-soft);border-radius:14px;padding:clamp(8px,1vw,13px) clamp(12px,1.4vw,18px);margin:0;color:var(--ink);font-weight:600;font-size:clamp(15px,1.8vw,23px)}
+  .qlist li .n{flex:0 0 auto;background:var(--purple);color:#fff;border-radius:9px;min-width:34px;text-align:center;font-weight:900;padding:1px 6px}
+  .qlist.g2col{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:900px){.qlist.g2col{grid-template-columns:1fr}}
+
+  /* palavras da turma */
+  .words{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:10px}
+  .words span{background:var(--deep);color:#fff;border-radius:999px;padding:9px 20px;font-weight:900;font-size:clamp(15px,1.9vw,24px)}
+
+  /* revelar */
+  .revealbox{cursor:pointer}
+  .hiddenb{display:none}.hiddenb.reveal{display:block;animation:pop .4s}
+  .resp{border:3px solid var(--correct);background:var(--correct-soft);border-radius:20px;padding:clamp(14px,1.9vw,24px);margin-top:12px}
+  .resp p,.resp li{color:var(--ink);font-weight:600;font-size:clamp(15px,1.75vw,22px)}
+  .resp .tag{display:inline-block;background:var(--correct);color:#fff;font-weight:900;border-radius:999px;
+    padding:5px 16px;font-size:clamp(14px,1.7vw,21px);margin-bottom:8px}
+  .cue{margin-top:10px;text-align:center;font-weight:800;color:var(--title);font-size:clamp(15px,1.8vw,22px)}
+
+  /* cronômetro */
+  .timer{display:flex;align-items:center;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+  .timer .clock{font-variant-numeric:tabular-nums;font-weight:900;font-size:clamp(26px,3.4vw,44px);color:var(--ink);min-width:3.6em;text-align:center}
+  .timer .clock.end{color:var(--title)}
+  .btn{background:var(--purple);color:#fff;border:none;border-radius:14px;padding:11px 20px;font-size:clamp(14px,1.6vw,19px);font-weight:800;cursor:pointer;transition:.15s;font-family:inherit}
+  .btn:hover{background:var(--purple-dk)}
+  .btn.orange{background:var(--orange)}.btn.orange:hover{background:#C74A05}
+  .btn.ghost{background:var(--purple-soft);color:var(--purple-dk)}
+
+  #bar{position:fixed;left:0;right:0;bottom:0;height:5px;background:var(--line);z-index:40}
+  #barfill{height:100%;width:0;background:linear-gradient(90deg,var(--orange),var(--purple));transition:width .3s}
+  #controls{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;
+    background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:6px 10px;box-shadow:var(--shadow);z-index:50}
+  .nav{border:none;background:var(--purple-soft);color:var(--purple-dk);width:42px;height:42px;border-radius:50%;font-size:20px;cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center}
+  .nav:hover{background:var(--purple);color:#fff}
+  #counter{font-weight:800;font-size:clamp(13px,1.5vw,16px);color:var(--ink);min-width:56px;text-align:center}
+  #topbar{position:fixed;top:12px;right:14px;display:flex;gap:8px;z-index:50}
+  .tbtn{border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:9px 13px;font-size:clamp(12px,1.4vw,15px);font-weight:800;color:var(--ink);cursor:pointer;transition:.15s;display:flex;align-items:center;gap:6px;text-decoration:none;font-family:inherit}
+  .tbtn:hover{background:var(--purple-soft)}
+  .hintline{margin-top:16px;font-size:clamp(14px,1.6vw,18px);color:var(--ink-soft);text-align:center}
+  kbd{background:var(--ink);color:var(--paper);border-radius:6px;padding:2px 8px;font-size:14px;font-family:monospace}
+  a.mail{color:var(--title);font-weight:900;text-decoration:none}
+
+  /* --- controle de tamanho de fonte --- */
+  .slide{zoom:var(--fs,1)}
+  #fsctl{display:flex;align-items:center;gap:4px;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:4px 6px}
+  #fsctl button{border:none;background:var(--purple-soft);color:var(--purple-dk);width:30px;height:30px;border-radius:8px;
+    font-size:15px;font-weight:900;cursor:pointer;font-family:inherit;line-height:1;display:flex;align-items:center;justify-content:center}
+  #fsctl button:hover{background:var(--purple);color:#fff}
+  #fsval{font-size:12px;font-weight:800;color:var(--ink);min-width:38px;text-align:center;cursor:pointer}
+
+  @media print{
+    @page{size:A4 landscape;margin:8mm}
+    html,html[data-theme="dark"],html[data-theme="light"]{
+      --bg1:#fff;--bg2:#fff;--page:#fff;--paper:#fff;
+      --ink:#1F1838;--ink-soft:#3A3057;--line:#CFC0EC;
+      --title:#D93A00;--deep:#2B1C52;
+      --purple:#6E43B8;--purple-dk:#54318F;--purple-soft:#F1EAFC;--lilac:#A98AE0;
+      --orange:#D93A00;--orange-lt:#E8590C;
+      --c1:#6E43B8;--c2:#D24600;--c3:#175FAF;--c4:#1F7358;--c5:#9B1490;--c6:#BE2A59;
+      --correct:#1F7A46;--correct-soft:#E4F3E8;--wrong:#B03024;--wrong-soft:#FBE7E4;
+      --shadow:none;--fs:1;
+    }
+    *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
+    html,body{height:auto !important;overflow:visible !important;background:#fff !important}
+    #topbar,#controls,#bar,.hintline,#fsctl,.cue,.timer{display:none !important}
+    #deck{position:static !important;display:block !important;inset:auto !important;padding:0 !important;counter-reset:pg}
+    .slide{
+      display:block !important;position:relative !important;
+      width:100% !important;height:auto !important;max-height:none !important;min-height:0 !important;
+      zoom:1 !important;overflow:visible !important;
+      border:none !important;border-radius:0 !important;box-shadow:none !important;
+      background:#fff !important;animation:none !important;
+      padding:0 0 6mm 0 !important;margin:0 0 4mm 0 !important;
+      page-break-after:always;break-after:page;
+    }
+    .slide:last-child{page-break-after:auto;break-after:auto}
+    .slide::after{content:counter(pg);counter-increment:pg;position:absolute;bottom:0;right:0;font-size:10pt;font-weight:800;color:#6E43B8}
+    h1{font-size:26pt !important;line-height:1.15 !important}
+    h2{font-size:20pt !important;line-height:1.15 !important;margin-bottom:5mm !important}
+    h3{font-size:13pt !important}
+    p,li,td,th{font-size:11pt !important;line-height:1.35 !important}
+    .lead{font-size:13.5pt !important}
+    .kicker{font-size:9pt !important;padding:3px 10px !important;margin-bottom:3mm !important}
+    .chip,.words span{font-size:9.5pt !important;padding:4px 10px !important}
+    .cover-badge{font-size:34pt !important;margin-bottom:2mm !important}
+    .panel .lbl{font-size:8.5pt !important}
+    .flow .step{font-size:10.5pt !important}
+    .flow .step .ico{font-size:14pt !important}
+    .panel,.card,.quote,.resp,.flow .step,.qlist li{padding:3mm 4mm !important;box-shadow:none !important;break-inside:avoid;page-break-inside:avoid}
+    .grid{gap:3mm !important}
+    table{break-inside:avoid}
+    th,td{padding:2.5mm !important}
+    .hiddenb{display:block !important}
+  }
+</style>
+</head>
+<body>
+<div id="topbar">
+  <div id="fsctl" title="Tamanho da fonte">
+    <button id="fsMinus" aria-label="Diminuir fonte">A&minus;</button>
+    <span id="fsval" title="Clique para restaurar">100%</span>
+    <button id="fsPlus" aria-label="Aumentar fonte">A+</button>
+  </div>
+  <a class="tbtn" href="../../">← Índice</a>
+  <button class="tbtn" id="themeBtn">🌙 Escuro</button>
+  <button class="tbtn" id="printBtn" title="Imprimir ou salvar em PDF">&#128424; Imprimir</button>
+  <button class="tbtn" id="fsBtn">⛶ Apresentar</button>
+</div>
+
+<div id="deck">
+
+  <!-- 1 CAPA -->
+  <section class="slide active center">
+    <div class="cover-badge">🗺️</div>
+    <h1>Planejamento pedagógico</h1>
+    <p class="lead" style="margin-top:16px;max-width:1040px">Concepções, características e elementos</p>
+    <p style="margin-top:24px;font-size:clamp(21px,2.6vw,30px);font-weight:900;color:var(--title)">Profª Drª Elian Leite</p>
+    <div class="meta">
+      <span class="chip">🧩 Didática na Educação · Aula 04</span>
+      <span class="chip">🎓 Pedagogia · 2º período</span>
+      <span class="chip">📘 Didática Geral · p. 71–81</span>
+    </div>
+    <p class="hintline">Navegue com <kbd>←</kbd> <kbd>→</kbd></p>
+  </section>
+
+  <!-- 2 OBJETIVOS -->
+  <section class="slide">
+    <span class="kicker">Objetivos da aula</span>
+    <h2>Aonde queremos chegar</h2>
+    <div class="panel pdeep" style="margin-bottom:14px">
+      <span class="lbl">Objetivo geral</span>
+      <p style="font-size:clamp(17px,2.2vw,27px)">Compreender o planejamento como um processo <strong>contínuo</strong>, <strong>coletivo</strong> e <strong>intencional</strong> que orienta o trabalho docente e favorece a aprendizagem.</p>
+    </div>
+    <ul class="qlist">
+      <li><span class="n">1</span>Explicar a função do planejamento.</li>
+      <li><span class="n">2</span>Identificar suas características e sua relação com o Projeto Político-Pedagógico.</li>
+      <li><span class="n">3</span>Reconhecer a importância do diagnóstico e da avaliação.</li>
+      <li><span class="n">4</span>Articular objetivos, conteúdos, metodologia, recursos e avaliação.</li>
+      <li><span class="n">5</span>Analisar e reelaborar uma proposta de ensino.</li>
+    </ul>
+  </section>
+
+  <!-- 3 PROBLEMATIZAÇÃO -->
+  <section class="slide">
+    <span class="kicker">1 · Problematização <span class="tm">10 min</span></span>
+    <h2>Uma atividade interessante… e depois?</h2>
+    <div class="panel p1" style="margin-bottom:14px">
+      <p style="font-size:clamp(17px,2.2vw,27px);font-style:italic">Uma professora encontrou na internet uma atividade interessante e decidiu utilizá-la em sua turma. Preparou os materiais e explicou como realizá-la. Algumas crianças terminaram rapidamente, outras não compreenderam a proposta. Ao final, a professora percebeu que precisava entender melhor as dificuldades da turma.</p>
+    </div>
+    <ul class="qlist">
+      <li><span class="n">?</span>O que a professora deveria considerar <strong>antes</strong> de escolher a atividade?</li>
+      <li><span class="n">?</span>Como ela poderia <strong>verificar</strong> o que as crianças aprenderam?</li>
+      <li><span class="n">?</span>O que poderia <strong>modificar</strong> em uma próxima aula?</li>
+    </ul>
+  </section>
+
+  <!-- 4 PALAVRAS DA TURMA -->
+  <section class="slide center revealbox" data-reveal="pal">
+    <span class="kicker" style="align-self:center">1 · Problematização</span>
+    <h2>O que apareceu nas respostas da turma?</h2>
+    <p class="lead" style="max-width:1100px">Registre no quadro as palavras que a turma mencionar.</p>
+    <p class="cue">💬 Depois da conversa · clique para ver as palavras-chave</p>
+    <div class="hiddenb" id="pal">
+      <div class="words">
+        <span>objetivos</span><span>conhecimentos prévios</span><span>dificuldades</span><span>estratégias</span><span>avaliação</span>
+      </div>
+      <div class="card" style="margin:18px auto 0;max-width:1100px">
+        <p>🔑 Tudo isso que vocês apontaram tem um nome: <strong>planejamento</strong>. A atividade não falhou por ser ruim — faltou decidir <strong>para quem</strong>, <strong>para quê</strong> e <strong>como acompanhar</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 O QUE É PLANEJAR -->
+  <section class="slide">
+    <span class="kicker">2 · Conceito e função <span class="tm">10 min</span></span>
+    <h2>O que é planejar?</h2>
+    <div class="quote" style="margin-bottom:14px">
+      <p>Planejar é <strong>prever, organizar e sistematizar</strong> o trabalho, considerando o que se pretende alcançar, como agir e quais condições são necessárias.</p>
+    </div>
+    <div class="grid g3">
+      <div class="panel p3"><span class="lbl">Dimensão</span><h3>Organizadora</h3><p>Prevê ações, tempo, recursos e condições para o ensino.</p></div>
+      <div class="panel p4"><span class="lbl">Dimensão</span><h3>Reflexiva e contínua</h3><p>Envolve avaliação, revisão e reorganização da prática.</p></div>
+      <div class="panel p2"><span class="lbl">Dimensão</span><h3>Política</h3><p>Expressa escolhas sobre valores, conhecimentos e formação humana.</p></div>
+    </div>
+  </section>
+
+  <!-- 6 DIMENSÃO POLÍTICA -->
+  <section class="slide">
+    <span class="kicker">2 · Conceito e função</span>
+    <h2>Toda escolha didática é também uma escolha formativa</h2>
+    <p class="lead" style="margin-bottom:16px">Quando o professor escolhe um conteúdo e uma maneira de trabalhá-lo, também decide <strong>que experiências</strong> oferecerá aos alunos.</p>
+    <div class="grid g2">
+      <div class="panel pdeep"><span class="lbl">Uma proposta pode…</span><p style="font-size:clamp(18px,2.3vw,29px)">favorecer a <strong>reprodução</strong> de informações</p></div>
+      <div class="panel p4"><span class="lbl">… ou pode</span><p style="font-size:clamp(18px,2.3vw,29px)">ampliar oportunidades de <strong>investigação, argumentação e participação</strong></p></div>
+    </div>
+    <p style="margin-top:14px">No trabalho docente, planejar envolve decisões sobre a <strong>formação dos alunos</strong>, os <strong>conhecimentos</strong> que serão ensinados e as formas de <strong>acompanhar a aprendizagem</strong>.</p>
+  </section>
+
+  <!-- 7 PLANEJAMENTO × PLANO -->
+  <section class="slide">
+    <span class="kicker">2 · Conceito e função</span>
+    <h2>Planejamento ≠ plano</h2>
+    <div class="grid g2" style="margin-bottom:16px">
+      <div class="panel p1"><span class="lbl">Planejamento</span><p style="font-size:clamp(18px,2.2vw,28px)">É o <strong>processo</strong> de reflexão e tomada de decisões.</p></div>
+      <div class="panel p2"><span class="lbl">Plano</span><p style="font-size:clamp(18px,2.2vw,28px)">É o <strong>registro</strong> dessas decisões — orienta a ação e pode ser atualizado.</p></div>
+    </div>
+    <h3>Para que planejar?</h3>
+    <ul class="qlist g2col">
+      <li><span class="n">1</span>Organizar o tempo e os meios disponíveis.</li>
+      <li><span class="n">2</span>Prever condições para realizar as atividades.</li>
+      <li><span class="n">3</span>Evitar a dependência constante do improviso.</li>
+      <li><span class="n">4</span>Dar coerência e continuidade ao ensino.</li>
+      <li><span class="n">5</span>Acompanhar a aprendizagem e orientar intervenções.</li>
+    </ul>
+  </section>
+
+  <!-- 8 UNIDADE E AUTONOMIA -->
+  <section class="slide revealbox" data-reveal="ppp">
+    <span class="kicker">3 · Unidade e autonomia <span class="tm">5 min</span></span>
+    <h2>Uma direção comum, muitos caminhos</h2>
+    <div class="grid g2" style="margin-bottom:14px">
+      <div class="panel pdeep"><span class="lbl">Unidade</span><p>A escola compartilha princípios e finalidades, tendo o <strong>Projeto Político-Pedagógico (PPP)</strong> como referência.</p></div>
+      <div class="panel p4"><span class="lbl">Autonomia</span><p>Cada professor escolhe as <strong>estratégias</strong> adequadas às suas turmas.</p></div>
+    </div>
+    <div class="card">
+      <p>📚 <strong>Exemplo:</strong> a escola assume o compromisso de <strong>formar leitores</strong>. Uma professora organiza rodas de leitura; outra desenvolve empréstimos de livros e conversas sobre as histórias. As estratégias variam, mas contribuem para uma <strong>finalidade compartilhada</strong>.</p>
+    </div>
+    <p class="cue">💬 Como o professor pode exercer sua criatividade e, ao mesmo tempo, manter coerência com o projeto da escola? · clique</p>
+    <div class="hiddenb" id="ppp">
+      <div class="resp" style="margin-top:8px">
+        <p>A criatividade está no <strong>como</strong>; a coerência está no <strong>para quê</strong>. O professor inventa estratégias, desde que elas sirvam às finalidades que a escola definiu coletivamente.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 CARACTERÍSTICAS -->
+  <section class="slide">
+    <span class="kicker">4 · Características <span class="tm">10 min</span></span>
+    <h2>Seis características do planejamento</h2>
+    <div class="grid g3">
+      <div class="panel p1"><span class="lbl">Flexibilidade</span><p>Estar aberto à avaliação e às mudanças de percurso.</p><p class="ex">Retomar um conteúdo quando a turma apresenta dificuldades.</p></div>
+      <div class="panel p3"><span class="lbl">Participação</span><p>Construir decisões por meio do diálogo coletivo.</p><p class="ex">Professores e coordenação analisam necessidades e propõem ações.</p></div>
+      <div class="panel p4"><span class="lbl">Coerência</span><p>Articular os elementos do plano e os princípios da escola.</p><p class="ex">Avaliar a capacidade de argumentar quando esse é o objetivo.</p></div>
+      <div class="panel p5"><span class="lbl">Formalização</span><p>Registrar decisões, experiências e resultados.</p><p class="ex">Anotar no plano os ajustes feitos durante a aula.</p></div>
+      <div class="panel p6"><span class="lbl">Objetividade</span><p>Propor ações claras e possíveis nas condições existentes.</p><p class="ex">Prever atividades compatíveis com o tempo e os materiais disponíveis.</p></div>
+      <div class="panel p2"><span class="lbl">Ousadia</span><p>Buscar mudanças e ampliar possibilidades.</p><p class="ex">Propor um projeto coletivo para enfrentar uma necessidade da escola.</p></div>
+    </div>
+  </section>
+
+  <!-- 10 DESTAQUES -->
+  <section class="slide">
+    <span class="kicker">4 · Características</span>
+    <h2>Dois cuidados na leitura dessas características</h2>
+    <div class="grid g2">
+      <div class="card">
+        <h3>🔄 Flexibilidade não é improviso</h3>
+        <p>A flexibilidade permite <strong>mudar o caminho com base em evidências</strong>. O professor continua responsável pelos <strong>objetivos de aprendizagem</strong>.</p>
+      </div>
+      <div class="card warn">
+        <h3>⚖️ Objetividade + ousadia</h3>
+        <p>Elas se complementam: o planejamento considera as <strong>condições atuais</strong> e também pode orientar ações para <strong>melhorá-las</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 POR ONDE COMEÇAR -->
+  <section class="slide">
+    <span class="kicker">5 · Ponto de partida <span class="tm">10 min</span></span>
+    <h2>Por onde começar? Pelo diagnóstico da realidade</h2>
+    <p style="margin-bottom:12px">Antes de organizar atividades, o professor precisa <strong>investigar</strong>:</p>
+    <ul class="qlist g2col">
+      <li><span class="n">👧</span>Quem são os alunos e o que já sabem?</li>
+      <li><span class="n">🧩</span>Quais necessidades e dificuldades apresentam?</li>
+      <li><span class="n">✅</span>O que funcionou no trabalho anterior?</li>
+      <li><span class="n">⛰️</span>Quais desafios permanecem?</li>
+      <li><span class="n">🏫</span>Quais recursos e condições a escola oferece?</li>
+      <li><span class="n">🧭</span>Quais princípios orientam o PPP?</li>
+    </ul>
+  </section>
+
+  <!-- 12 O PROCESSO -->
+  <section class="slide revealbox" data-reveal="copia">
+    <span class="kicker">5 · Ponto de partida</span>
+    <h2>O planejamento é um processo, não um documento pronto</h2>
+    <div class="flow">
+      <div class="step p1"><span class="ico">🔍</span>Diagnóstico</div><div class="arw">→</div>
+      <div class="step p3"><span class="ico">🗂️</span>Organização da proposta</div><div class="arw">→</div>
+      <div class="step p4"><span class="ico">🏃</span>Desenvolvimento</div><div class="arw">→</div>
+      <div class="step p5"><span class="ico">📊</span>Avaliação</div><div class="arw">→</div>
+      <div class="step p2"><span class="ico">🔁</span>Replanejamento</div>
+    </div>
+    <p class="loopback">↺ Esses movimentos se relacionam: durante a aula, novas informações podem exigir mudanças na proposta.</p>
+    <div class="card" style="margin-top:12px">
+      <p>📝 <strong>Exemplo:</strong> a professora identifica dificuldades em determinadas questões de uma avaliação. Organiza outra explicação, propõe uma atividade complementar e acompanha os avanços. Os resultados da avaliação passam a <strong>orientar o planejamento seguinte</strong>.</p>
+    </div>
+    <p class="cue">💬 Por que copiar o plano do ano anterior, sem analisar a turma atual, pode comprometer o trabalho? · clique</p>
+    <div class="hiddenb" id="copia">
+      <div class="resp" style="margin-top:8px">
+        <p>Porque o plano copiado responde a <strong>outra turma</strong>: ignora o que estes alunos já sabem, suas dificuldades e as condições atuais. Sem diagnóstico, não há como saber se objetivos e atividades fazem sentido.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 QUEM PLANEJA O QUÊ -->
+  <section class="slide">
+    <span class="kicker">6 · Quem planeja o quê? <span class="tm">10 min</span></span>
+    <h2>Três dimensões relacionadas</h2>
+    <div class="tblwrap">
+      <table class="cmp" style="font-size:clamp(16px,2vw,26px)">
+        <thead><tr><th>Dimensão</th><th>Abrangência</th></tr></thead>
+        <tbody>
+          <tr><th>🏛️ Educacional</th><td>Políticas, programas e orientações dos sistemas de ensino.</td></tr>
+          <tr><th>🏫 Institucional</th><td>Projeto pedagógico e organização do trabalho da escola.</td></tr>
+          <tr><th>📒 De ensino</th><td>Planos de curso, de unidade e de aula.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card warn" style="margin-top:14px">
+      <p>⚠️ A crítica do texto dirige-se à <strong>fragmentação</strong> que separa <strong>aqueles que decidem</strong> daqueles que <strong>apenas executam</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 14 PARTICIPAÇÃO -->
+  <section class="slide">
+    <span class="kicker">6 · Quem planeja o quê?</span>
+    <h2>O professor não planeja sozinho</h2>
+    <div class="grid g3" style="margin-bottom:14px">
+      <div class="panel p1"><span class="lbl">O professor</span><p>precisa participar das decisões institucionais.</p></div>
+      <div class="panel p3"><span class="lbl">A escola</span><p>precisa criar condições para essa participação.</p></div>
+      <div class="panel p4"><span class="lbl">A comunidade</span><p>contribui para discutir as necessidades e finalidades da educação.</p></div>
+    </div>
+    <div class="card">
+      <p>📖 <strong>Exemplo:</strong> dificuldades de leitura podem exigir intervenções em sala, mas também <strong>acesso a livros</strong>, <strong>tempo de planejamento coletivo</strong> e <strong>apoio da coordenação</strong>.</p>
+    </div>
+    <div class="card ask" style="margin-top:12px">
+      <p>💬 <strong>Para discutir:</strong> quais problemas da sala de aula dependem de decisões e condições que ultrapassam a atuação individual do professor?</p>
+    </div>
+  </section>
+
+  <!-- 15 ELEMENTOS — TABELA ÁGUA -->
+  <section class="slide">
+    <span class="kicker">7 · Elementos do plano de ensino <span class="tm">15 min</span></span>
+    <h2>Um mesmo tema, cinco elementos articulados</h2>
+    <p style="margin-bottom:10px">💧 <strong>Tema:</strong> uso e desperdício de água na escola</p>
+    <div class="tblwrap">
+      <table class="cmp">
+        <thead><tr><th>Elemento</th><th>Pergunta orientadora</th><th>Exemplo</th></tr></thead>
+        <tbody>
+          <tr><th>🎯 Objetivos</th><td><em>O que os alunos deverão aprender?</em></td><td>Identificar causas do desperdício e justificar propostas de redução.</td></tr>
+          <tr><th>📚 Conteúdos</th><td><em>Quais conhecimentos serão trabalhados?</em></td><td>Usos da água, desperdício e responsabilidade coletiva.</td></tr>
+          <tr><th>🧭 Metodologia</th><td><em>Como professor e alunos desenvolverão o estudo?</em></td><td>Observar situações, analisar informações, discutir e elaborar propostas.</td></tr>
+          <tr><th>🧰 Recursos</th><td><em>Quais materiais apoiarão as atividades?</em></td><td>Textos, imagens, fichas de registro e informações sobre o consumo.</td></tr>
+          <tr><th>📊 Avaliação</th><td><em>Como acompanhar a aprendizagem?</em></td><td>Analisar as explicações e as justificativas apresentadas pelos alunos.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 16 OBJETIVOS E CONTEÚDOS -->
+  <section class="slide">
+    <span class="kicker">7 · Elementos do plano de ensino</span>
+    <h2>Objetivos e conteúdos</h2>
+    <div class="grid g2" style="margin-bottom:14px">
+      <div class="card">
+        <h3>🎯 Objetivos</h3>
+        <p>Expressam os <strong>resultados e a formação</strong> pretendidos. Precisam orientar o trabalho efetivo, incluindo <strong>conhecimentos, atitudes e participação social</strong>.</p>
+      </div>
+      <div class="card">
+        <h3>📚 Conteúdos</h3>
+        <p>Selecionados por <strong>relevância, contexto</strong> e possibilidades de compreensão dos alunos. Apropriação <strong>crítica</strong>: relacionar a experiência social ao saber sistematizado.</p>
+      </div>
+    </div>
+    <p style="margin-bottom:8px;font-weight:800;color:var(--ink)">As dimensões dos conteúdos podem aparecer juntas:</p>
+    <div class="grid g3">
+      <div class="panel p3"><span class="lbl">Conceitual</span><p>compreender o desperdício</p></div>
+      <div class="panel p4"><span class="lbl">Procedimental</span><p>observar situações e registrar informações</p></div>
+      <div class="panel p5"><span class="lbl">Atitudinal</span><p>responsabilidade pelo uso coletivo da água</p></div>
+    </div>
+  </section>
+
+  <!-- 17 METODOLOGIA E RECURSOS -->
+  <section class="slide">
+    <span class="kicker">7 · Elementos do plano de ensino</span>
+    <h2>Metodologia e recursos</h2>
+    <div class="panel pdeep" style="margin-bottom:14px">
+      <span class="lbl">🧭 Procedimentos metodológicos</span>
+      <p>Devem favorecer a <strong>atividade intelectual</strong> dos alunos — investigar, comparar, questionar, explicar e construir interpretações — com <strong>mediação docente</strong>.</p>
+    </div>
+    <div class="card" style="margin-bottom:12px">
+      <p>🧰 <strong>Recursos didáticos:</strong> a escolha depende dos <strong>objetivos</strong>, dos <strong>conteúdos</strong> e das <strong>necessidades da turma</strong>.</p>
+    </div>
+    <div class="grid g2">
+      <div class="panel p4"><p>✔️ Um material <strong>simples</strong> pode favorecer uma investigação rica.</p></div>
+      <div class="panel p6"><p>✖️ Um equipamento <strong>tecnológico</strong> também pode sustentar uma atividade restrita à repetição.</p></div>
+    </div>
+  </section>
+
+  <!-- 18 AVALIAÇÃO -->
+  <section class="slide">
+    <span class="kicker">7 · Elementos do plano de ensino</span>
+    <h2>Avaliação: acompanhar o percurso e orientar decisões</h2>
+    <div class="grid g3" style="margin-bottom:10px">
+      <div class="panel p1"><span class="lbl">Diagnóstica</span><p>identifica saberes e necessidades</p></div>
+      <div class="panel p3"><span class="lbl">Formativa</span><p>acompanha avanços e dificuldades durante o trabalho</p></div>
+      <div class="panel p4"><span class="lbl">Dos resultados</span><p>analisa as aprendizagens alcançadas</p></div>
+    </div>
+    <div class="grid g2" style="margin-bottom:10px">
+      <div class="card"><h3>Critério</h3><p>É <strong>o que será observado</strong>. Ex.: justificar uma proposta com base nas informações estudadas.</p></div>
+      <div class="card"><h3>Instrumento</h3><p>É <strong>o meio utilizado</strong>: produção escrita, apresentação, registro de observação ou outra atividade adequada.</p></div>
+    </div>
+    <p style="font-weight:700">🔁 Ao identificar dificuldades, o professor precisa prever <strong>novas intervenções e oportunidades de aprendizagem</strong>.</p>
+  </section>
+
+  <!-- 19 ATIVIDADE PRÁTICA -->
+  <section class="slide">
+    <span class="kicker">8 · Atividade prática <span class="tm">20 min</span></span>
+    <h2>Análise e reconstrução de um planejamento</h2>
+    <div class="panel p2" style="margin-bottom:12px">
+      <p style="font-size:clamp(16px,2vw,25px);font-style:italic">Em uma turma do 3º ano, a professora pretende desenvolver a capacidade de <strong>explicar as causas do desperdício de água</strong>. Para isso, solicita a <strong>cópia de um texto</strong> e a <strong>pintura de um desenho</strong>. Na avaliação, considera apenas a <strong>conclusão das tarefas</strong>.</p>
+    </div>
+    <ul class="qlist g2col">
+      <li><span class="n">1</span>Há coerência entre o objetivo, as atividades e a avaliação? Justifiquem.</li>
+      <li><span class="n">2</span>Que informações sobre a turma deveriam orientar o planejamento?</li>
+      <li><span class="n">3</span>Qual atividade vocês propõem para favorecer a aprendizagem pretendida?</li>
+      <li><span class="n">4</span>Como o professor atuaria durante essa atividade?</li>
+      <li><span class="n">5</span>Qual critério e qual instrumento utilizariam para avaliar?</li>
+      <li><span class="n">6</span>O que fariam se parte da turma ainda apresentasse dificuldades?</li>
+    </ul>
+    <div class="timer" data-timer>
+      <span style="font-weight:800;color:var(--ink)">⏱️ Em grupos:</span>
+      <button class="btn" data-min="12">Elaboração · 12 min</button>
+      <button class="btn orange" data-min="8">Socialização · 8 min</button>
+      <span class="clock">12:00</span>
+      <button class="btn ghost" data-act="pause">⏸</button>
+    </div>
+  </section>
+
+  <!-- 20 DEVOLUTIVA -->
+  <section class="slide revealbox" data-reveal="dev">
+    <span class="kicker">8 · Atividade prática</span>
+    <h2>Devolutiva: o que o caso revela?</h2>
+    <div class="grid g3">
+      <div class="panel p1"><span class="lbl">Objetivo</span><p>explicar as causas do desperdício</p></div>
+      <div class="panel p6"><span class="lbl">Atividades</span><p>copiar texto e pintar desenho</p></div>
+      <div class="panel p6"><span class="lbl">Avaliação</span><p>só a conclusão das tarefas</p></div>
+    </div>
+    <p class="cue">💬 Depois da socialização dos grupos · clique para ver a síntese</p>
+    <div class="hiddenb" id="dev">
+      <div class="resp">
+        <span class="tag">Síntese esperada</span>
+        <ul style="margin-top:4px">
+          <li>Concluir a cópia e a pintura <strong>não permite, por si só, verificar a compreensão</strong> das causas do desperdício.</li>
+          <li>As propostas devem relacionar <strong>investigação e estudo dos conteúdos</strong> à <strong>elaboração de explicações</strong> pelos alunos.</li>
+          <li>É preciso prever <strong>mediação</strong> do professor e uma <strong>avaliação coerente</strong> com o objetivo (critério: explicar causas; instrumento: explicação oral ou escrita, registro de observação).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 21 FECHAMENTO -->
+  <section class="slide">
+    <span class="kicker">9 · Fechamento e avaliação <span class="tm">10 min</span></span>
+    <h2>Retomando a professora do início…</h2>
+    <div class="panel pdeep" style="margin-bottom:14px">
+      <span class="lbl">✍️ Resposta individual</span>
+      <p style="font-size:clamp(18px,2.3vw,29px)">Explique por que o planejamento é um <strong>processo contínuo</strong> e apresente uma situação em que o professor precisa <strong>replanejar</strong> sua ação.</p>
+    </div>
+    <p style="margin-bottom:8px;font-weight:800;color:var(--ink)">Critérios para acompanhar a aprendizagem da turma:</p>
+    <ul class="qlist g2col">
+      <li><span class="n">✓</span>Compreensão do planejamento como processo.</li>
+      <li><span class="n">✓</span>Reconhecimento da importância do diagnóstico.</li>
+      <li><span class="n">✓</span>Relação entre objetivos, atividades e avaliação.</li>
+      <li><span class="n">✓</span>Proposição de intervenções coerentes.</li>
+    </ul>
+  </section>
+
+  <!-- 22 MENSAGEM FINAL -->
+  <section class="slide center">
+    <div class="cover-badge" style="font-size:clamp(40px,5.5vw,72px)">🤝</div>
+    <span class="kicker" style="align-self:center">Para levar</span>
+    <h2 style="font-size:clamp(26px,3.6vw,46px)">Planejar bem exige condições</h2>
+    <div class="words" style="margin-bottom:16px">
+      <span>tempo</span><span>condições de trabalho</span><span>estudo</span><span>apoio pedagógico</span>
+    </div>
+    <div class="card" style="max-width:1120px;margin:0 auto;text-align:left">
+      <p>A qualidade do planejamento coletivo depende tanto das <strong>decisões docentes</strong> quanto das <strong>condições institucionais</strong> para realizá-las.</p>
+    </div>
+  </section>
+
+  <!-- 23 ENCERRAMENTO -->
+  <section class="slide center">
+    <h1 style="color:var(--title)">Obrigada!</h1>
+    <p class="lead" style="margin-top:18px;font-weight:900">Profª Drª Elian Leite</p>
+    <p style="margin-top:12px;font-size:clamp(19px,2.3vw,28px)">
+      ✉️ <a class="mail" href="mailto:prof.elianleite@gmail.com">prof.elianleite@gmail.com</a>
+    </p>
+    <div class="meta">
+      <span class="chip">📘 <em>Didática Geral</em> · p. 71–81</span>
+    </div>
+  </section>
+
+</div>
+
+<div id="controls">
+  <button class="nav" id="prev" aria-label="Anterior">‹</button>
+  <span id="counter">1 / 23</span>
+  <button class="nav" id="next" aria-label="Próximo">›</button>
+</div>
+<div id="bar"><div id="barfill"></div></div>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];let i=0;
+const counter=document.getElementById('counter'),barfill=document.getElementById('barfill');
+function show(n){i=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+  counter.textContent=(i+1)+' / '+slides.length;
+  barfill.style.width=((i+1)/slides.length*100)+'%';slides[i].scrollTop=0;}
+document.getElementById('next').onclick=()=>show(i+1);
+document.getElementById('prev').onclick=()=>show(i-1);
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='PageDown')show(i+1);
+  else if(e.key==='ArrowLeft'||e.key==='PageUp')show(i-1);
+  else if(e.key==='Home')show(0);else if(e.key==='End')show(slides.length-1);});
+show(0);
+document.getElementById('fsBtn').onclick=()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.();};
+const themeBtn=document.getElementById('themeBtn'),root=document.documentElement;
+themeBtn.onclick=()=>{const d=root.getAttribute('data-theme')==='dark';root.setAttribute('data-theme',d?'light':'dark');themeBtn.textContent=d?'🌙 Escuro':'☀️ Claro';};
+
+/* revelar respostas */
+document.querySelectorAll('.revealbox').forEach(function(box){
+  box.addEventListener('click',function(e){
+    if(e.target.closest('button'))return;
+    var t=document.getElementById(box.dataset.reveal);
+    if(t)t.classList.add('reveal');
+  });
+});
+
+/* cronômetro da atividade */
+document.querySelectorAll('[data-timer]').forEach(function(w){
+  var clock=w.querySelector('.clock'),left=0,tid=null,pause=w.querySelector('[data-act="pause"]');
+  function fmt(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');}
+  function tick(){left--;clock.textContent=fmt(Math.max(0,left));
+    if(left<=0){clearInterval(tid);tid=null;clock.classList.add('end');clock.textContent='Tempo!';}}
+  w.querySelectorAll('[data-min]').forEach(function(b){
+    b.onclick=function(){clearInterval(tid);left=parseInt(b.dataset.min,10)*60;clock.classList.remove('end');
+      clock.textContent=fmt(left);tid=setInterval(tick,1000);pause.textContent='⏸';};
+  });
+  pause.onclick=function(){
+    if(tid){clearInterval(tid);tid=null;pause.textContent='▶';}
+    else if(left>0){tid=setInterval(tick,1000);pause.textContent='⏸';}
+  };
+});
+
+/* Controle de tamanho da fonte */
+(function(){
+  var fs=1;
+  try{var s=localStorage.getItem('aulaFs');if(s)fs=parseFloat(s)||1;}catch(e){}
+  var val=document.getElementById('fsval');
+  function apply(){
+    fs=Math.min(1.6,Math.max(0.7,Math.round(fs*100)/100));
+    document.documentElement.style.setProperty('--fs',fs);
+    if(val)val.textContent=Math.round(fs*100)+'%';
+    try{localStorage.setItem('aulaFs',fs);}catch(e){}
+  }
+  document.getElementById('fsPlus').onclick=function(){fs+=0.1;apply();};
+  document.getElementById('fsMinus').onclick=function(){fs-=0.1;apply();};
+  if(val)val.onclick=function(){fs=1;apply();};
+  document.addEventListener('keydown',function(e){
+    if(e.key==='+'||e.key==='='){fs+=0.1;apply();}
+    else if(e.key==='-'||e.key==='_'){fs-=0.1;apply();}
+    else if(e.key==='0'){fs=1;apply();}
+  });
+  apply();
+})();
+
+/* Impressão / PDF */
+(function(){
+  function openAll(){document.querySelectorAll('.hiddenb').forEach(function(e){e.classList.add('reveal');});}
+  document.getElementById('printBtn').onclick=function(){openAll();window.print();};
+  window.addEventListener('beforeprint',openAll);
+})();
+</script>
+</body>
+</html>
