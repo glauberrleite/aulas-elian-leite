@@ -5,7 +5,7 @@
 **Professora:** Profª Drª Elian Leite
 **Base:** *Didática Geral*, p. 71–81
 **Duração prevista:** 100 minutos
-**Apresentação:** `index.html` desta pasta (23 slides)
+**Apresentação:** `index.html` desta pasta (20 slides)
 
 ---
 
@@ -28,16 +28,18 @@
 | Momento | Tempo | Slides |
 |---|---|---|
 | Capa e objetivos | — | 1–2 |
-| 1. Problematização inicial | 10 min | 3–4 |
-| 2. O que é planejamento e qual sua função? | 10 min | 5–7 |
-| 3. Unidade do trabalho e autonomia docente | 5 min | 8 |
-| 4. Características do planejamento | 10 min | 9–10 |
-| 5. Por onde começar a planejar? | 10 min | 11–12 |
-| 6. Quem planeja o quê? | 10 min | 13–14 |
-| 7. Elementos do planejamento de ensino | 15 min | 15–18 |
-| 8. Atividade prática | 20 min | 19–20 |
-| 9. Fechamento e avaliação da aula | 10 min | 21–22 |
-| Encerramento | — | 23 |
+| 1. Problematização inicial | 10 min | 3 |
+| 2. O que é planejamento e qual sua função? | 10 min | 4–6 |
+| 3. Unidade do trabalho e autonomia docente | 5 min | — (oral, sem slide) |
+| 4. Características do planejamento | 10 min | 7–8 |
+| 5. Por onde começar a planejar? | 10 min | 9–10 |
+| 6. Quem planeja o quê? | 10 min | 11 |
+| 7. Elementos do planejamento de ensino | 15 min | 12–15 |
+| 8. Atividade prática | 20 min | 16–17 |
+| 9. Fechamento e avaliação da aula | 10 min | 18–19 |
+| Encerramento | — | 20 |
+
+*Na apresentação, as seções aparecem renumeradas de 1 a 8, porque o momento 3 não tem slide; o quadro dos três níveis de planejamento (momento 6) também ficou só neste plano.*
 
 ---
 
@@ -55,7 +57,7 @@ Apresente a situação:
 
 **Condução da professora:** ouça as respostas e registre palavras mencionadas pela turma, como *objetivos, conhecimentos prévios, dificuldades, estratégias e avaliação*. Utilize esses registros para introduzir o conceito de planejamento.
 
-*No slide 4, um clique revela essas palavras-chave — use depois da conversa, para conferir com o que a turma disse.*
+*Não há slide para as palavras-chave: registre-as no quadro.*
 
 ---
 
@@ -93,7 +95,7 @@ O texto defende que a escola compartilhe princípios e finalidades, tendo o **Pr
 
 **Pergunta para a turma:** como o professor pode exercer sua criatividade e, ao mesmo tempo, manter coerência com o projeto da escola?
 
-*Síntese possível (revelada no slide 8):* a criatividade está no **como**; a coerência, no **para quê**.
+*Síntese possível:* a criatividade está no **como**; a coerência, no **para quê**.
 
 ---
 
@@ -196,9 +198,9 @@ A crítica do texto dirige-se à fragmentação que separa aqueles que decidem d
 5. Qual critério e qual instrumento utilizariam para avaliar?
 6. O que fariam se parte da turma ainda apresentasse dificuldades?
 
-**Tempo:** 12 minutos para elaboração e 8 minutos para socialização. *O slide 19 tem um cronômetro com os dois tempos.*
+**Tempo:** 12 minutos para elaboração e 8 minutos para socialização. *O slide 16 tem um cronômetro com os dois tempos.*
 
-**Orientações para a devolutiva (slide 20):** espera-se que os grupos percebam que concluir a cópia e a pintura não permite, por si só, verificar a compreensão das causas do desperdício. As propostas devem relacionar investigação e estudo dos conteúdos à elaboração de explicações, prevendo mediação e avaliação coerentes.
+**Orientações para a devolutiva (slide 17):** espera-se que os grupos percebam que concluir a cópia e a pintura não permite, por si só, verificar a compreensão das causas do desperdício. As propostas devem relacionar investigação e estudo dos conteúdos à elaboração de explicações, prevendo mediação e avaliação coerentes.
 
 ---
 
